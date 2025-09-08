@@ -1,13 +1,13 @@
 # EHX GUID Parsing Workflow - Complete Implementation & Backup Guide
 
-**Date:** September 7, 2025  
-**Version:** 4.1 - Complete Backup & Restoration Documentation  
-**Status:** ✅ Fully Implemented with Backup Procedures  
+**Date:** September 8, 2025  
+**Version:** 4.2 - Beam Pocket AFF Display Fixes & Consistency Updates  
+**Status:** ✅ Fully Implemented with Latest Fixes Documented  
 
 ## Overview
 The EHX parsing script now includes a comprehensive hierarchical GUID-based system that accurately associates and sorts materials across different structural levels. This ensures proper material relationships and prevents incorrect associations.
 
-## ✅ Implementation Status
+## ✅ Implementation Status (UPDATED: September 8, 2025)
 
 ### Core Functions Implemented
 - ✅ `sort_materials_by_guid_hierarchy()` - Hierarchical GUID-based sorting
@@ -16,6 +16,8 @@ The EHX parsing script now includes a comprehensive hierarchical GUID-based syst
 - ✅ `enhance_material_associations()` - Enhanced rough opening to header linking
 - ✅ `deduplicate_materials_by_guid()` - GUID-based duplicate removal
 - ✅ `prevent_cross_contamination()` - SubAssembly isolation protection
+- ✅ **FIXED: Beam Pocket AFF Display** - Corrected GUI key access and log consistency
+- ✅ **FIXED: Label Standardization** - Updated "AFF:" and "Opening Width:" across all outputs
 
 ### Integration Points
 - ✅ Integrated into `parse_panels()` function
@@ -170,7 +172,7 @@ analysis = debug_guid_associations('path/to/file.EHX')
 validation = validate_guid_associations(analysis['materials'])
 ```
 
-## Beam Pocket Processing
+## Beam Pocket Processing (UPDATED: September 8, 2025)
 
 ### SubAssemblyGuid-Based Beam Pocket Analysis
 The system now includes specialized processing for beam pockets using SubAssemblyGuid relationships:
@@ -222,6 +224,11 @@ Panel
 - **Opening Width**: 36.0 in - Calculated from X-coordinates (X2 - X1)
 - **Materials**: D (1), E (1) - Panel labels with quantities
 
+#### Latest Fixes Applied
+- **FIXED: GUI Key Access**: Corrected `bp.get('aff')` and `bp.get('opening_width')` usage
+- **FIXED: Log Consistency**: Updated to use "AFF:" instead of "Top AFF:"/"Bottom AFF:"
+- **FIXED: Label Standardization**: Changed "Header Size:" to "Opening Width:"
+
 ## File Structure Impact
 
 ### Core Files
@@ -250,10 +257,10 @@ Panel
 
 ---
 
-**Implementation Complete:** September 5, 2025  
+**Implementation Complete:** September 8, 2025  
 **Tested:** ✅ Syntax validation passed  
 **Integration:** ✅ Active in main processing pipeline  
-**Documentation:** ✅ Current and up-to-date
+**Documentation:** ✅ Current and up-to-date with latest fixes
 
 The system includes built-in validation (`validate_guid_associations()`) to detect:
 - Multiple rough openings per GUID
@@ -505,9 +512,9 @@ GUID associations broken?
 
 ---
 
-**Last Updated:** September 7, 2025  
-**Version:** 4.1  
-**Status:** ✅ Complete with Full Backup & Restoration Documentation
+**Last Updated:** September 8, 2025  
+**Version:** 4.2  
+**Status:** ✅ Complete with Latest Beam Pocket Fixes Documented
 
 The system includes built-in validation (`validate_guid_associations()`) to detect:
 - Multiple rough openings per GUID

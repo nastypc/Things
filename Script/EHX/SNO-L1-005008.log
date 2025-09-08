@@ -1,6 +1,6 @@
 
-=== SNO-L1-005008.log updated at 2025-09-08 02:56:59 for SNO-L1-005008.EHX ===
-File Location: C:/Users/THOMPSON/Downloads/EHX/Script/EHX
+=== SNO-L1-005008.log updated at 2025-09-08 13:49:48 for SNO-L1-005008.EHX ===
+File Location: C:/Users/edward/Downloads/EHX/Script/EHX
 
 === V2.0 DIAGNOSTIC INFO ===
 Junctions found: 25
@@ -30,11 +30,11 @@ Panel Details:
 • Rough Opening: DR-9-ENT-L1 - 92.75 x 50.875 (AFF: 92.75 (7'-8-3/4")) [Headers: G]
 Beam Pocket Details: 2 beam pockets
 • Beam Pocket 1
-  Bottom AFF: Unknown
-  Top AFF: Unknown
+  AFF: Unknown
+  AFF: Unknown
 • Beam Pocket 2
-  Bottom AFF: Unknown
-  Top AFF: Unknown
+  AFF: Unknown
+  AFF: Unknown
 
 
 Panel Material Breakdown:
@@ -857,8 +857,8 @@ Panel Details:
 • Rough Opening: DR-9-ENT - 60.375 x 50.874 (AFF: 92.375 (7'-8-3/8"))
 Beam Pocket Details: 1 beam pocket
 • Beam Pocket 1
-  Bottom AFF: Unknown
-  Top AFF: Unknown
+  AFF: Unknown
+  AFF: Unknown
 
 
 Panel Material Breakdown:

@@ -1,9 +1,9 @@
 # EHX Search Tool - Complete Development Summary
 
-**Date:** September 7, 2025  
-**Version:** 4.1 - Complete Backup & Restoration Documentation  
+**Date:** September 8, 2025  
+**Version:** 4.2 - Beam Pocket AFF Display Fixes & Consistency Updates  
 **Developer:** GitHub Copilot Assistant  
-**Status:** ✅ Complete and Ready for Production  
+**Status:** ✅ Complete with Latest Fixes Documented  
 
 ## 📋 Project Overview
 
@@ -49,13 +49,16 @@ This document summarizes the complete development of the EHX Search Tool - a com
 - **Hierarchical GUID System**: Level → Bundle → Panel → SubAssembly → Material relationships
 - **Accurate Material Associations**: Rough openings properly linked to their headers via SubAssemblyGuid
 
-#### ✅ Beam Pocket Analysis
+#### ✅ Beam Pocket Analysis (UPDATED: September 8, 2025)
 - **Panel Label Format**: Beam pockets displayed using panel labels (D, E) with quantities
 - **AFF Extraction**: Accurate Above Floor Finish values extracted from Trimmer Y-coordinates
 - **Opening Width Calculation**: Calculated from X-coordinates of beam pocket boundaries
 - **Material Grouping**: Identical beam pockets grouped and counted automatically
 - **Simplified Display**: Clean format showing AFF, opening width, and material composition
 - **Multi-Format Output**: Consistent display across GUI, expected.log, and materials.log
+- **FIXED: GUI Key Mismatch**: Corrected dictionary key access ('aff' vs 'bottom_aff', 'opening_width' vs 'header_size')
+- **FIXED: Log Consistency**: Updated all logs to use "AFF:" format instead of "Top AFF:"/"Bottom AFF:"
+- **FIXED: Label Consistency**: Standardized "Opening Width:" across all outputs
 
 ---
 

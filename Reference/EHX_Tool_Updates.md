@@ -1,9 +1,34 @@
-# EHX Tool Updates - Complete Change History & Backup Guide
+# EHX Tool Updates - Complete C## Recent Changes (September 8, 2025)
 
-**Date:** September 7, 2025  
-**Version:** 4.1 - Complete Backup & Restoration Documentation  
+### 1. Beam Pocket AFF Display Fixes
+- **FIXED: GUI Key Mismatch**: Corrected dictionary key access in GUI display code
+  - Changed `bp.get('bottom_aff')` to `bp.get('aff')` 
+  - Changed `bp.get('header_size')` to `bp.get('opening_width')`
+  - Removed unused `top_aff` variable reference
+- **FIXED: Log Format Consistency**: Updated all log writing functions to use uniform "AFF:" format
+  - Changed "Top AFF:" to "AFF:" in expected.log writing
+  - Changed "Bottom AFF:" to "AFF:" in materials.log writing
+  - Updated comment from "bottom AFF" to "AFF" in GUI code
+- **FIXED: Label Standardization**: Updated "Header Size:" to "Opening Width:" for consistency
+  - Updated expected.log output format
+  - Updated materials.log output format
+  - Maintained consistency across GUI, export, and log outputs
+
+### 2. Code Cleanup and Optimization
+- **Removed Unused References**: Cleaned up unused `top_aff` variable in GUI display code
+- **Consistent Formatting**: Ensured all AFF and opening width references use standardized labels
+- **Error Prevention**: Maintained robust error handling for missing beam pocket data
+
+### 3. Documentation Updates
+- **Updated EHX_Complete_Summary.md**: Added beam pocket fixes to feature list
+- **Updated EHX_Tool_Updates.md**: Documented all changes with technical details
+- **Updated GUID_Workflow.md**: Added beam pocket processing improvements
+- **Version Bumped**: Updated to version 4.2 with latest fixesstory & Backup Guide
+
+**Date:** September 8, 2025  
+**Version:** 4.2 - Beam Pocket AFF Display Fixes & Consistency Updates  
 **Developer:** GitHub Copilot Assistant  
-**Status:** ✅ All Updates Documented with Backup Procedures  
+**Status:** ✅ All Updates Documented with Latest Fixes  
 
 ## Overview
 

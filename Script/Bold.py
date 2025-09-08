@@ -2162,29 +2162,29 @@ except Exception:
                                     bottom_decimal = format_dimension(str(bottom_aff))
                                     bottom_formatted = inches_to_feet_inches_sixteenths(str(bottom_aff))
                                     if bottom_formatted:
-                                        fh.write(f"  Bottom AFF: {bottom_decimal} ({bottom_formatted})\n")
+                                        fh.write(f"  AFF: {bottom_decimal} ({bottom_formatted})\n")
                                     else:
-                                        fh.write(f"  Bottom AFF: {bottom_decimal}\n")
+                                        fh.write(f"  AFF: {bottom_decimal}\n")
                                 else:
-                                    fh.write("  Bottom AFF: Unknown\n")
+                                    fh.write("  AFF: Unknown\n")
                                 
                                 if top_aff is not None:
                                     top_decimal = format_dimension(str(top_aff))
                                     top_formatted = inches_to_feet_inches_sixteenths(str(top_aff))
                                     if top_formatted:
-                                        fh.write(f"  Top AFF: {top_decimal} ({top_formatted})\n")
+                                        fh.write(f"  AFF: {top_decimal} ({top_formatted})\n")
                                     else:
-                                        fh.write(f"  Top AFF: {top_decimal}\n")
+                                        fh.write(f"  AFF: {top_decimal}\n")
                                 else:
-                                    fh.write("  Top AFF: Unknown\n")
+                                    fh.write("  AFF: Unknown\n")
                                 
                                 if header_size:
                                     header_size_decimal = format_dimension(str(header_size))
                                     header_formatted = inches_to_feet_inches_sixteenths(str(header_size))
                                     if header_formatted:
-                                        fh.write(f"  Header Size: {header_size_decimal} ({header_formatted})\n")
+                                        fh.write(f"  Opening Width: {header_size_decimal} ({header_formatted})\n")
                                     else:
-                                        fh.write(f"  Header Size: {header_size_decimal}\n")
+                                        fh.write(f"  Opening Width: {header_size_decimal}\n")
                             
                             fh.write('\n')
                     except Exception as e:
@@ -3818,45 +3818,40 @@ def make_gui():
                         
                         for i, bp in enumerate(beam_pockets, 1):
                             panel_id = bp.get('panel_id', '')
-                            bottom_aff = bp.get('bottom_aff')
-                            top_aff = bp.get('top_aff')
-                            header_size = bp.get('header_size')
+                            bottom_aff = bp.get('aff')  # Use 'aff' key from grouped pockets
+                            header_size = bp.get('opening_width')  # Use 'opening_width' key
                             count = bp.get('count', 1)
                             
-                            # Format AFF values
+                            # Display beam pocket information
+                            add_detail_line(f"Beam Pocket {i}", None, bullet=True, raw=True)
+                            
+                            # Show AFF
                             if bottom_aff is not None:
                                 bottom_decimal = format_dimension(str(bottom_aff))
                                 bottom_formatted = inches_to_feet_inches_sixteenths(str(bottom_aff))
                                 if bottom_formatted:
-                                    bottom_display = f"{bottom_decimal} in ({bottom_formatted})"
+                                    aff_display = f"{bottom_decimal} in ({bottom_formatted})"
                                 else:
-                                    bottom_display = f"{bottom_decimal} in"
+                                    aff_display = f"{bottom_decimal} in"
+                                add_detail_line(f"  AFF: {aff_display}", None, bullet=True, raw=True)
                             else:
-                                bottom_display = "Unknown"
+                                add_detail_line(f"  AFF: Unknown", None, bullet=True, raw=True)
                             
-                            if top_aff is not None:
-                                top_decimal = format_dimension(str(top_aff))
-                                top_formatted = inches_to_feet_inches_sixteenths(str(top_aff))
-                                if top_formatted:
-                                    top_display = f"{top_decimal} in ({top_formatted})"
-                                else:
-                                    top_display = f"{top_decimal} in"
-                            else:
-                                top_display = "Unknown"
-                            
-                            # Display beam pocket information
-                            add_detail_line(f"Beam Pocket {i}", None, bullet=True, raw=True)
-                            add_detail_line(f"  Bottom AFF: {bottom_display}", None, bullet=True, raw=True)
-                            add_detail_line(f"  Top AFF: {top_display}", None, bullet=True, raw=True)
-                            
-                            if header_size:
+                            # Show Opening Width
+                            if header_size is not None:
                                 header_size_decimal = format_dimension(str(header_size))
                                 header_formatted = inches_to_feet_inches_sixteenths(str(header_size))
                                 if header_formatted:
-                                    header_display = f"{header_size_decimal} in ({header_formatted})"
+                                    width_display = f"{header_size_decimal} in ({header_formatted})"
                                 else:
-                                    header_display = f"{header_size_decimal} in"
-                                add_detail_line(f"  Header Size: {header_display}", None, bullet=True, raw=True)
+                                    width_display = f"{header_size_decimal} in"
+                                add_detail_line(f"  Opening Width: {width_display}", None, bullet=True, raw=True)
+                            
+                            # Show Materials
+                            if bp.get('materials'):
+                                add_detail_line(f"  Materials:", None, bullet=True, raw=True)
+                                for label, qty in sorted(bp['materials'].items()):
+                                    add_detail_line(f"    ├── {label} ({qty})", None, bullet=True, raw=True)
                 
                 except Exception as e:
                     logging.debug(f"Exception in beam pocket display: {e}")
