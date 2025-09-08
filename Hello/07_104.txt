@@ -1,0 +1,51 @@
+File: 07_104
+
+Panel Details:
+Panel: 07_104
+• Lot: 07
+• Panel: 104
+• Level: 1
+• Description: 1FW 2FD
+• Category: Exterior
+• Load Bearing: YES
+• Wall Length: 65.728 in   (5'-5-3/4")
+• Height: 216.500 in   (18'-1/2")
+• Thickness: 5.500
+• Stud Spacing: 12.000
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Sheathing Layer 2: 7/16" 4x8 OSB
+• Weight: 507.4057
+• Production Notes: Typar
+• Rough Opening: 25x137-L1
+• Size: 137.000 x 25.000
+• AFF: 216.5 (18'-1/2")
+• Reference: F - Header
+
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 5'-5-3/4"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 5'-5-3/4"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 5'-11-1/4"
+D - KingStud - 2x6 SPF Stud - (2) - 17'-8"
+E - Trimmer - 2x6 SPF Stud - (2) - 17'-3/4"
+F - Header - 2x8 SPF No.2 - (2) - 2'-4"
+G - WindowSill - 2x6 SPF Stud - (1) - 2'-1"
+H - SillCripple - 2x6 SPF Stud - (3) - 5'-1-3/8"
+I - Stud - 2x6 SPF Stud - (6) - 17'-8"
+J - CriticalStud - 2x6 SPF Stud - (2) - 17'-8"
+K - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 1'-5-3/4"
+L - Sheathing - 1/2" BP R1.5 4x8 - (1) - 4'-7" x 1'-5-3/4"
+M - Sheathing - 7/16" 4x8 OSB - (1) - 8' x 1'-5-3/4"
+N - Sheathing - 7/16" 4x8 OSB - (1) - 4'-7" x 1'-5-3/4"
+O - Sheathing - 7/16" 4x8 OSB - (1) - 5'-4-3/8" x 3'-7-1/2"
+P - Sheathing - 1/2" BP R1.5 4x8 - (1) - 1'-2" x 2'-1"
+Q - Sheathing - 7/16" 4x8 OSB - (1) - 1'-2" x 2'-1"
+R - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 9"
+S - Sheathing - 1/2" BP R1.5 4x8 - (1) - 4'-7" x 9"
+T - Sheathing - 7/16" 4x8 OSB - (1) - 8' x 9"
+U - Sheathing - 7/16" 4x8 OSB - (1) - 4'-7" x 9"
+V - Sheathing - 7/16" 4x8 OSB - (1) - 5'-4-3/8" x 8-1/4"
+W - Nog - 2x6 SPF Stud - (4) - 9"
+W - Nog - 2x6 SPF Stud - (4) - 9"
+X - FillerCripple - 2x6 SPF Stud - (3) - 3-3/8"
+Y - FillerBtmNailer - 2x6 SPF Stud - (1) - 2'-1"

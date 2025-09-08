@@ -1,0 +1,23 @@
+<LevelGuid>3299aa2a-fa9a-4276-a155-844b56fd2a83</LevelGuid>
+<BundleGuid>557a6d63-379b-452f-bdb3-f029530968c0</BundleGuid>
+<PanelGuid>fcf85cb8-ad17-402c-b4e6-93c552d34341</PanelGuid>
+<SubAssemblyGuid>0a8b4a91-ef90-4bfa-b7e0-acf3352e5fa3</SubAssemblyGuid>
+<SubAssemblyName>Subcomponent</SubAssemblyName>
+
+<LevelGuid>3299aa2a-fa9a-4276-a155-844b56fd2a83</LevelGuid>
+<BundleGuid>557a6d63-379b-452f-bdb3-f029530968c0</BundleGuid>
+<PanelGuid>fcf85cb8-ad17-402c-b4e6-93c552d34341</PanelGuid>
+<SubAssemblyGuid>25a12525-ec37-418c-b2ed-b40a12147967</SubAssemblyGuid>
+<SubAssemblyName>Ladder - Flat (Fixed)</SubAssemblyName>
+
+<LevelGuid>3299aa2a-fa9a-4276-a155-844b56fd2a83</LevelGuid>
+<BundleGuid>557a6d63-379b-452f-bdb3-f029530968c0</BundleGuid>
+<PanelGuid>fcf85cb8-ad17-402c-b4e6-93c552d34341</PanelGuid>
+<SubAssemblyGuid>0bf648e5-4fd9-4fc1-9832-2e4181e4bef7</SubAssemblyGuid>
+<SubAssemblyName>Beampocket</SubAssemblyName>
+
+
+
+
+
+

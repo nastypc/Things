@@ -1,0 +1,24 @@
+File: 05-100
+
+Panel Details:
+Panel: 05-100
+• Panel: 05-100
+• Level: 1
+• Description: 1FW 2FD
+• Bundle: B1 (2x6 Ext)
+• Category: Exterior
+• Load Bearing: YES
+• 📏 Length: 107.019 (8'-11")
+• 📐 Height: 109.125 (9'-1-1/8")
+• 📏 Squaring: 12'-7-3/4"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Weight: 390 Lbs
+• Production Notes: Typar
+
+Junction Details:
+• LType - (1)
+• Ladder - Flat (Fixed) - (1)
+• Subcomponent - (1)
+
+Panel Material Breakdown:

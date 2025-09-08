@@ -1,0 +1,51 @@
+
+=== 712et.log updated at 2025-09-07 20:09:28 for 07_112.EHX ===
+File Location: C:/Users/THOMPSON/Downloads/EHX/Script/EHX
+
+=== V2.0 DIAGNOSTIC INFO ===
+Junctions found: 1
+Bundles found: 1
+Total panels: 1
+Panels assigned: 1
+Panels unassigned: 0
+Junction mappings: 2
+Bundle layer mappings: {2: 'B2 (2x6 Ext-B)'}
+========================
+
+Panel: 07_112
+Level: 1
+Description: 1FW 2FD
+Bundle: B2 (2x6 Ext-B)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 137.484 (11'-5-1/2")
+• Height: 109.125 (9'-1-1/8")
+• Squaring: 14'-6-5/8"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/2" BP R1.5 4x9
+• Weight: 434 Lbs
+• Production Notes: Typar
+• Rough Opening: BSMT-HDR - 1.5 x 54.625 (AFF: 1.5 (1-1/2")) [Headers: G]
+• Rough Opening: 49x63-L2 - 63 x 49 (AFF: 92.5 (7'-8-1/2")) [Headers: F]
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 11'-5-3/8"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 11'-5-3/8"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 9'
+D - KingStud - 2x6 SPF Stud - (4) - 8'-8-5/8"
+E - Trimmer - 2x6 SPF Stud - (4) - 8'-1-3/8"
+F - Header - 2x8 SPF No.2 - (3) - 4'-7"
+G - Header - 2x8 SPF No.2 - (2) - 4'-6-5/8"
+H - WindowSill - 2x6 SPF Stud - (1) - 4'-1"
+I - SillCripple - 2x6 SPF Stud - (5) - 2'-2-1/2"
+J - HeaderCripple - 2x6 SPF Stud - (3) - 7'-11-7/8"
+K - Stud - 2x6 SPF Stud - (1) - 8'-8-5/8"
+L - FlatStud - 2x6 SPF Stud - (1) - 8'-8-5/8"
+M - Sheathing - 1/2" BP R1.5 4x9 - (1) - 9' x 1'-2-7/8"
+R - FillerCripple - 2x6 SPF Stud - (2) - 4-7/8"
+R - FillerCripple - 2x6 SPF Stud - (3) - 4-7/8"
+S - FillerBtmNailer - 2x6 SPF Stud - (1) - 4'-1"
+T - HeaderCap - 2x6 SPF Stud - (1) - 4'-6-5/8"
+---

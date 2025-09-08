@@ -1,0 +1,118 @@
+
+=== materials.log updated at 2025-09-07 00:00:46 for 07-103-104.EHX ===
+Panel: 07_103
+Level: 1
+Description: 1FW 2FD
+Bundle: B6 (Tall)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Nog , Label: AF , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AF , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AF , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AG , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AG , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AH , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AH , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AI , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AI , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AI , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AI , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AI , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: S , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AJ , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AJ , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: AJ , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: J , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: J , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: S , SubAssembly: Common Studs , Desc: 2x6 SPF Stud
+Type: Stud , Label: S , SubAssembly: Common Studs , Desc: 2x6 SPF Stud
+Type: RoughOpening , Label: 73x63-L1 , SubAssembly: 73x63-L1 , Desc: 73x63-L1 AFF=201.375
+Type: Header , Label: L , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: Header , Label: L , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: KingStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: SillCripple , Label: O , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: WindowSill , Label: N , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerBtmNailer , Label: AM , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: AK , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: AK , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: SillCripple , Label: O , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: SillCripple , Label: O , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: AK , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: SillCripple , Label: O , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: AK , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: SillCripple , Label: O , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: AK , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: AK , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: SillCripple , Label: O , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: SillCripple , Label: P , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: AK , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: SillCripple , Label: P , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: AK , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: I , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: I , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: RoughOpening , Label: DR-1-ENT-L1 , SubAssembly: DR-1-ENT-L1 , Desc: DR-1-ENT-L1 AFF=94.000
+Type: Header , Label: K , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: Header , Label: K , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: Header , Label: K , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: HeaderCap , Label: AL , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: HeaderCripple , Label: Q , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: HeaderSill , Label: M , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: HeaderCripple , Label: R , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: G , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: G , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: G , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: G , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: S , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: S , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: T , SubAssembly: SZ90 , Desc: 1/2" BP R1.5 4x8
+Type: Sheathing , Label: V , SubAssembly: SZ47 , Desc: 1/2" BP R1.5 4x8
+---
+Panel: 07_104
+Level: 1
+Description: 1FW 2FD
+Bundle: B6 (Tall)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Nog , Label: W , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: W , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: W , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: W , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: W , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: W , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: W , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Nog , Label: W , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: RoughOpening , Label: 25x137-L1 , SubAssembly: 25x137-L1 , Desc: 25x137-L1 AFF=201.375
+Type: Header , Label: F , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: Header , Label: F , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: SillCripple , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: WindowSill , Label: G , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerBtmNailer , Label: Y , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: X , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: SillCripple , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: X , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: SillCripple , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: X , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: I , SubAssembly: Common Studs , Desc: 2x6 SPF Stud
+Type: Stud , Label: I , SubAssembly: Common Studs , Desc: 2x6 SPF Stud
+Type: Stud , Label: I , SubAssembly: Common Studs , Desc: 2x6 SPF Stud
+Type: Stud , Label: I , SubAssembly: Common Studs , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: J , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: J , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: I , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: I , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: K , SubAssembly: SZ5 , Desc: 1/2" BP R1.5 4x8
+Type: Sheathing , Label: O , SubAssembly: SZ89 , Desc: 7/16" 4x8 OSB
+---

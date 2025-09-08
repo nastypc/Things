@@ -1,0 +1,107 @@
+=== expected.log cleared at 2025-08-31 16:04:45 for 07-103-104.EHX ===
+Panel: 07_103
+Level: 1
+Description: 1FW 2FD
+Bundle: B6 (Tall)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Wall Length: 118.390
+• Height: 216.500
+• Thickness: 5.500
+• Stud Spacing: 12.000
+• Level 1: 1FW 2FD
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Sheathing Layer 2: 7/16" 4x8 OSB
+• Weight: 938.0632
+• Production Notes: Typar
+• Rough Opening: 73x63-L1 - 63.000 x 73.000 (AFF: 201.375 (16'-9-3/8")) [Headers: L, K]
+• Rough Opening: DR-1-ENT-L1 - 92.500 x 67.500 (AFF: 94.0 (7'-10")) [Headers: L, K]
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 9'-10-1/4"
+AA - Sheathing - 7/16" 4x8 OSB - (1) - 1'-2" x 6'-1"
+AB - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 3'-11-3/4"
+AC - Sheathing - 1/2" BP R1.5 4x8 - (1) - 5'-2-1/2" x 3'-11-3/4"
+AD - Sheathing - 1/2" BP R1.5 4x8 - (1) - 4'-8-7/8" x 1'-10-3/4"
+AE - Sheathing - 7/16" 4x8 OSB - (1) - 4'-8-7/8" x 1'-10-3/4"
+AF - Nog - 2x6 SPF Stud - (3) - 10"
+AG - Nog - 2x6 SPF Stud - (2) - 6-3/4"
+AH - Nog - 2x6 SPF Stud - (2) - 4-1/4"
+AI - Nog - 2x6 SPF Stud - (5) - 7-3/4"
+AJ - Nog - 2x6 SPF Stud - (3) - 3"
+AK - FillerCripple - 2x6 SPF Stud - (8) - 3-3/8"
+AL - HeaderCap - 2x6 SPF Stud - (1) - 6'-1-1/2"
+AM - FillerBtmNailer - 2x6 SPF Stud - (1) - 6'-1"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 9'-10-1/4"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 9'-4-5/8"
+D - KingStud - 2x6 SPF Stud - (4) - 17'-8"
+E - KingStud - 2x6 SPF Stud - (1) - 9'-2-3/4"
+F - KingStud - 2x6 SPF Stud - (1) - 11'-3-3/8"
+G - Trimmer - 2x6 SPF Stud - (4) - 7'-8-1/2"
+H - Trimmer - 2x6 SPF Stud - (2) - 8'-7-1/2"
+I - Trimmer - 2x6 SPF Stud - (2) - 17'-3/4"
+J - Trimmer - 2x6 SPF Stud - (2) - 7'-9"
+K - Header - 2x8 SPF No.2 - (3) - 6'-1-1/2"
+L - Header - 2x8 SPF No.2 - (2) - 6'-7"
+M - HeaderSill - 2x6 SPF Stud - (1) - 5'-7-1/2"
+N - WindowSill - 2x6 SPF Stud - (1) - 6'-1"
+O - SillCripple - 2x6 SPF Stud - (6) - 2'-10-1/8"
+P - SillCripple - 2x6 SPF Stud - (2) - 11'-3-3/8"
+Q - HeaderCripple - 2x6 SPF Stud - (1) - 9'-2-3/4"
+R - HeaderCripple - 2x6 SPF Stud - (1) - 2'-10-1/8"
+S - Stud - 2x6 SPF Stud - (5) - 17'-8"
+T - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 1'-10-1/2"
+U - Sheathing - 1/2" BP R1.5 4x8 - (1) - 5'-2-1/2" x 1'-10-1/2"
+V - Sheathing - 1/2" BP R1.5 4x8 - (1) - 4'-8-7/8" x 1'-10-1/2"
+W - Sheathing - 7/16" 4x8 OSB - (1) - 4'-8-7/8" x 1'-10-1/2"
+X - Sheathing - 1/2" BP R1.5 4x8 - (1) - 5'-2-1/2" x 4'
+Y - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 4'
+Z - Sheathing - 1/2" BP R1.5 4x8 - (1) - 1'-2" x 6'-1"
+---
+Panel: 07_104
+Level: 1
+Description: 1FW 2FD
+Bundle: B6 (Tall)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Wall Length: 65.728
+• Height: 216.500
+• Thickness: 5.500
+• Stud Spacing: 12.000
+• Level 1: 1FW 2FD
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Sheathing Layer 2: 7/16" 4x8 OSB
+• Weight: 507.4057
+• Production Notes: Typar
+• Rough Opening: 25x137-L1 - 137.000 x 25.000 (AFF: 201.375 (16'-9-3/8")) [Headers: F]
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 5'-5-3/4"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 5'-5-3/4"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 5'-11-1/4"
+D - KingStud - 2x6 SPF Stud - (2) - 17'-8"
+E - Trimmer - 2x6 SPF Stud - (2) - 17'-3/4"
+F - Header - 2x8 SPF No.2 - (2) - 2'-4"
+G - WindowSill - 2x6 SPF Stud - (1) - 2'-1"
+H - SillCripple - 2x6 SPF Stud - (3) - 5'-1-3/8"
+I - Stud - 2x6 SPF Stud - (6) - 17'-8"
+J - CriticalStud - 2x6 SPF Stud - (2) - 17'-8"
+K - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 1'-5-3/4"
+L - Sheathing - 1/2" BP R1.5 4x8 - (1) - 4'-7" x 1'-5-3/4"
+M - Sheathing - 7/16" 4x8 OSB - (1) - 8' x 1'-5-3/4"
+N - Sheathing - 7/16" 4x8 OSB - (1) - 4'-7" x 1'-5-3/4"
+O - Sheathing - 7/16" 4x8 OSB - (1) - 5'-4-3/8" x 3'-7-1/2"
+P - Sheathing - 1/2" BP R1.5 4x8 - (1) - 1'-2" x 2'-1"
+Q - Sheathing - 7/16" 4x8 OSB - (1) - 1'-2" x 2'-1"
+R - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 9"
+S - Sheathing - 1/2" BP R1.5 4x8 - (1) - 4'-7" x 9"
+T - Sheathing - 7/16" 4x8 OSB - (1) - 8' x 9"
+U - Sheathing - 7/16" 4x8 OSB - (1) - 4'-7" x 9"
+V - Sheathing - 7/16" 4x8 OSB - (1) - 5'-4-3/8" x 8-1/4"
+W - Nog - 2x6 SPF Stud - (4) - 9"
+W - Nog - 2x6 SPF Stud - (4) - 9"
+X - FillerCripple - 2x6 SPF Stud - (3) - 3-3/8"
+Y - FillerBtmNailer - 2x6 SPF Stud - (1) - 2'-1"
+---

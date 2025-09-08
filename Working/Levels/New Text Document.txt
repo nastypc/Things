@@ -1,0 +1,2427 @@
+DEBUG: Starting GUI creation...
+DEBUG: rebuild_bundles called with count=5, panels_loaded=False, current_panels count=0
+DEBUG: update_level_buttons called
+DEBUG: GUI created, starting mainloop...
+DEBUG: process_selected_ehx called
+DEBUG: Found log file at: C:/Users/THOMPSON/Downloads/EHX/Working/Levels\SNO-L1-L2-005008.log
+DEBUG: Attempting to load data from log file: SNO-L1-L2-005008.log
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '107.019 (8'-11")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '107.019 (8'-11")'
+DEBUG: Stored WallLength = 107.019 (8'-11") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-7-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-7-3/4"'
+DEBUG: Stored Squaring = 12'-7-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '390 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '390 Lbs'
+DEBUG: Stored Weight = 390 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Typar', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Typar'
+DEBUG: Stored OnScreenInstruction = Typar in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Ladder - Flat (Fixed) - (1)'
+DEBUG: Added junction: Ladder - Flat (Fixed) - (1)
+DEBUG: Non-colon bullet content: 'Subcomponent - (1)'
+DEBUG: Added junction: Subcomponent - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '35.795 (2'-11-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '35.795 (2'-11-3/4")'
+DEBUG: Stored WallLength = 35.795 (2'-11-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-5-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-5-1/2"'
+DEBUG: Stored Squaring = 9'-5-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '148 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '148 Lbs'
+DEBUG: Stored Weight = 148 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Typar', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Typar'
+DEBUG: Stored OnScreenInstruction = Typar in panel_obj
+DEBUG: Non-colon bullet content: 'Subcomponent - (2)'
+DEBUG: Added junction: Subcomponent - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '9.811 (9-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '9.811 (9-3/4")'
+DEBUG: Stored WallLength = 9.811 (9-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9''
+DEBUG: Stored Squaring = 9' in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '64 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '64 Lbs'
+DEBUG: Stored Weight = 64 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '101.629 (8'-5-5/8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '101.629 (8'-5-5/8")'
+DEBUG: Stored WallLength = 101.629 (8'-5-5/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-4"'
+DEBUG: Stored Squaring = 12'-4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '244 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '244 Lbs'
+DEBUG: Stored Weight = 244 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Typar', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Typar'
+DEBUG: Stored OnScreenInstruction = Typar in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '94.826 (7'-10-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '94.826 (7'-10-3/4")'
+DEBUG: Stored WallLength = 94.826 (7'-10-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '11'-11-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '11'-11-1/2"'
+DEBUG: Stored Squaring = 11'-11-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '218 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '218 Lbs'
+DEBUG: Stored Weight = 218 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Typar', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Typar'
+DEBUG: Stored OnScreenInstruction = Typar in panel_obj
+DEBUG: Non-colon bullet content: '3S LType - (1)'
+DEBUG: Added junction: 3S LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '96.444 (8'-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '96.444 (8'-1/2")'
+DEBUG: Stored WallLength = 96.444 (8'-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-1/2"'
+DEBUG: Stored Squaring = 12'-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '744 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '744 Lbs'
+DEBUG: Stored Weight = 744 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Typar', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Typar'
+DEBUG: Stored OnScreenInstruction = Typar in panel_obj
+DEBUG: Non-colon bullet content: '3S LType - (1)'
+DEBUG: Added junction: 3S LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '115.511 (9'-7-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '115.511 (9'-7-1/2")'
+DEBUG: Stored WallLength = 115.511 (9'-7-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '13'-1-7/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '13'-1-7/8"'
+DEBUG: Stored Squaring = 13'-1-7/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '984 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '984 Lbs'
+DEBUG: Stored Weight = 984 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Typar', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Typar'
+DEBUG: Stored OnScreenInstruction = Typar in panel_obj
+DEBUG: Non-colon bullet content: '2S LType - (1)'
+DEBUG: Added junction: 2S LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '89.214 (7'-5-1/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '89.214 (7'-5-1/4")'
+DEBUG: Stored WallLength = 89.214 (7'-5-1/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '11'-7-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '11'-7-3/4"'
+DEBUG: Stored Squaring = 11'-7-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '222 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '222 Lbs'
+DEBUG: Stored Weight = 222 in panel_obj
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '82.777 (6'-10-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '82.777 (6'-10-3/4")'
+DEBUG: Stored WallLength = 82.777 (6'-10-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '11'-3-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '11'-3-3/4"'
+DEBUG: Stored Squaring = 11'-3-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '198 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '198 Lbs'
+DEBUG: Stored Weight = 198 in panel_obj
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '75.126 (6'-3-1/8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '75.126 (6'-3-1/8")'
+DEBUG: Stored WallLength = 75.126 (6'-3-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '10'-11-1/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '10'-11-1/4"'
+DEBUG: Stored Squaring = 10'-11-1/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '168 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '168 Lbs'
+DEBUG: Stored Weight = 168 in panel_obj
+DEBUG: Non-colon bullet content: 'Stud - (1)'
+DEBUG: Added junction: Stud - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '36.208 (3'-1/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '36.208 (3'-1/4")'
+DEBUG: Stored WallLength = 36.208 (3'-1/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-5-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-5-1/2"'
+DEBUG: Stored Squaring = 9'-5-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '144 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '144 Lbs'
+DEBUG: Stored Weight = 144 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Stud - (1)'
+DEBUG: Added junction: Stud - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '47.244 (3'-11-1/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '47.244 (3'-11-1/4")'
+DEBUG: Stored WallLength = 47.244 (3'-11-1/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-9-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-9-1/2"'
+DEBUG: Stored Squaring = 9'-9-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '176 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '176 Lbs'
+DEBUG: Stored Weight = 176 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Stud - (1)'
+DEBUG: Added junction: Stud - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '62.91 (5'-3")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '62.91 (5'-3")'
+DEBUG: Stored WallLength = 62.91 (5'-3") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '10'-4-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '10'-4-3/4"'
+DEBUG: Stored Squaring = 10'-4-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '132 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '132 Lbs'
+DEBUG: Stored Weight = 132 in panel_obj
+DEBUG: Non-colon bullet content: 'Stud - (1)'
+DEBUG: Added junction: Stud - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '123.137 (10'-3-1/8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '123.137 (10'-3-1/8")'
+DEBUG: Stored WallLength = 123.137 (10'-3-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '134.375 (11'-2-3/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '134.375 (11'-2-3/8")'
+DEBUG: Stored Height = 134.375 (11'-2-3/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '15'-1-1/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '15'-1-1/4"'
+DEBUG: Stored Squaring = 15'-1-1/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '316 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '316 Lbs'
+DEBUG: Stored Weight = 316 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Typar', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Typar'
+DEBUG: Stored OnScreenInstruction = Typar in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Subcomponent - (1)'
+DEBUG: Added junction: Subcomponent - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '127.492 (10'-7-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '127.492 (10'-7-1/2")'
+DEBUG: Stored WallLength = 127.492 (10'-7-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '121.75 (10'-1-3/4")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '121.75 (10'-1-3/4")'
+DEBUG: Stored Height = 121.75 (10'-1-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '14'-7-1/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '14'-7-1/4"'
+DEBUG: Stored Squaring = 14'-7-1/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '156 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '156 Lbs'
+DEBUG: Stored Weight = 156 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '129.875 (10'-9-7/8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '129.875 (10'-9-7/8")'
+DEBUG: Stored WallLength = 129.875 (10'-9-7/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '121.75 (10'-1-3/4")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '121.75 (10'-1-3/4")'
+DEBUG: Stored Height = 121.75 (10'-1-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '14'-9"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '14'-9"'
+DEBUG: Stored Squaring = 14'-9" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '214 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '214 Lbs'
+DEBUG: Stored Weight = 214 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '30.511 (2'-6-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '30.511 (2'-6-1/2")'
+DEBUG: Stored WallLength = 30.511 (2'-6-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '121.75 (10'-1-3/4")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '121.75 (10'-1-3/4")'
+DEBUG: Stored Height = 121.75 (10'-1-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '10'-4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '10'-4"'
+DEBUG: Stored Squaring = 10'-4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '82 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '82 Lbs'
+DEBUG: Stored Weight = 82 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Typar', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Typar'
+DEBUG: Stored OnScreenInstruction = Typar in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Stud - (1)'
+DEBUG: Added junction: Stud - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '43.495 (3'-7-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '43.495 (3'-7-1/2")'
+DEBUG: Stored WallLength = 43.495 (3'-7-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '121.75 (10'-1-3/4")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '121.75 (10'-1-3/4")'
+DEBUG: Stored Height = 121.75 (10'-1-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '10'-7-7/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '10'-7-7/8"'
+DEBUG: Stored Squaring = 10'-7-7/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '108 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '108 Lbs'
+DEBUG: Stored Weight = 108 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Stud - (1)'
+DEBUG: Added junction: Stud - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '126.826 (10'-6-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '126.826 (10'-6-3/4")'
+DEBUG: Stored WallLength = 126.826 (10'-6-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '13'-10-1/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '13'-10-1/4"'
+DEBUG: Stored Squaring = 13'-10-1/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '154 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '154 Lbs'
+DEBUG: Stored Weight = 154 in panel_obj
+DEBUG: Non-colon bullet content: '2S LType - (1)'
+DEBUG: Added junction: 2S LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '144 (12')', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '144 (12')'
+DEBUG: Stored WallLength = 144 (12') in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '14'-11-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '14'-11-3/4"'
+DEBUG: Stored Squaring = 14'-11-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '198 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '198 Lbs'
+DEBUG: Stored Weight = 198 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Subcomponent - (1)'
+DEBUG: Added junction: Subcomponent - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '130.777 (10'-10-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '130.777 (10'-10-3/4")'
+DEBUG: Stored WallLength = 130.777 (10'-10-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '14'-1-3/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '14'-1-3/8"'
+DEBUG: Stored Squaring = 14'-1-3/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '144 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '144 Lbs'
+DEBUG: Stored Weight = 144 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '59.492 (4'-11-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '59.492 (4'-11-1/2")'
+DEBUG: Stored WallLength = 59.492 (4'-11-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '10'-3"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '10'-3"'
+DEBUG: Stored Squaring = 10'-3" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '120 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '120 Lbs'
+DEBUG: Stored Weight = 120 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '71.017 (5'-11")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '71.017 (5'-11")'
+DEBUG: Stored WallLength = 71.017 (5'-11") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '10'-9"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '10'-9"'
+DEBUG: Stored Squaring = 10'-9" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '242 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '242 Lbs'
+DEBUG: Stored Weight = 242 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '62.017 (5'-2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '62.017 (5'-2")'
+DEBUG: Stored WallLength = 62.017 (5'-2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '10'-4-1/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '10'-4-1/4"'
+DEBUG: Stored Squaring = 10'-4-1/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '92 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '92 Lbs'
+DEBUG: Stored Weight = 92 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Non-colon bullet content: 'Ladder - Flat (Fixed) - (1)'
+DEBUG: Added junction: Ladder - Flat (Fixed) - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '30.395 (2'-6-3/8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '30.395 (2'-6-3/8")'
+DEBUG: Stored WallLength = 30.395 (2'-6-3/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-3-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-3-3/4"'
+DEBUG: Stored Squaring = 9'-3-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '58 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '58 Lbs'
+DEBUG: Stored Weight = 58 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '42.871 (3'-6-7/8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '42.871 (3'-6-7/8")'
+DEBUG: Stored WallLength = 42.871 (3'-6-7/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-7-7/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-7-7/8"'
+DEBUG: Stored Squaring = 9'-7-7/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '58 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '58 Lbs'
+DEBUG: Stored Weight = 58 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '34.957 (2'-11")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '34.957 (2'-11")'
+DEBUG: Stored WallLength = 34.957 (2'-11") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-5-1/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-5-1/4"'
+DEBUG: Stored Squaring = 9'-5-1/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '60 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '60 Lbs'
+DEBUG: Stored Weight = 60 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '62.71 (5'-2-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '62.71 (5'-2-3/4")'
+DEBUG: Stored WallLength = 62.71 (5'-2-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '10'-4-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '10'-4-1/2"'
+DEBUG: Stored Squaring = 10'-4-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '86 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '86 Lbs'
+DEBUG: Stored Weight = 86 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '20 (1'-8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '20 (1'-8")'
+DEBUG: Stored WallLength = 20 (1'-8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-1-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-1-1/2"'
+DEBUG: Stored Squaring = 9'-1-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '66 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '66 Lbs'
+DEBUG: Stored Weight = 66 in panel_obj
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '61.5 (5'-1-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '61.5 (5'-1-1/2")'
+DEBUG: Stored WallLength = 61.5 (5'-1-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '10'-4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '10'-4"'
+DEBUG: Stored Squaring = 10'-4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '96 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '96 Lbs'
+DEBUG: Stored Weight = 96 in panel_obj
+DEBUG: Non-colon bullet content: 'Subcomponent - (1)'
+DEBUG: Added junction: Subcomponent - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '33.226 (2'-9-1/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '33.226 (2'-9-1/4")'
+DEBUG: Stored WallLength = 33.226 (2'-9-1/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-4-5/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-4-5/8"'
+DEBUG: Stored Squaring = 9'-4-5/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '58 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '58 Lbs'
+DEBUG: Stored Weight = 58 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '59.21 (4'-11-1/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '59.21 (4'-11-1/4")'
+DEBUG: Stored WallLength = 59.21 (4'-11-1/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '10'-2-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '10'-2-3/4"'
+DEBUG: Stored Squaring = 10'-2-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '76 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '76 Lbs'
+DEBUG: Stored Weight = 76 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '9.625 (9-5/8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '9.625 (9-5/8")'
+DEBUG: Stored WallLength = 9.625 (9-5/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '77.125 (6'-5-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '77.125 (6'-5-1/8")'
+DEBUG: Stored Height = 77.125 (6'-5-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '6'-4-1/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '6'-4-1/4"'
+DEBUG: Stored Squaring = 6'-4-1/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '32 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '32 Lbs'
+DEBUG: Stored Weight = 32 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '113.707 (9'-5-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '113.707 (9'-5-3/4")'
+DEBUG: Stored WallLength = 113.707 (9'-5-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '77.125 (6'-5-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '77.125 (6'-5-1/8")'
+DEBUG: Stored Height = 77.125 (6'-5-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '11'-4-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '11'-4-1/2"'
+DEBUG: Stored Squaring = 11'-4-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '130 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '130 Lbs'
+DEBUG: Stored Weight = 130 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '37.795 (3'-1-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '37.795 (3'-1-3/4")'
+DEBUG: Stored WallLength = 37.795 (3'-1-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '77.125 (6'-5-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '77.125 (6'-5-1/8")'
+DEBUG: Stored Height = 77.125 (6'-5-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '7'-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '7'-1/2"'
+DEBUG: Stored Squaring = 7'-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '48 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '48 Lbs'
+DEBUG: Stored Weight = 48 in panel_obj
+DEBUG: Non-colon bullet content: '2S LType - (1)'
+DEBUG: Added junction: 2S LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '126.137 (10'-6-1/8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '126.137 (10'-6-1/8")'
+DEBUG: Stored WallLength = 126.137 (10'-6-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '77.125 (6'-5-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '77.125 (6'-5-1/8")'
+DEBUG: Stored Height = 77.125 (6'-5-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-3"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-3"'
+DEBUG: Stored Squaring = 12'-3" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '162 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '162 Lbs'
+DEBUG: Stored Weight = 162 in panel_obj
+DEBUG: Non-colon bullet content: '2S LType - (1)'
+DEBUG: Added junction: 2S LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '11.75 (11-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '11.75 (11-3/4")'
+DEBUG: Stored WallLength = 11.75 (11-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '109.125 (9'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '109.125 (9'-1-1/8")'
+DEBUG: Stored Height = 109.125 (9'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-1/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-1/4"'
+DEBUG: Stored Squaring = 9'-1/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '36 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '36 Lbs'
+DEBUG: Stored Weight = 36 in panel_obj
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '106.019 (8'-10")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '106.019 (8'-10")'
+DEBUG: Stored WallLength = 106.019 (8'-10") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '11'-10-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '11'-10-3/4"'
+DEBUG: Stored Squaring = 11'-10-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '260 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '260 Lbs'
+DEBUG: Stored Weight = 260 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '43.285 (3'-7-1/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '43.285 (3'-7-1/4")'
+DEBUG: Stored WallLength = 43.285 (3'-7-1/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '8'-9"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '8'-9"'
+DEBUG: Stored Squaring = 8'-9" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '162 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '162 Lbs'
+DEBUG: Stored Weight = 162 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Subcomponent - (1)'
+DEBUG: Added junction: Subcomponent - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '116.637 (9'-8-5/8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '116.637 (9'-8-5/8")'
+DEBUG: Stored WallLength = 116.637 (9'-8-5/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-6-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-6-3/4"'
+DEBUG: Stored Squaring = 12'-6-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '974 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '974 Lbs'
+DEBUG: Stored Weight = 974 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Non-colon bullet content: 'Subcomponent - (1)'
+DEBUG: Added junction: Subcomponent - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '17.75 (1'-5-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '17.75 (1'-5-3/4")'
+DEBUG: Stored WallLength = 17.75 (1'-5-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '8'-1-1/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '8'-1-1/4"'
+DEBUG: Stored Squaring = 8'-1-1/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '52 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '52 Lbs'
+DEBUG: Stored Weight = 52 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '14.7 (1'-2-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '14.7 (1'-2-3/4")'
+DEBUG: Stored WallLength = 14.7 (1'-2-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '8'-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '8'-3/4"'
+DEBUG: Stored Squaring = 8'-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '48 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '48 Lbs'
+DEBUG: Stored Weight = 48 in panel_obj
+DEBUG: Non-colon bullet content: '2S LType - (1)'
+DEBUG: Added junction: 2S LType - (1)
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '114.5 (9'-6-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '114.5 (9'-6-1/2")'
+DEBUG: Stored WallLength = 114.5 (9'-6-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-5-1/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-5-1/4"'
+DEBUG: Stored Squaring = 12'-5-1/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '292 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '292 Lbs'
+DEBUG: Stored Weight = 292 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Non-colon bullet content: 'Lad2Stud - (1)'
+DEBUG: Added junction: Lad2Stud - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '126.827 (10'-6-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '126.827 (10'-6-3/4")'
+DEBUG: Stored WallLength = 126.827 (10'-6-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '13'-2-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '13'-2-3/4"'
+DEBUG: Stored Squaring = 13'-2-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '342 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '342 Lbs'
+DEBUG: Stored Weight = 342 in panel_obj
+DEBUG: Non-colon bullet content: 'Subcomponent - (1)'
+DEBUG: Added junction: Subcomponent - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '115.169 (9'-7-1/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '115.169 (9'-7-1/4")'
+DEBUG: Stored WallLength = 115.169 (9'-7-1/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-5-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-5-3/4"'
+DEBUG: Stored Squaring = 12'-5-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '694 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '694 Lbs'
+DEBUG: Stored Weight = 694 in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '37.771 (3'-1-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '37.771 (3'-1-3/4")'
+DEBUG: Stored WallLength = 37.771 (3'-1-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '8'-6-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '8'-6-3/4"'
+DEBUG: Stored Squaring = 8'-6-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '84 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '84 Lbs'
+DEBUG: Stored Weight = 84 in panel_obj
+DEBUG: Non-colon bullet content: '2S LType - (1)'
+DEBUG: Added junction: 2S LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '163.521 (13'-7-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '163.521 (13'-7-1/2")'
+DEBUG: Stored WallLength = 163.521 (13'-7-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '15'-9-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '15'-9-1/2"'
+DEBUG: Stored Squaring = 15'-9-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '260 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '260 Lbs'
+DEBUG: Stored Weight = 260 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '81.73 (6'-9-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '81.73 (6'-9-3/4")'
+DEBUG: Stored WallLength = 81.73 (6'-9-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '10'-5-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '10'-5-3/4"'
+DEBUG: Stored Squaring = 10'-5-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '120 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '120 Lbs'
+DEBUG: Stored Weight = 120 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: '2S LType - (1)'
+DEBUG: Added junction: 2S LType - (1)
+DEBUG: Non-colon bullet content: 'Lad2Stud - (1)'
+DEBUG: Added junction: Lad2Stud - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '142.826 (11'-10-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '142.826 (11'-10-3/4")'
+DEBUG: Stored WallLength = 142.826 (11'-10-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '14'-3-7/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '14'-3-7/8"'
+DEBUG: Stored Squaring = 14'-3-7/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '156 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '156 Lbs'
+DEBUG: Stored Weight = 156 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: '2S LType - (1)'
+DEBUG: Added junction: 2S LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '144 (12')', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '144 (12')'
+DEBUG: Stored WallLength = 144 (12') in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '14'-4-7/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '14'-4-7/8"'
+DEBUG: Stored Squaring = 14'-4-7/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '172 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '172 Lbs'
+DEBUG: Stored Weight = 172 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'Ladder - Flat (Fixed) - (2)'
+DEBUG: Added junction: Ladder - Flat (Fixed) - (2)
+DEBUG: Non-colon bullet content: 'Subcomponent - (1)'
+DEBUG: Added junction: Subcomponent - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '96.568 (8'-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '96.568 (8'-1/2")'
+DEBUG: Stored WallLength = 96.568 (8'-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '11'-3-7/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '11'-3-7/8"'
+DEBUG: Stored Squaring = 11'-3-7/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '114 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '114 Lbs'
+DEBUG: Stored Weight = 114 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'Lad2Stud - (1)'
+DEBUG: Added junction: Lad2Stud - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '153.218 (12'-9-1/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '153.218 (12'-9-1/4")'
+DEBUG: Stored WallLength = 153.218 (12'-9-1/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '15'-5/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '15'-5/8"'
+DEBUG: Stored Squaring = 15'-5/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '328 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '328 Lbs'
+DEBUG: Stored Weight = 328 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '11.75 (11-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '11.75 (11-3/4")'
+DEBUG: Stored WallLength = 11.75 (11-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '8'-3/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '8'-3/8"'
+DEBUG: Stored Squaring = 8'-3/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '32 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '32 Lbs'
+DEBUG: Stored Weight = 32 in panel_obj
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '122.574 (10'-2-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '122.574 (10'-2-1/2")'
+DEBUG: Stored WallLength = 122.574 (10'-2-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-11-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-11-1/2"'
+DEBUG: Stored Squaring = 12'-11-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '124 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '124 Lbs'
+DEBUG: Stored Weight = 124 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '81.149 (6'-9-1/8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '81.149 (6'-9-1/8")'
+DEBUG: Stored WallLength = 81.149 (6'-9-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '10'-5-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '10'-5-1/2"'
+DEBUG: Stored Squaring = 10'-5-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '136 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '136 Lbs'
+DEBUG: Stored Weight = 136 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Non-colon bullet content: 'Tee - (1)'
+DEBUG: Added junction: Tee - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '63.616 (5'-3-5/8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '63.616 (5'-3-5/8")'
+DEBUG: Stored WallLength = 63.616 (5'-3-5/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-6-7/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-6-7/8"'
+DEBUG: Stored Squaring = 9'-6-7/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '88 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '88 Lbs'
+DEBUG: Stored Weight = 88 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '32.291 (2'-8-1/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '32.291 (2'-8-1/4")'
+DEBUG: Stored WallLength = 32.291 (2'-8-1/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '8'-5"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '8'-5"'
+DEBUG: Stored Squaring = 8'-5" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '72 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '72 Lbs'
+DEBUG: Stored Weight = 72 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: '2S LType - (1)'
+DEBUG: Added junction: 2S LType - (1)
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '65.116 (5'-5-1/8")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '65.116 (5'-5-1/8")'
+DEBUG: Stored WallLength = 65.116 (5'-5-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-7-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-7-3/4"'
+DEBUG: Stored Squaring = 9'-7-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '70 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '70 Lbs'
+DEBUG: Stored Weight = 70 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Lad2Stud - (1)'
+DEBUG: Added junction: Lad2Stud - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '43.744 (3'-7-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '43.744 (3'-7-3/4")'
+DEBUG: Stored WallLength = 43.744 (3'-7-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '8'-9-1/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '8'-9-1/8"'
+DEBUG: Stored Squaring = 8'-9-1/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '64 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '64 Lbs'
+DEBUG: Stored Weight = 64 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: '2S LType - (1)'
+DEBUG: Added junction: 2S LType - (1)
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '114.297 (9'-6-1/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '114.297 (9'-6-1/4")'
+DEBUG: Stored WallLength = 114.297 (9'-6-1/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-5"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-5"'
+DEBUG: Stored Squaring = 12'-5" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '134 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '134 Lbs'
+DEBUG: Stored Weight = 134 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Ladder - Flat (Fixed) - (1)'
+DEBUG: Added junction: Ladder - Flat (Fixed) - (1)
+DEBUG: Non-colon bullet content: 'Tee - (1)'
+DEBUG: Added junction: Tee - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '24.452 (2'-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '24.452 (2'-1/2")'
+DEBUG: Stored WallLength = 24.452 (2'-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '8'-2-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '8'-2-3/4"'
+DEBUG: Stored Squaring = 8'-2-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '34 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '34 Lbs'
+DEBUG: Stored Weight = 34 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'Ladder - Flat (Fixed) - (2)'
+DEBUG: Added junction: Ladder - Flat (Fixed) - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '116.297 (9'-8-1/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '116.297 (9'-8-1/4")'
+DEBUG: Stored WallLength = 116.297 (9'-8-1/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-6-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-6-1/2"'
+DEBUG: Stored Squaring = 12'-6-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '162 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '162 Lbs'
+DEBUG: Stored Weight = 162 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Lad2Stud - (1)'
+DEBUG: Added junction: Lad2Stud - (1)
+DEBUG: Non-colon bullet content: 'Ladder - Flat (Fixed) - (2)'
+DEBUG: Added junction: Ladder - Flat (Fixed) - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '47.527 (3'-11-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '47.527 (3'-11-1/2")'
+DEBUG: Stored WallLength = 47.527 (3'-11-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '8'-10-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '8'-10-3/4"'
+DEBUG: Stored Squaring = 8'-10-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '74 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '74 Lbs'
+DEBUG: Stored Weight = 74 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'Ladder - Flat (Fixed) - (2)'
+DEBUG: Added junction: Ladder - Flat (Fixed) - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '111.45 (9'-3-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '111.45 (9'-3-1/2")'
+DEBUG: Stored WallLength = 111.45 (9'-3-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-2-7/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-2-7/8"'
+DEBUG: Stored Squaring = 12'-2-7/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '182 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '182 Lbs'
+DEBUG: Stored Weight = 182 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Non-colon bullet content: 'Ladder - Flat (Fixed) - (1)'
+DEBUG: Added junction: Ladder - Flat (Fixed) - (1)
+DEBUG: Non-colon bullet content: 'Subcomponent - (1)'
+DEBUG: Added junction: Subcomponent - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '100.505 (8'-4-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '100.505 (8'-4-1/2")'
+DEBUG: Stored WallLength = 100.505 (8'-4-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '11'-6-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '11'-6-3/4"'
+DEBUG: Stored Squaring = 11'-6-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '108 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '108 Lbs'
+DEBUG: Stored Weight = 108 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Ladder - Flat (Fixed) - (1)'
+DEBUG: Added junction: Ladder - Flat (Fixed) - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '60.673 (5'-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '60.673 (5'-3/4")'
+DEBUG: Stored WallLength = 60.673 (5'-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-5-1/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-5-1/4"'
+DEBUG: Stored Squaring = 9'-5-1/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '70 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '70 Lbs'
+DEBUG: Stored Weight = 70 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '100.505 (8'-4-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '100.505 (8'-4-1/2")'
+DEBUG: Stored WallLength = 100.505 (8'-4-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '11'-6-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '11'-6-3/4"'
+DEBUG: Stored Squaring = 11'-6-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '122 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '122 Lbs'
+DEBUG: Stored Weight = 122 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (1)'
+DEBUG: Added junction: LType - (1)
+DEBUG: Non-colon bullet content: 'Ladder - Flat (Fixed) - (1)'
+DEBUG: Added junction: Ladder - Flat (Fixed) - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '111.827 (9'-3-3/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '111.827 (9'-3-3/4")'
+DEBUG: Stored WallLength = 111.827 (9'-3-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-3-1/8"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-3-1/8"'
+DEBUG: Stored Squaring = 12'-3-1/8" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '124 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '124 Lbs'
+DEBUG: Stored Weight = 124 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'Lad2Stud - (1)'
+DEBUG: Added junction: Lad2Stud - (1)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '121.277 (10'-1-1/4")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '121.277 (10'-1-1/4")'
+DEBUG: Stored WallLength = 121.277 (10'-1-1/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '12'-10-1/2"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '12'-10-1/2"'
+DEBUG: Stored Squaring = 12'-10-1/2" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '3.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '3.5'
+DEBUG: Stored Thickness = 3.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '148 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '148 Lbs'
+DEBUG: Stored Weight = 148 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'LType - (2)'
+DEBUG: Added junction: LType - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Interior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Interior'
+DEBUG: Stored Category = Interior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'NO', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'NO'
+DEBUG: Stored LoadBearing = NO in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '63.419 (5'-3-1/2")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '63.419 (5'-3-1/2")'
+DEBUG: Stored WallLength = 63.419 (5'-3-1/2") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '97.125 (8'-1-1/8")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '97.125 (8'-1-1/8")'
+DEBUG: Stored Height = 97.125 (8'-1-1/8") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '9'-6-3/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '9'-6-3/4"'
+DEBUG: Stored Squaring = 9'-6-3/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '120 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '120 Lbs'
+DEBUG: Stored Weight = 120 in panel_obj
+DEBUG: Parsing bullet - key: 'Production Notes', value: 'Poly', section: details
+DEBUG: Mapping key 'Production Notes' to 'OnScreenInstruction' with value 'Poly'
+DEBUG: Stored OnScreenInstruction = Poly in panel_obj
+DEBUG: Non-colon bullet content: 'Lad2Stud - (2)'
+DEBUG: Added junction: Lad2Stud - (2)
+DEBUG: Parsing bullet - key: 'Category', value: 'Exterior', section: details
+DEBUG: Mapping key 'Category' to 'Category' with value 'Exterior'
+DEBUG: Stored Category = Exterior in panel_obj
+DEBUG: Parsing bullet - key: 'Load Bearing', value: 'YES', section: details
+DEBUG: Mapping key 'Load Bearing' to 'LoadBearing' with value 'YES'
+DEBUG: Stored LoadBearing = YES in panel_obj
+DEBUG: Parsing bullet - key: 'Length', value: '59.015 (4'-11")', section: details
+DEBUG: Mapping key 'Length' to 'WallLength' with value '59.015 (4'-11")'
+DEBUG: Stored WallLength = 59.015 (4'-11") in panel_obj
+DEBUG: Parsing bullet - key: 'Height', value: '83.75 (6'-11-3/4")', section: details
+DEBUG: Mapping key 'Height' to 'Height' with value '83.75 (6'-11-3/4")'
+DEBUG: Stored Height = 83.75 (6'-11-3/4") in panel_obj
+DEBUG: Parsing bullet - key: 'Squaring', value: '8'-5-1/4"', section: details
+DEBUG: Mapping key 'Squaring' to 'Squaring' with value '8'-5-1/4"'
+DEBUG: Stored Squaring = 8'-5-1/4" in panel_obj
+DEBUG: Parsing bullet - key: 'Thickness', value: '5.5', section: details
+DEBUG: Mapping key 'Thickness' to 'Thickness' with value '5.5'
+DEBUG: Stored Thickness = 5.5 in panel_obj
+DEBUG: Parsing bullet - key: 'Stud Spacing', value: '16', section: details
+DEBUG: Mapping key 'Stud Spacing' to 'StudSpacing' with value '16'
+DEBUG: Stored StudSpacing = 16 in panel_obj
+DEBUG: Parsing bullet - key: 'Weight', value: '234 Lbs', section: details
+DEBUG: Mapping key 'Weight' to 'Weight' with value '234 Lbs'
+DEBUG: Stored Weight = 234 in panel_obj
+DEBUG: Non-colon bullet content: 'Subcomponent - (1)'
+DEBUG: Added junction: Subcomponent - (1)
+DEBUG: Found materials.log at: C:/Users/THOMPSON/Downloads/EHX/Working/Levels\materials.log
+DEBUG: Loaded 71 panels from materials.log
+DEBUG: Final materials loaded: 71 panels with materials
+DEBUG: Successfully loaded 71 panels from logs
+C:\Users\THOMPSON\Downloads\EHX\oldd.py:4380: DeprecationWarning: Testing an element's truth value will always return True in future versions.  Use specific 'len(elem)' or 'elem is not None' test instead.
+  j_panel_guid = junction.find('PanelGuid') or junction.find('PanelID')
+DEBUG: Junction lookup built with 107 entries
+DEBUG: About to call update_level_buttons
+DEBUG: update_level_buttons called
+DEBUG: Available levels detected: ['1', '2']
+DEBUG: Total panels processed: 71
+DEBUG: Level 1: 37 panels
+DEBUG: Level 2: 34 panels
+DEBUG: update_level_buttons completed
+DEBUG: rebuild_bundles called with count=5, panels_loaded=False, current_panels count=37
+DEBUG: write_expected_and_materials_logs called with 71 panels
+C:\Users\THOMPSON\Downloads\EHX\oldd.py:1762: DeprecationWarning: Testing an element's truth value will always return True in future versions.  Use specific 'len(elem)' or 'elem is not None' test instead.
+  j_panel_guid = junction.find('PanelGuid') or junction.find('PanelID')
+DEBUG: Panel 05-100 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-101 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-107 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-108 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-109 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-110 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-111 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-117 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-118 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-119 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-120 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-121 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-122 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-102 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-103 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-104 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-105 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-106 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-112 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-113 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-114 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-115 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-116 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-123 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-124 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-125 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-126 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-127 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-128 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-129 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-130 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-136 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-131 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-132 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-133 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-134 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-135 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-200 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-201 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-202 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-203 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-206 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-207 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-208 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-210 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-211 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-204 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-205 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-212 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-213 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-214 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-215 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-233 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-216 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-217 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-218 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-219 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-220 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-221 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-222 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-223 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-224 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-225 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-226 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-227 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-228 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-229 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-230 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-231 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-232 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: Panel 05-209 has 0 materials
+DEBUG: After filtering rough openings: 0 materials
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
+DEBUG: rebuild_bundles called with count=5, panels_loaded=True, current_panels count=37
+DEBUG: Processing 37 panels
+DEBUG: Found 5 bundle keys: ['B1', 'B2', 'B3', 'B4', 'B5']
+DEBUG: Page bundle keys: ['B1', 'B2', 'B3', 'B4', 'B5']
+DEBUG: Created button for panel 05-100 with text 100
+DEBUG: Created button for panel 05-101 with text 101
+DEBUG: Created button for panel 05-107 with text 107
+DEBUG: Created button for panel 05-108 with text 108
+DEBUG: Created button for panel 05-109 with text 109
+DEBUG: Created button for panel 05-110 with text 110
+DEBUG: Created button for panel 05-111 with text 111
+DEBUG: Created button for panel 05-117 with text 117
+DEBUG: Created button for panel 05-118 with text 118
+DEBUG: Created button for panel 05-119 with text 119
+DEBUG: Created button for panel 05-120 with text 120
+DEBUG: Created button for panel 05-121 with text 121
+DEBUG: Created button for panel 05-122 with text 122
+DEBUG: Created button for panel 05-102 with text 102
+DEBUG: Created button for panel 05-103 with text 103
+DEBUG: Created button for panel 05-104 with text 104
+DEBUG: Created button for panel 05-105 with text 105
+DEBUG: Created button for panel 05-106 with text 106
+DEBUG: Created button for panel 05-112 with text 112
+DEBUG: Created button for panel 05-113 with text 113
+DEBUG: Created button for panel 05-114 with text 114
+DEBUG: Created button for panel 05-115 with text 115
+DEBUG: Created button for panel 05-116 with text 116
+DEBUG: Created button for panel 05-123 with text 123
+DEBUG: Created button for panel 05-124 with text 124
+DEBUG: Created button for panel 05-125 with text 125
+DEBUG: Created button for panel 05-126 with text 126
+DEBUG: Created button for panel 05-127 with text 127
+DEBUG: Created button for panel 05-128 with text 128
+DEBUG: Created button for panel 05-129 with text 129
+DEBUG: Created button for panel 05-130 with text 130
+DEBUG: Created button for panel 05-136 with text 136
+DEBUG: Created button for panel 05-131 with text 131
+DEBUG: Created button for panel 05-132 with text 132
+DEBUG: Created button for panel 05-133 with text 133
+DEBUG: Created button for panel 05-134 with text 134
+DEBUG: Created button for panel 05-135 with text 135
+DEBUG: Button clicked for panel 05-100
+DEBUG: on_panel_selected called with name: 05-100
+DEBUG: Panel object keys: ['Name', 'DisplayLabel', 'Level', 'Description', 'Bundle', 'Category', 'LoadBearing', 'WallLength', 'Height', 'Squaring', 'Thickness', 'StudSpacing', 'Weight', 'OnScreenInstruction', 'junctions', 'materials']
+DEBUG: Panel object sample data: {'Name': '05-100', 'DisplayLabel': '05-100', 'Level': '1', 'Description': '1FW 2FD', 'Bundle': 'B1 (2x6 Ext)', 'Category': 'Exterior', 'LoadBearing': 'YES', 'WallLength': '107.019 (8\'-11")', 'Height': '109.125 (9\'-1-1/8")', 'Squaring': '12\'-7-3/4"'}
+DEBUG: display_panel called with name: 05-100
+DEBUG: panel_obj type: <class 'dict'>
+DEBUG: panel_obj keys: ['Name', 'DisplayLabel', 'Level', 'Description', 'Bundle', 'Category', 'LoadBearing', 'WallLength', 'Height', 'Squaring', 'Thickness', 'StudSpacing', 'Weight', 'OnScreenInstruction', 'junctions', 'materials']
+DEBUG: Checking panel_obj for display fields
+DEBUG: Found Category = Exterior
+DEBUG: Found LoadBearing = YES
+DEBUG: Found WallLength = 107.019 (8'-11")
+DEBUG: Found Height = 109.125 (9'-1-1/8")
+DEBUG: Found Squaring = 12'-7-3/4"
+DEBUG: Found Thickness = 5.5
+DEBUG: Found StudSpacing = 16
+DEBUG: Sheathing not found in panel_obj
+DEBUG: Found Weight = 390
+DEBUG: Found OnScreenInstruction = Typar
+DEBUG: RoughOpening not found in panel_obj
+DEBUG: About to process junction section
+DEBUG: Total materials processed: 0
+DEBUG: Groups created: 0
+DEBUG: Final groups keys: []
