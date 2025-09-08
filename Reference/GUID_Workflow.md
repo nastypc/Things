@@ -1,8 +1,8 @@
 # EHX GUID Parsing Workflow - Complete Implementation & Backup Guide
 
 **Date:** September 8, 2025  
-**Version:** 4.2 - Beam Pocket AFF Display Fixes & Consistency Updates  
-**Status:** ✅ Fully Implemented with Latest Fixes Documented  
+**Version:** 4.3 - Performance Optimization & Debug Print Conditionalization  
+**Status:** ✅ Fully Implemented with Latest Performance Fixes Documented  
 
 ## Overview
 The EHX parsing script now includes a comprehensive hierarchical GUID-based system that accurately associates and sorts materials across different structural levels. This ensures proper material relationships and prevents incorrect associations.
@@ -18,8 +18,10 @@ The EHX parsing script now includes a comprehensive hierarchical GUID-based syst
 - ✅ `prevent_cross_contamination()` - SubAssembly isolation protection
 - ✅ **FIXED: Beam Pocket AFF Display** - Corrected GUI key access and log consistency
 - ✅ **FIXED: Label Standardization** - Updated "AFF:" and "Opening Width:" across all outputs
+- ✅ **FIXED: Performance Optimization** - Made all debug print statements conditional on `debug_enabled` flag
 
 ### Integration Points
+
 - ✅ Integrated into `parse_panels()` function
 - ✅ Applied to all materials before storage in `materials_map`
 - ✅ Active during material processing pipeline
@@ -43,11 +45,13 @@ Level (Building Level)
 ## Processing Pipeline
 
 ### 1. File Parsing (`parse_panels()`)
+
 - **Input**: EHX XML file
 - **Process**: Extract all GUIDs from XML elements
 - **Output**: Structured data with GUID relationships
 
 ### 2. Material Enhancement Pipeline
+
 ```python
 # Applied in sequence to each panel's materials
 mats = enhance_material_associations(mats)      # Link rough openings to headers
@@ -57,6 +61,7 @@ materials_map[panel_guid] = mats
 ```
 
 ### 3. Material Association (`parse_materials_from_panel()`)
+
 - **Extract GUIDs** from each material type:
   - `BoardGuid` for framing members ✅
   - `SheetGuid` for sheathing/OSB ✅
@@ -64,6 +69,7 @@ materials_map[panel_guid] = mats
   - `SubAssemblyGuid` for grouped materials (rough openings + headers) ✅
 
 ### 4. Hierarchical Linking
+
 - **Level Context**: Materials inherit LevelGuid from panel ✅
 - **Bundle Context**: Materials inherit BundleGuid from panel ✅
 - **Panel Context**: Materials linked to PanelGuid ✅
@@ -90,7 +96,8 @@ materials_map[panel_guid] = mats
 </Board>
 ```
 
-### Processing Logic:
+### Processing Logic
+
 1. **Parse Rough Opening**: Extract `SubAssemblyGuid: 19a4a488-9bc6-48ba-b9ad-bf27b7896bf1` ✅
 2. **Find Associated Headers**: Search for materials with matching `SubAssemblyGuid` ✅
 3. **Link Materials**: Rough opening "73x63-L1" ↔ Header "L" ✅
@@ -99,6 +106,7 @@ materials_map[panel_guid] = mats
 ## Sorting Workflow
 
 ### GUID-Based Sorting (`sort_materials_by_guid_hierarchy()`)
+
 1. **Group by GUID Level**:
    - Level → Bundle → Panel → SubAssembly → Material ✅
 2. **Sort Within Groups**:
@@ -107,6 +115,7 @@ materials_map[panel_guid] = mats
    - A, AA, AB, AC, B, BB, BC... ✅
 
 ### Display Sorting (`format_and_sort_materials()`)
+
 1. **GUID Association**: Ensure proper material relationships ✅
 2. **Alphabetical Display**: Sort final output by material label ✅
 3. **Deduplication**: Remove duplicate entries ✅
@@ -114,16 +123,19 @@ materials_map[panel_guid] = mats
 ## Key Benefits
 
 ### ✅ Accurate Associations
+
 - Rough openings reference only their associated headers ✅
 - No cross-contamination between different subassemblies ✅
 - Proper material-to-material relationships ✅
 
 ### ✅ Consistent Sorting
+
 - Hierarchical processing maintains structural relationships ✅
 - Alphabetical display for easy material lookup ✅
 - Predictable output across all interfaces ✅
 
 ### ✅ Future-Proof
+
 - Extensible for additional material types ✅
 - Scalable for complex multi-level structures ✅
 - Robust error handling for missing GUIDs ✅
@@ -131,11 +143,13 @@ materials_map[panel_guid] = mats
 ## Validation and Debugging
 
 ### Available Functions
+
 - `validate_guid_associations(materials_list)` - Detect issues and generate reports
 - `debug_guid_associations(ehx_file_path)` - Analyze GUID relationships in files
 - `sort_materials_by_guid_hierarchy(materials_list)` - Apply hierarchical sorting
 
 ### Usage Examples
+
 ```python
 # Validate GUID associations
 report = validate_guid_associations(all_materials)
@@ -164,6 +178,7 @@ The GUID system is automatically applied during EHX file processing:
 
 ### Manual Debugging
 For troubleshooting, the debugging functions can be called directly:
+
 ```python
 from oldd import debug_guid_associations, validate_guid_associations
 
@@ -178,7 +193,8 @@ validation = validate_guid_associations(analysis['materials'])
 The system now includes specialized processing for beam pockets using SubAssemblyGuid relationships:
 
 #### Beam Pocket Structure
-```
+
+```text
 Panel
 └── SubAssembly (Beam Pocket)
     ├── SubAssemblyGuid: Unique identifier for beam pocket ✅
@@ -188,6 +204,7 @@ Panel
 ```
 
 #### Processing Logic
+
 1. **Extract SubAssemblyGuid**: Identify beam pocket subassemblies ✅
 2. **Parse Trimmer Elements**: Extract Y-coordinate for AFF, X-coordinates for width ✅
 3. **Identify Panel Labels**: Parse KingStud FamilyMemberName for D/E labels ✅
@@ -196,6 +213,7 @@ Panel
 6. **Format Display**: Present in simplified panel label format ✅
 
 #### Example Processing
+
 ```xml
 <!-- Beam Pocket SubAssembly -->
 <SubAssembly>
@@ -220,11 +238,13 @@ Panel
 ```
 
 #### Display Format
+
 - **AFF**: 75.25 in (6' 3 1/4") - From Trimmer Y-coordinate
 - **Opening Width**: 36.0 in - Calculated from X-coordinates (X2 - X1)
 - **Materials**: D (1), E (1) - Panel labels with quantities
 
 #### Latest Fixes Applied
+
 - **FIXED: GUI Key Access**: Corrected `bp.get('aff')` and `bp.get('opening_width')` usage
 - **FIXED: Log Consistency**: Updated to use "AFF:" instead of "Top AFF:"/"Bottom AFF:"
 - **FIXED: Label Standardization**: Changed "Header Size:" to "Opening Width:"
@@ -232,11 +252,13 @@ Panel
 ## File Structure Impact
 
 ### Core Files
+
 - `oldd.py` - Main application with integrated GUID processing ✅
 - `GUID_Workflow.md` - This documentation file ✅
 - `EHX_Complete_Summary.md` - Updated feature summary ✅
 
 ### Test Files
+
 - `Working/07_112.EHX` - Primary test file ✅
 - `Working/Test/` - Additional test cases ✅
 - `scripts/` - Utility scripts for validation ✅
@@ -244,12 +266,14 @@ Panel
 ## Future Enhancements
 
 ### Potential Additions
+
 - **GUID Visualization**: Graphical representation of GUID relationships
 - **Advanced Validation**: More sophisticated issue detection
 - **Performance Optimization**: Caching for large files
 - **Export Integration**: GUID data in export formats
 
 ### Maintenance Notes
+
 - All GUID functions are self-contained and testable
 - Error handling prevents crashes from missing GUIDs
 - Backward compatibility maintained for non-GUID files
@@ -263,6 +287,7 @@ Panel
 **Documentation:** ✅ Current and up-to-date with latest fixes
 
 The system includes built-in validation (`validate_guid_associations()`) to detect:
+
 - Multiple rough openings per GUID
 - Orphaned materials without proper associations
 - Cross-contamination between subassemblies
@@ -278,7 +303,8 @@ Use `debug_guid_associations(ehx_file_path)` to analyze GUID relationships and i
 ### 📁 GUID-Related Files Inventory
 
 #### Core GUID Processing Files
-```
+
+```text
 c:\Users\THOMPSON\Downloads\EHX\
 ├── Bold.py                    # Main application with GUID processing (4,191 lines)
 ├── oldd.py                    # Legacy version with full GUID features

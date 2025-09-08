@@ -9,6 +9,9 @@ import re
 import math
 import logging
 
+# Global debug control variable
+debug_enabled = True
+
 # Setup logging to file
 # Clear the debug.log file at startup
 try:
@@ -155,7 +158,8 @@ def extract_beam_pocket_info(panel_obj, materials):
 
     try:
         mats_list = materials if isinstance(materials, (list, tuple)) else []
-        print(f"DEBUG: Processing {len(mats_list)} materials for beam pockets")
+        if debug_enabled:
+            print(f"DEBUG: Processing {len(mats_list)} materials for beam pockets")
 
         # Group materials by SubAssemblyGuid for beam pockets
         beam_pocket_groups = {}
@@ -167,9 +171,12 @@ def extract_beam_pocket_info(panel_obj, materials):
             subassembly_guid = m.get('SubAssemblyGuid', '')
             subassembly_name = m.get('SubAssembly', '')
 
-            print(f"DEBUG: Checking material - SubAssemblyName: '{subassembly_name}', FamilyMemberName: '{m.get('FamilyMemberName', '')}', GUID: '{subassembly_guid}'")
-            print(f"DEBUG: Material keys: {list(m.keys())}")
-            print(f"DEBUG: Material data: {m}")
+            if debug_enabled:
+                print(f"DEBUG: Checking material - SubAssemblyName: '{subassembly_name}', FamilyMemberName: '{m.get('FamilyMemberName', '')}', GUID: '{subassembly_guid}'")
+            if debug_enabled:
+                print(f"DEBUG: Material keys: {list(m.keys())}")
+            if debug_enabled:
+                print(f"DEBUG: Material data: {m}")
 
             # Look for beam pocket materials by checking for specific beam pocket SubAssembly types
             family_member_name = m.get('FamilyMemberName', '')
@@ -186,9 +193,11 @@ def extract_beam_pocket_info(panel_obj, materials):
                         'Trimmer' in family_member_name or
                         'KingStud' in family_member_name
                     )
-                    print(f"DEBUG: Found beam pocket SubAssembly: {subassembly_name}, checking material: {family_member_name}")
+                    if debug_enabled:
+                        print(f"DEBUG: Found beam pocket SubAssembly: {subassembly_name}, checking material: {family_member_name}")
                 else:
-                    print(f"DEBUG: Skipping non-beam-pocket SubAssembly: {subassembly_name}")
+                    if debug_enabled:
+                        print(f"DEBUG: Skipping non-beam-pocket SubAssembly: {subassembly_name}")
             elif subassembly_guid:
                 # Handle case where SubAssemblyName is empty but we have a GUID
                 # Check for known beam pocket GUIDs
@@ -204,16 +213,26 @@ def extract_beam_pocket_info(panel_obj, materials):
                         'Trimmer' in family_member_name or
                         'KingStud' in family_member_name
                     )
-                    print(f"DEBUG: Found beam pocket by GUID: {subassembly_guid}, checking material: {family_member_name}")
+                    if debug_enabled:
+                        print(f"DEBUG: Found beam pocket by GUID: {subassembly_guid}, checking material: {family_member_name}")
                 else:
-                    print(f"DEBUG: Skipping unknown GUID: {subassembly_guid}")
+                    if debug_enabled:
+                        print(f"DEBUG: Skipping unknown GUID: {subassembly_guid}")
             else:
-                print(f"DEBUG: Skipping material without SubAssembly info: GUID={subassembly_guid}, Name={subassembly_name}")
+                if debug_enabled:
+                    if debug_enabled:
+                        print(f"DEBUG: Skipping material without SubAssembly info: GUID={subassembly_guid}, Name={subassembly_name}")
 
             if is_beam_pocket_material:
-                print(f"DEBUG: Found beam pocket material: {family_member_name} in subassembly {subassembly_name}")
-                print(f"DEBUG: Material AFF: {m.get('AFF')}, elev_max_y: {m.get('elev_max_y')}")
-                print(f"DEBUG: Material X coords: min={m.get('bottom_x_min')}, max={m.get('bottom_x_max')}")
+                if debug_enabled:
+                    if debug_enabled:
+                        print(f"DEBUG: Found beam pocket material: {family_member_name} in subassembly {subassembly_name}")
+                if debug_enabled:
+                    if debug_enabled:
+                        print(f"DEBUG: Material AFF: {m.get('AFF')}, elev_max_y: {m.get('elev_max_y')}")
+                if debug_enabled:
+                    if debug_enabled:
+                        print(f"DEBUG: Material X coords: min={m.get('bottom_x_min')}, max={m.get('bottom_x_max')}")
                 if subassembly_guid not in beam_pocket_groups:
                     beam_pocket_groups[subassembly_guid] = {
                         'panel_id': m.get('PanelID', ''),
@@ -249,19 +268,23 @@ def extract_beam_pocket_info(panel_obj, materials):
                         top_y = float(mat.get('board_y'))
                         bottom_y = float(mat.get('elev_min_y'))
                         aff_value = top_y - bottom_y
-                        print(f"DEBUG: Calculated AFF from Trimmer Y range: {top_y} - {bottom_y} = {aff_value}")
+                        if debug_enabled:
+                            print(f"DEBUG: Calculated AFF from Trimmer Y range: {top_y} - {bottom_y} = {aff_value}")
                     # Fallback to individual Y-coordinate if range not available
                     elif mat.get('board_y') is not None:
                         aff_value = float(mat.get('board_y'))
-                        print(f"DEBUG: Found AFF from Trimmer's individual Y-coordinate: {aff_value}")
+                        if debug_enabled:
+                            print(f"DEBUG: Found AFF from Trimmer's individual Y-coordinate: {aff_value}")
                     # Fallback to elev_max_y if board_y not available
                     elif mat.get('elev_max_y') is not None:
                         aff_value = float(mat.get('elev_max_y'))
-                        print(f"DEBUG: Found AFF from elev_max_y fallback: {aff_value}")
+                        if debug_enabled:
+                            print(f"DEBUG: Found AFF from elev_max_y fallback: {aff_value}")
                     # Final fallback to AFF field
                     elif mat.get('AFF') is not None:
                         aff_value = float(mat.get('AFF'))
-                        print(f"DEBUG: Found AFF from Trimmer AFF field: {aff_value}")
+                        if debug_enabled:
+                            print(f"DEBUG: Found AFF from Trimmer AFF field: {aff_value}")
 
                 # Collect King Stud X-positions for opening width calculation
                 if 'KingStud' in family_member_name:
@@ -269,16 +292,19 @@ def extract_beam_pocket_info(panel_obj, materials):
                     king_x = mat.get('board_x')
                     if king_x is not None:
                         king_stud_positions.append(king_x)
-                        print(f"DEBUG: Found King Stud at individual X position: {king_x}")
+                        if debug_enabled:
+                            print(f"DEBUG: Found King Stud at individual X position: {king_x}")
                     # Fallback to bounding box coordinates
                     elif mat.get('bottom_x_min') is not None:
                         king_x = float(mat.get('bottom_x_min'))
                         king_stud_positions.append(king_x)
-                        print(f"DEBUG: Found King Stud at bounding box X position: {king_x}")
+                        if debug_enabled:
+                            print(f"DEBUG: Found King Stud at bounding box X position: {king_x}")
                     elif mat.get('bottom_x_max') is not None:
                         king_x = float(mat.get('bottom_x_max'))
                         king_stud_positions.append(king_x)
-                        print(f"DEBUG: Found King Stud at bounding box X position: {king_x}")
+                        if debug_enabled:
+                            print(f"DEBUG: Found King Stud at bounding box X position: {king_x}")
 
             # Calculate opening width from King Stud positions
             if len(king_stud_positions) >= 2:
@@ -286,7 +312,8 @@ def extract_beam_pocket_info(panel_obj, materials):
                 # For beam pocket: King Stud - Trimmer - King Stud
                 # Opening width is distance between the two outer King Studs
                 opening_width = abs(king_stud_positions[-1] - king_stud_positions[0])
-                print(f"DEBUG: Calculated beam pocket opening width from King Studs: {opening_width}")
+                if debug_enabled:
+                    print(f"DEBUG: Calculated beam pocket opening width from King Studs: {opening_width}")
             elif opening_width is None:
                 # Fallback to SubAssembly bounding box if King Stud positions not available
                 for mat in materials_list:
@@ -295,7 +322,8 @@ def extract_beam_pocket_info(panel_obj, materials):
                         bottom_x_max = mat.get('bottom_x_max')
                         if bottom_x_min is not None and bottom_x_max is not None:
                             opening_width = abs(float(bottom_x_max) - float(bottom_x_min))
-                            print(f"DEBUG: Calculated opening width from bounding box: {opening_width}")
+                            if debug_enabled:
+                                print(f"DEBUG: Calculated opening width from bounding box: {opening_width}")
                             break
 
             # Create beam pocket entry
@@ -312,10 +340,12 @@ def extract_beam_pocket_info(panel_obj, materials):
                     'header_size': opening_width,
                     'materials': label_counts
                 }
-                print(f"DEBUG: Created beam pocket entry: {beam_pocket}")
+                if debug_enabled:
+                    print(f"DEBUG: Created beam pocket entry: {beam_pocket}")
                 beam_pockets_raw.append(beam_pocket)
             else:
-                print(f"DEBUG: No label counts found for beam pocket group {guid}")
+                if debug_enabled:
+                    print(f"DEBUG: No label counts found for beam pocket group {guid}")
 
     except Exception as e:
         logging.error(f"Error extracting beam pocket info: {e}")
@@ -339,7 +369,8 @@ def extract_beam_pocket_info(panel_obj, materials):
             }
 
     logging.debug(f"Beam pocket extraction complete. Found {len(grouped_pockets)} unique beam pockets")
-    print(f"DEBUG: Beam pocket extraction complete. Found {len(grouped_pockets)} unique beam pockets")
+    if debug_enabled:
+        print(f"DEBUG: Beam pocket extraction complete. Found {len(grouped_pockets)} unique beam pockets")
     return list(grouped_pockets.values())
 
 def calculate_squaring(height, length):
@@ -717,7 +748,8 @@ except Exception:
                     board_count += 1
                     btyp = _text_of(b, ('FamilyMemberName', 'Type', 'Name')) or 'Board'
                     blab = _text_of(b, ('Label', 'LabelText')) or ''
-                    print(f"DEBUG: Processing board - Type: '{btyp}', Label: '{blab}', SubAssembly: '{sub_name}'")
+                    if debug_enabled:
+                        print(f"DEBUG: Processing board - Type: '{btyp}', Label: '{blab}', SubAssembly: '{sub_name}'")
                     
                     mat_el = b.find('Material')
                     if mat_el is None:
@@ -731,7 +763,8 @@ except Exception:
                     board_y = None
                     board_x = None
                     if 'Trimmer' in btyp or 'KingStud' in btyp:
-                        print(f"DEBUG: Looking for coordinates for {btyp} with label '{blab}'")
+                        if debug_enabled:
+                            print(f"DEBUG: Looking for coordinates for {btyp} with label '{blab}'")
                         try:
                             # Look for coordinates in board's own geometry - prioritize ElevationView over direct elements
                             y_elem = None
@@ -753,26 +786,32 @@ except Exception:
                                     if y_values:
                                         # Use the maximum Y value for AFF (top of opening)
                                         board_y = max(y_values)
-                                        print(f"DEBUG: Found ElevationView Y values: {y_values}, using max: {board_y}")
-                                        print(f"DEBUG: Found {btyp} Y-coordinate (ElevationView max): {board_y}")
+                                        if debug_enabled:
+                                            print(f"DEBUG: Found ElevationView Y values: {y_values}, using max: {board_y}")
+                                        if debug_enabled:
+                                            print(f"DEBUG: Found {btyp} Y-coordinate (ElevationView max): {board_y}")
                             
                             # Second try: Y element within Point structure
                             if board_y is None:
                                 y_elem = b.find('.//Point/Y')
                                 if y_elem is not None:
-                                    print(f"DEBUG: Found Point/Y element, text: '{y_elem.text}'")
+                                    if debug_enabled:
+                                        print(f"DEBUG: Found Point/Y element, text: '{y_elem.text}'")
                                     if y_elem.text:
                                         board_y = float(y_elem.text)
-                                        print(f"DEBUG: Found {btyp} Y-coordinate (Point): {board_y}")
+                                        if debug_enabled:
+                                            print(f"DEBUG: Found {btyp} Y-coordinate (Point): {board_y}")
                             
                             # Third try: direct Y element in board (less reliable)
                             if board_y is None:
                                 y_elem = b.find('.//Y')
                                 if y_elem is not None:
-                                    print(f"DEBUG: Found direct Y element, text: '{y_elem.text}'")
+                                    if debug_enabled:
+                                        print(f"DEBUG: Found direct Y element, text: '{y_elem.text}'")
                                     if y_elem.text:
                                         board_y = float(y_elem.text)
-                                        print(f"DEBUG: Found {btyp} Y-coordinate (direct): {board_y}")
+                                        if debug_enabled:
+                                            print(f"DEBUG: Found {btyp} Y-coordinate (direct): {board_y}")
                             
                             # Fourth try: Y element in ElevationView/Point
                             if board_y is None:
@@ -780,10 +819,12 @@ except Exception:
                                 if ev is not None:
                                     y_elem = ev.find('.//Point/Y')
                                     if y_elem is not None:
-                                        print(f"DEBUG: Found ElevationView/Point Y element, text: '{y_elem.text}'")
+                                        if debug_enabled:
+                                            print(f"DEBUG: Found ElevationView/Point Y element, text: '{y_elem.text}'")
                                         if y_elem.text:
                                             board_y = float(y_elem.text)
-                                            print(f"DEBUG: Found {btyp} Y-coordinate (ElevationView/Point): {board_y}")
+                                            if debug_enabled:
+                                                print(f"DEBUG: Found {btyp} Y-coordinate (ElevationView/Point): {board_y}")
                             
                             # Fifth try: Y element in BottomView
                             if board_y is None:
@@ -791,10 +832,12 @@ except Exception:
                                 if bv is not None:
                                     y_elem = bv.find('.//Y')
                                     if y_elem is not None:
-                                        print(f"DEBUG: Found BottomView Y element, text: '{y_elem.text}'")
+                                        if debug_enabled:
+                                            print(f"DEBUG: Found BottomView Y element, text: '{y_elem.text}'")
                                         if y_elem.text:
                                             board_y = float(y_elem.text)
-                                            print(f"DEBUG: Found {btyp} Y-coordinate (BottomView): {board_y}")
+                                            if debug_enabled:
+                                                print(f"DEBUG: Found {btyp} Y-coordinate (BottomView): {board_y}")
                             
                             # Look for X coordinate - try multiple possible locations
                             x_elem = None
@@ -802,19 +845,23 @@ except Exception:
                             # First try: direct X element in board
                             x_elem = b.find('.//X')
                             if x_elem is not None:
-                                print(f"DEBUG: Found direct X element, text: '{x_elem.text}'")
+                                if debug_enabled:
+                                    print(f"DEBUG: Found direct X element, text: '{x_elem.text}'")
                                 if x_elem.text:
                                     board_x = float(x_elem.text)
-                                    print(f"DEBUG: Found {btyp} X-coordinate (direct): {board_x}")
+                                    if debug_enabled:
+                                        print(f"DEBUG: Found {btyp} X-coordinate (direct): {board_x}")
                             
                             # Second try: X element within Point structure
                             if board_x is None:
                                 x_elem = b.find('.//Point/X')
                                 if x_elem is not None:
-                                    print(f"DEBUG: Found Point/X element, text: '{x_elem.text}'")
+                                    if debug_enabled:
+                                        print(f"DEBUG: Found Point/X element, text: '{x_elem.text}'")
                                     if x_elem.text:
                                         board_x = float(x_elem.text)
-                                        print(f"DEBUG: Found {btyp} X-coordinate (Point): {board_x}")
+                                        if debug_enabled:
+                                            print(f"DEBUG: Found {btyp} X-coordinate (Point): {board_x}")
                             
                             # Third try: X element in BottomView
                             if board_x is None:
@@ -822,18 +869,23 @@ except Exception:
                                 if bv is not None:
                                     x_elem = bv.find('.//X')
                                     if x_elem is not None:
-                                        print(f"DEBUG: Found BottomView X element, text: '{x_elem.text}'")
+                                        if debug_enabled:
+                                            print(f"DEBUG: Found BottomView X element, text: '{x_elem.text}'")
                                         if x_elem.text:
                                             board_x = float(x_elem.text)
-                                            print(f"DEBUG: Found {btyp} X-coordinate (BottomView): {board_x}")
+                                            if debug_enabled:
+                                                print(f"DEBUG: Found {btyp} X-coordinate (BottomView): {board_x}")
                                             
                         except Exception as e:
-                            print(f"DEBUG: Error extracting coordinates for {btyp}: {e}")
+                            if debug_enabled:
+                                print(f"DEBUG: Error extracting coordinates for {btyp}: {e}")
                         
                         if board_y is None:
-                            print(f"DEBUG: No Y coordinate found for {btyp} with label '{blab}'")
+                            if debug_enabled:
+                                print(f"DEBUG: No Y coordinate found for {btyp} with label '{blab}'")
                         if board_x is None:
-                            print(f"DEBUG: No X coordinate found for {btyp} with label '{blab}'")
+                            if debug_enabled:
+                                print(f"DEBUG: No X coordinate found for {btyp} with label '{blab}'")
                     
                     # annotate with captured bottom/elevation info for better AFF heuristics
                     entry = {'Type': btyp, 'FamilyMemberName': btyp, 'Label': blab, 'SubAssembly': sub_name, 'Desc': bdesc, 'Qty': '', 'ActualLength': bal, 'ActualWidth': baw, 'BoardGuid': b_guid, 'SubAssemblyGuid': sub_guid}
@@ -851,7 +903,8 @@ except Exception:
                     # Use individual board Y-coordinate for Trimmers, otherwise use SubAssembly elevation
                     if board_y is not None and 'Trimmer' in btyp:
                         entry['AFF'] = board_y
-                        print(f"DEBUG: Using Trimmer's individual Y-coordinate for AFF: {board_y}")
+                        if debug_enabled:
+                            print(f"DEBUG: Using Trimmer's individual Y-coordinate for AFF: {board_y}")
                     elif sub_elev_max_y is not None:
                         entry['elev_max_y'] = sub_elev_max_y
                         # Explicitly store AFF as the top of the rough-opening elevation
@@ -1966,7 +2019,8 @@ except Exception:
                 root = tree.getroot()
             diag_report = diagnose_v2_bundle_assignment(root, ehx_version, panels_by_name)
         except Exception as e:
-            print(f"Diagnostic setup error: {e}")
+            if debug_enabled:
+                print(f"Diagnostic setup error: {e}")
             
         if ehx_version == "v2.0" and diag_report and unassigned_panels:
             print(f"\n=== V2.0 DIAGNOSTIC REPORT ===")
@@ -2147,7 +2201,8 @@ except Exception:
                         beam_pockets = extract_beam_pocket_info(pobj, materials_map.get(pname, []))
                         
                         if beam_pockets:
-                            print(f"WRITING BEAM POCKETS to expected.log for {pname}")
+                            if debug_enabled:
+                                print(f"WRITING BEAM POCKETS to expected.log for {pname}")
                             total_pockets = len(beam_pockets)
                             fh.write(f"Beam Pocket Details: {total_pockets} beam pocket{'s' if total_pockets != 1 else ''}\n")
                             
@@ -2301,10 +2356,12 @@ except Exception:
                     # Add Beam Pocket Details section after panel info
                     try:
                         beam_pockets = extract_beam_pocket_info(pobj, materials_map.get(pname, []))
-                        print(f"DEBUG: Log writing - Beam pockets found for panel {pname}: {len(beam_pockets) if beam_pockets else 0}")
+                        if debug_enabled:
+                            print(f"DEBUG: Log writing - Beam pockets found for panel {pname}: {len(beam_pockets) if beam_pockets else 0}")
                         
                         if beam_pockets:
-                            print(f"WRITING BEAM POCKETS to materials.log for {pname}")
+                            if debug_enabled:
+                                print(f"WRITING BEAM POCKETS to materials.log for {pname}")
                             total_pockets = len(beam_pockets)
                             fh.write(f"Beam Pocket Details: {total_pockets} beam pocket{'s' if total_pockets != 1 else ''}\n")
                             
@@ -2428,6 +2485,18 @@ DEFAULT_STATE = {
 
 DEFAULT_GUI = {'w': 1650, 'h': 950}
 
+def toggle_debug_mode(enabled):
+    """Toggle debug logging on/off to improve GUI performance"""
+    global debug_enabled
+    debug_enabled = enabled
+    
+    # Update logging level based on debug state
+    if enabled:
+        logging.getLogger().setLevel(logging.DEBUG)
+        print("Debug logging enabled")
+    else:
+        logging.getLogger().setLevel(logging.WARNING)
+        print("Debug logging disabled for better performance")
 
 def make_gui():
     root = tk.Tk()
@@ -2462,10 +2531,19 @@ def make_gui():
                     subprocess.run(['xdg-open', folder_path])  # Linux
                     # subprocess.run(['open', folder_path])  # macOS
         except Exception as e:
-            print(f"Error opening file location: {e}")
+            if debug_enabled:
+                print(f"Error opening file location: {e}")
 
     path_val.bind('<Button-1>', open_file_location)
     path_val.config(cursor='hand2')  # Change cursor to hand when hovering
+
+    # Debug control checkbox
+    debug_var = tk.BooleanVar(value=True)
+    debug_checkbox = tk.Checkbutton(top, text='Debug', variable=debug_var, 
+                                   bg=TOP_BG, fg=TEXT_LIGHT, selectcolor=TOP_BG,
+                                   activebackground=TOP_BG, activeforeground=TEXT_LIGHT,
+                                   command=lambda: toggle_debug_mode(debug_var.get()))
+    debug_checkbox.pack(side='left', padx=6)
 
     # Create folder_entry but hide it (width=1) to maintain functionality
     folder_entry = ttk.Entry(top, width=1)
@@ -2711,7 +2789,8 @@ def make_gui():
                 # Add Beam Pocket Details section after Rough Openings
                 try:
                     beam_pockets = extract_beam_pocket_info(panel_obj, materials_list)
-                    print(f"DEBUG: Beam pockets found for panel {panel_obj.get('PanelID', 'unknown')}: {len(beam_pockets) if beam_pockets else 0}")
+                    if debug_enabled:
+                        print(f"DEBUG: Beam pockets found for panel {panel_obj.get('PanelID', 'unknown')}: {len(beam_pockets) if beam_pockets else 0}")
 
                     if beam_pockets:
                         out.write("Beam Pocket Details:\n")
@@ -2722,7 +2801,8 @@ def make_gui():
                             materials = pocket.get('materials', {})
                             count = pocket.get('count', 1)
 
-                            print(f"DEBUG: Exporting beam pocket {i}: aff={aff}, opening_width={opening_width}, materials={materials}")
+                            if debug_enabled:
+                                print(f"DEBUG: Exporting beam pocket {i}: aff={aff}, opening_width={opening_width}, materials={materials}")
 
                             pocket_label = f"Beam Pocket {i}"
                             if count > 1:
@@ -4471,7 +4551,8 @@ def make_gui():
             # Center the content after adding all labels
             root.after(100, center_breakdown_content)
         except Exception as e:
-            print(f"Error populating level breakdown: {e}")
+            if debug_enabled:
+                print(f"Error populating level breakdown: {e}")
 
     def process_selected_ehx(evt=None):
         nonlocal panels_loaded, selected_level, current_panels, original_panels, panel_materials_map, original_materials_map

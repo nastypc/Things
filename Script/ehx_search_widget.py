@@ -13,6 +13,9 @@ from collections import defaultdict
 import threading
 import queue
 
+# Global debug control
+debug_enabled = True
+
 # Global sorting functions for consistent ordering throughout the application
 def sort_bundle_keys(bundle_keys):
     """Sort bundle keys by bundle number (B1, B2, etc.) with smart fallback."""
@@ -313,9 +316,11 @@ class EHXSearchWidget(ttk.Frame):
         if root.find('EHXVersion') is not None:
             ehx_version = "v2.0"
             ehx_ver = root.find('EHXVersion').text.strip() if root.find('EHXVersion') is not None else ""
-            print(f"DEBUG: Search widget detected EHX format: {ehx_version} (Version: {ehx_ver})")
+            if debug_enabled:
+                print(f"DEBUG: Search widget detected EHX format: {ehx_version} (Version: {ehx_ver})")
         else:
-            print(f"DEBUG: Search widget detected EHX format: {ehx_version}")
+            if debug_enabled:
+                print(f"DEBUG: Search widget detected EHX format: {ehx_version}")
 
         search_data = {
             'panels': {},
@@ -1794,7 +1799,8 @@ class EHXSearchWidget(ttk.Frame):
                     # Get diagnostic info for v2.0 files
                     diag_report = diagnose_v2_bundle_assignment(root, ehx_version, panels_by_name)
             except Exception as e:
-                print(f"Search widget diagnostic setup error: {e}")
+                if debug_enabled:
+                    print(f"Search widget diagnostic setup error: {e}")
 
             # Write expected.log
             expected_path = os.path.join(folder, 'expected.log')
@@ -1867,10 +1873,12 @@ class EHXSearchWidget(ttk.Frame):
                             fh.write(f"Type: {m.get('Type','')} , Label: {m.get('Label','')} , Desc: {m.get('Desc','')}\n")
                     fh.write('---\n')
 
-            print(f"DEBUG: Successfully wrote log files for {fname}")
+            if debug_enabled:
+                print(f"DEBUG: Successfully wrote log files for {fname}")
             
         except Exception as e:
-            print(f"DEBUG: Failed to write log files from search widget: {e}")
+            if debug_enabled:
+                print(f"DEBUG: Failed to write log files from search widget: {e}")
 
 
 # Example usage function

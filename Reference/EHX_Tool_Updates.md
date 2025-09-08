@@ -1,8 +1,27 @@
 # EHX Tool Updates - Complete C## Recent Changes (September 8, 2025)
 
-### 1. Beam Pocket AFF Display Fixes
+## 1. Performance Optimization: Debug Print Statement Conditionalization
+
+- **FIXED: GUI Performance Issue**: Made all debug print statements conditional on `debug_enabled` flag
+  - Wrapped all DEBUG print statements with `if debug_enabled:` checks
+  - Prevents unnecessary output when debug mode is disabled
+  - Improves GUI responsiveness during normal operation
+- **FIXED: Specific Line 2204**: Made beam pocket logging statement conditional
+  - Changed `print(f"WRITING BEAM POCKETS to expected.log for {pname}")` to conditional
+  - Located in `extract_beam_pocket_info()` function
+- **FIXED: Search Widget Diagnostics**: Made diagnostic error print conditional
+  - Changed `print(f"Search widget diagnostic setup error: {e}")` to conditional
+  - Located in `ehx_search_widget.py` line 1803
+- **FIXED: Comprehensive Coverage**: Applied conditional checks to all DEBUG print statements
+  - Verified all print statements in `Bold.py` and `ehx_search_widget.py`
+  - No unconditional debug prints remain in the codebase
+- **FIXED: Performance Impact**: Debug output only executes when explicitly enabled
+  - Prevents console output slowdown during normal GUI operation
+  - Maintains all debug functionality when debug mode is active
+
+## 2. Beam Pocket AFF Display Fixes
 - **FIXED: GUI Key Mismatch**: Corrected dictionary key access in GUI display code
-  - Changed `bp.get('bottom_aff')` to `bp.get('aff')` 
+  - Changed `bp.get('bottom_aff')` to `bp.get('aff')`
   - Changed `bp.get('header_size')` to `bp.get('opening_width')`
   - Removed unused `top_aff` variable reference
 - **FIXED: Log Format Consistency**: Updated all log writing functions to use uniform "AFF:" format
@@ -26,9 +45,9 @@
 - **Version Bumped**: Updated to version 4.2 with latest fixesstory & Backup Guide
 
 **Date:** September 8, 2025  
-**Version:** 4.2 - Beam Pocket AFF Display Fixes & Consistency Updates  
+**Version:** 4.3 - Performance Optimization & Debug Print Conditionalization  
 **Developer:** GitHub Copilot Assistant  
-**Status:** ✅ All Updates Documented with Latest Fixes  
+**Status:** ✅ All Updates Documented with Latest Performance Fixes  
 
 ## Overview
 
