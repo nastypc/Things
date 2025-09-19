@@ -1,0 +1,783 @@
+
+=== materials.log updated at 2025-09-08 14:30:22 for SNO-L1-005008.EHX ===
+
+=== V2.0 DIAGNOSTIC INFO ===
+Junctions found: 25
+Bundles found: 5
+Total panels: 37
+Panels assigned: 37
+Panels unassigned: 0
+Junction mappings: 33
+Bundle layer mappings: {1: 'B1 (2x6 Ext)', 2: 'B2 (2x4 Gar)', 3: 'B3 (2x4 PW)', 4: 'B4 (2x4 Int)', 5: 'B5 (2x4 Furr)'}
+========================
+
+Panel: 05-100
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Beam Pocket Details: 2 beam pockets
+• Beam Pocket 1
+  AFF: 73.75 in (6'-1-3/4")
+  Opening Width: 3 in
+  Materials:
+    ├── D (3)
+    ├── E (2)
+• Beam Pocket 2
+  AFF: 73.75 in (6'-1-3/4")
+  Opening Width: 3 in
+  Materials:
+    ├── D (2)
+    ├── E (2)
+
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: CriticalStud , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: EndPadding , Label: N , SubAssembly:  , Desc: 5/8" 2x6 Padding
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: RoughOpening , Label: DR-9-ENT-L1 , SubAssembly: DR-9-ENT-L1 , Desc: DR-9-ENT-L1 AFF=92.750
+Type: Header , Label: G , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: Header , Label: G , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerBtmNailer , Label: M , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: I , SubAssembly: SZ37 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-101
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: NailingStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: NailingStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: NailingStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: NailingStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: NailingStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: NailingStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: F , SubAssembly: SZ36 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-107
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: EndPadding , Label: I , SubAssembly:  , Desc: 5/8" 2x6 Padding
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: F , SubAssembly: SZ13 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-108
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: G , SubAssembly: SZ46 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-109
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Sheathing , Label: F , SubAssembly: SZ34 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-110
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: N , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: N , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: RoughOpening , Label: 61x63-L4 , SubAssembly: 61x63-L4 , Desc: 61x63-L4 AFF=92.500
+Type: Header , Label: F , SubAssembly:  , Desc: 2x10 SPF No.2
+Type: Header , Label: F , SubAssembly:  , Desc: 2x10 SPF No.2
+Type: Header , Label: F , SubAssembly:  , Desc: 2x10 SPF No.2
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: SillCripple , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: WindowSill , Label: K , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerBtmNailer , Label: S , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Pad , Label: I , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Pad , Label: J , SubAssembly:  , Desc: 3/4" 4x8 OSB
+Type: Pad , Label: H , SubAssembly:  , Desc: 5/8" 2x6 Padding
+Type: SillCripple , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: RoughOpening , Label: BSMT-HDR , SubAssembly: BSMT-HDR , Desc: BSMT-HDR AFF=1.500
+Type: Header , Label: G , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: Header , Label: G , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: HeaderBtmNailer , Label: T , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: HeaderCripple , Label: M , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: HeaderCripple , Label: M , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: HeaderCripple , Label: M , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: HeaderCripple , Label: M , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: N , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: EndPadding , Label: U , SubAssembly:  , Desc: 5/8" 2x6 Padding
+Type: Sheathing , Label: O , SubAssembly: SZ44 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-111
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: J , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: J , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: EndPadding , Label: O , SubAssembly:  , Desc: 5/8" 2x6 Padding
+Type: Stud , Label: J , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: RoughOpening , Label: PATIO-6-0-LVL3 , SubAssembly: PATIO-6-0-LVL3 , Desc: PATIO-6-0-LVL3 AFF=92.500
+Type: Header , Label: F , SubAssembly:  , Desc: 1 3/4" x 9 1/2" (2.0E 3100) WestFraser LVL
+Type: Header , Label: F , SubAssembly:  , Desc: 1 3/4" x 9 1/2" (2.0E 3100) WestFraser LVL
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerBtmNailer , Label: P , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Pad , Label: G , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Pad , Label: H , SubAssembly:  , Desc: 3/4" 4x8 OSB
+Type: Pad , Label: I , SubAssembly:  , Desc: 3/8" 4x8 PLY
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: K , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: K , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: K , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: L , SubAssembly: SZ43 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-117
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: F , SubAssembly: SZ42 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-118
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: F , SubAssembly: SZ49 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-119
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: F , SubAssembly: SZ16 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-120
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: G , SubAssembly: SZ15 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-121
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: G , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: G , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: G , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: G , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: RoughOpening , Label: DR-1-GAR-L1 , SubAssembly: DR-1-GAR-L1 , Desc: DR-1-GAR-L1 AFF=82.750
+Type: Header , Label: F , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: Header , Label: F , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerBtmNailer , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: H , SubAssembly: SZ14 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-122
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: E , SubAssembly: SZ45 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-102
+Level: 1
+Description: 1FW 2FD
+Bundle: B2 (2x4 Gar)
+Type: EndPadding , Label: O , SubAssembly:  , Desc: 5/8" 2x4 Padding
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: F , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: RoughOpening , Label: GARAGE-LVL3 , SubAssembly: GARAGE-LVL3 , Desc: GARAGE-LVL3 AFF=54.750
+Type: Header , Label: E , SubAssembly:  , Desc: 1 3/4" x 9 1/2" (2.0E 3100) WestFraser LVL
+Type: Header , Label: E , SubAssembly:  , Desc: 1 3/4" x 9 1/2" (2.0E 3100) WestFraser LVL
+Type: Trimmer , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Trimmer , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerBtmNailer , Label: Q , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerBtmNailer , Label: Q , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerCripple , Label: P , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerCripple , Label: P , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerCripple , Label: P , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerCripple , Label: P , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerCripple , Label: P , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerCripple , Label: P , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerCripple , Label: P , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerCripple , Label: P , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Trimmer , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Trimmer , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: G , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: G , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: G , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: G , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: G , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Sheathing , Label: H , SubAssembly: SZ8 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-103
+Level: 1
+Description: 1FW 2FD
+Bundle: B2 (2x4 Gar)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Bracing , Label: H , SubAssembly:  , Desc: 
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Sheathing , Label: F , SubAssembly: SZ50 , Desc: 1/4" 4x8 OSB
+---
+Panel: 05-104
+Level: 1
+Description: 1FW 2FD
+Bundle: B2 (2x4 Gar)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Bracing , Label: I , SubAssembly:  , Desc: 
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Sheathing , Label: G , SubAssembly: SZ3 , Desc: 1/4" 4x8 OSB
+---
+Panel: 05-105
+Level: 1
+Description: 1FW 2FD
+Bundle: B2 (2x4 Gar)
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: CriticalStud , Label: E , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: EndPadding , Label: J , SubAssembly:  , Desc: 5/8" 2x4 Padding
+Type: Sheathing , Label: F , SubAssembly: SZ6 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-106
+Level: 1
+Description: 1FW 2FD
+Bundle: B2 (2x4 Gar)
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: G , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: RoughOpening , Label: DR-7-GAR-L1 , SubAssembly: DR-7-GAR-L1 , Desc: DR-7-GAR-L1 AFF=57.875
+Type: Header , Label: F , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: Header , Label: F , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerBtmNailer , Label: S , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerBtmNailer , Label: S , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerCripple , Label: R , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerCripple , Label: R , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerCripple , Label: R , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: FillerCripple , Label: R , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Trimmer , Label: E , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF No.2
+Type: Sheathing , Label: H , SubAssembly: SZ0 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-112
+Level: 1
+Description: 1FW 2FD
+Bundle: B3 (2x4 PW)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Bracing , Label: H , SubAssembly:  , Desc: 
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Sheathing , Label: F , SubAssembly: SZ47 , Desc: 1/4" 4x8 OSB
+---
+Panel: 05-113
+Level: 1
+Description: 1FW 2FD
+Bundle: B3 (2x4 PW)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Sheathing , Label: G , SubAssembly: SZ48 , Desc: 1/4" 4x8 OSB
+---
+Panel: 05-114
+Level: 1
+Description: 1FW 2FD
+Bundle: B3 (2x4 PW)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Sheathing , Label: F , SubAssembly: SZ41 , Desc: 1/4" 4x8 OSB
+---
+Panel: 05-115
+Level: 1
+Description: 1FW 2FD
+Bundle: B3 (2x4 PW)
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Sheathing , Label: G , SubAssembly: SZ64 , Desc: 1/4" 4x8 OSB
+---
+Panel: 05-116
+Level: 1
+Description: 1FW 2FD
+Bundle: B3 (2x4 PW)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: NailingStud , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Bracing , Label: J , SubAssembly:  , Desc: 
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: G , SubAssembly: SZ66 , Desc: 5/8" Dens-Glass
+Type: Sheathing , Label: I , SubAssembly: SZ65 , Desc: 1/4" 4x8 OSB
+---
+Panel: 05-123
+Level: 1
+Description: 1FW 2FD
+Bundle: B4 (2x4 Int)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: RoughOpening , Label: DR-3 , SubAssembly: DR-3 , Desc: DR-3 AFF=99.000
+Type: HeaderBtmNailer , Label: I , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: HeaderCripple , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: HeaderCripple , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: H , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: H , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FlatStud , Label: G , SubAssembly:  , Desc: 2x4 SPF Stud
+---
+Panel: 05-124
+Level: 1
+Description: 1FW 2FD
+Bundle: B4 (2x4 Int)
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: D , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: EndPadding , Label: G , SubAssembly:  , Desc: 5/8" 2x4 Padding
+Type: Stud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FlatStud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+---
+Panel: 05-125
+Level: 1
+Description: 1FW 2FD
+Bundle: B4 (2x4 Int)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: RoughOpening , Label: DR-8 , SubAssembly: DR-8 , Desc: DR-8 AFF=99.000
+Type: HeaderBtmNailer , Label: G , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: HeaderCripple , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: HeaderCripple , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+---
+Panel: 05-126
+Level: 1
+Description: 1FW 2FD
+Bundle: B4 (2x4 Int)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+---
+Panel: 05-127
+Level: 1
+Description: 1FW 2FD
+Bundle: B4 (2x4 Int)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: EndPadding , Label: F , SubAssembly:  , Desc: 5/8" 2x4 Padding
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+---
+Panel: 05-128
+Level: 1
+Description: 1FW 2FD
+Bundle: B4 (2x4 Int)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+---
+Panel: 05-129
+Level: 1
+Description: 1FW 2FD
+Bundle: B4 (2x4 Int)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: EndPadding , Label: G , SubAssembly:  , Desc: 5/8" 2x4 Padding
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: CriticalStud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+---
+Panel: 05-130
+Level: 1
+Description: 1FW 2FD
+Bundle: B4 (2x4 Int)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: EndPadding , Label: E , SubAssembly:  , Desc: 5/8" 2x4 Padding
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+---
+Panel: 05-136
+Level: 1
+Description: 1FW 2FD
+Bundle: B4 (2x4 Int)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: EndPadding , Label: E , SubAssembly:  , Desc: 5/8" 2x4 Padding
+---
+Panel: 05-131
+Level: 1
+Description: 1FW 2FD
+Bundle: B5 (2x4 Furr)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Sheathing , Label: F , SubAssembly: SZ52 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-132
+Level: 1
+Description: 1FW 2FD
+Bundle: B5 (2x4 Furr)
+Beam Pocket Details: 1 beam pocket
+• Beam Pocket 1 (2)
+  AFF: Unknown
+  Opening Width: 3 in
+  Materials:
+    ├── D (2)
+
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x4 SPF Stud
+Type: Cap , Label: J , SubAssembly: Beampocket , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x4 SPF Stud
+Type: RoughOpening , Label: DR-9-ENT , SubAssembly: DR-9-ENT , Desc: DR-9-ENT AFF=92.375
+Type: HeaderBtmNailer , Label: L , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: HeaderBtmNailer , Label: L , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: HeaderCripple , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: HeaderCripple , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x4 SPF Stud
+Type: Cap , Label: J , SubAssembly: Beampocket , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x4 SPF Stud
+Type: Stud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Sheathing , Label: G , SubAssembly: SZ53 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-133
+Level: 1
+Description: 1FW 2FD
+Bundle: B5 (2x4 Furr)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FlatStud , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Sheathing , Label: F , SubAssembly: SZ52 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-134
+Level: 1
+Description: 1FW 2FD
+Bundle: B5 (2x4 Furr)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: RoughOpening , Label: GARAGE , SubAssembly: GARAGE , Desc: GARAGE AFF=54.750
+Type: HeaderBtmNailer , Label: L , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: HeaderBtmNailer , Label: L , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: HeaderCripple , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: HeaderCripple , Label: E , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FillerCripple , Label: K , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: FlatStud , Label: G , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: F , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Sheathing , Label: H , SubAssembly: SZ51 , Desc: 7/16" 4x9 OSB
+---
+Panel: 05-135
+Level: 1
+Description: 1FW 2FD
+Bundle: B5 (2x4 Furr)
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x4 SPF PM No.2
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Stud , Label: D , SubAssembly:  , Desc: 2x4 SPF Stud
+Type: Sheathing , Label: E , SubAssembly: SZ52 , Desc: 5/8" Dens-Glass
+---

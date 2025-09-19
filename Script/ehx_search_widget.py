@@ -87,6 +87,9 @@ except ImportError:
         except (ValueError, TypeError):
             return f"{value} Lbs"
 
+# Global debug control
+debug_enabled = True
+
 # Global sorting functions for consistent ordering throughout the application
 def sort_bundle_keys(bundle_keys):
     """Sort bundle keys by bundle number (B1, B2, etc.) with smart fallback."""
