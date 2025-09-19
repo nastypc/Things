@@ -1,0 +1,55 @@
+
+=== SNO-L1-005008.log updated at 2025-09-18 17:18:47 for SNO-L1-005008.EHX ===
+File Location: EHX
+
+=== V2.0 DIAGNOSTIC INFO ===
+Junctions found: 25
+Bundles found: 5
+Total panels: 37
+Panels assigned: 37
+Panels unassigned: 0
+Junction mappings: 33
+Bundle layer mappings: {1: 'B1 (2x6 Ext)', 2: 'B2 (2x4 Gar)', 3: 'B3 (2x4 PW)', 4: 'B4 (2x4 Int)', 5: 'B5 (2x4 Furr)'}
+========================
+
+Panel: 05-100
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 107.019 (8'-11")
+• Height: 109.125 (9'-1-1/8")
+• Squaring: 12'-7-3/4"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 7/16" 4x9 OSB
+• Weight: 390 Lbs
+• Production Notes: Typar
+Beam Pocket Details: 2 beam pockets
+• Beam Pocket 1
+  AFF: 75.25 (6'-3-1/4")
+  Opening Width: 3 (3")
+• Beam Pocket 2
+  AFF: 75.25 (6'-3-1/4")
+  Opening Width: 3 (3")
+
+
+SubAssembly Details:
+• DR-9-ENT-L1
+   Materials:
+    ├── D (2)
+    ├── DR-9-ENT-L1 (1)
+    ├── F (4)
+    ├── G (2)
+    ├── L (5)
+    ├── M (1)
+• Critical Stud
+   Materials:
+    ├── H (4)
+
+
+🔧 CRITICAL STUD DETAILS:
+------------------------------
+

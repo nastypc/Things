@@ -1,0 +1,37 @@
+EHX Search Results Export
+==================================================
+
+EHX> Loaded SNO-L1-005008.EHX
+Found 37 panels and 5 bundles
+EHX Format: legacy
+
+📋 AVAILABLE PANELS (Sorted by Level, Bundle, and Panel Number):
+======================================================================
+🏢 LEVEL 1:
+  📦 B1 (2x6 Ext) (13 panels):
+    05-100, 05-101, 05-107, 05-108, 05-109, 05-110, 05-111, 05-117 ... (+5 more)
+  📦 B2 (2x4 Gar) (5 panels):
+    05-102, 05-103, 05-104, 05-105, 05-106
+  📦 B3 (2x4 PW) (5 panels):
+    05-112, 05-113, 05-114, 05-115, 05-116
+  📦 B4 (2x4 Int) (9 panels):
+    05-123, 05-124, 05-125, 05-126, 05-127, 05-128, 05-129, 05-130, 05-136
+  📦 B5 (2x4 Furr) (5 panels):
+    05-131, 05-132, 05-133, 05-134, 05-135
+
+📊 PROJECT SUMMARY:
+  • Total Panels: 37
+  • Total Bundles: 5
+  • Average Panels per Bundle: 7.4
+  • Total Materials: 619
+
+💡 QUICK QUERY EXAMPLES:
+  • '05-100' or '05-100 info' → Panel details
+  • '05-100 fm' → Family Member analysis
+  • '05-100 sub' → SubAssembly analysis
+  • 'level 1' → Level 1 material breakdown
+  • 'takeoff all' → Complete project takeoff
+Type your search query or use quick buttons above
+
+Exported from EHX Search Widget
+Date: 2025-09-19 12:01:04

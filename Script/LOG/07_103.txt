@@ -1,0 +1,59 @@
+File: 07_103
+
+Panel Details:
+Panel: 07_103
+• Lot: 07
+• Panel: 103
+• Level: 1
+• Description: 1FW 2FD
+• Category: Exterior
+• Load Bearing: YES
+• Wall Length: 118.39 in   (9'-10-3/8")
+• Height: 216.5 in   (18'-1/2")
+• Squaring: 20'-5-1/2" in   (20'-5-1/2")
+• Thickness: 5.5
+• Stud Spacing: 12
+• Sheathing: 1/2" BP R1.5 4x8
+• Weight: 938 Lbs
+• Production Notes: Typar
+Beam Pocket Details:
+• Beam Pocket 1
+  AFF: 94.5 in (7'-10-1/2")
+  Opening Width: 3 in
+  Materials:
+    ├── D (2)
+    ├── J (2)
+
+Critical Stud Details:
+
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 9'-10-1/4"
+AF - Nog - 2x6 SPF Stud - (3) - 10"
+AG - Nog - 2x6 SPF Stud - (2) - 6-3/4"
+AH - Nog - 2x6 SPF Stud - (2) - 4-1/4"
+AI - Nog - 2x6 SPF Stud - (5) - 7-3/4"
+AJ - Nog - 2x6 SPF Stud - (3) - 3"
+AK - FillerCripple - 2x6 SPF Stud - (8) - 3-3/8"
+AL - HeaderCap - 2x6 SPF Stud - (1) - 6'-1-1/2"
+AM - FillerBtmNailer - 2x6 SPF Stud - (1) - 6'-1"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 9'-10-1/4"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 9'-4-5/8"
+D - KingStud - 2x6 SPF Stud - (4) - 17'-8"
+E - KingStud - 2x6 SPF Stud - (1) - 9'-2-3/4"
+F - KingStud - 2x6 SPF Stud - (1) - 11'-3-3/8"
+G - Trimmer - 2x6 SPF Stud - (4) - 7'-8-1/2"
+H - Trimmer - 2x6 SPF Stud - (2) - 8'-7-1/2"
+I - Trimmer - 2x6 SPF Stud - (2) - 17'-3/4"
+J - Trimmer - 2x6 SPF Stud - (2) - 7'-9"
+K - Header - 2x8 SPF No.2 - (3) - 6'-1-1/2"
+L - Header - 2x8 SPF No.2 - (2) - 6'-7"
+M - HeaderSill - 2x6 SPF Stud - (1) - 5'-7-1/2"
+N - WindowSill - 2x6 SPF Stud - (1) - 6'-1"
+O - SillCripple - 2x6 SPF Stud - (6) - 2'-10-1/8"
+P - SillCripple - 2x6 SPF Stud - (2) - 11'-3-3/8"
+Q - HeaderCripple - 2x6 SPF Stud - (1) - 9'-2-3/4"
+R - HeaderCripple - 2x6 SPF Stud - (1) - 2'-10-1/8"
+S - Stud - 2x6 SPF Stud - (5) - 17'-8"
+T - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 1'-10-1/2"
+V - Sheathing - 1/2" BP R1.5 4x8 - (1) - 4'-8-7/8" x 1'-10-1/2"

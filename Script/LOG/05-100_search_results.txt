@@ -1,0 +1,49 @@
+EHX Search Results Export
+==================================================
+
+EHX> Loaded 05-100.ehx
+Found 1 panels and 1 bundles
+EHX Format: legacy
+Type your search query or use quick buttons above
+
+EHX> 05-100 fm
+📋 Family Member Pattern List
+========================================
+
+This analysis categorizes Family Members into three groups:
+
+🧱 LOOSE MATERIAL GROUP:
+  Materials not part of any SubAssembly
+  Examples: Individual studs, plates, loose lumber
+
+🔧 SUBASSEMBLY GROUP:
+  Materials that are part of SubAssemblies
+  Examples: Pre-assembled wall sections, door frames
+
+🚫 EXCLUDED GROUP:
+  Materials from Family Members excluded from parsing
+  Can include any FM types listed below
+
+📊 CURRENT FAMILY MEMBER TYPES:
+-----------------------------------
+✅ INCLUDED IN PARSING:
+  FM25: Openings (doors, windows, garages)
+  FM32: LType (wall framing, studs)
+  FM42: Ladder (floor/ceiling joists)
+
+🔮 FUTURE EXTENSIBLE TYPES:
+  FM55: End Stud Assembly
+  FM60: Header Assembly
+  FM70: Trimmer Assembly
+
+💡 USAGE:
+  '05-100 fm'     → Complete FM analysis for panel 05-100
+  '05-100 fm 25'  → Only FM 25 analysis for panel 05-100
+  'panel [name]'  → Panel details
+
+========================================
+🎯 Ready for comprehensive Family Member analysis!
+========================================
+
+Exported from EHX Search Widget
+Date: 2025-09-16 11:29:59

@@ -1,0 +1,108 @@
+PROJECTNAME: "Blk194 - Unit 5 1ST"
+
+D: Very Top Plate
+S: 1ST
+M: 2x6 SPF PM No.2
+C: 1
+L:    2556 (mm)       8'-4-5/8"
+T:    2556 (mm)       8'-4-5/8"
+
+D: Top Plate
+S: 1ST
+M: 2x6 SPF PM No.2
+C: 1
+L:    2699 (mm)      8'-10-1/4"
+T:    2699 (mm)      8'-10-1/4"
+
+D: Bottom Plate
+S: 1ST
+M: 2x6 SPF PM No.2
+C: 1
+L:    2699 (mm)      8'-10-1/4"
+T:    2699 (mm)      8'-10-1/4"
+
+D: Critical Stud
+S: 1ST
+M: 2x6 SPF Stud
+C: 5
+L:    2657 (mm)       8'-8-5/8"
+P: 5
+
+D: King Stud
+S: 1ST
+M: 2x6 SPF Stud
+C: 7
+L:    2657 (mm)       8'-8-5/8"
+P: 7
+
+D: Trimmer
+S: 1ST
+M: 2x6 SPF Stud
+C: 4
+L:    1873 (mm)       6'-1-3/4"
+T:    7492 (mm)    24'-6-15/16"
+
+D: Trimmer
+S: 1ST
+M: 2x6 SPF Stud
+C: 4
+L:    2473 (mm)       8'-1-3/8"
+T:    9892 (mm)     32'-5-7/16"
+
+D: Header
+S: 1ST
+M: 2x8 SPF No.2
+C: 2
+L:    1445 (mm)       4'-8-7/8"
+T:    2890 (mm)       9'-5-3/4"
+
+D: Filler Cripple
+S: 1ST
+M: 2x6 SPF Stud
+C: 5
+L:     117 (mm)       0'-4-5/8"
+T:     585 (mm)     1'-11-1/16"
+
+D: Filler Bottom Nailer
+S: 1ST
+M: 2x6 SPF Stud
+C: 1
+L:    1292 (mm)       4'-2-7/8"
+T:    1292 (mm)       4'-2-7/8"
+
+D: Sheathing
+S: 1ST
+M: 7/16 4x9 OSB
+C: 1
+L:    1292 (mm)       4'-2-7/8"
+H:     387 (mm)       1'-3-1/4"
+X: 0.2
+
+D: Sheathing
+S: 1ST
+M: 7/16 4x9 OSB
+C: 1
+L:    2743 (mm)           9'-0"
+H:    1054 (mm)       3'-5-1/2"
+X: 1.0
+
+D: Sheathing
+S: 1ST
+M: 7/16 4x9 OSB
+C: 1
+L:    2743 (mm)           9'-0"
+H:     525 (mm)     1'-8-11/16"
+X: 0.5
+
+D: End Padding
+S: 1ST
+M: 5/8 GWB
+C: 1
+L:    2772 (mm)       9'-1-1/8"
+H:     140 (mm)       0'-5-1/2"
+X: 0.1
+
+
+DUPLICATE FILE PROCESSING REPORT
+===================================
+Processed files: 05-100.btl

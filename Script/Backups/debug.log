@@ -1,0 +1,69 @@
+=== Debug Log Started: 2025-09-11 14:11:44 ===
+2025-09-11 14:11:44 - INFO - Starting GUI creation...
+2025-09-11 14:11:44 - INFO - GUI created, starting mainloop...
+2025-09-11 14:11:47 - DEBUG - Detected EHX format: legacy
+2025-09-11 14:11:47 - DEBUG - Calculated squaring for panel 50e38fea-d8b3-4716-9c0c-996935136dff: 174.600 inches -> 14'-6-5/8"
+2025-09-11 14:11:47 - DEBUG - Panel 50e38fea-d8b3-4716-9c0c-996935136dff has 42 elevation views
+2025-09-11 14:11:47 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 1: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 3: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 4: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 5: min_y=0.0, max_y=29.5, height=29.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 6: min_y=92.5, max_y=108.0, height=15.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 7: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 8: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 9: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 10: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 11: min_y=1.5, max_y=8.75, height=7.25, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 12: min_y=1.5, max_y=8.75, height=7.25, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 13: min_y=8.75, max_y=10.25, height=1.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 14: min_y=10.25, max_y=106.125, height=95.875, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 15: min_y=10.25, max_y=106.125, height=95.875, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 16: min_y=10.25, max_y=106.125, height=95.875, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 17: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 18: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 19: min_y=1.5, max_y=98.875, height=97.375, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 20: min_y=98.875, max_y=106.125, height=7.25, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 21: min_y=98.875, max_y=106.125, height=7.25, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 22: min_y=98.875, max_y=106.125, height=7.25, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 23: min_y=1.5, max_y=98.875, height=97.375, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 24: min_y=1.5, max_y=28.0, height=26.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 25: min_y=28.0, max_y=29.5, height=1.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 26: min_y=29.5, max_y=92.5, height=63.0, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 27: min_y=92.5, max_y=94.0, height=1.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 28: min_y=94.0, max_y=98.875, height=4.875, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 29: min_y=1.5, max_y=28.0, height=26.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 30: min_y=94.0, max_y=98.875, height=4.875, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 31: min_y=1.5, max_y=28.0, height=26.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 32: min_y=94.0, max_y=98.875, height=4.875, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 33: min_y=1.5, max_y=28.0, height=26.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 34: min_y=94.0, max_y=98.875, height=4.875, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 35: min_y=1.5, max_y=28.0, height=26.5, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 36: min_y=94.0, max_y=98.875, height=4.875, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 37: min_y=1.5, max_y=98.875, height=97.375, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 38: min_y=1.5, max_y=98.875, height=97.375, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 39: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 40: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-11 14:11:47 - DEBUG - Elevation 41: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-11 14:11:47 - DEBUG - SubAssembly found - Family: 'BSMT-HDR', FamilyMember: '25', Label: '', Name: 'BSMT-HDR'
+2025-09-11 14:11:47 - DEBUG - SubAssembly found - Family: '49x63-L2', FamilyMember: '25', Label: '', Name: '49x63-L2'
+2025-09-11 14:11:47 - DEBUG - SubAssembly found - Family: 'LType', FamilyMember: '32', Label: '', Name: 'LType'
+2025-09-11 14:11:47 - DEBUG - Writing expected.log with 1 panels
+2025-09-11 14:11:47 - DEBUG - write_expected_and_materials_logs called with 1 panels
+2025-09-11 14:11:47 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-11 14:11:47 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-11 14:11:47 - DEBUG - Finished writing expected.log
+2025-09-11 14:11:47 - DEBUG - write_expected_and_materials_logs called with 1 panels
+2025-09-11 14:11:47 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-11 14:11:47 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-11 14:11:48 - DEBUG - Checking 37 materials for rough openings
+2025-09-11 14:11:48 - DEBUG - Found 42 elevation views
+2025-09-11 14:11:48 - DEBUG - Found rough opening: ['Rough Opening: BSMT-HDR', 'Size: 1.5 x 54.625', 'AFF: 1.5 (1-1/2")', 'Reference: G - Header']
+2025-09-11 14:11:48 - DEBUG - Found rough opening: ['Rough Opening: 49x63-L2', 'Size: 63 x 49', 'AFF: 92.5 (7\'-8-1/2")', 'Reference: F - Header']
+2025-09-11 14:11:48 - DEBUG - Total rough openings found: 2
+2025-09-11 14:11:48 - DEBUG - Added to GUI: ['Rough Opening: BSMT-HDR', 'Size: 1.5 x 54.625', 'AFF: 1.5 (1-1/2")', 'Reference: G - Header']
+2025-09-11 14:11:48 - DEBUG - Added to GUI: ['Rough Opening: 49x63-L2', 'Size: 63 x 49', 'AFF: 92.5 (7\'-8-1/2")', 'Reference: F - Header']
+2025-09-11 14:11:48 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-11 14:11:48 - DEBUG - Extracted 0 beam pockets for panel 50e38fea-d8b3-4716-9c0c-996935136dff
+2025-09-11 14:12:21 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets

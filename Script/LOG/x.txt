@@ -1,0 +1,60 @@
+File: 05-100
+
+Panel Details:
+Panel: 05-100
+• Panel: 05-100
+• Level: 1
+• Description: 1FW 2FD
+• Category: Exterior
+• Load Bearing: YES
+• Wall Length: 107.019 in   (8'-11")
+• Height: 109.125 in   (9'-1-1/8")
+• Squaring: 12'-7-3/4" in   (12'-7-3/4")
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing: 7/16" 4x9 OSB
+• Weight: 390 Lbs
+• Production Notes: Typar
+
+Beam Pocket Details:
+• Beam Pocket 1
+  AFF: 75.25 in (6'-3-1/4")
+  Opening Width: 3 in
+  Materials:
+    ├── D (3)
+    ├── E (2)
+
+• Beam Pocket 2
+  AFF: 75.25 in (6'-3-1/4")
+  Opening Width: 3 in
+  Materials:
+    ├── D (2)
+    ├── E (2)
+
+SubAssembly Details:
+• DR-9-ENT-L1
+   Materials:
+    ├── D (2)
+    ├── DR-9-ENT-L1 (1)
+    ├── F (4)
+    ├── G (2)
+    ├── L (5)
+    ├── M (1)
+
+• Critical Stud
+   Materials:
+    ├── H (4)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 8'-10-1/4"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 8'-10-1/4"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 8'-4-5/8"
+D - KingStud - 2x6 SPF Stud - (7) - 8'-8-5/8"
+E - Trimmer - 2x6 SPF Stud - (4) - 6'-1-3/4"
+F - Trimmer - 2x6 SPF Stud - (4) - 8'-1-3/8"
+G - Header - 2x8 SPF No.2 - (2) - 4'-8-7/8"
+H - CriticalStud - 2x6 SPF Stud - (5) - 8'-8-5/8"
+I - Sheathing - 7/16" 4x9 OSB - (1) - 9' x 1'-8-5/8"
+L - FillerCripple - 2x6 SPF Stud - (5) - 4-5/8"
+M - FillerBtmNailer - 2x6 SPF Stud - (1) - 4'-2-7/8"
+N - EndPadding - 5/8" 2x6 Padding - (1) - 9'-1-1/8"

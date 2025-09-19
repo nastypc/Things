@@ -75,15 +75,25 @@ def format_weight(value):
         return str(value)
 
 def sort_panel_names(panel_names):
-    """Sort panel names numerically (05-100, 05-101, etc.)."""
+    """Sort panel names numerically (05-100, 05-101, etc.) and simple numeric formats (100, 101, etc.)."""
     def panel_sort_key(panel_name):
-        # Extract numbers from panel names like "05-100", "05-101"
+        # Extract numbers from panel names like "05-100", "05-101", "B1_100", "B1_101"
         match = re.search(r'(\d+)-(\d+)', panel_name)
         if match:
             return (int(match.group(1)), int(match.group(2)))
         else:
-            # Fallback to alphabetical sorting
-            return (999, panel_name)
+            # Try to extract underscore-separated numbers (e.g., "B1_100")
+            match = re.search(r'_(\d+)', panel_name)
+            if match:
+                return (0, int(match.group(1)))
+            else:
+                # Try to extract single number from the string
+                match = re.search(r'(\d+)', panel_name)
+                if match:
+                    return (0, int(match.group(1)))
+                else:
+                    # Fallback to alphabetical sorting
+                    return (999, panel_name)
     
     return sorted(panel_names, key=panel_sort_key)
 
@@ -3808,8 +3818,13 @@ def make_gui():
 
             # Sort panels within each bundle
             for bundle_key, bundle_data in bundle_panels.items():
-                # Sort panels by numerical order (05-100, 05-101, etc.)
-                bundle_data['panels'] = sort_panel_names(bundle_data['panels'])
+                # Sort panels by numerical order using DisplayLabel (05-100, 05-101, etc.)
+                def sort_key_by_display(panel_name):
+                    obj = current_panels.get(panel_name, {})
+                    display_name = obj.get('DisplayLabel', panel_name)
+                    return sort_panel_names([display_name])[0]
+                
+                bundle_data['panels'] = sorted(bundle_data['panels'], key=sort_key_by_display)
 
             # Get all bundle keys and sort them by bundle number
             all_bundle_keys = sort_bundle_keys(bundle_panels.keys())

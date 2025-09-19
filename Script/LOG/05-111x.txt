@@ -1,0 +1,108 @@
+EHX Search Results Export
+==================================================
+
+EHX> Loaded SNO-L1-005008.EHX
+Found 37 panels and 5 bundles
+EHX Format: legacy
+Type your search query or use quick buttons above
+
+EHX> 05-111 sub
+🔧 SubAssembly Analysis for Panel: 05-111
+============================================================
+
+📊 Summary:
+  Total SubAssemblies: 3
+  Family Members: 2
+
+FAMILY MEMBER 32 (LType) SUBASSEMBLIES:
+---------------------------------------------
+
+• Critical Stud (GUID: 7ba65666...) (FM32) - Other
+   Associated Material Parts:
+    ├── K (3) - CriticalStud
+        - 2x6 SPF Stud
+
+• End Stud Assembly (GUID: 76e6dbe4...) (FM32) - Other
+   Associated Material Parts:
+    ├── J (1) - Stud
+        - 2x6 SPF Stud
+    ├── O (1) - EndPadding
+        - 5/8" 2x6 Padding
+
+FAMILY MEMBER 25 (Openings) SUBASSEMBLIES:
+---------------------------------------------
+
+• PATIO-6-0-LVL3 (GUID: a7bf4a54...) (FM25) - Other
+   Associated Material Parts:
+    ├── D (2) - KingStud
+        - 2x6 SPF Stud
+    ├── E (4) - Trimmer
+        - 2x6 SPF Stud
+    ├── F (2) - Header
+        - 1 3/4" x 9 1/2" (2.0E 3100) WestFraser LVL
+    ├── G (1) - Pad
+        - 2x6 SPF Stud
+    ├── H (1) - Pad
+        - 3/4" 4x8 OSB
+    ├── I (1) - Pad
+        - 3/8" 4x8 PLY
+    ├── P (1) - FillerBtmNailer
+        - 2x6 SPF Stud
+    ├── PATIO-6-0-LVL3 (1) - RoughOpening
+        - PATIO-6-0-LVL3
+
+============================================================
+🎯 Total: 3 SubAssemblies with 18 associated parts
+============================================================
+
+EHX> 05-111 sub
+🔧 SubAssembly Analysis for Panel: 05-111
+============================================================
+
+📊 Summary:
+  Total SubAssemblies: 3
+  Family Members: 2
+
+FAMILY MEMBER 32 (LType) SUBASSEMBLIES:
+---------------------------------------------
+
+• Critical Stud (GUID: 7ba65666...) (FM32) - Other
+   Associated Material Parts:
+    ├── K (3) - CriticalStud
+        - 2x6 SPF Stud
+
+• End Stud Assembly (GUID: 76e6dbe4...) (FM32) - Other
+   Associated Material Parts:
+    ├── J (1) - Stud
+        - 2x6 SPF Stud
+    ├── O (1) - EndPadding
+        - 5/8" 2x6 Padding
+
+FAMILY MEMBER 25 (Openings) SUBASSEMBLIES:
+---------------------------------------------
+
+• PATIO-6-0-LVL3 (GUID: a7bf4a54...) (FM25) - Other
+   Associated Material Parts:
+    ├── D (2) - KingStud
+        - 2x6 SPF Stud
+    ├── E (4) - Trimmer
+        - 2x6 SPF Stud
+    ├── F (2) - Header
+        - 1 3/4" x 9 1/2" (2.0E 3100) WestFraser LVL
+    ├── G (1) - Pad
+        - 2x6 SPF Stud
+    ├── H (1) - Pad
+        - 3/4" 4x8 OSB
+    ├── I (1) - Pad
+        - 3/8" 4x8 PLY
+    ├── P (1) - FillerBtmNailer
+        - 2x6 SPF Stud
+    ├── PATIO-6-0-LVL3 (1) - RoughOpening
+        - PATIO-6-0-LVL3
+
+============================================================
+🎯 Total: 3 SubAssemblies with 18 associated parts
+============================================================
+
+Exported from EHX Search Widget
+Date: 2025-09-15 11:58:03

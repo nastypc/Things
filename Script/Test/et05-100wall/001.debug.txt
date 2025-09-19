@@ -1,0 +1,224 @@
+BTL PROCESSING WORKFLOW
+==============================
+
+1. FILE DISCOVERY
+--------------------
+* Found 1 BTL file(s): 05-100.btl
+
+2. BTL FILE PROCESSING
+-------------------------
+   DEBUG: Starting to process 05-100.btl
+   Processing 05-100.btl...
+Function #4.1: Processing file 05-100.btl.
+Function #7: Rounded the last digit of a value and stripped leading zeros.
+Function #5.5: Created blocks with designation types.
+   DEBUG: File 05-100.btl -> storey_raw='1FW 2FD' -> storey_alias='1ST'
+   DEBUG: Created group for 05-100.btl: project='Blk194 - Unit 5', storey='1ST'
+Function #4.1: Processed files: 05-100.btl.
+DEBUG: Building blocks_by_storey from 1 project groups
+DEBUG: Processing group with storey_alias='1ST', blocks=35
+DEBUG: Final blocks_by_storey keys: ['1ST']
+DEBUG: Storey '1ST' has 35 blocks
+Function #9.11: Available designation types: {'Top Plate', 'Critical Stud', 'Header', 'Bottom Plate', 'Trimmer', 'Filler Bottom Nailer', 'End Padding', 'Sheathing', 'Very Top Plate', 'Filler Cripple', 'King Stud'}
+Function #9.10: Dynamically creating selection message.
+
+DESIGNATION TYPES:
+1: Very Top Plate
+2: Top Plate
+3: Bottom Plate
+4: Critical Stud
+5: King Stud
+6: Trimmer
+7: Header
+8: Filler Cripple
+9: Filler Bottom Nailer
+10: Sheathing
+11: End Padding
+
+MATERIAL TYPES (Found) - Framing:
+1: 2x6 SPF PM No.2
+2: 2x6 SPF Stud
+3: 2x8 SPF No.2
+
+MATERIAL TYPES (Found) - Sheathing/Pad:
+1: 7/16 4x9 OSB
+2: 5/8 GWB
+
+Function #9.12: Prompting user for selected categories with mode selection.
+DEBUG: Writing tabular output to P-OUT.TXT
+Function #3.3: Defined sort order for materials.
+Function #3.6: Sorted blocks using the sort key (designation and material).
+Function #3.7: Moved blocks with unmatched designation to the end of the list.
+DEBUG: Analyze step complete - P-OUT.TXT generated for GUI
+
+3. GUI - CROSS-REFERENCE SUMMARY
+================================================================================
+GUI: Found 11 unique designations:
+GUI:    1: Bottom Plate
+GUI:    2: Critical Stud
+GUI:    3: End Padding
+GUI:    4: Filler Bottom Nailer
+GUI:    5: Filler Cripple
+GUI:    6: Header
+GUI:    7: King Stud
+GUI:    8: Sheathing
+GUI:    9: Top Plate
+GUI:   10: Trimmer
+GUI:   11: Very Top Plate
+
+GUI: Found 5 unique materials:
+GUI:    1: 2x6 SPF PM No.2
+
+GUI: Cross-reference mapping (11 designations):
+GUI:   Bottom Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI:   Critical Stud:
+GUI:     - 2x6 SPF Stud
+GUI:   End Padding:
+GUI:     - 5/8 GWB
+GUI:   Filler Bottom Nailer:
+GUI:     - 2x6 SPF Stud
+GUI:   Filler Cripple:
+GUI:     - 2x6 SPF Stud
+GUI:   Header:
+GUI:     - 2x8 SPF No.2
+GUI:   King Stud:
+GUI:     - 2x6 SPF Stud
+GUI:   Sheathing:
+GUI:     - 7/16 4x9 OSB
+GUI:   Top Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI:   Trimmer:
+GUI:     - 2x6 SPF Stud
+GUI:   Very Top Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI: Cross-reference analysis complete
+================================================================================
+GUI:    2: 2x6 SPF Stud
+
+GUI: Cross-reference mapping (11 designations):
+GUI:   Bottom Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI:   Critical Stud:
+GUI:     - 2x6 SPF Stud
+GUI:   End Padding:
+GUI:     - 5/8 GWB
+GUI:   Filler Bottom Nailer:
+GUI:     - 2x6 SPF Stud
+GUI:   Filler Cripple:
+GUI:     - 2x6 SPF Stud
+GUI:   Header:
+GUI:     - 2x8 SPF No.2
+GUI:   King Stud:
+GUI:     - 2x6 SPF Stud
+GUI:   Sheathing:
+GUI:     - 7/16 4x9 OSB
+GUI:   Top Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI:   Trimmer:
+GUI:     - 2x6 SPF Stud
+GUI:   Very Top Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI: Cross-reference analysis complete
+================================================================================
+GUI:    3: 2x8 SPF No.2
+
+GUI: Cross-reference mapping (11 designations):
+GUI:   Bottom Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI:   Critical Stud:
+GUI:     - 2x6 SPF Stud
+GUI:   End Padding:
+GUI:     - 5/8 GWB
+GUI:   Filler Bottom Nailer:
+GUI:     - 2x6 SPF Stud
+GUI:   Filler Cripple:
+GUI:     - 2x6 SPF Stud
+GUI:   Header:
+GUI:     - 2x8 SPF No.2
+GUI:   King Stud:
+GUI:     - 2x6 SPF Stud
+GUI:   Sheathing:
+GUI:     - 7/16 4x9 OSB
+GUI:   Top Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI:   Trimmer:
+GUI:     - 2x6 SPF Stud
+GUI:   Very Top Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI: Cross-reference analysis complete
+================================================================================
+GUI:    4: 5/8 GWB
+
+GUI: Cross-reference mapping (11 designations):
+GUI:   Bottom Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI:   Critical Stud:
+GUI:     - 2x6 SPF Stud
+GUI:   End Padding:
+GUI:     - 5/8 GWB
+GUI:   Filler Bottom Nailer:
+GUI:     - 2x6 SPF Stud
+GUI:   Filler Cripple:
+GUI:     - 2x6 SPF Stud
+GUI:   Header:
+GUI:     - 2x8 SPF No.2
+GUI:   King Stud:
+GUI:     - 2x6 SPF Stud
+GUI:   Sheathing:
+GUI:     - 7/16 4x9 OSB
+GUI:   Top Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI:   Trimmer:
+GUI:     - 2x6 SPF Stud
+GUI:   Very Top Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI: Cross-reference analysis complete
+================================================================================
+GUI:    5: 7/16 4x9 OSB
+
+GUI: Cross-reference mapping (11 designations):
+GUI:   Bottom Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI:   Critical Stud:
+GUI:     - 2x6 SPF Stud
+GUI:   End Padding:
+GUI:     - 5/8 GWB
+GUI:   Filler Bottom Nailer:
+GUI:     - 2x6 SPF Stud
+GUI:   Filler Cripple:
+GUI:     - 2x6 SPF Stud
+GUI:   Header:
+GUI:     - 2x8 SPF No.2
+GUI:   King Stud:
+GUI:     - 2x6 SPF Stud
+GUI:   Sheathing:
+GUI:     - 7/16 4x9 OSB
+GUI:   Top Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI:   Trimmer:
+GUI:     - 2x6 SPF Stud
+GUI:   Very Top Plate:
+GUI:     - 2x6 SPF PM No.2
+GUI: Cross-reference analysis complete
+================================================================================
+14:36:15 [PROCESS] User clicked Process. Output generation started.
+Function #9.12: Prompting user for selected categories with mode selection.
+Function #9.13: User Selection Bypassed - No selections made.
+Function #9.14: Skipping UserSelectionOUT.txt generation.
+Function #9.15: Generating M-TAKEOFF.txt only.
+DEBUG: Generating M-TAKEOFF.txt from existing P-OUT.TXT
+Function #9.25: Starting to generate M-TAKEOFF.txt.
+Function #9.19: Writing TOTAL NUMBER OF SHEETS to M-TAKEOFF.txt.
+Function #9.20: Writing TOTAL LINEAR LENGTHS to M-TAKEOFF.txt.
+Function #9.21: Writing PRE-CUT STUDS to M-TAKEOFF.txt.
+Function #9.26: Finished generating M-TAKEOFF.txt.
+DEBUG: Generating PDF M-TAKEOFF from existing P-OUT.TXT
+DEBUG: Starting PDF M-TAKEOFF generation
+DEBUG: PDF saved as M-TAKEOFF.pdf
+DEBUG: PDF opened automatically
+DEBUG: PDF M-TAKEOFF generation completed
+DUPLICATE FILE PROCESSING REPORT
+===================================
+Processed files: 05-100.btl
+GUI: Debug log written to 001.debug.txt

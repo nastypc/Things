@@ -1,0 +1,29 @@
+File: 05-117
+
+Panel Details:
+Panel: 05-117
+• Panel: 05-117
+• Level: 1
+• Description: 1FW 2FD
+• Category: Exterior
+• Load Bearing: YES
+• Wall Length: 89.214 in   (7'-5-1/4")
+• Height: 109.125 in   (9'-1-1/8")
+• Squaring: 11'-7-3/4" in   (11'-7-3/4")
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing: 7/16" 4x9 OSB
+• Weight: 222 Lbs
+SubAssembly Details:
+• Critical Stud
+   Materials:
+    ├── E (4)
+
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 7'-5"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 7'-5"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 5'-5"
+D - Stud - 2x6 SPF Stud - (7) - 8'-8-5/8"
+E - CriticalStud - 2x6 SPF Stud - (4) - 8'-8-5/8"
+F - Sheathing - 7/16" 4x9 OSB - (1) - 9' x 3'-9-1/4"

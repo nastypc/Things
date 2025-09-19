@@ -1,0 +1,57 @@
+EHX Search Results Export
+==================================================
+
+EHX> Loaded L1-Blk3 - Unit 14 - 2017 Int Elev. A Rev-004190.EHX
+Found 31 panels and 3 bundles
+EHX Format: legacy
+Type your search query or use quick buttons above
+
+EHX> 14_125 sub
+🔧 SubAssembly Analysis for Panel: 14_125
+============================================================
+
+📊 Summary:
+  Total SubAssemblies: 3
+  Family Members: 2
+
+FAMILY MEMBER 32 (LType) SUBASSEMBLIES:
+---------------------------------------------
+
+• End Stud Assembly (GUID: d809d97e...) (FM32) - Other
+   Associated Material Parts:
+    ├── G (1) - Stud
+        - 2x6 SPF Stud
+    ├── O (1) - EndPadding
+        - 5/8" 2x6 Padding
+
+• Tee (GUID: 4f3c5726...) (FM32) - Other
+   Associated Material Parts:
+    ├── G (3) - Stud
+        - 2x6 SPF Stud
+    ├── H (1) - FlatStud
+        - 2x4 SPF Stud
+
+FAMILY MEMBER 25 (Openings) SUBASSEMBLIES:
+---------------------------------------------
+
+• GMD-L1 (GUID: 109d2e54...) (FM25) - Other
+   Associated Material Parts:
+    ├── D (2) - KingStud
+        - 2x6 SPF Stud
+    ├── E (4) - Trimmer
+        - 2x6 SPF Stud
+    ├── F (2) - Header
+        - 2x8 SPF No.2
+    ├── GMD-L1 (1) - RoughOpening
+        - GMD-L1
+    ├── P (4) - FillerCripple
+        - 2x6 SPF Stud
+    ├── Q (1) - FillerBtmNailer
+        - 2x6 SPF Stud
+
+============================================================
+🎯 Total: 3 SubAssemblies with 20 associated parts
+============================================================
+
+Exported from EHX Search Widget
+Date: 2025-09-15 13:39:04

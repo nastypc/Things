@@ -1,0 +1,1277 @@
+
+=== L2-Tribute CG Blk 159 Unit 46.log updated at 2025-09-09 14:12:36 for L2-Tribute CG Blk 159 Unit 46.EHX ===
+File Location: Z:/Hornet Jobs/Tribute-Courtice
+
+=== V2.0 DIAGNOSTIC INFO ===
+Junctions found: 41
+Bundles found: 4
+Total panels: 41
+Panels assigned: 41
+Panels unassigned: 0
+Junction mappings: 41
+Bundle layer mappings: {}
+========================
+
+Panel: 46_200
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 122.55 (10'-2-1/2")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 12'-11-1/2"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Weight: 434 Lbs
+• Rough Opening: 49x63-L2 - 62.992 x 49.015 (AFF: 82.0 (6'-10")) [Headers: F]
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── I (10)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 10'-2-1/2"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 10'-2-1/2"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 10'-2-1/2"
+D - KingStud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+E - Trimmer - 2x6 SPF No.2 - (4) - 7'-1-3/8"
+F - Header - 2x8 SPF No.2 - (3) - 4'-7"
+G - WindowSill - 2x6 SPF No.2 - (1) - 4'-1"
+H - SillCripple - 2x6 SPF No.2 - (5) - 1'-4"
+I - Stud - 2x6 SPF Stud - (10) - 7'-8-5/8"
+J - CriticalStud - 2x6 SPF No.2 - (2) - 7'-8-5/8"
+K - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 3'-1-1/2"
+S - FillerCripple - 2x6 SPF No.2 - (5) - 3-3/8"
+T - FillerBtmNailer - 2x6 SPF No.2 - (1) - 4'-1"
+---
+Panel: 46_201
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 68.214 (5'-8-1/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 9'-9-1/2"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Weight: 214 Lbs
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (8)
+    ├── E (2)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 5'-8-1/4"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 5'-8-1/4"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 5'-8"
+D - Stud - 2x6 SPF Stud - (8) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+F - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 1'-11-3/4"
+H - Bracing -  (1)
+---
+Panel: 46_202
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 106.738 (8'-10-3/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 11'-11-1/4"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Weight: 310 Lbs
+• Rough Opening: 73x49-L1 - 49.015 x 73.031 (AFF: 82.0 (6'-10")) [Headers: F]
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── I (2)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 9'-3-5/8"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 9'-3-5/8"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 10'-2-1/2"
+D - KingStud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+E - Trimmer - 2x6 SPF No.2 - (4) - 7'-1-3/8"
+F - Header - 2x8 SPF No.2 - (2) - 6'-7"
+G - WindowSill - 2x6 SPF No.2 - (1) - 6'-1"
+H - SillCripple - 2x6 SPF No.2 - (6) - 2'-6"
+I - Stud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+J - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 1'-11"
+R - FillerCripple - 2x6 SPF No.2 - (2) - 3-3/8"
+R - FillerCripple - 2x6 SPF No.2 - (4) - 3-3/8"
+S - FillerBtmNailer - 2x6 SPF No.2 - (1) - 6'-1"
+---
+Panel: 46_203
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 108.531 (9'-1/2")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 12'-5/8"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Weight: 326 Lbs
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (13)
+    ├── E (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 9'-1/2"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 9'-1/2"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 6'-6-3/4"
+D - Stud - 2x6 SPF Stud - (13) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+F - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 1'-1/2"
+---
+Panel: 46_204
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 95.866 (7'-11-7/8")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 11'-3-3/8"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Weight: 238 Lbs
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (7)
+    ├── E (2)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 7'-11-7/8"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 7'-11-7/8"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 3'-11-5/8"
+D - Stud - 2x6 SPF Stud - (7) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+F - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 4'
+---
+Panel: 46_205
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 126.018 (10'-6")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 13'-2-1/4"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Weight: 340 Lbs
+• Rough Opening: 49x49-L1 - 49 x 49 (AFF: 82.0 (6'-10")) [Headers: F]
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── I (6)
+    ├── J (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 10'-5-7/8"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 10'-5-7/8"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 6'-5-3/4"
+D - KingStud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+E - Trimmer - 2x6 SPF No.2 - (2) - 7'-1-3/8"
+F - Header - 2x8 SPF No.2 - (2) - 4'-4"
+G - WindowSill - 2x6 SPF No.2 - (1) - 4'-1"
+H - SillCripple - 2x6 SPF No.2 - (5) - 2'-6"
+I - Stud - 2x6 SPF Stud - (6) - 7'-8-5/8"
+J - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+K - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 3'-3"
+S - FillerCripple - 2x6 SPF No.2 - (5) - 3-3/8"
+T - FillerBtmNailer - 2x6 SPF No.2 - (1) - 4'-1"
+---
+Panel: 46_206
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 103.466 (8'-7-1/2")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 11'-8-7/8"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Weight: 290 Lbs
+• Rough Opening: 25x37-L1 - 37 x 25 (AFF: 82.0 (6'-10")) [Headers: F]
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── I (6)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 8'-7-1/4"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 8'-7-1/4"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 4'-7-1/4"
+D - KingStud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+E - Trimmer - 2x6 SPF No.2 - (2) - 7'-1-3/8"
+F - Header - 2x8 SPF No.2 - (2) - 2'-4"
+G - WindowSill - 2x6 SPF No.2 - (1) - 2'-1"
+H - SillCripple - 2x6 SPF No.2 - (3) - 3'-6"
+I - Stud - 2x6 SPF Stud - (6) - 7'-8-5/8"
+J - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 8"
+T - FillerCripple - 2x6 SPF No.2 - (3) - 3-3/8"
+U - FillerBtmNailer - 2x6 SPF No.2 - (1) - 2'-1"
+---
+Panel: 46_207
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 90.648 (7'-6-5/8")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 10'-11-3/4"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Weight: 230 Lbs
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (7)
+    ├── E (2)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 7'-6-1/2"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 7'-6-1/2"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 3'-6-3/8"
+D - Stud - 2x6 SPF Stud - (7) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+F - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 10-1/2"
+---
+Panel: 46_208
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 101.368 (8'-5-3/8")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 11'-7-3/8"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Weight: 246 Lbs
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (8)
+    ├── E (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 8'-5-1/4"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 8'-5-1/4"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 5'-11-5/8"
+D - Stud - 2x6 SPF Stud - (8) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+F - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 1'-3-7/8"
+---
+Panel: 46_209
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 107.122 (8'-11-1/8")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 11'-11-5/8"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Weight: 394 Lbs
+• Rough Opening: 49x37-L1 - 37 x 49 (AFF: 82.0 (6'-10")) [Headers: F]
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── I (10)
+    ├── J (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 8'-11-1/8"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 8'-11-1/8"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 9'-4-1/2"
+D - KingStud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+E - Trimmer - 2x6 SPF No.2 - (2) - 7'-1-3/8"
+F - Header - 2x8 SPF No.2 - (2) - 4'-4"
+G - WindowSill - 2x6 SPF No.2 - (1) - 4'-1"
+H - SillCripple - 2x6 SPF No.2 - (5) - 3'-6"
+I - Stud - 2x6 SPF Stud - (10) - 7'-8-5/8"
+J - FlatStud - 2x4 SPF Stud - (1) - 7'-8-5/8"
+K - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 1'-4"
+U - FillerCripple - 2x6 SPF No.2 - (5) - 3-3/8"
+V - FillerBtmNailer - 2x6 SPF No.2 - (1) - 4'-1"
+---
+Panel: 46_211
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 78.868 (6'-6-7/8")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 10'-4"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 7/16" 4x8 OSB
+• Weight: 140 Lbs
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (6)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 6'-7-7/8"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 7'-1-1/8"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 5'-1"
+D - Stud - 2x6 SPF Stud - (6) - 7'-8-5/8"
+E - Sheathing - 7/16" 4x8 OSB - (1) - 8' x 3'-2-3/8"
+---
+Panel: 46_212
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 112.749 (9'-4-3/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 12'-3-3/4"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 7/16" 4x8 OSB
+• Weight: 240 Lbs
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (8)
+    ├── E (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 9'-4-5/8"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 9'-4-5/8"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 5'-4-1/2"
+D - Stud - 2x6 SPF Stud - (8) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+F - CriticalStud - 2x6 SPF No.2 - (3) - 7'-8-5/8"
+G - Sheathing - 7/16" 4x8 OSB - (1) - 8' x 2'-7-7/8"
+---
+Panel: 46_213
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 121.669 (10'-1-3/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 12'-10-3/4"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 7/16" 4x8 OSB
+• Weight: 240 Lbs
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (10)
+    ├── E (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 10'-1-1/2"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 10'-1-1/2"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 7'-8"
+D - Stud - 2x6 SPF Stud - (10) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+F - Rung - 2x6 SPF No.2 - (3) - 1'-2-1/2"
+G - Sheathing - 7/16" 4x8 OSB - (1) - 8' x 2'-7-1/8"
+---
+Panel: 46_214
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 14.585 (1'-2-1/2")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 8'-3/4"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 7/16" 4x8 OSB
+• Weight: 46 Lbs
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (2)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 1'-2"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 1'-2"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 1'-3-3/4"
+D - Stud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+E - Sheathing - 7/16" 4x8 OSB - (1) - 8' x 1'-2"
+G - EndPadding - 5/8" 2x6 Padding - (1) - 8'-1-1/8"
+---
+Panel: 46_239
+Level: 2
+Description: 2FW 3FD
+Bundle: -B1 (2x6 Ext)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 63.5 (5'-3-1/2")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 9'-6-3/4"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 7/16" 4x8 OSB
+• Weight: 138 Lbs
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (6)
+    ├── E (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 5'-3-1/2"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 5'-3-1/2"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 2'-9-3/4"
+D - Stud - 2x6 SPF Stud - (6) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+F - Sheathing - 7/16" 4x8 OSB - (1) - 8' x 3'-6-3/4"
+---
+Panel: 46_215
+Level: 2
+Description: 2FW 3FD
+Bundle: -B2 (2x4 PW)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 117.068 (9'-9")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 12'-7-1/4"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/4" 4x8 OSB
+• Weight: 162 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (9)
+    ├── E (1)
+    ├── F (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 9'-9"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 9'-9"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 9'-5-1/2"
+D - Stud - 2x4 SPF Stud - (9) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+F - FlatStud - 2x4 SPF Stud - (1) - 7'-8-5/8"
+G - Rung - 2x4 SPF Stud - (6) - 1'-2-1/2"
+H - CriticalStud - 2x4 SPF Stud - (1) - 7'-8-5/8"
+I - Sheathing - 1/4" 4x8 OSB - (1) - 1' x 2'-6-3/4"
+K - Bracing -  (1)
+---
+Panel: 46_240
+Level: 2
+Description: 2FW 3FD
+Bundle: -B2 (2x4 PW)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 62.829 (5'-2-3/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 9'-6-1/2"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/4" 4x8 OSB
+• Weight: 128 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (7)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 5'-2-3/4"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 5'-2-3/4"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 3'-6"
+D - Stud - 2x6 SPF Stud - (7) - 7'-8-5/8"
+E - Sheathing - 1/4" 4x8 OSB - (1) - 1' x 5'-2-3/4"
+F - Bracing -  (1)
+---
+Panel: 46_216
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 99.158 (8'-3-1/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 11'-5-3/4"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 100 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (8)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 8'-3"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 8'-3"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 8'-3"
+D - Stud - 2x4 SPF Stud - (8) - 7'-8-5/8"
+---
+Panel: 46_217
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 121.824 (10'-1-3/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 12'-10-7/8"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 180 Lbs
+• Production Notes: Poly
+• Rough Opening: (2)DR-4 - 82.999 x 50.5 (AFF: 82.999 (6'-11"))
+• Rough Opening: DR-3 - 82.999 x 32.5 (AFF: 82.999 (6'-11"))
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── F (4)
+    ├── G (1)
+    ├── H (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 10'-2-1/4"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 10'-2-1/4"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 10'-2-1/4"
+D - KingStud - 2x4 SPF Stud - (8) - 7'-8-5/8"
+E - HeaderCripple - 2x4 SPF Stud - (4) - 9-5/8"
+F - Stud - 2x4 SPF Stud - (4) - 7'-8-5/8"
+G - FlatStud - 2x4 SPF Stud - (1) - 7'-8-5/8"
+H - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+I - FillerCripple - 2x4 SPF Stud - (5) - 9-5/8"
+J - HeaderBtmNailer - 2x4 SPF Stud - (1) - 2'-8-1/2"
+K - HeaderBtmNailer - 2x4 SPF Stud - (1) - 4'-2-1/2"
+---
+Panel: 46_218
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 24.524 (2'-1/2")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 8'-2-3/4"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 34 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (3)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 2'-3/8"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 2'-3/8"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 2'-3/8"
+D - Stud - 2x4 SPF Stud - (3) - 7'-8-5/8"
+---
+Panel: 46_219
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 70.301 (5'-10-1/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 9'-10-3/4"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 104 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (6)
+    ├── E (1)
+    ├── F (2)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 5'-10-3/4"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 5'-10-3/4"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 5'-10-3/4"
+D - Stud - 2x4 SPF Stud - (6) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+F - FlatStud - 2x4 SPF Stud - (2) - 7'-8-5/8"
+---
+Panel: 46_220
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 68.031 (5'-8")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 9'-9-3/8"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 100 Lbs
+• Production Notes: Poly
+• Rough Opening: (2)DR-4 - 82.999 x 50.5 (AFF: 82.999 (6'-11"))
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── F (3)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 5'-7-1/2"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 5'-7-1/2"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 5'-6"
+D - KingStud - 2x4 SPF Stud - (4) - 7'-8-5/8"
+E - HeaderCripple - 2x4 SPF Stud - (2) - 9-5/8"
+F - Stud - 2x4 SPF Stud - (3) - 7'-8-5/8"
+G - EndPadding - 5/8" 2x4 Padding - (1) - 7'-11-5/8"
+H - FillerCripple - 2x4 SPF Stud - (4) - 9-5/8"
+I - HeaderBtmNailer - 2x4 SPF Stud - (1) - 4'-2-1/2"
+---
+Panel: 46_221
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 28.015 (2'-4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 8'-3-5/8"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 44 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (3)
+    ├── E (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 2'-4"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 2'-4"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 2'-4"
+D - Stud - 2x4 SPF Stud - (3) - 7'-8-5/8"
+E - FlatStud - 2x4 SPF Stud - (1) - 7'-8-5/8"
+---
+Panel: 46_222
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 110.457 (9'-2-1/2")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 12'-2-1/8"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 124 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (9)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 9'-1-3/4"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 9'-1-3/4"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 9'-1-3/4"
+D - Stud - 2x4 SPF Stud - (9) - 7'-8-5/8"
+E - Rung - 2x4 SPF Stud - (3) - 1'-2-1/2"
+F - EndPadding - 5/8" 2x4 Padding - (1) - 8'-1-1/8"
+---
+Panel: 46_223
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 117.314 (9'-9-1/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 12'-7-3/8"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 170 Lbs
+• Production Notes: Poly
+• Rough Opening: DR-8 - 82.999 x 30.5 (AFF: 82.999 (6'-11"))
+• Rough Opening: DR-3 - 82.999 x 32.5 (AFF: 82.999 (6'-11"))
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── F (5)
+    ├── G (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 9'-9-1/4"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 9'-9-1/4"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 9'-9-1/4"
+D - KingStud - 2x4 SPF Stud - (8) - 7'-8-5/8"
+E - HeaderCripple - 2x4 SPF Stud - (4) - 9-5/8"
+F - Stud - 2x4 SPF Stud - (5) - 7'-8-5/8"
+G - FlatStud - 2x4 SPF Stud - (1) - 7'-8-5/8"
+H - FillerCripple - 2x4 SPF Stud - (4) - 9-5/8"
+I - HeaderBtmNailer - 2x4 SPF Stud - (1) - 2'-6-1/2"
+J - HeaderBtmNailer - 2x4 SPF Stud - (1) - 2'-8-1/2"
+---
+Panel: 46_224
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 143.695 (11'-11-3/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 14'-4-5/8"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 186 Lbs
+• Production Notes: Poly
+• Rough Opening: (2)DR-4 - 82.999 x 50.5 (AFF: 82.999 (6'-11"))
+• Rough Opening: FA-5-0 - 82.999 x 62.5 (AFF: 82.999 (6'-11"))
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── F (3)
+    ├── G (2)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 11'-11-1/2"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 11'-11-1/2"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 11'-11-1/2"
+D - KingStud - 2x4 SPF Stud - (8) - 7'-8-5/8"
+E - HeaderCripple - 2x4 SPF Stud - (4) - 9-5/8"
+F - Stud - 2x4 SPF Stud - (3) - 7'-8-5/8"
+G - FlatStud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+H - FillerCripple - 2x4 SPF Stud - (6) - 9-5/8"
+I - HeaderBtmNailer - 2x4 SPF Stud - (1) - 4'-2-1/2"
+J - HeaderBtmNailer - 2x4 SPF Stud - (1) - 5'-2-1/2"
+---
+Panel: 46_225
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 90.353 (7'-6-3/8")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 10'-11-1/2"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Weight: 152 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (8)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 7'-6-1/4"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 7'-6-1/4"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 7'-6-1/4"
+D - Stud - 2x6 SPF Stud - (8) - 7'-8-5/8"
+---
+Panel: 46_226
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 34.37 (2'-10-3/8")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 8'-5-5/8"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 62 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (4)
+    ├── E (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 2'-8"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 2'-8"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 2'-8"
+D - Stud - 2x4 SPF Stud - (4) - 7'-8-5/8"
+E - FlatStud - 2x4 SPF Stud - (1) - 7'-8-5/8"
+F - EndPadding - 5/8" 2x4 Padding - (1) - 8'-1-1/8"
+---
+Panel: 46_227
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 16.325 (1'-4-1/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 8'-1"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 54 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── E (3)
+    ├── F (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 1'-3-3/4"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 1'-3-3/4"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 1'-3-3/4"
+D - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 4-3/4"
+E - Stud - 2x4 SPF Stud - (3) - 7'-8-5/8"
+F - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+G - EndPadding - 5/8" 2x4 Padding - (1) - 8'-1-1/8"
+---
+Panel: 46_228
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 90.353 (7'-6-3/8")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 10'-11-1/2"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 118 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (8)
+    ├── E (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 7'-5-5/8"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 7'-5-5/8"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 7'-5-5/8"
+D - Stud - 2x4 SPF Stud - (8) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+F - EndPadding - 5/8" 2x4 Padding - (1) - 8'-1-1/8"
+---
+Panel: 46_229
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 62.248 (5'-2-1/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 9'-6-1/8"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 72 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (6)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 5'-2-1/8"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 5'-2-1/8"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 5'-2-1/8"
+D - Stud - 2x4 SPF Stud - (6) - 7'-8-5/8"
+---
+Panel: 46_230
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 122.518 (10'-2-1/2")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 12'-11-1/2"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 152 Lbs
+• Production Notes: Poly
+• Rough Opening: 49x49 - 49 x 49 (AFF: 82.0 (6'-10"))
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── H (6)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 10'-2-3/8"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 10'-2-3/8"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 10'-2-3/8"
+D - KingStud - 2x4 SPF Stud - (4) - 7'-8-5/8"
+E - WindowSill - 2x4 SPF Stud - (1) - 4'-1"
+F - SillCripple - 2x4 SPF Stud - (5) - 2'-6"
+G - HeaderCripple - 2x4 SPF Stud - (2) - 10-5/8"
+H - Stud - 2x4 SPF Stud - (6) - 7'-8-5/8"
+I - FillerCripple - 2x4 SPF Stud - (3) - 10-5/8"
+J - HeaderBtmNailer - 2x4 SPF Stud - (1) - 4'-1"
+---
+Panel: 46_231
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 71.963 (6')
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 9'-11-3/4"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 102 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (6)
+    ├── E (2)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 6'
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 6'
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 6'
+D - Stud - 2x4 SPF Stud - (6) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+---
+Panel: 46_232
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 106.966 (8'-11")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 11'-11-1/2"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 134 Lbs
+• Production Notes: Poly
+• Rough Opening: DR-2 - 82.999 x 34.5 (AFF: 82.999 (6'-11"))
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── F (6)
+    ├── G (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 8'-11"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 8'-11"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 8'-11"
+D - KingStud - 2x4 SPF Stud - (4) - 7'-8-5/8"
+E - HeaderCripple - 2x4 SPF Stud - (2) - 9-5/8"
+F - Stud - 2x4 SPF Stud - (6) - 7'-8-5/8"
+G - FlatStud - 2x4 SPF Stud - (1) - 7'-8-5/8"
+H - FillerCripple - 2x4 SPF Stud - (2) - 9-5/8"
+I - HeaderBtmNailer - 2x4 SPF Stud - (1) - 2'-10-1/2"
+---
+Panel: 46_233
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 72.443 (6'-1/2")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 10'
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 96 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (6)
+    ├── E (1)
+    ├── F (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 6'-1/4"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 6'-1/4"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 6'-1/4"
+D - Stud - 2x4 SPF Stud - (6) - 7'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+F - FlatStud - 2x4 SPF Stud - (1) - 7'-8-5/8"
+---
+Panel: 46_234
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 143.734 (11'-11-3/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 14'-4-5/8"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 204 Lbs
+• Production Notes: Poly
+• Rough Opening: DR-2 - 82.999 x 34.5 (AFF: 82.999 (6'-11"))
+• Rough Opening: DR-8 - 82.999 x 30.5 (AFF: 82.999 (6'-11"))
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── F (4)
+    ├── G (1)
+    ├── H (2)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 11'-11"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 11'-11"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 11'-11"
+D - KingStud - 2x4 SPF Stud - (8) - 7'-8-5/8"
+E - HeaderCripple - 2x4 SPF Stud - (4) - 9-5/8"
+F - Stud - 2x4 SPF Stud - (4) - 7'-8-5/8"
+G - FlatStud - 2x4 SPF Stud - (1) - 7'-8-5/8"
+H - FlatStud - 2x6 SPF Stud - (2) - 7'-8-5/8"
+I - FillerCripple - 2x4 SPF Stud - (4) - 9-5/8"
+J - HeaderBtmNailer - 2x4 SPF Stud - (1) - 2'-10-1/2"
+K - HeaderBtmNailer - 2x4 SPF Stud - (1) - 2'-6-1/2"
+L - EndPadding - 5/8" 2x4 Padding - (1) - 8'-1-1/8"
+---
+Panel: 46_235
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 136.902 (11'-4-7/8")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 13'-11"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 166 Lbs
+• Production Notes: Poly
+• Rough Opening: DR-8 - 82.999 x 30.5 (AFF: 82.999 (6'-11"))
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── F (8)
+    ├── G (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 11'-4-3/4"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 11'-4-3/4"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 11'-4-3/4"
+D - KingStud - 2x4 SPF Stud - (4) - 7'-8-5/8"
+E - HeaderCripple - 2x4 SPF Stud - (2) - 9-5/8"
+F - Stud - 2x4 SPF Stud - (8) - 7'-8-5/8"
+G - FlatStud - 2x6 SPF Stud - (1) - 7'-8-5/8"
+H - FillerCripple - 2x4 SPF Stud - (2) - 9-5/8"
+I - HeaderBtmNailer - 2x4 SPF Stud - (1) - 2'-6-1/2"
+---
+Panel: 46_236
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 46.114 (3'-10-1/8")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 8'-10-1/4"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 48 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (4)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 3'-10-1/8"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 3'-10-1/8"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 3'-10-1/8"
+D - Stud - 2x4 SPF Stud - (4) - 7'-8-5/8"
+---
+Panel: 46_237
+Level: 2
+Description: 2FW 3FD
+Bundle: -B3 (2x4 Int)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 40.279 (3'-4-1/4")
+• Height: 97.125 (8'-1-1/8")
+• Squaring: 8'-7-3/4"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 56 Lbs
+• Production Notes: Poly
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (4)
+    ├── E (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 3'-4-1/4"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 3'-4-1/4"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 3'-4-1/4"
+D - Stud - 2x4 SPF Stud - (4) - 7'-8-5/8"
+E - FlatStud - 2x4 SPF Stud - (1) - 7'-8-5/8"
+---
+Panel: 46_210
+Level: 2
+Description: 2FW 3FD
+Bundle: -B4(HB)
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 114.554 (9'-6-1/2")
+• Height: 88.375 (7'-4-3/8")
+• Squaring: 11'-11-3/4"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 1/2" BP R1.5 4x8
+• Weight: 424 Lbs
+• Rough Opening: 61x45-L2 CANT - 45 x 61 (AFF: 82.0 (6'-10")) [Headers: E]
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── I (1)
+    ├── J (7)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 9'-6-1/2"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 9'-4-7/8"
+C - VeryTopPlate - 2x6 SPF Stud - (1) - 9'-6-3/8"
+D - KingStud - 2x6 SPF Stud - (6) - 7'-1-3/8"
+E - Header - 2x8 SPF No.2 - (3) - 10'-11-3/8"
+F - WindowSill - 2x6 SPF No.2 - (1) - 5'-1"
+G - SillCripple - 2x6 SPF No.2 - (5) - 2'-10"
+H - HeaderCripple - 2x6 SPF No.2 - (2) - 3-3/8"
+I - Stud - 2x6 SPF Stud - (1) - 7'-10-1/8"
+J - Stud - 2x6 SPF Stud - (7) - 7'-1-3/8"
+K - Sheathing - 1/2" BP R1.5 4x8 - (1) - 8' x 6"
+S - FillerCripple - 2x6 SPF No.2 - (3) - 3-3/8"
+T - HeaderBtmNailer - 2x6 SPF No.2 - (1) - 5'-1"
+---
+Panel: 46_238
+Level: 2
+Description: 2FW 3FD
+Bundle: -B4(HB)
+Panel Details:
+• Category: Interior
+• Load Bearing: NO
+• Length: 36.975 (3'-1")
+• Height: 42 (3'-6")
+• Squaring: 4'-6-3/4"
+• Thickness: 3.5
+• Stud Spacing: 16
+• Weight: 28 Lbs
+
+Subcomponent Details:
+• LType
+   Materials:
+    ├── D (5)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x4 SPF PM No.2 - (1) - 3'-1"
+B - TopPlate - 2x4 SPF PM No.2 - (1) - 3'-1"
+C - VeryTopPlate - 2x4 SPF PM No.2 - (1) - 3'-1"
+D - Stud - 2x4 SPF Stud - (5) - 3'-1-1/2"
+---

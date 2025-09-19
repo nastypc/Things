@@ -1,0 +1,1906 @@
+<?xml version="1.0"?>
+<PlantNet>
+	<LayoutName>2x4 Wall Blocking</LayoutName>
+	<ProjectName>Test</ProjectName>
+	<JobNumber>BWT</JobNumber>
+	<LevelNumber>1</LevelNumber>
+	<Reversed>0</Reversed>
+	<Start>0</Start>
+	<End>96</End>
+	<Height>5.5</Height>
+	<Bundle>
+		<NumberOfUnits>1</NumberOfUnits>
+		<Name>Bundle 1</Name>
+		<BundleID>L1-B01</BundleID>
+		<MinWallHeight>97.125</MinWallHeight>
+		<MaxWallHeight>97.125</MaxWallHeight>
+		<HasSheathed>0</HasSheathed>
+		<HasUnSheathed>1</HasUnSheathed>
+		<HasSloped>0</HasSloped>
+		<UnitName></UnitName>
+		<BundleWidth>96</BundleWidth>
+		<BundleHeight>3.5</BundleHeight>
+		<Panel>
+			<EngineeringLabel>W1P1</EngineeringLabel>
+			<AdjoiningPanels>
+				<Start>
+					<IsPanelBreak>0</IsPanelBreak>
+					<IsFreeEnd>1</IsFreeEnd>
+					<IsButting>0</IsButting>
+					<IsCorner>0</IsCorner>
+				</Start>
+				<End>
+					<IsPanelBreak>0</IsPanelBreak>
+					<IsFreeEnd>1</IsFreeEnd>
+					<IsButting>0</IsButting>
+					<IsCorner>0</IsCorner>
+				</End>
+			</AdjoiningPanels>
+			<WallEngineeringIndex>0</WallEngineeringIndex>
+			<PanelEngineeringIndex>0</PanelEngineeringIndex>
+			<Label type="0x08">100</Label>
+			<ProductionNote></ProductionNote>
+			<Exterior>1</Exterior>
+			<Start>0</Start>
+			<End>96</End>
+			<Length>96</Length>
+			<LevelOfPanel>2</LevelOfPanel>
+			<LayoutOutline>
+				<Point X="96" Y="5.5"></Point>
+				<Point X="0" Y="5.5"></Point>
+				<Point X="0" Y="2"></Point>
+				<Point X="96" Y="2"></Point>
+			</LayoutOutline>
+			<StartShiftForTopPlate>0</StartShiftForTopPlate>
+			<Height>97.125</Height>
+			<BundleLevelNumber>1</BundleLevelNumber>
+			<WallDepth>3.5</WallDepth>
+			<StudSpacing>12</StudSpacing>
+			<LoadBearing>1</LoadBearing>
+			<FirstStudCenterline>12.75</FirstStudCenterline>
+			<ShiftPanelInLevel>0</ShiftPanelInLevel>
+			<RotatedInBundle>0</RotatedInBundle>
+			<BundleOutline>
+				<PanelOutline>
+					<Point X="0" Y="3.5"></Point>
+					<Point X="96" Y="3.5"></Point>
+					<Point X="96" Y="0"></Point>
+					<Point X="0" Y="0"></Point>
+				</PanelOutline>
+			</BundleOutline>
+			<ApplyBaseFlashing>0</ApplyBaseFlashing>
+			<Plates>
+				<TopPlates>
+					<Piece>
+						<PieceType>5242882</PieceType>
+						<IsExtraTopPlate>0</IsExtraTopPlate>
+						<Material id="0x06CE4574">
+							<LongDescription>2X4 #2 SPF</LongDescription>
+							<ShortDescription>2X4</ShortDescription>
+							<Grade>
+								<GradeName>#2 SPF</GradeName>
+								<GradeType>0</GradeType>
+							</Grade>
+							<pMaterial type="0x10">114181492</pMaterial>
+							<Thickness>1.5</Thickness>
+							<Depth>3.5</Depth>
+							<Lengths>
+							</Lengths>
+						</Material>
+						<ElevationOutline ZStart="0" ZEnd="3.5">
+							<Point X="0" Y="95.625"></Point>
+							<Point X="96" Y="95.625"></Point>
+							<Point X="96" Y="94.125"></Point>
+							<Point X="0" Y="94.125"></Point>
+						</ElevationOutline>
+						<BottomPlateOutline>
+							<Point X="0" Y="3.5"></Point>
+							<Point X="96" Y="3.5"></Point>
+							<Point X="96" Y="0"></Point>
+							<Point X="0" Y="0"></Point>
+						</BottomPlateOutline>
+						<EngineeringLabel>W1P1TP1</EngineeringLabel>
+					</Piece>
+				</TopPlates>
+				<BottomPlates>
+					<Piece>
+						<PieceType>4718594</PieceType>
+						<IsExtraBottomPlate>0</IsExtraBottomPlate>
+						<Material idref="0x06CE4574"/>
+						<ElevationOutline ZStart="0" ZEnd="3.5">
+							<Point X="0" Y="1.5"></Point>
+							<Point X="96" Y="1.5"></Point>
+							<Point X="96" Y="0"></Point>
+							<Point X="0" Y="0"></Point>
+						</ElevationOutline>
+						<BottomPlateOutline>
+							<Point X="0" Y="3.5"></Point>
+							<Point X="96" Y="3.5"></Point>
+							<Point X="96" Y="0"></Point>
+							<Point X="0" Y="0"></Point>
+						</BottomPlateOutline>
+						<EngineeringLabel>W1P1BP1</EngineeringLabel>
+					</Piece>
+				</BottomPlates>
+				<VeryTopPlates/>
+			</Plates>
+			<Studs>
+				<Piece>
+					<PieceType>4194308</PieceType>
+					<Material id="0x06CE47A4">
+						<LongDescription>2X4 STUD GRADE</LongDescription>
+						<ShortDescription>2X4</ShortDescription>
+						<Grade>
+							<GradeName>STUD GRADE</GradeName>
+							<GradeType>0</GradeType>
+						</Grade>
+						<pMaterial type="0x10">114182052</pMaterial>
+						<Thickness>1.5</Thickness>
+						<Depth>3.5</Depth>
+						<Lengths>
+						</Lengths>
+					</Material>
+					<ElevationOutline ZStart="0" ZEnd="3.5">
+						<Point X="0" Y="1.5"></Point>
+						<Point X="0" Y="94.125"></Point>
+						<Point X="1.5" Y="94.125"></Point>
+						<Point X="1.5" Y="1.5"></Point>
+					</ElevationOutline>
+					<BottomPlateOutline>
+						<Point X="0" Y="0"></Point>
+						<Point X="0" Y="3.5"></Point>
+						<Point X="1.5" Y="3.5"></Point>
+						<Point X="1.5" Y="0"></Point>
+					</BottomPlateOutline>
+					<EngineeringLabel>W1P1S1</EngineeringLabel>
+				</Piece>
+			</Studs>
+			<Blocking>
+				<BlockingRun>
+					<Description>4&apos;-0&quot; - 2X6 BLOCK</Description>
+					<MaterialIsSheathing>0</MaterialIsSheathing>
+					<DepthOfSheathingPiece>0</DepthOfSheathingPiece>
+					<BlockingType>1</BlockingType>
+					<BlockingDirection>1</BlockingDirection>
+					<Direction>0</Direction>
+					<Height>48</Height>
+					<Pieces>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>	
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+					    <Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+												<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+												<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>	
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+					    <Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+						<Piece>
+							<PieceType>4194320</PieceType>
+							<Material idref="0x06CE4574"/>
+							<ElevationOutline ZStart="0" ZEnd="3.5">
+								<Point X="1.5" Y="49.5"></Point>
+								<Point X="5.75" Y="49.5"></Point>
+								<Point X="5.75" Y="48"></Point>
+								<Point X="1.5" Y="48"></Point>
+							</ElevationOutline>
+							<BottomPlateOutline>
+								<Point X="1.5" Y="3.5"></Point>
+								<Point X="5.75" Y="3.5"></Point>
+								<Point X="5.75" Y="0"></Point>
+								<Point X="1.5" Y="0"></Point>
+							</BottomPlateOutline>
+							<EngineeringLabel>W1P1B1-1</EngineeringLabel>
+						</Piece>
+					</Pieces>
+				</BlockingRun>
+			</Blocking>
+		</Panel>
+	</Bundle>
+	<Defaults>
+		<Metric>0</Metric>
+		<LayoutMultiplePanels>1</LayoutMultiplePanels>
+		<ProductionOrder>0</ProductionOrder>
+		<TableLength>192</TableLength>
+		<HeightOfStandardWall>0</HeightOfStandardWall>
+		<DepthOfStandardWall>0</DepthOfStandardWall>
+		<SpacingOfStandardWall>0</SpacingOfStandardWall>
+		<StitcherOffset>0</StitcherOffset>
+		<OmitPrecuts>1</OmitPrecuts>
+		<CombinedPreAssembly>1</CombinedPreAssembly>
+		<AdjustInsertLocations>1</AdjustInsertLocations>
+		<DisplayPanelStartOffset>0</DisplayPanelStartOffset>
+		<PieceNames>
+			<ComponentStud>Stud</ComponentStud>
+			<ComponentTrimmer>Trimmer</ComponentTrimmer>
+			<Header>Header</Header>
+			<HeaderSill>Header Sill</HeaderSill>
+			<HeaderShim>Header Shim</HeaderShim>
+			<HeaderFiller>Header Filler</HeaderFiller>
+			<HeaderCripple>Header Cripple</HeaderCripple>
+			<Sill>Sill</Sill>
+			<SillCripple>Sill Cripple</SillCripple>
+			<SubSill>Sub Sill</SubSill>
+			<Jack>Jack</Jack>
+			<SubcomponentStud>Stud</SubcomponentStud>
+			<SubcomponentTrimmer>Trimmer</SubcomponentTrimmer>
+			<SubcomponentFiller>Filler</SubcomponentFiller>
+			<SubcomponentPost>Post</SubcomponentPost>
+			<SubcomponentBlock>Block</SubcomponentBlock>
+			<LadderBlock>Ladder</LadderBlock>
+		</PieceNames>
+	</Defaults>
+</PlantNet>

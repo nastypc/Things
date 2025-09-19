@@ -1,0 +1,48 @@
+EHX Search Results Export
+==================================================
+
+EHX> Loaded 05-100.ehx
+Found 1 panels and 1 bundles
+EHX Format: legacy
+Type your search query or use quick buttons above
+
+EHX> 05-100 sub
+🔧 SubAssembly Analysis for Panel: 05-100
+============================================================
+
+📊 Summary:
+  Total SubAssemblies: 2
+  Family Members: 2
+
+FAMILY MEMBER 32 (LType) SUBASSEMBLIES:
+---------------------------------------------
+
+• Critical Stud (GUID: 8621837f...) (FM32) - Other
+   Associated Material Parts:
+    ├── H (4) - CriticalStud
+        - 2x6 SPF Stud
+
+FAMILY MEMBER 25 (Openings) SUBASSEMBLIES:
+---------------------------------------------
+
+• DR-9-ENT-L1 (GUID: 42317730...) (FM25) - Other
+   Associated Material Parts:
+    ├── D (2) - KingStud
+        - 2x6 SPF Stud
+    ├── DR-9-ENT-L1 (1) - RoughOpening
+        - DR-9-ENT-L1
+    ├── F (4) - Trimmer
+        - 2x6 SPF Stud
+    ├── G (2) - Header
+        - 2x8 SPF No.2
+    ├── L (5) - FillerCripple
+        - 2x6 SPF Stud
+    ├── M (1) - FillerBtmNailer
+        - 2x6 SPF Stud
+
+============================================================
+🎯 Total: 2 SubAssemblies with 19 associated parts
+============================================================
+
+Exported from EHX Search Widget
+Date: 2025-09-16 11:49:49

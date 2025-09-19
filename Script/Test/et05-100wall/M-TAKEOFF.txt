@@ -1,0 +1,30 @@
+PROJECTNAME: "Blk194 - Unit 5 1ST"
+
+STOREY: 1ST
+TOTAL NUMBER OF SHEETS:
+DESIGNATION: Sheathing
+MATERIAL: 7/16 4x9 OSB                        TOTAL NUMBER OF SHEETS: 2
+MATERIAL: 5/8 GWB                             TOTAL NUMBER OF SHEETS: 1
+
+TOTAL LINEAR LENGTHS:
+
+C:   3	L:   9'-0"	M: 2x6 SPF PM No.2     	T:  27'-0"            27 :BF
+                              TOTAL LINEAR LENGTH:  27'-0"            27 :TOTAL BOARD FEET.
+
+C:   5	L:   1'-0"	M: 2x6 SPF Stud        	T:   5'-0"             5 :BF
+C:   1	L:   5'-0"	M: 2x6 SPF Stud        	T:   5'-0"             5 :BF
+C:   4	L:   7'-0"	M: 2x6 SPF Stud        	T:  28'-0"            28 :BF
+C:   4	L:   9'-0"	M: 2x6 SPF Stud        	T:  36'-0"            36 :BF
+                              TOTAL LINEAR LENGTH:  74'-0"            74 :TOTAL BOARD FEET.
+
+C:   2	L:   5'-0"	M: 2x8 SPF No.2        	T:  10'-0"            13 :BF
+                              TOTAL LINEAR LENGTH:  10'-0"            13 :TOTAL BOARD FEET.
+
+TOTAL NUMBER OF PRE-CUT STUDS:
+MATERIAL: 2x6 SPF Stud
+LENGTH: 2657 (mm) - 8'-8-5/8" TOTAL NUMBER OF PRE-CUT STUDS: 12
+
+
+DUPLICATE FILE PROCESSING REPORT
+===================================
+Processed files: 05-100.btl

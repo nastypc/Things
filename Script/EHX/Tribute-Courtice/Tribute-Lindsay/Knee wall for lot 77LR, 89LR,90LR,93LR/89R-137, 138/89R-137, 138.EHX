@@ -1,0 +1,1206 @@
+<?xml version="1.0" ?>
+<MITEK_SHOPNET_MARKUP_LANGUAGE_FILE>
+   <EHXVersion>2.0</EHXVersion>
+   <InterfaceVersion>2.0.1.30</InterfaceVersion>
+   <PluginVersion>3.0.5.0</PluginVersion>
+   <Date>04-25-2025 08:19:26 AM</Date>
+   <Job>
+      <JobID>002651</JobID>
+      <Customer />
+      <Project />
+      <Phase />
+      <StructureType />
+      <BuildingName />
+      <LotName />
+      <UnitName />
+      <DesignSoftware>MiTek® Structure 8.8.3.256.Update5.18</DesignSoftware>
+      <DesignerPerson />
+      <WorkStation />
+      <Model />
+      <DepthProjection />
+      <FileDate>04-25-2025 08:19:26 AM</FileDate>
+      <ScheduleDate />
+      <JobPath>\\alpapre.local\ALPAPRE\MITEK\Jobs\2025\250006\P2500072\002651\002651.mmdl</JobPath>
+      <Level>
+         <LevelGuid>8d1e3e92-7684-44d6-8a98-efdb78bbee24</LevelGuid>
+         <LevelNo>0</LevelNo>
+         <Description>1st Floor</Description>
+         <Bundle>
+            <BundleGuid>782f6793-9f5f-487a-9002-fbe07623734d</BundleGuid>
+            <Label>B6(HB)</Label>
+            <Type>Wall Panel Bundle</Type>
+            <Weight>47.943</Weight>
+            <Panel>
+               <PanelGuid>a273a501-65ce-4daf-9353-12195b62d55d</PanelGuid>
+               <Label>89R-130</Label>
+               <WallSequence>1</WallSequence>
+               <IsRaked>YES</IsRaked>
+               <BundleLayer>1</BundleLayer>
+               <LayerPosition>2</LayerPosition>
+               <Height>58.000</Height>
+               <Thickness>3.500</Thickness>
+               <StudSpacing>16.000</StudSpacing>
+               <StudHeight>31.302</StudHeight>
+               <WallLength>24.384</WallLength>
+               <Start>24.384</Start>
+               <Stop>48.768</Stop>
+               <LoadBearing>NO</LoadBearing>
+               <FirstStudCenterLine>13.472</FirstStudCenterLine>
+               <Category>Interior</Category>
+               <OnScreenInstruction></OnScreenInstruction>
+               <BoardFeet>14.015</BoardFeet>
+               <LeftEdgeHoldBack>0.000</LeftEdgeHoldBack>
+               <RightEdgeHoldBack>0.000</RightEdgeHoldBack>
+               <TopEdgeHoldBack>0.000</TopEdgeHoldBack>
+               <BotEdgeHoldBack>0.000</BotEdgeHoldBack>
+               <Weight>23.971</Weight>
+               <StudLayoutDirection>StartToEnd</StudLayoutDirection>
+               <Board ProductionID="1">
+                  <Label>A</Label>
+                  <FamilyMember>28</FamilyMember>
+                  <FamilyMemberName>Bottom Plate</FamilyMemberName>
+                  <BoardGuid>6c0150b8-1292-40be-9f72-0d495b76db18</BoardGuid>
+                  <PartIndex>1</PartIndex>
+                  <IsLooseMember>0</IsLooseMember>
+                  <Material>
+                     <MaterialIDRef>0</MaterialIDRef>
+                     <Description>2x4 SPF PM No.2</Description>
+                     <MaterialType />
+                     <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                     <Grade>No.2</Grade>
+                     <Species>SPF</Species>
+                     <Size>2X4</Size>
+                     <ActualThickness>1.500</ActualThickness>
+                     <ActualWidth>3.500</ActualWidth>
+                     <ActualLength>24.384</ActualLength>
+                     <NominalThickness>2.000</NominalThickness>
+                     <NominalWidth>4.000</NominalWidth>
+                     <NominalLength>0.000</NominalLength>
+                     <BoardFeet>0.000</BoardFeet>
+                     <Thickness>1.500</Thickness>
+                     <Width>3.500</Width>
+                     <BoardGuid>6c0150b8-1292-40be-9f72-0d495b76db18</BoardGuid>
+                     <PreCut>0</PreCut>
+                     <MaterialsId>e0b8b781-6b34-4621-a5ae-50922c4f86d2</MaterialsId>
+                     <Treatment></Treatment>
+                     <PartCode></PartCode>
+                  </Material>
+                  <BottomView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                  </BottomView>
+                  <ElevationView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>1.500</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>1.500</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>0.000</Y>
+                     </Point>
+                  </ElevationView>
+                  <Length>24.384</Length>
+                  <StartAngle></StartAngle>
+                  <EndAngle></EndAngle>
+                  <StartBevel></StartBevel>
+                  <EndBevel></EndBevel>
+                  <StartRip />
+                  <EndRip />
+                  <BoardFeet>1.355</BoardFeet>
+               </Board>
+               <Board ProductionID="3">
+                  <Label>B</Label>
+                  <FamilyMember>29</FamilyMember>
+                  <FamilyMemberName>Top Plate</FamilyMemberName>
+                  <BoardGuid>ffc11e41-8475-44b4-a725-3fd480332449</BoardGuid>
+                  <PartIndex>3</PartIndex>
+                  <IsLooseMember>0</IsLooseMember>
+                  <Material>
+                     <MaterialIDRef>0</MaterialIDRef>
+                     <Description>2x4 SPF PM No.2</Description>
+                     <MaterialType />
+                     <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                     <Grade>No.2</Grade>
+                     <Species>SPF</Species>
+                     <Size>2X4</Size>
+                     <ActualThickness>1.500</ActualThickness>
+                     <ActualWidth>3.500</ActualWidth>
+                     <ActualLength>34.563</ActualLength>
+                     <NominalThickness>2.000</NominalThickness>
+                     <NominalWidth>4.000</NominalWidth>
+                     <NominalLength>0.000</NominalLength>
+                     <BoardFeet>0.000</BoardFeet>
+                     <Thickness>1.500</Thickness>
+                     <Width>3.500</Width>
+                     <BoardGuid>ffc11e41-8475-44b4-a725-3fd480332449</BoardGuid>
+                     <PreCut>0</PreCut>
+                     <MaterialsId>e0b8b781-6b34-4621-a5ae-50922c4f86d2</MaterialsId>
+                     <Treatment></Treatment>
+                     <PartCode></PartCode>
+                  </Material>
+                  <BottomView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                  </BottomView>
+                  <ElevationView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>31.418</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>33.459</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>55.959</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>53.918</Y>
+                     </Point>
+                  </ElevationView>
+                  <Length>34.563</Length>
+                  <StartAngle></StartAngle>
+                  <EndAngle></EndAngle>
+                  <StartBevel>/42.70</StartBevel>
+                  <EndBevel>/42.70</EndBevel>
+                  <StartRip />
+                  <EndRip />
+                  <BoardFeet>1.920</BoardFeet>
+               </Board>
+               <Board ProductionID="2">
+                  <Label>C</Label>
+                  <FamilyMember>30</FamilyMember>
+                  <FamilyMemberName>VTP</FamilyMemberName>
+                  <BoardGuid>a76869cf-c801-4e61-8ffb-b1645579abb5</BoardGuid>
+                  <PartIndex>2</PartIndex>
+                  <IsLooseMember>0</IsLooseMember>
+                  <Material>
+                     <MaterialIDRef>0</MaterialIDRef>
+                     <Description>2x4 SPF PM No.2</Description>
+                     <MaterialType />
+                     <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                     <Grade>No.2</Grade>
+                     <Species>SPF</Species>
+                     <Size>2X4</Size>
+                     <ActualThickness>1.500</ActualThickness>
+                     <ActualWidth>3.500</ActualWidth>
+                     <ActualLength>34.563</ActualLength>
+                     <NominalThickness>2.000</NominalThickness>
+                     <NominalWidth>4.000</NominalWidth>
+                     <NominalLength>0.000</NominalLength>
+                     <BoardFeet>0.000</BoardFeet>
+                     <Thickness>1.500</Thickness>
+                     <Width>3.500</Width>
+                     <BoardGuid>a76869cf-c801-4e61-8ffb-b1645579abb5</BoardGuid>
+                     <PreCut>0</PreCut>
+                     <MaterialsId>e0b8b781-6b34-4621-a5ae-50922c4f86d2</MaterialsId>
+                     <Treatment></Treatment>
+                     <PartCode></PartCode>
+                  </Material>
+                  <BottomView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                  </BottomView>
+                  <ElevationView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>33.459</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>35.500</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>58.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>55.959</Y>
+                     </Point>
+                  </ElevationView>
+                  <Length>34.563</Length>
+                  <StartAngle></StartAngle>
+                  <EndAngle></EndAngle>
+                  <StartBevel>/42.70</StartBevel>
+                  <EndBevel>/42.70</EndBevel>
+                  <StartRip />
+                  <EndRip />
+                  <BoardFeet>1.920</BoardFeet>
+               </Board>
+               <Board ProductionID="7">
+                  <Label>F</Label>
+                  <FamilyMember>6</FamilyMember>
+                  <FamilyMemberName>Stud</FamilyMemberName>
+                  <BoardGuid>a4382110-1b82-4489-b683-534484540837</BoardGuid>
+                  <PartIndex>7</PartIndex>
+                  <IsLooseMember>0</IsLooseMember>
+                  <Material>
+                     <MaterialIDRef>0</MaterialIDRef>
+                     <Description>2x4 SPF Stud</Description>
+                     <MaterialType />
+                     <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                     <Grade>Stud</Grade>
+                     <Species>SPF</Species>
+                     <Size>2X4</Size>
+                     <ActualThickness>1.500</ActualThickness>
+                     <ActualWidth>3.500</ActualWidth>
+                     <ActualLength>42.349</ActualLength>
+                     <NominalThickness>2.000</NominalThickness>
+                     <NominalWidth>4.000</NominalWidth>
+                     <NominalLength>0.000</NominalLength>
+                     <BoardFeet>0.000</BoardFeet>
+                     <Thickness>1.500</Thickness>
+                     <Width>3.500</Width>
+                     <BoardGuid>a4382110-1b82-4489-b683-534484540837</BoardGuid>
+                     <PreCut>0</PreCut>
+                     <MaterialsId>75331c1a-b382-47bf-a268-266568d62e34</MaterialsId>
+                     <Treatment></Treatment>
+                     <PartCode></PartCode>
+                  </Material>
+                  <BottomView>
+                     <Point>
+                        <X>11.972</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                     <Point>
+                        <X>11.972</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>13.472</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>13.472</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                  </BottomView>
+                  <ElevationView>
+                     <Point>
+                        <X>11.972</X>
+                        <Y>1.500</Y>
+                     </Point>
+                     <Point>
+                        <X>11.972</X>
+                        <Y>42.465</Y>
+                     </Point>
+                     <Point>
+                        <X>13.472</X>
+                        <Y>43.849</Y>
+                     </Point>
+                     <Point>
+                        <X>13.472</X>
+                        <Y>1.500</Y>
+                     </Point>
+                  </ElevationView>
+                  <Length>42.349</Length>
+                  <StartAngle></StartAngle>
+                  <EndAngle></EndAngle>
+                  <StartBevel></StartBevel>
+                  <EndBevel>\42.70</EndBevel>
+                  <StartRip />
+                  <EndRip />
+                  <BoardFeet>2.353</BoardFeet>
+               </Board>
+               <Board ProductionID="6">
+                  <Label>G</Label>
+                  <FamilyMember>6</FamilyMember>
+                  <FamilyMemberName>Stud</FamilyMemberName>
+                  <BoardGuid>f35909eb-7a93-4c59-94a6-b4bfd64b650f</BoardGuid>
+                  <PartIndex>6</PartIndex>
+                  <IsLooseMember>0</IsLooseMember>
+                  <Material>
+                     <MaterialIDRef>0</MaterialIDRef>
+                     <Description>2x4 SPF Stud</Description>
+                     <MaterialType />
+                     <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                     <Grade>Stud</Grade>
+                     <Species>SPF</Species>
+                     <Size>2X4</Size>
+                     <ActualThickness>1.500</ActualThickness>
+                     <ActualWidth>3.500</ActualWidth>
+                     <ActualLength>52.418</ActualLength>
+                     <NominalThickness>2.000</NominalThickness>
+                     <NominalWidth>4.000</NominalWidth>
+                     <NominalLength>0.000</NominalLength>
+                     <BoardFeet>0.000</BoardFeet>
+                     <Thickness>1.500</Thickness>
+                     <Width>3.500</Width>
+                     <BoardGuid>f35909eb-7a93-4c59-94a6-b4bfd64b650f</BoardGuid>
+                     <PreCut>0</PreCut>
+                     <MaterialsId>75331c1a-b382-47bf-a268-266568d62e34</MaterialsId>
+                     <Treatment></Treatment>
+                     <PartCode></PartCode>
+                  </Material>
+                  <BottomView>
+                     <Point>
+                        <X>22.884</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                     <Point>
+                        <X>22.884</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                  </BottomView>
+                  <ElevationView>
+                     <Point>
+                        <X>22.884</X>
+                        <Y>1.500</Y>
+                     </Point>
+                     <Point>
+                        <X>22.884</X>
+                        <Y>52.534</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>53.918</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>1.500</Y>
+                     </Point>
+                  </ElevationView>
+                  <Length>52.418</Length>
+                  <StartAngle></StartAngle>
+                  <EndAngle></EndAngle>
+                  <StartBevel></StartBevel>
+                  <EndBevel>\42.70</EndBevel>
+                  <StartRip />
+                  <EndRip />
+                  <BoardFeet>2.912</BoardFeet>
+               </Board>
+               <SubAssembly>
+                  <SubAssemblyGuid>b626c8ec-b654-4c57-b659-6a0c39329bdf</SubAssemblyGuid>
+                  <SubAssemblyID>1</SubAssemblyID>
+                  <SubAssemblyName>End Stud Assembly</SubAssemblyName>
+                  <FamilyMember>32</FamilyMember>
+                  <FamilyMemberName>End Stud Assembly</FamilyMemberName>
+                  <PartCount>2</PartCount>
+                  <Start>0.000</Start>
+                  <Stop>3.000</Stop>
+                  <Description />
+                  <AlignmentCode />
+                  <Board ProductionID="4">
+                     <Label>D</Label>
+                     <FamilyMember>6</FamilyMember>
+                     <FamilyMemberName>Stud</FamilyMemberName>
+                     <BoardGuid>09dde9af-7c68-4e38-87ff-0f0e83c4c166</BoardGuid>
+                     <PartIndex>4</PartIndex>
+                     <IsLooseMember>0</IsLooseMember>
+                     <Material>
+                        <MaterialIDRef>0</MaterialIDRef>
+                        <Description>2x4 SPF Stud</Description>
+                        <MaterialType />
+                        <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                        <Grade>Stud</Grade>
+                        <Species>SPF</Species>
+                        <Size>2X4</Size>
+                        <ActualThickness>1.500</ActualThickness>
+                        <ActualWidth>3.500</ActualWidth>
+                        <ActualLength>31.302</ActualLength>
+                        <NominalThickness>2.000</NominalThickness>
+                        <NominalWidth>4.000</NominalWidth>
+                        <NominalLength>0.000</NominalLength>
+                        <BoardFeet>0.000</BoardFeet>
+                        <Thickness>1.500</Thickness>
+                        <Width>3.500</Width>
+                        <BoardGuid>09dde9af-7c68-4e38-87ff-0f0e83c4c166</BoardGuid>
+                        <PreCut>0</PreCut>
+                        <MaterialsId>75331c1a-b382-47bf-a268-266568d62e34</MaterialsId>
+                        <Treatment></Treatment>
+                        <PartCode></PartCode>
+                     </Material>
+                     <BottomView>
+                        <Point>
+                           <X>0.000</X>
+                           <Y>-3.500</Y>
+                        </Point>
+                        <Point>
+                           <X>0.000</X>
+                           <Y>0.000</Y>
+                        </Point>
+                        <Point>
+                           <X>1.500</X>
+                           <Y>0.000</Y>
+                        </Point>
+                        <Point>
+                           <X>1.500</X>
+                           <Y>-3.500</Y>
+                        </Point>
+                     </BottomView>
+                     <ElevationView>
+                        <Point>
+                           <X>0.000</X>
+                           <Y>1.500</Y>
+                        </Point>
+                        <Point>
+                           <X>0.000</X>
+                           <Y>31.418</Y>
+                        </Point>
+                        <Point>
+                           <X>1.500</X>
+                           <Y>32.802</Y>
+                        </Point>
+                        <Point>
+                           <X>1.500</X>
+                           <Y>1.500</Y>
+                        </Point>
+                     </ElevationView>
+                     <Length>31.302</Length>
+                     <StartAngle></StartAngle>
+                     <EndAngle></EndAngle>
+                     <StartBevel></StartBevel>
+                     <EndBevel>\42.70</EndBevel>
+                     <StartRip />
+                     <EndRip />
+                     <BoardFeet>1.739</BoardFeet>
+                  </Board>
+                  <Board ProductionID="5">
+                     <Label>E</Label>
+                     <FamilyMember>6</FamilyMember>
+                     <FamilyMemberName>Stud</FamilyMemberName>
+                     <BoardGuid>52c69918-fa5d-48a1-8d96-7014171dd2e1</BoardGuid>
+                     <PartIndex>5</PartIndex>
+                     <IsLooseMember>0</IsLooseMember>
+                     <Material>
+                        <MaterialIDRef>0</MaterialIDRef>
+                        <Description>2x4 SPF Stud</Description>
+                        <MaterialType />
+                        <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                        <Grade>Stud</Grade>
+                        <Species>SPF</Species>
+                        <Size>2X4</Size>
+                        <ActualThickness>1.500</ActualThickness>
+                        <ActualWidth>3.500</ActualWidth>
+                        <ActualLength>32.686</ActualLength>
+                        <NominalThickness>2.000</NominalThickness>
+                        <NominalWidth>4.000</NominalWidth>
+                        <NominalLength>0.000</NominalLength>
+                        <BoardFeet>0.000</BoardFeet>
+                        <Thickness>1.500</Thickness>
+                        <Width>3.500</Width>
+                        <BoardGuid>52c69918-fa5d-48a1-8d96-7014171dd2e1</BoardGuid>
+                        <PreCut>0</PreCut>
+                        <MaterialsId>75331c1a-b382-47bf-a268-266568d62e34</MaterialsId>
+                        <Treatment></Treatment>
+                        <PartCode></PartCode>
+                     </Material>
+                     <BottomView>
+                        <Point>
+                           <X>1.500</X>
+                           <Y>-3.500</Y>
+                        </Point>
+                        <Point>
+                           <X>1.500</X>
+                           <Y>0.000</Y>
+                        </Point>
+                        <Point>
+                           <X>3.000</X>
+                           <Y>0.000</Y>
+                        </Point>
+                        <Point>
+                           <X>3.000</X>
+                           <Y>-3.500</Y>
+                        </Point>
+                     </BottomView>
+                     <ElevationView>
+                        <Point>
+                           <X>1.500</X>
+                           <Y>1.500</Y>
+                        </Point>
+                        <Point>
+                           <X>1.500</X>
+                           <Y>32.802</Y>
+                        </Point>
+                        <Point>
+                           <X>3.000</X>
+                           <Y>34.186</Y>
+                        </Point>
+                        <Point>
+                           <X>3.000</X>
+                           <Y>1.500</Y>
+                        </Point>
+                     </ElevationView>
+                     <Length>32.686</Length>
+                     <StartAngle></StartAngle>
+                     <EndAngle></EndAngle>
+                     <StartBevel></StartBevel>
+                     <EndBevel>\42.70</EndBevel>
+                     <StartRip />
+                     <EndRip />
+                     <BoardFeet>1.816</BoardFeet>
+                  </Board>
+                  <BoardFeet>3.555</BoardFeet>
+                  <Width>3.000</Width>
+                  <Height>32.686</Height>
+                  <SillCrippleStart>0.000</SillCrippleStart>
+                  <HeaderCrippleStart>0.000</HeaderCrippleStart>
+                  <OnScreenInstruction></OnScreenInstruction>
+               </SubAssembly>
+               <LooseMembers />
+            </Panel>
+            <Panel>
+               <PanelGuid>51a950f1-7916-422a-8bff-026237ada9e1</PanelGuid>
+               <Label>89R-131</Label>
+               <WallSequence>1</WallSequence>
+               <IsRaked>YES</IsRaked>
+               <BundleLayer>1</BundleLayer>
+               <LayerPosition>1</LayerPosition>
+               <Height>58.000</Height>
+               <Thickness>3.500</Thickness>
+               <StudSpacing>16.000</StudSpacing>
+               <StudHeight>31.302</StudHeight>
+               <WallLength>24.384</WallLength>
+               <Start>0.000</Start>
+               <Stop>24.384</Stop>
+               <LoadBearing>NO</LoadBearing>
+               <FirstStudCenterLine>13.472</FirstStudCenterLine>
+               <Category>Interior</Category>
+               <OnScreenInstruction></OnScreenInstruction>
+               <BoardFeet>14.015</BoardFeet>
+               <LeftEdgeHoldBack>0.000</LeftEdgeHoldBack>
+               <RightEdgeHoldBack>0.000</RightEdgeHoldBack>
+               <TopEdgeHoldBack>0.000</TopEdgeHoldBack>
+               <BotEdgeHoldBack>0.000</BotEdgeHoldBack>
+               <Weight>23.971</Weight>
+               <StudLayoutDirection>StartToEnd</StudLayoutDirection>
+               <Board ProductionID="8">
+                  <Label>A</Label>
+                  <FamilyMember>28</FamilyMember>
+                  <FamilyMemberName>Bottom Plate</FamilyMemberName>
+                  <BoardGuid>46ca29dd-dd0e-4f2b-9c3f-1f881f62af7e</BoardGuid>
+                  <PartIndex>8</PartIndex>
+                  <IsLooseMember>0</IsLooseMember>
+                  <Material>
+                     <MaterialIDRef>0</MaterialIDRef>
+                     <Description>2x4 SPF PM No.2</Description>
+                     <MaterialType />
+                     <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                     <Grade>No.2</Grade>
+                     <Species>SPF</Species>
+                     <Size>2X4</Size>
+                     <ActualThickness>1.500</ActualThickness>
+                     <ActualWidth>3.500</ActualWidth>
+                     <ActualLength>24.384</ActualLength>
+                     <NominalThickness>2.000</NominalThickness>
+                     <NominalWidth>4.000</NominalWidth>
+                     <NominalLength>0.000</NominalLength>
+                     <BoardFeet>0.000</BoardFeet>
+                     <Thickness>1.500</Thickness>
+                     <Width>3.500</Width>
+                     <BoardGuid>46ca29dd-dd0e-4f2b-9c3f-1f881f62af7e</BoardGuid>
+                     <PreCut>0</PreCut>
+                     <MaterialsId>e0b8b781-6b34-4621-a5ae-50922c4f86d2</MaterialsId>
+                     <Treatment></Treatment>
+                     <PartCode></PartCode>
+                  </Material>
+                  <BottomView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                  </BottomView>
+                  <ElevationView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>1.500</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>1.500</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>0.000</Y>
+                     </Point>
+                  </ElevationView>
+                  <Length>24.384</Length>
+                  <StartAngle></StartAngle>
+                  <EndAngle></EndAngle>
+                  <StartBevel></StartBevel>
+                  <EndBevel></EndBevel>
+                  <StartRip />
+                  <EndRip />
+                  <BoardFeet>1.355</BoardFeet>
+               </Board>
+               <Board ProductionID="13">
+                  <Label>D</Label>
+                  <FamilyMember>6</FamilyMember>
+                  <FamilyMemberName>Stud</FamilyMemberName>
+                  <BoardGuid>db4caeca-836c-4752-9232-cb15af2c282b</BoardGuid>
+                  <PartIndex>13</PartIndex>
+                  <IsLooseMember>0</IsLooseMember>
+                  <Material>
+                     <MaterialIDRef>0</MaterialIDRef>
+                     <Description>2x4 SPF Stud</Description>
+                     <MaterialType />
+                     <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                     <Grade>Stud</Grade>
+                     <Species>SPF</Species>
+                     <Size>2X4</Size>
+                     <ActualThickness>1.500</ActualThickness>
+                     <ActualWidth>3.500</ActualWidth>
+                     <ActualLength>52.418</ActualLength>
+                     <NominalThickness>2.000</NominalThickness>
+                     <NominalWidth>4.000</NominalWidth>
+                     <NominalLength>0.000</NominalLength>
+                     <BoardFeet>0.000</BoardFeet>
+                     <Thickness>1.500</Thickness>
+                     <Width>3.500</Width>
+                     <BoardGuid>db4caeca-836c-4752-9232-cb15af2c282b</BoardGuid>
+                     <PreCut>0</PreCut>
+                     <MaterialsId>75331c1a-b382-47bf-a268-266568d62e34</MaterialsId>
+                     <Treatment></Treatment>
+                     <PartCode></PartCode>
+                  </Material>
+                  <BottomView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>1.500</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>1.500</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                  </BottomView>
+                  <ElevationView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>1.500</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>53.918</Y>
+                     </Point>
+                     <Point>
+                        <X>1.500</X>
+                        <Y>52.534</Y>
+                     </Point>
+                     <Point>
+                        <X>1.500</X>
+                        <Y>1.500</Y>
+                     </Point>
+                  </ElevationView>
+                  <Length>52.418</Length>
+                  <StartAngle></StartAngle>
+                  <EndAngle></EndAngle>
+                  <StartBevel></StartBevel>
+                  <EndBevel>/42.70</EndBevel>
+                  <StartRip />
+                  <EndRip />
+                  <BoardFeet>2.912</BoardFeet>
+               </Board>
+               <Board ProductionID="10">
+                  <Label>B</Label>
+                  <FamilyMember>29</FamilyMember>
+                  <FamilyMemberName>Top Plate</FamilyMemberName>
+                  <BoardGuid>04eeee0d-dc72-4fb2-80ec-c56feef9c1e4</BoardGuid>
+                  <PartIndex>10</PartIndex>
+                  <IsLooseMember>0</IsLooseMember>
+                  <Material>
+                     <MaterialIDRef>0</MaterialIDRef>
+                     <Description>2x4 SPF PM No.2</Description>
+                     <MaterialType />
+                     <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                     <Grade>No.2</Grade>
+                     <Species>SPF</Species>
+                     <Size>2X4</Size>
+                     <ActualThickness>1.500</ActualThickness>
+                     <ActualWidth>3.500</ActualWidth>
+                     <ActualLength>34.563</ActualLength>
+                     <NominalThickness>2.000</NominalThickness>
+                     <NominalWidth>4.000</NominalWidth>
+                     <NominalLength>0.000</NominalLength>
+                     <BoardFeet>0.000</BoardFeet>
+                     <Thickness>1.500</Thickness>
+                     <Width>3.500</Width>
+                     <BoardGuid>04eeee0d-dc72-4fb2-80ec-c56feef9c1e4</BoardGuid>
+                     <PreCut>0</PreCut>
+                     <MaterialsId>e0b8b781-6b34-4621-a5ae-50922c4f86d2</MaterialsId>
+                     <Treatment></Treatment>
+                     <PartCode></PartCode>
+                  </Material>
+                  <BottomView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                  </BottomView>
+                  <ElevationView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>53.918</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>55.959</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>33.459</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>31.418</Y>
+                     </Point>
+                  </ElevationView>
+                  <Length>34.563</Length>
+                  <StartAngle></StartAngle>
+                  <EndAngle></EndAngle>
+                  <StartBevel>\42.70</StartBevel>
+                  <EndBevel>\42.70</EndBevel>
+                  <StartRip />
+                  <EndRip />
+                  <BoardFeet>1.920</BoardFeet>
+               </Board>
+               <Board ProductionID="9">
+                  <Label>C</Label>
+                  <FamilyMember>30</FamilyMember>
+                  <FamilyMemberName>VTP</FamilyMemberName>
+                  <BoardGuid>bb07a6c3-55a8-4309-95c6-a8692736e651</BoardGuid>
+                  <PartIndex>9</PartIndex>
+                  <IsLooseMember>0</IsLooseMember>
+                  <Material>
+                     <MaterialIDRef>0</MaterialIDRef>
+                     <Description>2x4 SPF PM No.2</Description>
+                     <MaterialType />
+                     <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                     <Grade>No.2</Grade>
+                     <Species>SPF</Species>
+                     <Size>2X4</Size>
+                     <ActualThickness>1.500</ActualThickness>
+                     <ActualWidth>3.500</ActualWidth>
+                     <ActualLength>34.563</ActualLength>
+                     <NominalThickness>2.000</NominalThickness>
+                     <NominalWidth>4.000</NominalWidth>
+                     <NominalLength>0.000</NominalLength>
+                     <BoardFeet>0.000</BoardFeet>
+                     <Thickness>1.500</Thickness>
+                     <Width>3.500</Width>
+                     <BoardGuid>bb07a6c3-55a8-4309-95c6-a8692736e651</BoardGuid>
+                     <PreCut>0</PreCut>
+                     <MaterialsId>e0b8b781-6b34-4621-a5ae-50922c4f86d2</MaterialsId>
+                     <Treatment></Treatment>
+                     <PartCode></PartCode>
+                  </Material>
+                  <BottomView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                  </BottomView>
+                  <ElevationView>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>55.959</Y>
+                     </Point>
+                     <Point>
+                        <X>0.000</X>
+                        <Y>58.000</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>35.500</Y>
+                     </Point>
+                     <Point>
+                        <X>24.384</X>
+                        <Y>33.459</Y>
+                     </Point>
+                  </ElevationView>
+                  <Length>34.563</Length>
+                  <StartAngle></StartAngle>
+                  <EndAngle></EndAngle>
+                  <StartBevel>\42.70</StartBevel>
+                  <EndBevel>\42.70</EndBevel>
+                  <StartRip />
+                  <EndRip />
+                  <BoardFeet>1.920</BoardFeet>
+               </Board>
+               <Board ProductionID="14">
+                  <Label>E</Label>
+                  <FamilyMember>6</FamilyMember>
+                  <FamilyMemberName>Stud</FamilyMemberName>
+                  <BoardGuid>38bd419d-71e3-48fb-944b-b5874b0dbbdc</BoardGuid>
+                  <PartIndex>14</PartIndex>
+                  <IsLooseMember>0</IsLooseMember>
+                  <Material>
+                     <MaterialIDRef>0</MaterialIDRef>
+                     <Description>2x4 SPF Stud</Description>
+                     <MaterialType />
+                     <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                     <Grade>Stud</Grade>
+                     <Species>SPF</Species>
+                     <Size>2X4</Size>
+                     <ActualThickness>1.500</ActualThickness>
+                     <ActualWidth>3.500</ActualWidth>
+                     <ActualLength>42.349</ActualLength>
+                     <NominalThickness>2.000</NominalThickness>
+                     <NominalWidth>4.000</NominalWidth>
+                     <NominalLength>0.000</NominalLength>
+                     <BoardFeet>0.000</BoardFeet>
+                     <Thickness>1.500</Thickness>
+                     <Width>3.500</Width>
+                     <BoardGuid>38bd419d-71e3-48fb-944b-b5874b0dbbdc</BoardGuid>
+                     <PreCut>0</PreCut>
+                     <MaterialsId>75331c1a-b382-47bf-a268-266568d62e34</MaterialsId>
+                     <Treatment></Treatment>
+                     <PartCode></PartCode>
+                  </Material>
+                  <BottomView>
+                     <Point>
+                        <X>10.912</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                     <Point>
+                        <X>10.912</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>12.412</X>
+                        <Y>0.000</Y>
+                     </Point>
+                     <Point>
+                        <X>12.412</X>
+                        <Y>-3.500</Y>
+                     </Point>
+                  </BottomView>
+                  <ElevationView>
+                     <Point>
+                        <X>10.912</X>
+                        <Y>1.500</Y>
+                     </Point>
+                     <Point>
+                        <X>10.912</X>
+                        <Y>43.849</Y>
+                     </Point>
+                     <Point>
+                        <X>12.412</X>
+                        <Y>42.465</Y>
+                     </Point>
+                     <Point>
+                        <X>12.412</X>
+                        <Y>1.500</Y>
+                     </Point>
+                  </ElevationView>
+                  <Length>42.349</Length>
+                  <StartAngle></StartAngle>
+                  <EndAngle></EndAngle>
+                  <StartBevel></StartBevel>
+                  <EndBevel>/42.70</EndBevel>
+                  <StartRip />
+                  <EndRip />
+                  <BoardFeet>2.353</BoardFeet>
+               </Board>
+               <SubAssembly>
+                  <SubAssemblyGuid>78b23975-4178-4cc6-9728-864823445244</SubAssemblyGuid>
+                  <SubAssemblyID>7</SubAssemblyID>
+                  <SubAssemblyName>End Stud Assembly</SubAssemblyName>
+                  <FamilyMember>32</FamilyMember>
+                  <FamilyMemberName>End Stud Assembly</FamilyMemberName>
+                  <PartCount>2</PartCount>
+                  <Start>21.384</Start>
+                  <Stop>24.384</Stop>
+                  <Description />
+                  <AlignmentCode />
+                  <Board ProductionID="12">
+                     <Label>F</Label>
+                     <FamilyMember>6</FamilyMember>
+                     <FamilyMemberName>Stud</FamilyMemberName>
+                     <BoardGuid>95faec95-9d0a-4b1f-babf-65d59bf25ad3</BoardGuid>
+                     <PartIndex>12</PartIndex>
+                     <IsLooseMember>0</IsLooseMember>
+                     <Material>
+                        <MaterialIDRef>0</MaterialIDRef>
+                        <Description>2x4 SPF Stud</Description>
+                        <MaterialType />
+                        <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                        <Grade>Stud</Grade>
+                        <Species>SPF</Species>
+                        <Size>2X4</Size>
+                        <ActualThickness>1.500</ActualThickness>
+                        <ActualWidth>3.500</ActualWidth>
+                        <ActualLength>32.686</ActualLength>
+                        <NominalThickness>2.000</NominalThickness>
+                        <NominalWidth>4.000</NominalWidth>
+                        <NominalLength>0.000</NominalLength>
+                        <BoardFeet>0.000</BoardFeet>
+                        <Thickness>1.500</Thickness>
+                        <Width>3.500</Width>
+                        <BoardGuid>95faec95-9d0a-4b1f-babf-65d59bf25ad3</BoardGuid>
+                        <PreCut>0</PreCut>
+                        <MaterialsId>75331c1a-b382-47bf-a268-266568d62e34</MaterialsId>
+                        <Treatment></Treatment>
+                        <PartCode></PartCode>
+                     </Material>
+                     <BottomView>
+                        <Point>
+                           <X>21.384</X>
+                           <Y>-3.500</Y>
+                        </Point>
+                        <Point>
+                           <X>21.384</X>
+                           <Y>0.000</Y>
+                        </Point>
+                        <Point>
+                           <X>22.884</X>
+                           <Y>0.000</Y>
+                        </Point>
+                        <Point>
+                           <X>22.884</X>
+                           <Y>-3.500</Y>
+                        </Point>
+                     </BottomView>
+                     <ElevationView>
+                        <Point>
+                           <X>21.384</X>
+                           <Y>1.500</Y>
+                        </Point>
+                        <Point>
+                           <X>21.384</X>
+                           <Y>34.186</Y>
+                        </Point>
+                        <Point>
+                           <X>22.884</X>
+                           <Y>32.802</Y>
+                        </Point>
+                        <Point>
+                           <X>22.884</X>
+                           <Y>1.500</Y>
+                        </Point>
+                     </ElevationView>
+                     <Length>32.686</Length>
+                     <StartAngle></StartAngle>
+                     <EndAngle></EndAngle>
+                     <StartBevel></StartBevel>
+                     <EndBevel>/42.70</EndBevel>
+                     <StartRip />
+                     <EndRip />
+                     <BoardFeet>1.816</BoardFeet>
+                  </Board>
+                  <Board ProductionID="11">
+                     <Label>G</Label>
+                     <FamilyMember>6</FamilyMember>
+                     <FamilyMemberName>Stud</FamilyMemberName>
+                     <BoardGuid>589d86ab-ff4c-4b2f-9f6a-f1aed4a688c7</BoardGuid>
+                     <PartIndex>11</PartIndex>
+                     <IsLooseMember>0</IsLooseMember>
+                     <Material>
+                        <MaterialIDRef>0</MaterialIDRef>
+                        <Description>2x4 SPF Stud</Description>
+                        <MaterialType />
+                        <SpeciesGrade>Spruce-Pine-Fir</SpeciesGrade>
+                        <Grade>Stud</Grade>
+                        <Species>SPF</Species>
+                        <Size>2X4</Size>
+                        <ActualThickness>1.500</ActualThickness>
+                        <ActualWidth>3.500</ActualWidth>
+                        <ActualLength>31.302</ActualLength>
+                        <NominalThickness>2.000</NominalThickness>
+                        <NominalWidth>4.000</NominalWidth>
+                        <NominalLength>0.000</NominalLength>
+                        <BoardFeet>0.000</BoardFeet>
+                        <Thickness>1.500</Thickness>
+                        <Width>3.500</Width>
+                        <BoardGuid>589d86ab-ff4c-4b2f-9f6a-f1aed4a688c7</BoardGuid>
+                        <PreCut>0</PreCut>
+                        <MaterialsId>75331c1a-b382-47bf-a268-266568d62e34</MaterialsId>
+                        <Treatment></Treatment>
+                        <PartCode></PartCode>
+                     </Material>
+                     <BottomView>
+                        <Point>
+                           <X>22.884</X>
+                           <Y>-3.500</Y>
+                        </Point>
+                        <Point>
+                           <X>22.884</X>
+                           <Y>0.000</Y>
+                        </Point>
+                        <Point>
+                           <X>24.384</X>
+                           <Y>0.000</Y>
+                        </Point>
+                        <Point>
+                           <X>24.384</X>
+                           <Y>-3.500</Y>
+                        </Point>
+                     </BottomView>
+                     <ElevationView>
+                        <Point>
+                           <X>22.884</X>
+                           <Y>1.500</Y>
+                        </Point>
+                        <Point>
+                           <X>22.884</X>
+                           <Y>32.802</Y>
+                        </Point>
+                        <Point>
+                           <X>24.384</X>
+                           <Y>31.418</Y>
+                        </Point>
+                        <Point>
+                           <X>24.384</X>
+                           <Y>1.500</Y>
+                        </Point>
+                     </ElevationView>
+                     <Length>31.302</Length>
+                     <StartAngle></StartAngle>
+                     <EndAngle></EndAngle>
+                     <StartBevel></StartBevel>
+                     <EndBevel>/42.70</EndBevel>
+                     <StartRip />
+                     <EndRip />
+                     <BoardFeet>1.739</BoardFeet>
+                  </Board>
+                  <BoardFeet>3.555</BoardFeet>
+                  <Width>3.000</Width>
+                  <Height>32.686</Height>
+                  <SillCrippleStart>0.000</SillCrippleStart>
+                  <HeaderCrippleStart>0.000</HeaderCrippleStart>
+                  <OnScreenInstruction></OnScreenInstruction>
+               </SubAssembly>
+               <LooseMembers />
+            </Panel>
+         </Bundle>
+      </Level>
+      <Processings>
+         <Batch>
+            <BatchId>1</BatchId>
+            <BatchName>89R-131</BatchName>
+            <ProcessingStationId />
+            <ProcessMembers>
+               <ProcessMember ProductionId="8" Quantity="1" NextStationId="SubcomponentStation" />
+               <ProcessMember ProductionId="10" Quantity="1" NextStationId="SubcomponentStation" />
+               <ProcessMember ProductionId="9" Quantity="1" NextStationId="SubcomponentStation" />
+               <ProcessMember ProductionId="13" Quantity="1" NextStationId="SubcomponentStation" />
+               <ProcessMember ProductionId="14" Quantity="1" NextStationId="SubcomponentStation" />
+               <ProcessMember ProductionId="12" Quantity="1" NextStationId="SubcomponentStation" />
+               <ProcessMember ProductionId="11" Quantity="1" NextStationId="SubcomponentStation" />
+            </ProcessMembers>
+         </Batch>
+         <Batch>
+            <BatchId>2</BatchId>
+            <BatchName>89R-130</BatchName>
+            <ProcessingStationId />
+            <ProcessMembers>
+               <ProcessMember ProductionId="1" Quantity="1" NextStationId="SubcomponentStation" />
+               <ProcessMember ProductionId="3" Quantity="1" NextStationId="SubcomponentStation" />
+               <ProcessMember ProductionId="2" Quantity="1" NextStationId="SubcomponentStation" />
+               <ProcessMember ProductionId="4" Quantity="1" NextStationId="SubcomponentStation" />
+               <ProcessMember ProductionId="5" Quantity="1" NextStationId="SubcomponentStation" />
+               <ProcessMember ProductionId="7" Quantity="1" NextStationId="SubcomponentStation" />
+               <ProcessMember ProductionId="6" Quantity="1" NextStationId="SubcomponentStation" />
+            </ProcessMembers>
+         </Batch>
+      </Processings>
+   </Job>
+</MITEK_SHOPNET_MARKUP_LANGUAGE_FILE>

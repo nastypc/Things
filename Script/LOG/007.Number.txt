@@ -1,0 +1,101 @@
+EHX Search Results Export
+==================================================
+
+EHX> Loaded 05-100ET.EHX
+Found 1 panels and 1 bundles
+EHX Format: legacy
+
+📋 AVAILABLE PANELS (Sorted by Level, Bundle, and Panel Number):
+======================================================================
+🏢 LEVEL 1:
+  📦 B1 (2x6 Ext) (1 panels):
+    05-100
+
+📊 PROJECT SUMMARY:
+  • Total Panels: 1
+  • Total Bundles: 1
+  • Average Panels per Bundle: 1.0
+  • Total Materials: 36
+
+💡 QUICK QUERY EXAMPLES:
+  • '05-100' or '05-100 info' → Panel details
+  • '05-100 fm' → Family Member analysis
+  • '05-100 sub' → SubAssembly analysis
+  • 'level 1' → Level 1 material breakdown
+  • 'takeoff all' → Complete project takeoff
+Type your search query or use quick buttons above
+
+EHX> 05-100 info
+Panel: 05-100
+Level: 1
+Description: 
+Bundle: Unknown
+
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length:  ()
+• Height: 109.125 (9'-1-1/8")
+• Squaring:  ()
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 7/16" 4x9 OSB
+• Weight: 390 Lbs
+• Production Notes: 
+
+Beam Pocket Details:
+🔧 Beam Pockets Details (FM33) - Panel: 05-100
+============================================================
+
+No beam pockets (FM33) found for this panel.
+============================================================
+SubAssembly Details:
+• Openings
+   Materials:
+    ├── D (2) - KingStud
+        - 2x6 SPF Stud
+    ├── DR-9-ENT-L1 (1) - RoughOpening
+        - DR-9-ENT-L1
+    ├── F (4) - Trimmer
+        - 2x6 SPF Stud
+    ├── G (2) - Header
+        - 2x8 SPF No.2
+    ├── L (5) - FillerCripple
+        - 2x6 SPF Stud
+    ├── M (1) - FillerBtmNailer
+        - 2x6 SPF Stud
+Critical Stud Details:
+🔧 Critical Stud Details - Panel: 05-100
+============================================================
+
+FM32 SUBASSEMBLY CRITICAL STUDS:
+  No FM32 subassembly critical studs found
+
+FM47 LOOSE CRITICAL STUDS:
+  Count: 1
+  Type: Loose critical studs
+
+  Stud 1:
+    • Name: CriticalStud
+    • Label: H
+    • Description: 2x6 SPF Stud
+
+============================================================
+🎯 TOTAL CRITICAL STUDS: 1
+============================================================
+Panel Material Breakdown:
+2x6 SPF PM No.2 - (1)
+2x6 SPF Stud - (5)
+5/8" 2x6 Padding - (1)
+2x6 SPF Stud - (1)
+2x6 SPF Stud - (5)
+2x8 SPF No.2 - (2)
+2x6 SPF Stud - (7)
+DR-9-ENT-L1 - (1)
+7/16" 4x9 OSB - (3)
+2x6 SPF PM No.2 - (1)
+2x6 SPF Stud - (8)
+2x6 SPF PM No.2 - (1)
+
+Exported from EHX Search Widget
+Date: 2025-09-19 16:38:55

@@ -1,0 +1,109 @@
+EHX Search Results Export
+==================================================
+
+EHX> Loaded 07_112.EHX
+Found 1 panels and 1 bundles
+EHX Format: legacy
+
+📋 AVAILABLE PANELS (Sorted by Level, Bundle, and Panel Number):
+======================================================================
+🏢 UNKNOWN:
+  📦 B2 (2x6 Ext-B) (1 panels):
+    07_112
+
+📊 PROJECT SUMMARY:
+  • Total Panels: 1
+  • Total Bundles: 1
+  • Average Panels per Bundle: 1.0
+  • Total Materials: 41
+
+💡 QUICK QUERY EXAMPLES:
+  • '05-100' or '05-100 info' → Panel details
+  • '05-100 fm' → Family Member analysis
+  • '05-100 sub' → SubAssembly analysis
+  • 'level 1' → Level 1 material breakdown
+  • 'takeoff all' → Complete project takeoff
+Type your search query or use quick buttons above
+
+EHX> 07_112
+Panel 07_112:
+  GUID: 50e38fea...
+  Bundle: 1f94492c...
+  Materials:
+    BottomPlate: 1
+    FillerBtmNailer: 1
+    FillerCripple: 5
+    FlatStud: 1
+    Header: 5
+    HeaderCap: 1
+    HeaderCripple: 3
+    KingStud: 4
+    RoughOpening: 2
+    Sheathing: 5
+    SillCripple: 5
+    Stud: 1
+    TopPlate: 1
+    Trimmer: 4
+    VeryTopPlate: 1
+    WindowSill: 1
+
+
+EHX> 07_112 sub
+🔧 SubAssembly Analysis for Panel: 07_112
+============================================================
+
+📊 Summary:
+  Total SubAssemblies: 3
+  Family Members: 2
+
+FAMILY MEMBER 32 (LType) SUBASSEMBLIES:
+---------------------------------------------
+
+• LType (GUID: 43214eec...) (FM32) - FM32 - LType Variations
+   Associated Material Parts:
+    ├── K (1) - Stud
+        - 2x6 SPF Stud
+    ├── L (1) - FlatStud
+        - 2x6 SPF Stud
+
+FAMILY MEMBER 25 (Openings) SUBASSEMBLIES:
+---------------------------------------------
+
+• 49x63-L2 (GUID: 6456c2dd...) (FM25) - Other
+   Associated Material Parts:
+    ├── 49x63-L2 (1) - RoughOpening
+        - 49x63-L2
+    ├── D (2) - KingStud
+        - 2x6 SPF Stud
+    ├── E (4) - Trimmer
+        - 2x6 SPF Stud
+    ├── F (3) - Header
+        - 2x8 SPF No.2
+    ├── H (1) - WindowSill
+        - 2x6 SPF Stud
+    ├── I (5) - SillCripple
+        - 2x6 SPF Stud
+    ├── R (5) - FillerCripple
+        - 2x6 SPF Stud
+    ├── S (1) - FillerBtmNailer
+        - 2x6 SPF Stud
+
+• BSMT-HDR (GUID: 2f0d2e45...) (FM25) - Other
+   Associated Material Parts:
+    ├── BSMT-HDR (1) - RoughOpening
+        - BSMT-HDR
+    ├── D (2) - KingStud
+        - 2x6 SPF Stud
+    ├── G (2) - Header
+        - 2x8 SPF No.2
+    ├── J (3) - HeaderCripple
+        - 2x6 SPF Stud
+    ├── T (1) - HeaderCap
+        - 2x6 SPF Stud
+
+============================================================
+🎯 Total: 3 SubAssemblies with 33 associated parts
+============================================================
+
+Exported from EHX Search Widget
+Date: 2025-09-18 08:35:10

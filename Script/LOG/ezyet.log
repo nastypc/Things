@@ -1,0 +1,147 @@
+
+=== ezyet.log updated at 2025-09-12 15:57:51 for ezyet.EHX ===
+File Location: C:/Users/edward/Downloads/EHX/Script/Test
+
+=== V2.0 DIAGNOSTIC INFO ===
+Junctions found: 9
+Bundles found: 1
+Total panels: 4
+Panels assigned: 4
+Panels unassigned: 0
+Junction mappings: 7
+Bundle layer mappings: {}
+========================
+
+Panel: 00_100
+Level: 1
+Description: 1FW 2FD
+Bundle: NoB_Ext1FW 2FD
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 100 (8'-4")
+• Height: 109.125 (9'-1-1/8")
+• Squaring: 12'-3"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 7/16" 4x9 OSB
+• Weight: 244 Lbs
+
+SubAssembly Details:
+• Ladder - Flat (Fixed)
+   Materials:
+    ├── D (2)
+    ├── E (4)
+• Ladder - Flat (Fixed)
+   Materials:
+    ├── D (4)
+    ├── E (8)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 8'-4"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 8'-4"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 8'-4"
+D - Stud - 2x6 SPF Stud - (10) - 8'-8-5/8"
+E - Rung - 2x6 SPF Stud - (12) - 1'-2-1/2"
+F - Sheathing - 7/16" 4x9 OSB - (1) - 9' x 4'
+---
+Panel: 00_101
+Level: 1
+Description: 1FW 2FD
+Bundle: NoB_Ext1FW 2FD
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 111 (9'-3")
+• Height: 109.125 (9'-1-1/8")
+• Squaring: 12'-10-5/8"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 7/16" 4x9 OSB
+• Weight: 254 Lbs
+
+SubAssembly Details:
+• Tee
+   Materials:
+    ├── D (2)
+    ├── E (1)
+• LType
+   Materials:
+    ├── D (1)
+    ├── E (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 9'-3"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 9'-3"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 9'-3"
+D - Stud - 2x6 SPF Stud - (9) - 8'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (2) - 8'-8-5/8"
+F - CriticalStud - 2x6 SPF Stud - (1) - 8'-8-5/8"
+G - Sheathing - 7/16" 4x9 OSB - (1) - 9' x 4'
+---
+Panel: 00_102
+Level: 1
+Description: 1FW 2FD
+Bundle: NoB_Ext1FW 2FD
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 100 (8'-4")
+• Height: 109.125 (9'-1-1/8")
+• Squaring: 12'-3"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 7/16" 4x9 OSB
+• Weight: 220 Lbs
+
+SubAssembly Details:
+• Ladder - Flat (Fixed)
+   Materials:
+    ├── D (4)
+    ├── F (8)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 8'-4"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 8'-4"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 8'-4"
+D - Stud - 2x6 SPF Stud - (8) - 8'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (1) - 8'-8-5/8"
+F - Rung - 2x6 SPF Stud - (8) - 1'-2-1/2"
+G - Sheathing - 7/16" 4x9 OSB - (1) - 9' x 3'-11-1/4"
+---
+Panel: 00_103
+Level: 1
+Description: 1FW 2FD
+Bundle: NoB_Ext1FW 2FD
+Panel Details:
+• Category: Exterior
+• Load Bearing: YES
+• Length: 111 (9'-3")
+• Height: 109.125 (9'-1-1/8")
+• Squaring: 12'-10-5/8"
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing Layer 1: 7/16" 4x9 OSB
+• Weight: 316 Lbs
+
+SubAssembly Details:
+• U Type
+   Materials:
+    ├── D (1)
+    ├── E (2)
+• Stud
+   Materials:
+    ├── D (5)
+• LType M
+   Materials:
+    ├── D (1)
+    ├── E (1)
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 9'-3"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 9'-3"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 9'-3"
+D - Stud - 2x6 SPF Stud - (13) - 8'-8-5/8"
+E - FlatStud - 2x6 SPF Stud - (3) - 8'-8-5/8"
+F - Sheathing - 7/16" 4x9 OSB - (1) - 9' x 4'
+---

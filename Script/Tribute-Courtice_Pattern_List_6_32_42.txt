@@ -1,0 +1,134 @@
+EHX FAMILY MEMBER ANALYSIS - 32 (LType), 42 (Ladder), & 6 (Loose Members)
+======================================================================
+
+FAMILY MEMBER 6 (Loose Members) ANALYSIS:
+------------------------------------------
+Total unique FamilyMemberName patterns: 4
+Total occurrences across all EHX files: 152828
+
+DETAILED PATTERN LIST (FamilyMember 6 - Loose Members):
+-------------------------------------------------------
+Pattern Name				Occurrences
+------------------------------------------------------------
+Stud		140260
+Flat Stud		10074
+FlatStud		2490
+KingStud		4
+
+
+ASSOCIATED SUBASSEMBLY PATTERNS (FamilyMember 6):
+--------------------------------------------------
+SubAssembly Name				Occurrences
+------------------------------------------------------------
+Stud		140260
+Flat Stud		10074
+FlatStud		2490
+KingStud		4
+
+
+======================================================================
+FAMILY MEMBER 32 (LType) ANALYSIS:
+-----------------------------------
+Total unique FamilyMemberName patterns: 11
+Total occurrences across all EHX files: 26284
+
+DETAILED PATTERN LIST (FamilyMember 32):
+----------------------------------------
+Pattern Name				Occurrences
+------------------------------------------------------------
+LType		10456
+End Stud Assembly		6112
+Critical Stud		5732
+Stud		2034
+2S LType		1556
+3S LType		140
+Flat Stud		130
+Tee		58
+U Type		52
+4S LType		10
+LType M		4
+
+
+ASSOCIATED SUBASSEMBLY PATTERNS (FamilyMember 32):
+--------------------------------------------------
+SubAssembly Name				Occurrences
+------------------------------------------------------------
+LType		10456
+End Stud Assembly		6112
+Critical Stud		5732
+Stud		2034
+2S LType		1556
+3S LType		140
+Flat Stud		130
+Tee		58
+U Type		52
+4S LType		10
+LType M		4
+
+
+======================================================================
+FAMILY MEMBER 42 (Ladder) ANALYSIS:
+------------------------------------
+Total unique FamilyMemberName patterns: 3
+Total occurrences across all EHX files: 5410
+
+DETAILED PATTERN LIST (FamilyMember 42):
+----------------------------------------
+Pattern Name				Occurrences
+------------------------------------------------------------
+Ladder - Flat (Fixed)		5112
+Lad2Stud		296
+Ladder - Flat (Odd)		2
+
+
+ASSOCIATED SUBASSEMBLY PATTERNS (FamilyMember 42):
+--------------------------------------------------
+SubAssembly Name				Occurrences
+------------------------------------------------------------
+Ladder - Flat (Fixed)		5112
+Lad2Stud		296
+Ladder - Flat (Odd)		2
+
+
+======================================================================
+COMBINED SUMMARY (FamilyMember 6, 32 & 42):
+---------------------------------------------
+Total unique patterns (6 + 32 + 42): 18
+Total occurrences (6 + 32 + 42): 184522
+  - FamilyMember 6 (Loose Members): 4 patterns, 152828 occurrences
+  - FamilyMember 32 (LType): 11 patterns, 26284 occurrences
+  - FamilyMember 42 (Ladder): 3 patterns, 5410 occurrences
+
+
+CURRENT EXCLUSION PATTERNS:
+------------------------------
+- Critical Stud
+- End Stud Assembly
+
+
+COMPLETE COMBINED PATTERN LIST (Alphabetical by FamilyMember):
+------------------------------------------------------------
+
+FamilyMember 6 (Loose Members):
+- Flat Stud (10074)
+- FlatStud (2490)
+- KingStud (4)
+- Stud (140260)
+
+FamilyMember 32 (LType):
+- 2S LType (1556)
+- 3S LType (140)
+- 4S LType (10)
+- Critical Stud (5732)
+- End Stud Assembly (6112)
+- Flat Stud (130)
+- LType (10456)
+- LType M (4)
+- Stud (2034)
+- Tee (58)
+- U Type (52)
+
+FamilyMember 42 (Ladder):
+- Lad2Stud (296)
+- Ladder - Flat (Fixed) (5112)
+- Ladder - Flat (Odd) (2)

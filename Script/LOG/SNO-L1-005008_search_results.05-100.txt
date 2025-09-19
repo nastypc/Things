@@ -1,0 +1,40 @@
+EHX Search Results Export
+==================================================
+
+EHX> Loaded SNO-L1-005008.EHX
+Found 37 panels and 5 bundles
+EHX Format: legacy
+Type your search query or use quick buttons above
+
+EHX> 05-100 FM
+🔍 COMPLETE COMBINED PATTERN LIST (Grouped by Type) - Panel: 05-100
+================================================================================
+
+🧱 LOOSE MATERIALS (materials not in any subassembly):
+------------------------------------------------------------
+- FM28: BottomPlate (1)
+- FM29: TopPlate (1)
+- FM30: VeryTopPlate (1)
+- FM47: CriticalStud (1)
+- FM55: EndPadding (1)
+
+🔧 SUBASSEMBLY FAMILY MEMBERS (materials in subassemblies):
+------------------------------------------------------------
+- FM-1: FM-1 (1)
+- FM1: Stud (2)
+- FM13: FM13 (1)
+- FM47: CriticalStud (4)
+- FM48: KingStud (7)
+- FM49: Trimmer (8)
+- FM61: FM61 (5)
+
+🎯 EXPECTED SUBASSEMBLY TYPES:
+------------------------------
+Target SubAssemblies: FM25, FM32
+
+================================================================================
+🎯 Pattern Analysis Complete for Panel: 05-100
+================================================================================
+
+Exported from EHX Search Widget
+Date: 2025-09-17 11:11:52

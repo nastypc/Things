@@ -12,6 +12,89 @@ from typing import Dict, List, Optional, Callable
 from collections import defaultdict
 import threading
 import queue
+import math
+import importlib.util
+
+# Import formatting functions from Vold.py
+try:
+    import sys
+    vold_path = Path(__file__).parent.parent / "Script" / "Vold.py"
+    if vold_path.exists():
+        spec = importlib.util.spec_from_file_location("Vold", vold_path)
+        vold_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(vold_module)
+        format_dimension = vold_module.format_dimension
+        format_weight = vold_module.format_weight
+        inches_to_feet_inches_sixteenths = vold_module.inches_to_feet_inches_sixteenths
+    else:
+        raise ImportError("Vold.py not found")
+except ImportError:
+    # Fallback definitions if Vold.py is not available
+    def format_dimension(value):
+        """Strip trailing zeros from decimal numbers."""
+        try:
+            num = float(str(value))
+            if num == int(num):
+                return str(int(num))
+            else:
+                return str(num).rstrip('0').rstrip('.')
+        except (ValueError, TypeError):
+            return str(value)
+
+    def format_weight(value):
+        """Format weight by rounding up to nearest integer."""
+        if not value:
+            return value
+        try:
+            num = float(str(value))
+            return str(math.ceil(num))
+        except (ValueError, TypeError):
+            return str(value)
+
+    def inches_to_feet_inches_sixteenths(s):
+        """Convert decimal inches to feet-inches-sixteenths format."""
+        try:
+            f = float(s)
+        except Exception:
+            return ''
+        try:
+            total_sixteenths = int(round(float(f) * 16))
+        except Exception:
+            return ''
+        total_sixteenths = int(round(total_sixteenths / 2.0) * 2)
+        feet = total_sixteenths // (12 * 16)
+        rem = total_sixteenths % (12 * 16)
+        inches_whole = rem // 16
+        sixteenths = rem % 16
+        if sixteenths == 0:
+            frac_part = ''
+        else:
+            num = sixteenths // 2
+            denom = 8
+            from math import gcd
+            g = gcd(num, denom)
+            num_r = num // g
+            denom_r = denom // g
+            frac_part = f"{num_r}/{denom_r}\""
+
+        if feet and inches_whole:
+            if frac_part:
+                return f"{feet}'-{inches_whole}-{frac_part}"
+            else:
+                return f"{feet}'-{inches_whole}\""
+        if feet and not inches_whole:
+            if frac_part:
+                return f"{feet}'-{frac_part}"
+            else:
+                return f"{feet}'"
+        if inches_whole:
+            if frac_part:
+                return f"{inches_whole}-{frac_part}"
+            else:
+                return f"{inches_whole}\""
+        if frac_part:
+            return frac_part
+        return ''
 
 # Global sorting functions for consistent ordering throughout the application
 def sort_bundle_keys(bundle_keys):
@@ -33,15 +116,26 @@ def sort_bundle_keys(bundle_keys):
     return sorted(bundle_keys, key=smart_sort_key)
 
 def sort_panel_names(panel_names):
-    """Sort panel names numerically (05-100, 05-101, etc.)."""
+    """Sort panel names numerically (05-100, 05-101, etc.) and simple numeric formats (100, 101, etc.)."""
     def panel_sort_key(panel_name):
         import re
+        # First try to match "XX-YYY" format (like "05-100")
         match = re.search(r'(\d+)-(\d+)', panel_name)
         if match:
             return (int(match.group(1)), int(match.group(2)))
         else:
-            # Fallback to alphabetical sorting
-            return (999, panel_name)
+            # Try to extract underscore-separated numbers (e.g., "B1_100")
+            match = re.search(r'_(\d+)', panel_name)
+            if match:
+                return (0, int(match.group(1)))
+            else:
+                # Try to extract single number from the string
+                match = re.search(r'(\d+)', panel_name)
+                if match:
+                    return (0, int(match.group(1)))
+                else:
+                    # Fallback to alphabetical sorting
+                    return (999, panel_name)
     
     return sorted(panel_names, key=panel_sort_key)
 
@@ -1175,13 +1269,10 @@ class EHXSearchWidget(ttk.Frame):
         # Find available levels
         levels_found = set()
         for panel_name, panel_info in self.search_data['panels'].items():
-            # Try to extract level from panel name
-            if "L1" in panel_name or "Level1" in panel_name or "LEVEL1" in panel_name:
-                levels_found.add("1")
-            if "L2" in panel_name or "Level2" in panel_name or "LEVEL2" in panel_name:
-                levels_found.add("2")
-            if "L3" in panel_name or "Level3" in panel_name or "LEVEL3" in panel_name:
-                levels_found.add("3")
+            # Use the LevelNo from panel data
+            level = panel_info.get('Level')
+            if level:
+                levels_found.add(str(level))
         
         if levels_found:
             for level in sorted(levels_found):
@@ -1219,11 +1310,10 @@ class EHXSearchWidget(ttk.Frame):
         # Find panels in this level
         level_panels = []
         for panel_name, panel_info in self.search_data['panels'].items():
-            # Try to extract level from panel name or info
-            level_found = False
-            if f"L{target_level}" in panel_name or f"Level{target_level}" in panel_name or f"LEVEL{target_level}" in panel_name:
+            # Use the LevelNo from panel data
+            level = panel_info.get('Level')
+            if level and str(level) == str(target_level):
                 level_panels.append((panel_name, panel_info))
-                level_found = True
 
         if not level_panels:
             result += f"No panels found for Level {target_level}\n"

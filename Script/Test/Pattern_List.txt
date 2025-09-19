@@ -1,0 +1,208 @@
+EHX SUBASSEMBLY AND FAMILY MEMBER ANALYSIS
+======================================================================
+
+CONFIRMED SUBASSEMBLY FAMILY MEMBERS:
+- FM32 (LType): Contains SubAssemblies like LType, Critical Stud, End Stud Assembly
+- FM42 (Ladder): Contains SubAssemblies for ladder components
+- FM25 (Openings): Contains SubAssemblies for openings like BSMT-HDR, 49x63-L2
+
+Each of these FamilyMembers contains SubAssemblies with associated material parts.
+
+FAMILY MEMBER 32 (LType) SUBASSEMBLIES:
+---------------------------------------------
+
+• Critical Stud (GUID: 8621837f...) (FM32) - Critical Stud
+   Associated Material Parts:
+    ├── H (4) - CriticalStud
+        - 2x6 SPF Stud
+
+FAMILY MEMBER 25 (Openings) SUBASSEMBLIES:
+---------------------------------------------
+
+• DR-9-ENT-L1 (GUID: 42317730...) (FM25) - Door Entry
+   Associated Material Parts:
+    ├── D (2) - KingStud
+        - 2x6 SPF Stud
+    ├── DR-9-ENT-L1 (1) - RoughOpening
+        - DR-9-ENT-L1
+    ├── F (4) - Trimmer
+        - 2x6 SPF Stud
+    ├── G (2) - Header
+        - 2x8 SPF No.2
+    ├── L (5) - FillerCripple
+        - 2x6 SPF Stud
+    ├── M (1) - FillerBtmNailer
+        - 2x6 SPF Stud
+
+
+======================================================================
+LOOSE MATERIALS ANALYSIS (All FamilyMembers except 32, 42, 25):
+======================================================================
+
+Total unique loose material patterns: 12
+Total occurrences across all EHX files: 35
+
+DETAILED LOOSE MATERIAL PATTERN LIST (Sorted by Occurrence):
+------------------------------------------------------------
+FM ID: Pattern Name				Occurrences
+------------------------------------------------------------
+FM49: Trimmer		8
+FM48: KingStud		7
+FM47: CriticalStud		5
+FM61: FillerCripple		5
+FM1: Header		2
+FM33: Beampocket		2
+FM-1: RoughOpening		1
+FM13: FillerBtmNailer		1
+FM28: BottomPlate		1
+FM29: TopPlate		1
+FM30: VeryTopPlate		1
+FM55: EndPadding		1
+
+
+LOOSE MATERIAL SUBASSEMBLY PATTERNS (Sorted by Occurrence):
+------------------------------------------------------------
+SubAssembly Name				Occurrences
+------------------------------------------------------------
+Beampocket		2
+
+
+LOOSE MATERIAL BREAKDOWN BY FAMILY MEMBER:
+--------------------------------------------------
+FM-1: 1 patterns, 1 total occurrences
+FM1: 1 patterns, 2 total occurrences
+FM13: 1 patterns, 1 total occurrences
+FM28: 1 patterns, 1 total occurrences
+FM29: 1 patterns, 1 total occurrences
+FM30: 1 patterns, 1 total occurrences
+FM33: 1 patterns, 2 total occurrences
+FM47: 1 patterns, 5 total occurrences
+FM48: 1 patterns, 7 total occurrences
+FM49: 1 patterns, 8 total occurrences
+FM55: 1 patterns, 1 total occurrences
+FM61: 1 patterns, 5 total occurrences
+
+
+======================================================================
+FAMILY MEMBER 32 (LType) ANALYSIS:
+-----------------------------------
+Total unique FamilyMemberName patterns: 1
+Total occurrences across all EHX files: 1
+
+DETAILED PATTERN LIST (FamilyMember 32):
+----------------------------------------
+Pattern Name				Occurrences
+------------------------------------------------------------
+Critical Stud		1
+
+
+ASSOCIATED SUBASSEMBLY PATTERNS (FamilyMember 32):
+--------------------------------------------------
+SubAssembly Name				Occurrences
+------------------------------------------------------------
+Critical Stud		1
+
+
+======================================================================
+COMBINED SUMMARY (Loose Materials + SubAssembly FamilyMembers):
+------------------------------------------------------------
+Loose Materials: 12 patterns, 35 occurrences
+SubAssembly FamilyMembers (32, 42, 25): 2 patterns, 2 occurrences
+Combined Total: 14 patterns, 37 occurrences
+
+Loose Materials by FamilyMember:
+  - FM-1: 1 patterns, 1 occurrences
+  - FM1: 1 patterns, 2 occurrences
+  - FM13: 1 patterns, 1 occurrences
+  - FM28: 1 patterns, 1 occurrences
+  - FM29: 1 patterns, 1 occurrences
+  - FM30: 1 patterns, 1 occurrences
+  - FM33: 1 patterns, 2 occurrences
+  - FM47: 1 patterns, 5 occurrences
+  - FM48: 1 patterns, 7 occurrences
+  - FM49: 1 patterns, 8 occurrences
+  - FM55: 1 patterns, 1 occurrences
+  - FM61: 1 patterns, 5 occurrences
+
+SubAssembly FamilyMembers:
+  - FM32: 1 patterns, 1 occurrences
+  - FM25: 1 patterns, 1 occurrences
+
+
+COMPLETE COMBINED PATTERN LIST (Grouped by Type):
+-------------------------------------------------------
+
+ALL FAMILY MEMBERS (Including 32, 42, 25):
+- FM49: Trimmer (8)
+- FM48: KingStud (7)
+- FM47: CriticalStud (5)
+- FM61: FillerCripple (5)
+- FM1: Header (2)
+- FM33: Beampocket (2)
+- FM-1: RoughOpening (1)
+- FM13: FillerBtmNailer (1)
+- FM25: DR-9-ENT-L1 (1)
+- FM28: BottomPlate (1)
+- FM29: TopPlate (1)
+- FM30: VeryTopPlate (1)
+- FM32: Critical Stud (1)
+- FM55: EndPadding (1)
+
+
+ALL FAMILY MEMBER PATTERNS (Sorted by Occurrence):
+--------------------------------------------------
+FM49: Trimmer (8)
+FM48: KingStud (7)
+FM47: CriticalStud (5)
+FM61: FillerCripple (5)
+FM1: Header (2)
+FM33: Beampocket (2)
+FM28: BottomPlate (1)
+FM29: TopPlate (1)
+FM30: VeryTopPlate (1)
+FM55: EndPadding (1)
+FM-1: RoughOpening (1)
+FM13: FillerBtmNailer (1)
+FM25: DR-9-ENT-L1 (1)
+FM32: Critical Stud (1)
+
+
+FAMILY MEMBER RELATIONSHIP ANALYSIS:
+----------------------------------------
+SUBASSEMBLY FAMILY MEMBERS (32, 42, 25):
+
+  FM32 contains parts from:
+    FM47: 4 parts
+
+  FM25 contains parts from:
+    FM61: 5 parts
+    FM49: 4 parts
+    FM48: 2 parts
+    FM1: 2 parts
+    FM-1: 1 parts
+    FM13: 1 parts
+
+LOOSE MATERIAL FAMILY MEMBERS (excluding 32, 42, 25):
+  FM-1: 1 patterns, 1 total occurrences
+  FM1: 1 patterns, 2 total occurrences
+  FM13: 1 patterns, 1 total occurrences
+  FM28: 1 patterns, 1 total occurrences
+  FM29: 1 patterns, 1 total occurrences
+  FM30: 1 patterns, 1 total occurrences
+  FM33: 1 patterns, 2 total occurrences
+  FM47: 1 patterns, 5 total occurrences
+  FM48: 1 patterns, 7 total occurrences
+  FM49: 1 patterns, 8 total occurrences
+  FM55: 1 patterns, 1 total occurrences
+  FM61: 1 patterns, 5 total occurrences
+
+
+======================================================================
+BEAM POCKET ANALYSIS:
+======================================================================
+
+Found 3 potential beam pocket indicators:
+
+• FM-1: RoughOpening (Board)
+• FM33: Beampocket (SubAssembly)
+• FM33: Beampocket (SubAssembly)

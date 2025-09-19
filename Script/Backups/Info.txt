@@ -1,0 +1,34 @@
+✅ EHX_Complete_Summary.md
+Updated header: Changed version to 4.5 and date to September 12, 2025
+Added FM25/FM32 Mapping Corrections section: Documented the removal of 'LType': 'L' from FM25 mapping
+Added Export Consistency Fixes section: Documented the updates to export_current_panel function
+Updated status: Emphasized Vold.py as the active main script with latest fixes
+Updated all date references to September 12, 2025
+
+✅ EHX_Tool_Updates.md
+Updated header: Changed version to 4.5 and date to September 12, 2025
+Added new major section: "FM25/FM32 Mapping Corrections & Export Consistency (September 12, 2025)"
+Documented key changes: Lines 2406 & 4270 in Vold.py (FM25 mapping cleanup) and line 2832 (export function update)
+Updated all date references to September 12, 2025
+
+✅ GUID_Workflow.md
+Updated header: Changed version to 4.5 and date to September 12, 2025
+Updated implementation status: Added FM25/FM32 mapping corrections and export consistency fixes
+Updated file descriptions: Emphasized Vold.py as active main script with latest fixes
+Updated all date references to September 12, 2025
+
+🎯 Key Information Now Reflected in Documentation
+Vold.py is the active main script (5,423 lines) with all latest fixes
+FM25/FM32 mapping corrections: Removed incorrect 'LType': 'L' entry from FM25 mapping
+Export consistency: Export files now match log format exactly with Rough Opening / AFF information
+Proper subassembly separation: BSMT-HDR and 49x63-L2 show rough openings, LType does not
+Current date: All references updated to September 12, 2025
+Version 4.5: Updated version numbers across all files
+The documentation now accurately reflects that the script is working correctly with:
+
+✅ FM25 subassemblies (BSMT-HDR, 49x63-L2) showing rough openings with AFF values
+✅ FM32 subassemblies (LType) correctly excluded from rough opening information
+✅ Export files matching log format exactly
+✅ All reports showing consistent information
+
+

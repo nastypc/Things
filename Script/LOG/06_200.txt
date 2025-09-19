@@ -1,0 +1,31 @@
+File: 06_200
+
+Panel Details:
+Panel: 06_200
+• Lot: 06
+• Panel: 200
+• Level: 2
+• Description: 2FW 3FD
+• Category: Exterior
+• Load Bearing: YES
+• Wall Length: 129.931 in   (10'-10")
+• Height: 109.125 in   (9'-1-1/8")
+• Squaring: 14'-3/4" in   (14'-3/4")
+• Thickness: 5.5
+• Stud Spacing: 16
+• Sheathing: 1/2" BP R1.5 4x9
+• Weight: 326 Lbs
+
+Panel Material Breakdown:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 10'-10"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 10'-10"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 9'-3-1/4"
+D - KingStud - 2x6 SPF Stud - (2) - 8'-8-5/8"
+E - Trimmer - 2x6 SPF Stud - (4) - 8'-1-3/8"
+F - Header - 2x8 SPF No.2 - (2) - 8'-1"
+G - WindowSill - 2x6 SPF Stud - (1) - 7'-7"
+H - SillCripple - 2x6 SPF Stud - (7) - 1'-10"
+I - Stud - 2x6 SPF Stud - (2) - 8'-8-5/8"
+J - Sheathing - 1/2" BP R1.5 4x9 - (1) - 9' x 3'-4-1/2"
+N - FillerCripple - 2x6 SPF Stud - (7) - 3-3/8"
+O - FillerBtmNailer - 2x6 SPF Stud - (1) - 7'-7"

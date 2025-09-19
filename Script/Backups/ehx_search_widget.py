@@ -13,6 +13,9 @@ from collections import defaultdict
 import threading
 import queue
 
+# Global debug control
+debug_enabled = True
+
 # Global sorting functions for consistent ordering throughout the application
 def sort_bundle_keys(bundle_keys):
     """Sort bundle keys by bundle number (B1, B2, etc.) with smart fallback."""
@@ -313,9 +316,11 @@ class EHXSearchWidget(ttk.Frame):
         if root.find('EHXVersion') is not None:
             ehx_version = "v2.0"
             ehx_ver = root.find('EHXVersion').text.strip() if root.find('EHXVersion') is not None else ""
-            print(f"DEBUG: Search widget detected EHX format: {ehx_version} (Version: {ehx_ver})")
+            if debug_enabled:
+                print(f"DEBUG: Search widget detected EHX format: {ehx_version} (Version: {ehx_ver})")
         else:
-            print(f"DEBUG: Search widget detected EHX format: {ehx_version}")
+            if debug_enabled:
+                print(f"DEBUG: Search widget detected EHX format: {ehx_version}")
 
         search_data = {
             'panels': {},
@@ -1175,13 +1180,10 @@ class EHXSearchWidget(ttk.Frame):
         # Find available levels
         levels_found = set()
         for panel_name, panel_info in self.search_data['panels'].items():
-            # Try to extract level from panel name
-            if "L1" in panel_name or "Level1" in panel_name or "LEVEL1" in panel_name:
-                levels_found.add("1")
-            if "L2" in panel_name or "Level2" in panel_name or "LEVEL2" in panel_name:
-                levels_found.add("2")
-            if "L3" in panel_name or "Level3" in panel_name or "LEVEL3" in panel_name:
-                levels_found.add("3")
+            # Use the LevelNo from panel data
+            level = panel_info.get('Level')
+            if level:
+                levels_found.add(str(level))
         
         if levels_found:
             for level in sorted(levels_found):
@@ -1219,11 +1221,10 @@ class EHXSearchWidget(ttk.Frame):
         # Find panels in this level
         level_panels = []
         for panel_name, panel_info in self.search_data['panels'].items():
-            # Try to extract level from panel name or info
-            level_found = False
-            if f"L{target_level}" in panel_name or f"Level{target_level}" in panel_name or f"LEVEL{target_level}" in panel_name:
+            # Use the LevelNo from panel data
+            level = panel_info.get('Level')
+            if level and str(level) == str(target_level):
                 level_panels.append((panel_name, panel_info))
-                level_found = True
 
         if not level_panels:
             result += f"No panels found for Level {target_level}\n"
@@ -1794,7 +1795,8 @@ class EHXSearchWidget(ttk.Frame):
                     # Get diagnostic info for v2.0 files
                     diag_report = diagnose_v2_bundle_assignment(root, ehx_version, panels_by_name)
             except Exception as e:
-                print(f"Search widget diagnostic setup error: {e}")
+                if debug_enabled:
+                    print(f"Search widget diagnostic setup error: {e}")
 
             # Write expected.log
             expected_path = os.path.join(folder, 'expected.log')
@@ -1867,10 +1869,12 @@ class EHXSearchWidget(ttk.Frame):
                             fh.write(f"Type: {m.get('Type','')} , Label: {m.get('Label','')} , Desc: {m.get('Desc','')}\n")
                     fh.write('---\n')
 
-            print(f"DEBUG: Successfully wrote log files for {fname}")
+            if debug_enabled:
+                print(f"DEBUG: Successfully wrote log files for {fname}")
             
         except Exception as e:
-            print(f"DEBUG: Failed to write log files from search widget: {e}")
+            if debug_enabled:
+                print(f"DEBUG: Failed to write log files from search widget: {e}")
 
 
 # Example usage function

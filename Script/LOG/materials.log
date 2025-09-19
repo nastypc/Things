@@ -1,0 +1,70 @@
+
+=== materials.log updated at 2025-09-19 18:47:21 for 05-100ET.EHX ===
+
+=== V2.0 DIAGNOSTIC INFO ===
+Junctions found: 2
+Bundles found: 1
+Total panels: 1
+Panels assigned: 1
+Panels unassigned: 0
+Junction mappings: 3
+Bundle layer mappings: {1: 'B1 (2x6 Ext)'}
+========================
+
+Panel: 05-100
+Level: 1
+Description: 1FW 2FD
+Bundle: B1 (2x6 Ext)
+Critical Stud Details:
+• FM47 Critical Studs: 1 (Loose studs at 90.9 inches)
+• FM32 Critical Studs: 4 (SubAssembly studs at 76.0 inches)
+
+Beam Pocket Details: 2 beam pockets
+• Beam Pocket 1
+  AFF: 75.25 in (6'-3-1/4")
+  Opening Width: 3 in
+  Materials:
+    ├── D (3)
+    ├── E (2)
+• Beam Pocket 2
+  AFF: 75.25 in (6'-3-1/4")
+  Opening Width: 3 in
+  Materials:
+    ├── D (2)
+    ├── E (2)
+
+Type: BottomPlate , Label: A , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: TopPlate , Label: B , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: VeryTopPlate , Label: C , SubAssembly:  , Desc: 2x6 SPF PM No.2
+Type: CriticalStud , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: EndPadding , Label: N , SubAssembly:  , Desc: 5/8" 2x6 Padding
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: RoughOpening , Label: DR-9-ENT-L1 , SubAssembly: DR-9-ENT-L1 , Desc: DR-9-ENT-L1 AFF=92.750
+Type: Header , Label: G , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: Header , Label: G , SubAssembly:  , Desc: 2x8 SPF No.2
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerBtmNailer , Label: M , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: FillerCripple , Label: L , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: F , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: CriticalStud , Label: H , SubAssembly:  , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: Trimmer , Label: E , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: KingStud , Label: D , SubAssembly: Beampocket , Desc: 2x6 SPF Stud
+Type: Sheathing , Label: I , SubAssembly: SZ37 , Desc: 7/16" 4x9 OSB
+---

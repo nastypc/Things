@@ -1,0 +1,859 @@
+=== Debug Log Started: 2025-09-15 16:35:39 ===
+2025-09-15 16:35:39 - INFO - Starting GUI creation...
+2025-09-15 16:35:39 - INFO - GUI created, starting mainloop...
+2025-09-15 16:35:42 - DEBUG - Detected EHX format: legacy
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 4dadd5c8-996d-4900-886d-4c45fc26a843: 181.479 inches -> 15'-1-1/2"
+2025-09-15 16:35:42 - DEBUG - Panel 4dadd5c8-996d-4900-886d-4c45fc26a843 has 35 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=-22.5, max_y=-21.0, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=-22.5, max_y=85.5, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=85.5, max_y=108.0, height=22.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=-22.5, max_y=85.5, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=60.0, max_y=108.0, height=48.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=-22.5, max_y=85.5, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=85.5, max_y=108.0, height=22.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 20: min_y=-21.0, max_y=98.875, height=119.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 21: min_y=98.875, max_y=106.125, height=7.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 22: min_y=98.875, max_y=106.125, height=7.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 23: min_y=-21.0, max_y=98.875, height=119.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 24: min_y=-22.5, max_y=60.0, height=82.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 25: min_y=60.0, max_y=61.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 26: min_y=61.5, max_y=98.875, height=37.375, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 27: min_y=61.5, max_y=98.875, height=37.375, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 28: min_y=61.5, max_y=98.875, height=37.375, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 29: min_y=61.5, max_y=98.875, height=37.375, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 30: min_y=-21.0, max_y=98.875, height=119.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 31: min_y=-21.0, max_y=98.875, height=119.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 32: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 33: min_y=-22.5, max_y=109.125, height=131.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 34: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Tee', FamilyMember: '32', Label: '', Name: 'Tee'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'GMD-L1', FamilyMember: '25', Label: '', Name: 'GMD-L1'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'End Stud Assembly', FamilyMember: '32', Label: '', Name: 'End Stud Assembly'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel eb4dd928-92c2-46a0-b864-baf25d447c22: 181.199 inches -> 15'-1-1/4"
+2025-09-15 16:35:42 - DEBUG - Panel eb4dd928-92c2-46a0-b864-baf25d447c22 has 26 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-24.5, max_y=-23.0, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=-23.0, max_y=106.125, height=129.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=-23.0, max_y=106.125, height=129.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=-24.5, max_y=83.5, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=83.5, max_y=108.0, height=24.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=38.5, max_y=108.0, height=69.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=38.5, max_y=108.0, height=69.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=38.5, max_y=108.0, height=69.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=-24.5, max_y=83.5, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=83.5, max_y=108.0, height=24.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=-23.0, max_y=106.125, height=129.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=-23.0, max_y=106.125, height=129.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=94.875, max_y=106.125, height=11.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=94.875, max_y=106.125, height=11.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=-23.0, max_y=94.875, height=117.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=-23.0, max_y=94.875, height=117.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=-24.5, max_y=38.5, height=63.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 20: min_y=38.5, max_y=40.0, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 21: min_y=93.375, max_y=94.875, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 22: min_y=-23.0, max_y=94.875, height=117.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 23: min_y=-23.0, max_y=94.875, height=117.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 24: min_y=-23.0, max_y=106.125, height=129.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 25: min_y=-23.0, max_y=106.125, height=129.125, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: '8x7-L5', FamilyMember: '25', Label: '', Name: '8x7-L5'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 21e5a5be-59cf-4d03-ba8a-6c3117b2a6b7: 161.752 inches -> 13'-5-3/4"
+2025-09-15 16:35:42 - DEBUG - Panel 21e5a5be-59cf-4d03-ba8a-6c3117b2a6b7 has 34 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=0.0, max_y=27.0, height=27.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=96.0, max_y=108.0, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=0.0, max_y=109.125, height=109.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=1.5, max_y=96.625, height=95.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=96.625, max_y=106.125, height=9.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=96.625, max_y=106.125, height=9.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=1.5, max_y=96.625, height=95.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=1.5, max_y=25.5, height=24.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=25.5, max_y=27.0, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 20: min_y=27.0, max_y=96.0, height=69.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 21: min_y=96.0, max_y=96.625, height=0.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 22: min_y=1.5, max_y=25.5, height=24.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 23: min_y=1.5, max_y=25.5, height=24.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 24: min_y=1.5, max_y=25.5, height=24.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 25: min_y=1.5, max_y=25.5, height=24.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 26: min_y=1.5, max_y=25.5, height=24.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 27: min_y=1.5, max_y=96.625, height=95.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 28: min_y=1.5, max_y=96.625, height=95.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 29: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 30: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 31: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 32: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 33: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'End Stud Assembly', FamilyMember: '32', Label: '', Name: 'End Stud Assembly'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Critical Stud', FamilyMember: '32', Label: '', Name: 'Critical Stud'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: '73x69-LVL4', FamilyMember: '25', Label: '', Name: '73x69-LVL4'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Critical Stud', FamilyMember: '32', Label: '', Name: 'Critical Stud'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel d79ec38a-700c-4b27-accc-35e5840b06c1: 151.940 inches -> 12'-8"
+2025-09-15 16:35:42 - DEBUG - Panel d79ec38a-700c-4b27-accc-35e5840b06c1 has 22 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=96.0, max_y=108.0, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=1.5, max_y=96.875, height=95.375, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=96.875, max_y=106.125, height=9.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=96.875, max_y=106.125, height=9.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=1.5, max_y=96.875, height=95.375, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=0.0, max_y=96.0, height=96.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=96.625, max_y=96.875, height=0.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=96.0, max_y=96.625, height=0.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=1.5, max_y=96.875, height=95.375, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=1.5, max_y=96.875, height=95.375, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 20: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 21: min_y=0.0, max_y=109.125, height=109.125, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'PATIO-6-L3', FamilyMember: '25', Label: '', Name: 'PATIO-6-L3'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'End Stud Assembly', FamilyMember: '32', Label: '', Name: 'End Stud Assembly'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 5339398a-3cf1-486a-a84d-613358a8a5cc: 155.733 inches -> 12'-11-3/4"
+2025-09-15 16:35:42 - DEBUG - Panel 5339398a-3cf1-486a-a84d-613358a8a5cc has 32 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=-15.0, max_y=-13.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=-15.0, max_y=93.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=93.0, max_y=108.0, height=15.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=83.5, max_y=108.0, height=24.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=-15.0, max_y=93.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=93.0, max_y=108.0, height=15.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=-13.5, max_y=96.875, height=110.375, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=96.875, max_y=106.125, height=9.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=96.875, max_y=106.125, height=9.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=-13.5, max_y=96.875, height=110.375, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=-15.0, max_y=83.5, height=98.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=83.5, max_y=85.0, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=85.0, max_y=96.875, height=11.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=85.0, max_y=96.875, height=11.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=85.0, max_y=96.875, height=11.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 20: min_y=85.0, max_y=96.875, height=11.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 21: min_y=85.0, max_y=96.875, height=11.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 22: min_y=85.0, max_y=96.875, height=11.875, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 23: min_y=-13.5, max_y=96.875, height=110.375, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 24: min_y=-13.5, max_y=96.875, height=110.375, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 25: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 26: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 27: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 28: min_y=-13.5, max_y=97.0, height=110.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 29: min_y=-13.5, max_y=97.0, height=110.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 30: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 31: min_y=-15.0, max_y=109.125, height=124.125, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'DR-66x98.5-L3', FamilyMember: '25', Label: '', Name: 'DR-66x98.5-L3'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Beampocket', FamilyMember: '33', Label: '', Name: 'Beampocket'
+2025-09-15 16:35:42 - DEBUG - Found rough opening or beam pocket SubAssembly: Beampocket
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'End Stud Assembly', FamilyMember: '32', Label: '', Name: 'End Stud Assembly'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 0efa7caa-4e6d-400d-8921-6f393ca5cab7: 143.224 inches -> 11'-11-1/4"
+2025-09-15 16:35:42 - DEBUG - Panel 0efa7caa-4e6d-400d-8921-6f393ca5cab7 has 17 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-15.0, max_y=-13.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=-15.0, max_y=93.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=93.0, max_y=108.0, height=15.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=-15.0, max_y=93.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=-13.5, max_y=97.0, height=110.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Beampocket', FamilyMember: '33', Label: '', Name: 'Beampocket'
+2025-09-15 16:35:42 - DEBUG - Found rough opening or beam pocket SubAssembly: Beampocket
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel d7f5a94d-a94c-4762-bcf7-d94759720845: 128.378 inches -> 10'-8-3/8"
+2025-09-15 16:35:42 - DEBUG - Panel d7f5a94d-a94c-4762-bcf7-d94759720845 has 14 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-15.0, max_y=-13.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=-15.0, max_y=93.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=93.0, max_y=108.0, height=15.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Tee', FamilyMember: '32', Label: '', Name: 'Tee'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'LType', FamilyMember: '32', Label: '', Name: 'LType'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 3c5d3541-33b8-4d88-9f1d-1f357ca774fe: 137.764 inches -> 11'-5-3/4"
+2025-09-15 16:35:42 - DEBUG - Panel 3c5d3541-33b8-4d88-9f1d-1f357ca774fe has 15 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Critical Stud', FamilyMember: '32', Label: '', Name: 'Critical Stud'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel d8773ff6-d756-41cf-819a-79c5bd109c52: 136.525 inches -> 11'-4-1/2"
+2025-09-15 16:35:42 - DEBUG - Panel d8773ff6-d756-41cf-819a-79c5bd109c52 has 12 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 40d77efc-108e-409f-b69d-3e99025e0f8a: 128.677 inches -> 10'-8-3/4"
+2025-09-15 16:35:42 - DEBUG - Panel 40d77efc-108e-409f-b69d-3e99025e0f8a has 12 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-15.0, max_y=-13.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=-15.0, max_y=81.0, height=96.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=81.0, max_y=108.0, height=27.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'LType', FamilyMember: '32', Label: '', Name: 'LType'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel b7073bbb-e1c3-4772-87f1-013c63aaa320: 179.775 inches -> 14'-11-3/4"
+2025-09-15 16:35:42 - DEBUG - Panel b7073bbb-e1c3-4772-87f1-013c63aaa320 has 26 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=48.5, max_y=60.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=48.5, max_y=60.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=1.5, max_y=98.5, height=97.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=1.5, max_y=98.5, height=97.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 20: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 21: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 22: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 23: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 24: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 25: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Beampocket', FamilyMember: '33', Label: '', Name: 'Beampocket'
+2025-09-15 16:35:42 - DEBUG - Found rough opening or beam pocket SubAssembly: Beampocket
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Critical Stud', FamilyMember: '32', Label: '', Name: 'Critical Stud'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel eec4bfd9-326d-4a39-8c98-2d921e92bc48: 174.219 inches -> 14'-6-1/4"
+2025-09-15 16:35:42 - DEBUG - Panel eec4bfd9-326d-4a39-8c98-2d921e92bc48 has 20 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-0.25, max_y=109.375, height=109.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=48.5, max_y=60.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=48.5, max_y=60.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'LType', FamilyMember: '32', Label: '', Name: 'LType'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel e579a2b6-9ae4-480f-80f9-85c37e7bb422: 168.385 inches -> 14'-3/8"
+2025-09-15 16:35:42 - DEBUG - Panel e579a2b6-9ae4-480f-80f9-85c37e7bb422 has 17 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=48.5, max_y=60.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=48.5, max_y=60.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'LType', FamilyMember: '32', Label: '', Name: 'LType'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel ed744c20-6dfd-4389-b9ca-e4d9bf478674: 167.234 inches -> 13'-11-1/4"
+2025-09-15 16:35:42 - DEBUG - Panel ed744c20-6dfd-4389-b9ca-e4d9bf478674 has 15 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=48.5, max_y=60.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=48.5, max_y=60.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 19333b90-08fb-412b-a1dc-c007cc9504cd: 156.596 inches -> 13'-5/8"
+2025-09-15 16:35:42 - DEBUG - Panel 19333b90-08fb-412b-a1dc-c007cc9504cd has 17 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-0.269, max_y=109.394, height=109.66300000000001, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=48.5, max_y=60.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=48.5, max_y=60.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'LType', FamilyMember: '32', Label: '', Name: 'LType'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 8dc9a34b-4b57-4123-a666-1df642f2dd8e: 168.164 inches -> 14'-1/4"
+2025-09-15 16:35:42 - DEBUG - Panel 8dc9a34b-4b57-4123-a666-1df642f2dd8e has 33 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-14.125, max_y=-12.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=45.875, max_y=47.375, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=47.375, max_y=48.875, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=45.875, max_y=47.375, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=47.375, max_y=48.875, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=45.875, max_y=47.375, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=47.375, max_y=48.875, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=45.875, max_y=47.375, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=41.5, max_y=53.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=41.5, max_y=53.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 20: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 21: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 22: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 23: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 24: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 25: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 26: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 27: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 28: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 29: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 30: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 31: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 32: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Critical Stud', FamilyMember: '32', Label: '', Name: 'Critical Stud'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Critical Stud', FamilyMember: '32', Label: '', Name: 'Critical Stud'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 8e8daede-cf59-4329-91f9-9772a6deeece: 166.468 inches -> 13'-10-1/2"
+2025-09-15 16:35:42 - DEBUG - Panel 8e8daede-cf59-4329-91f9-9772a6deeece has 23 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=48.5, max_y=60.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=48.5, max_y=60.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 20: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 21: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 22: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'LType', FamilyMember: '32', Label: '', Name: 'LType'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Critical Stud', FamilyMember: '32', Label: '', Name: 'Critical Stud'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Critical Stud', FamilyMember: '32', Label: '', Name: 'Critical Stud'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel fe9fb16d-6c77-4550-88a1-2527ef29b03b: 174.135 inches -> 14'-6-1/8"
+2025-09-15 16:35:42 - DEBUG - Panel fe9fb16d-6c77-4550-88a1-2527ef29b03b has 36 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=-12.891, max_y=109.391, height=122.28200000000001, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-14.125, max_y=-12.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=45.875, max_y=47.375, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=47.375, max_y=48.875, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=45.875, max_y=47.375, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=47.375, max_y=48.875, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=45.875, max_y=47.375, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=47.375, max_y=48.875, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=45.875, max_y=47.375, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=47.375, max_y=48.875, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=45.875, max_y=47.375, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=41.5, max_y=53.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=41.5, max_y=53.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 20: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 21: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 22: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 23: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 24: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 25: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 26: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 27: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 28: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 29: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 30: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 31: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 32: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 33: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 34: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 35: min_y=-14.125, max_y=109.125, height=123.25, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Critical Stud', FamilyMember: '32', Label: '', Name: 'Critical Stud'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Critical Stud', FamilyMember: '32', Label: '', Name: 'Critical Stud'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'End Stud Assembly', FamilyMember: '32', Label: '', Name: 'End Stud Assembly'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel ec64e39f-2f86-41f0-970e-6cc2eff0970c: 142.735 inches -> 11'-10-3/4"
+2025-09-15 16:35:42 - DEBUG - Panel ec64e39f-2f86-41f0-970e-6cc2eff0970c has 28 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-14.125, max_y=-12.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=45.875, max_y=47.375, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=47.375, max_y=48.875, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=45.875, max_y=47.375, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=47.375, max_y=48.875, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=41.5, max_y=53.5, height=12.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 20: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 21: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 22: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 23: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 24: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 25: min_y=-12.625, max_y=106.125, height=118.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 26: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 27: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Critical Stud', FamilyMember: '32', Label: '', Name: 'Critical Stud'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Common Studs', FamilyMember: '20', Label: '', Name: 'Common Studs'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Stud', FamilyMember: '32', Label: '', Name: 'Stud'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel b52e7cb8-55f1-4489-8839-e74e5b8e31f8: 154.251 inches -> 12'-10-1/4"
+2025-09-15 16:35:42 - DEBUG - Panel b52e7cb8-55f1-4489-8839-e74e5b8e31f8 has 23 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=25.5, max_y=31.0, height=5.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=49.5, max_y=55.0, height=5.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=73.5, max_y=79.0, height=5.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=97.5, max_y=103.0, height=5.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=25.5, max_y=31.0, height=5.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=49.5, max_y=55.0, height=5.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=73.5, max_y=79.0, height=5.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=97.5, max_y=103.0, height=5.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 20: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 21: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 22: min_y=0.0, max_y=109.125, height=109.125, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Ladder - Flat (Fixed)', FamilyMember: '42', Label: '', Name: 'Ladder - Flat (Fixed)'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'End Stud Assembly', FamilyMember: '32', Label: '', Name: 'End Stud Assembly'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 30aed874-c90a-4e34-bce0-b5637853e7bc: 109.978 inches -> 9'-2"
+2025-09-15 16:35:42 - DEBUG - Panel 30aed874-c90a-4e34-bce0-b5637853e7bc has 7 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'LType', FamilyMember: '32', Label: '', Name: 'LType'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel ddd1291e-5bac-4d69-8fea-1ab03c96228b: 108.597 inches -> 9'-5/8"
+2025-09-15 16:35:42 - DEBUG - Panel ddd1291e-5bac-4d69-8fea-1ab03c96228b has 5 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 36d9fdc1-b7df-4550-a143-5817568897bc: 108.808 inches -> 9'-3/4"
+2025-09-15 16:35:42 - DEBUG - Panel 36d9fdc1-b7df-4550-a143-5817568897bc has 9 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'LType', FamilyMember: '32', Label: '', Name: 'LType'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'LType', FamilyMember: '32', Label: '', Name: 'LType'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel b17bfa0d-0e33-420e-b338-83e66cee667e: 110.616 inches -> 9'-2-5/8"
+2025-09-15 16:35:42 - DEBUG - Panel b17bfa0d-0e33-420e-b338-83e66cee667e has 6 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 9e801866-a48c-4e76-9813-51d217cafbd1: 126.124 inches -> 10'-6-1/8"
+2025-09-15 16:35:42 - DEBUG - Panel 9e801866-a48c-4e76-9813-51d217cafbd1 has 8 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-15.0, max_y=-13.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'LType', FamilyMember: '32', Label: '', Name: 'LType'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel e3e0c041-134f-4833-b8b3-fb44e68ba21e: 129.140 inches -> 10'-9-1/8"
+2025-09-15 16:35:42 - DEBUG - Panel e3e0c041-134f-4833-b8b3-fb44e68ba21e has 16 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=-15.0, max_y=-13.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=-15.0, max_y=68.5, height=83.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=68.5, max_y=70.0, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=70.0, max_y=106.125, height=36.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=70.0, max_y=106.125, height=36.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=70.0, max_y=106.125, height=36.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=70.0, max_y=106.125, height=36.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=-15.0, max_y=109.125, height=124.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=-13.5, max_y=106.125, height=119.625, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'DR-2-4', FamilyMember: '25', Label: '', Name: 'DR-2-4'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'End Stud Assembly', FamilyMember: '32', Label: '', Name: 'End Stud Assembly'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 5f1474ec-a08e-4d9b-8306-cacd0557ac14: 147.287 inches -> 12'-3-1/4"
+2025-09-15 16:35:42 - DEBUG - Panel 5f1474ec-a08e-4d9b-8306-cacd0557ac14 has 24 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-22.5, max_y=-21.0, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=3.0, max_y=6.5, height=3.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=27.0, max_y=30.5, height=3.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=51.0, max_y=54.5, height=3.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=75.0, max_y=78.5, height=3.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=99.0, max_y=102.5, height=3.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=-22.5, max_y=61.0, height=83.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=61.0, max_y=62.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=62.5, max_y=106.125, height=43.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=62.5, max_y=106.125, height=43.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 18: min_y=62.5, max_y=106.125, height=43.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 19: min_y=62.5, max_y=106.125, height=43.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 20: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 21: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 22: min_y=-22.5, max_y=109.125, height=131.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 23: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Ladder - Flat (Fixed)', FamilyMember: '42', Label: '', Name: 'Ladder - Flat (Fixed)'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'DR-2-4', FamilyMember: '25', Label: '', Name: 'DR-2-4'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'End Stud Assembly', FamilyMember: '32', Label: '', Name: 'End Stud Assembly'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 3cd228f2-850b-4ca6-b0a6-d54046cff016: 117.641 inches -> 9'-9-5/8"
+2025-09-15 16:35:42 - DEBUG - Panel 3cd228f2-850b-4ca6-b0a6-d54046cff016 has 11 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=0.0, max_y=109.125, height=109.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'LType', FamilyMember: '32', Label: '', Name: 'LType'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'End Stud Assembly', FamilyMember: '32', Label: '', Name: 'End Stud Assembly'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 474c07a7-4d83-43a3-85f4-a5cb786e3bf9: 117.440 inches -> 9'-9-1/2"
+2025-09-15 16:35:42 - DEBUG - Panel 474c07a7-4d83-43a3-85f4-a5cb786e3bf9 has 12 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=0.0, max_y=109.125, height=109.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=1.5, max_y=98.5, height=97.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=1.5, max_y=98.5, height=97.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'End Stud Assembly', FamilyMember: '32', Label: '', Name: 'End Stud Assembly'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Beampocket', FamilyMember: '33', Label: '', Name: 'Beampocket'
+2025-09-15 16:35:42 - DEBUG - Found rough opening or beam pocket SubAssembly: Beampocket
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel 10ebdf1e-c068-4626-853d-1de28e2fd31d: 138.016 inches -> 11'-6"
+2025-09-15 16:35:42 - DEBUG - Panel 10ebdf1e-c068-4626-853d-1de28e2fd31d has 15 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=-22.5, max_y=-21.0, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=-22.5, max_y=61.0, height=83.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=61.0, max_y=62.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=62.5, max_y=106.125, height=43.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=62.5, max_y=106.125, height=43.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=62.5, max_y=106.125, height=43.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=62.5, max_y=106.125, height=43.625, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=-21.0, max_y=106.125, height=127.125, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'DR-2-6', FamilyMember: '25', Label: '', Name: 'DR-2-6'
+2025-09-15 16:35:42 - DEBUG - Calculated squaring for panel b3cc4ad7-2e25-4e9d-9b75-7d751e543a8f: 113.385 inches -> 9'-5-3/8"
+2025-09-15 16:35:42 - DEBUG - Panel b3cc4ad7-2e25-4e9d-9b75-7d751e543a8f has 18 elevation views
+2025-09-15 16:35:42 - DEBUG - Elevation 0: min_y=-7.5, max_y=98.5, height=106.0, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 1: min_y=-7.5, max_y=-6.0, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 2: min_y=95.5, max_y=97.0, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 3: min_y=97.0, max_y=98.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 4: min_y=-6.0, max_y=95.5, height=101.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 5: min_y=-6.0, max_y=95.5, height=101.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 6: min_y=-6.0, max_y=95.5, height=101.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 7: min_y=-6.0, max_y=88.25, height=94.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 8: min_y=88.25, max_y=95.5, height=7.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 9: min_y=88.25, max_y=95.5, height=7.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 10: min_y=77.5, max_y=88.25, height=10.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 11: min_y=-7.5, max_y=76.0, height=83.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 12: min_y=76.0, max_y=77.5, height=1.5, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 13: min_y=77.5, max_y=88.25, height=10.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 14: min_y=77.5, max_y=88.25, height=10.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 15: min_y=77.5, max_y=88.25, height=10.75, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 16: min_y=-6.0, max_y=88.25, height=94.25, points=4
+2025-09-15 16:35:42 - DEBUG - Elevation 17: min_y=-6.0, max_y=95.5, height=101.5, points=4
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'Critical Stud', FamilyMember: '32', Label: '', Name: 'Critical Stud'
+2025-09-15 16:35:42 - DEBUG - SubAssembly found - Family: 'DR-2-8', FamilyMember: '25', Label: '', Name: 'DR-2-8'
+2025-09-15 16:35:42 - DEBUG - Writing expected.log with 31 panels
+2025-09-15 16:35:42 - DEBUG - write_expected_and_materials_logs called with 31 panels
+2025-09-15 16:35:42 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:42 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:42 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:42 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:42 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:42 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:43 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:43 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:43 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:43 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:43 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:43 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:43 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:43 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:44 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:44 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:44 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:44 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:44 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:44 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:44 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:44 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:45 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Finished writing expected.log
+2025-09-15 16:35:46 - DEBUG - write_expected_and_materials_logs called with 31 panels
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:46 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:47 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:47 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:47 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:47 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:47 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:47 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:47 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:47 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:48 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:48 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:48 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:48 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:48 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:48 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:49 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:49 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:49 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:49 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:49 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:49 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:49 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:49 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:49 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:49 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:49 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:50 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:52 - DEBUG - Checking 12 materials for rough openings
+2025-09-15 16:35:52 - DEBUG - Found 14 elevation views
+2025-09-15 16:35:52 - DEBUG - Total rough openings found: 0
+2025-09-15 16:35:52 - DEBUG - Beam pocket extraction complete. Found 0 unique beam pockets
+2025-09-15 16:35:52 - DEBUG - Extracted 0 beam pockets for panel d7f5a94d-a94c-4762-bcf7-d94759720845

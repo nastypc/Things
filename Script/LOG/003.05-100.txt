@@ -1,0 +1,183 @@
+EHX Search Results Export
+==================================================
+
+EHX> Loaded 05-100.ehx
+Found 1 panels and 1 bundles
+EHX Format: legacy
+Type your search query or use quick buttons above
+
+EHX> 05-100 fm
+🔍 Comprehensive Family Member Analysis for Panel: 05-100
+======================================================================
+
+📊 Summary:
+  Total Family Members: 11
+  Total Parts: 33
+  Loose Materials: 4 parts
+  SubAssembly Materials: 28 parts
+  Excluded Materials: 0 parts
+  Critical Studs: 1 parts
+
+🧱 LOOSE MATERIAL GROUP:
+------------------------------
+Materials not part of any SubAssembly (4 parts)
+
+FAMILY MEMBER 28 (FM28):
+  Total Parts: 1
+  Types: BottomPlate
+  Material Descriptions (1):
+    • 2x6 SPF PM No.2: 1 pieces
+  Labels (1):
+    • A: 1 pieces
+
+FAMILY MEMBER 29 (FM29):
+  Total Parts: 1
+  Types: TopPlate
+  Material Descriptions (1):
+    • 2x6 SPF PM No.2: 1 pieces
+  Labels (1):
+    • B: 1 pieces
+
+FAMILY MEMBER 30 (FM30):
+  Total Parts: 1
+  Types: VeryTopPlate
+  Material Descriptions (1):
+    • 2x6 SPF PM No.2: 1 pieces
+  Labels (1):
+    • C: 1 pieces
+
+FAMILY MEMBER 55 (End Stud Assembly):
+  Total Parts: 1
+  Types: EndPadding
+  Material Descriptions (1):
+    • 5/8" 2x6 Padding: 1 pieces
+  Labels (1):
+    • N: 1 pieces
+
+🔧 SUBASSEMBLY GROUP:
+-------------------------
+Materials that are part of SubAssemblies (28 parts)
+
+FAMILY MEMBER -1 (FM-1):
+  Total Parts: 1
+  SubAssemblies: 1
+  Types: RoughOpening
+  Material Descriptions (1):
+    • DR-9-ENT-L1: 1 pieces
+  Labels (1):
+    • DR-9-ENT-L1: 1 pieces
+
+FAMILY MEMBER 1 (FM1):
+  Total Parts: 2
+  SubAssemblies: 1
+  Types: Header
+  Material Descriptions (1):
+    • 2x8 SPF No.2: 2 pieces
+  Labels (1):
+    • G: 2 pieces
+
+FAMILY MEMBER 13 (FM13):
+  Total Parts: 1
+  SubAssemblies: 1
+  Types: FillerBtmNailer
+  Material Descriptions (1):
+    • 2x6 SPF Stud: 1 pieces
+  Labels (1):
+    • M: 1 pieces
+
+FAMILY MEMBER 47 (FM47):
+  Total Parts: 4
+  SubAssemblies: 1
+  Types: CriticalStud
+  Material Descriptions (1):
+    • 2x6 SPF Stud: 4 pieces
+  Labels (1):
+    • H: 4 pieces
+
+FAMILY MEMBER 48 (FM48):
+  Total Parts: 7
+  SubAssemblies: 3
+  Types: KingStud
+  Material Descriptions (1):
+    • 2x6 SPF Stud: 7 pieces
+  Labels (1):
+    • D: 7 pieces
+
+FAMILY MEMBER 49 (FM49):
+  Total Parts: 8
+  SubAssemblies: 3
+  Types: Trimmer
+  Material Descriptions (1):
+    • 2x6 SPF Stud: 8 pieces
+  Labels (2):
+    • E: 4 pieces
+    • F: 4 pieces
+
+FAMILY MEMBER 61 (FM61):
+  Total Parts: 5
+  SubAssemblies: 1
+  Types: FillerCripple
+  Material Descriptions (1):
+    • 2x6 SPF Stud: 5 pieces
+  Labels (1):
+    • L: 5 pieces
+
+======================================================================
+🎯 GRAND TOTAL: 33 parts across 11 Family Members
+   • Loose Materials: 4 parts
+   • SubAssembly Materials: 28 parts
+   • Excluded Materials: 0 parts
+======================================================================
+🔧 CRITICAL STUD DETAILS:
+------------------------------
+
+FM32 SUBASSEMBLY CRITICAL STUD:
+  • Position: 76 inches (6'-4") from panel face
+  • Type: SubAssembly critical stud
+
+FM47 LOOSE CRITICAL STUD:
+  • Position: 90.88 inches (7'-6-7/8") from panel face
+  • Type: Loose critical stud
+
+======================================================================
+
+EHX> 05-100 sub
+🔧 SubAssembly Analysis for Panel: 05-100
+============================================================
+
+📊 Summary:
+  Total SubAssemblies: 2
+  Family Members: 2
+
+FAMILY MEMBER 32 (LType) SUBASSEMBLIES:
+---------------------------------------------
+
+• Critical Stud (GUID: 8621837f...) (FM32) - Other
+   Associated Material Parts:
+    ├── H (4) - CriticalStud
+        - 2x6 SPF Stud
+
+FAMILY MEMBER 25 (Openings) SUBASSEMBLIES:
+---------------------------------------------
+
+• DR-9-ENT-L1 (GUID: 42317730...) (FM25) - Other
+   Associated Material Parts:
+    ├── D (2) - KingStud
+        - 2x6 SPF Stud
+    ├── DR-9-ENT-L1 (1) - RoughOpening
+        - DR-9-ENT-L1
+    ├── F (4) - Trimmer
+        - 2x6 SPF Stud
+    ├── G (2) - Header
+        - 2x8 SPF No.2
+    ├── L (5) - FillerCripple
+        - 2x6 SPF Stud
+    ├── M (1) - FillerBtmNailer
+        - 2x6 SPF Stud
+
+============================================================
+🎯 Total: 2 SubAssemblies with 19 associated parts
+============================================================
+
+Exported from EHX Search Widget
+Date: 2025-09-16 13:46:40

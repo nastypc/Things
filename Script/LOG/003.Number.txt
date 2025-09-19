@@ -1,0 +1,144 @@
+EHX Search Results Export
+==================================================
+
+EHX> Loaded 07_112.EHX
+Found 1 panels and 1 bundles
+EHX Format: legacy
+
+📋 AVAILABLE PANELS (Sorted by Level, Bundle, and Panel Number):
+======================================================================
+🏢 UNKNOWN:
+  📦 B2 (2x6 Ext-B) (1 panels):
+    07_112
+
+📊 PROJECT SUMMARY:
+  • Total Panels: 1
+  • Total Bundles: 1
+  • Average Panels per Bundle: 1.0
+  • Total Materials: 41
+
+💡 QUICK QUERY EXAMPLES:
+  • '05-100' or '05-100 info' → Panel details
+  • '05-100 fm' → Family Member analysis
+  • '05-100 sub' → SubAssembly analysis
+  • 'level 1' → Level 1 material breakdown
+  • 'takeoff all' → Complete project takeoff
+Type your search query or use quick buttons above
+
+EHX> 07_112 info
+📊 COMPREHENSIVE PANEL INFO: 07_112
+================================================================================
+
+🏠 PANEL DETAILS:
+  GUID: 50e38fea...
+  Bundle: 1f94492c...
+
+👨‍👩‍👧‍👦 ALL FAMILY MEMBER IDs:
+------------------------------
+  FM-1: 1 patterns, 2 total
+    • RoughOpening: 2
+
+  FM1: 1 patterns, 5 total
+    • Header: 5
+
+  FM13: 1 patterns, 1 total
+    • FillerBtmNailer: 1
+
+  FM15: 1 patterns, 1 total
+    • WindowSill: 1
+
+  FM25: 2 patterns, 2 total
+    • BSMT-HDR: 1
+    • 49x63-L2: 1
+
+  FM26: 1 patterns, 3 total
+    • HeaderCripple: 3
+
+  FM27: 1 patterns, 5 total
+    • SillCripple: 5
+
+  FM28: 1 patterns, 1 total
+    • BottomPlate: 1
+
+  FM29: 1 patterns, 1 total
+    • TopPlate: 1
+
+  FM30: 1 patterns, 1 total
+    • VeryTopPlate: 1
+
+  FM32: 1 patterns, 1 total
+    • LType: 1
+
+  FM48: 1 patterns, 4 total
+    • KingStud: 4
+
+  FM49: 1 patterns, 4 total
+    • Trimmer: 4
+
+  FM6: 2 patterns, 2 total
+    • Stud: 1
+    • FlatStud: 1
+
+  FM61: 1 patterns, 5 total
+    • FillerCripple: 5
+
+  FM8: 1 patterns, 1 total
+    • HeaderCap: 1
+
+🔧 SUBASSEMBLY BREAKDOWN:
+-------------------------
+  Total SubAssemblies: 3
+
+  FM32 (LType):
+    • LType (GUID: 43214eec...) (FM32) - LType
+       Associated Material Parts:
+        ├── K (1) - Stud
+            - 2x6 SPF Stud
+        ├── L (1) - FlatStud
+            - 2x6 SPF Stud
+
+  FM25 (Openings):
+    • BSMT-HDR (GUID: 2f0d2e45...) (FM25) - Openings
+       Associated Material Parts:
+        ├── BSMT-HDR (1) - RoughOpening
+            - BSMT-HDR
+        ├── D (2) - KingStud
+            - 2x6 SPF Stud
+        ├── G (2) - Header
+            - 2x8 SPF No.2
+        ├── J (3) - HeaderCripple
+            - 2x6 SPF Stud
+        ├── T (1) - HeaderCap
+            - 2x6 SPF Stud
+    • 49x63-L2 (GUID: 6456c2dd...) (FM25) - Openings
+       Associated Material Parts:
+        ├── 49x63-L2 (1) - RoughOpening
+            - 49x63-L2
+        ├── D (2) - KingStud
+            - 2x6 SPF Stud
+        ├── E (4) - Trimmer
+            - 2x6 SPF Stud
+        ├── F (3) - Header
+            - 2x8 SPF No.2
+        ├── H (1) - WindowSill
+            - 2x6 SPF Stud
+        ├── I (5) - SillCripple
+            - 2x6 SPF Stud
+        ├── R (5) - FillerCripple
+            - 2x6 SPF Stud
+        ├── S (1) - FillerBtmNailer
+            - 2x6 SPF Stud
+
+🔧 CRITICAL STUD BREAKDOWN:
+----------------------------
+  No critical studs found
+
+================================================================================
+🎯 SUMMARY:
+  • Family Member IDs: 16
+  • SubAssemblies: 3
+  • Critical Studs: 0
+================================================================================
+
+Exported from EHX Search Widget
+Date: 2025-09-18 15:48:05
