@@ -8,26 +8,26 @@ from tkinter import font as tkfont
 import re
 import math
 import logging
+import sys
+
+HERE = os.path.dirname(sys.executable) if getattr(sys, 'frozen', False) else os.path.dirname(os.path.abspath(__file__))
 
 # Global debug control variable
 debug_enabled = True
 
 # Global configuration for FamilyMember filtering
-# Only include FamilyMember IDs 32 (Critical Stud), 42 (Ladder), and 25 (Openings) in SubAssembly Details
-ALLOWED_FAMILY_MEMBER_IDS = {32, 42, 25}  # 32=Critical Stud, 42=Ladder, 25=Openings
+# Only include FamilyMember IDs 32 (Critical Stud) and 42 (Ladder) in Subcomponent Details
+ALLOWED_FAMILY_MEMBER_IDS = {32, 42}  # 32=Critical Stud, 42=Ladder
 
 # FamilyMember name to ID mapping for consistent filtering
 FAMILY_MEMBER_MAPPING = {
-    'Tee': 32,
+    'Critical Stud': 32,
+    'Lad2Stud': 42,
     'Ladder - Flat (Fixed)': 42,
-    'GMD-L1': 25,
+    'BSMT-HDR': 25,
     'Sheathing': 40,
     '49x63-L2': 25,
     'SZ56': 25,  # Also maps to FamilyMember 25
-    'Critical Stud': 32,  # Critical Stud maps to FM32
-    'DR-9-ENT-L1': 25,   # DR-9-ENT-L1 maps to FM25 (Openings)
-    'BSMT-HDR': 25,      # BSMT-HDR maps to FM25 (Openings)
-    'LType': 32,         # LType maps to FM32 (Critical Stud)
 }
 
 def get_family_member_id(family_member_name):
@@ -47,32 +47,48 @@ def get_family_member_id(family_member_name):
     return None
 
 def is_allowed_family_member(family_member_name):
-    """Check if a FamilyMember should be included in SubAssembly Details."""
+    """Check if a FamilyMember should be included in Subcomponent Details."""
     member_id = get_family_member_id(family_member_name)
     return member_id in ALLOWED_FAMILY_MEMBER_IDS
 
-# Setup logging to file
-# Clear the debug.log file at startup
-try:
-    with open('debug.log', 'w') as f:
-        f.write(f"=== Debug Log Started: {_dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ===\n")
-except Exception:
-    pass
+# Setup logging to file and console
+# Note: Log file clearing now happens in toggle_debug_mode when debug is enabled
+log_level = logging.DEBUG if debug_enabled else logging.WARNING
 
-logging.basicConfig(
-    filename='debug.log',
-    level=logging.DEBUG,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
-)
+# Create logger
+logger = logging.getLogger()
+logger.setLevel(log_level)
+
+# Remove any existing handlers to avoid duplicates
+for handler in logger.handlers[:]:
+    logger.removeHandler(handler)
+
+# Create file handler
+file_handler = logging.FileHandler(os.path.join(HERE, 'debug.log'))
+file_handler.setLevel(log_level)
+file_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+file_handler.setFormatter(file_formatter)
+
+# Create console handler
+console_handler = logging.StreamHandler()
+console_handler.setLevel(log_level)
+console_formatter = logging.Formatter('%(levelname)s - %(message)s')
+console_handler.setFormatter(console_formatter)
+
+# Add handlers to logger
+logger.addHandler(file_handler)
+logger.addHandler(console_handler)
+
+# Test logging setup
+logger.debug("Logging setup complete - testing file and console handlers")
 
 # Global sorting functions for consistent ordering throughout the application
 def sort_bundle_keys(bundle_keys):
     """Sort bundle keys by bundle number (B1, B2, etc.) with smart fallback."""
     def smart_sort_key(bundle_name):
-        # Handle bundle names like "B1 (2x6 Ext)", "B2 (2x4 Gar)", "B-1(2x6Ext)", etc.
-        # Look for pattern like "B" followed by optional hyphens/whitespace and number
-        match = re.search(r'^B[-\s]*(\d+)', bundle_name)
+        # Handle bundle names like "B1 (2x6 Ext)", "B2 (2x4 Gar)", etc.
+        # Look for pattern like "B" followed by number, possibly with spaces
+        match = re.search(r'B\s*(\d+)', bundle_name)
         if match:
             return (0, int(match.group(1)), bundle_name)  # Sort by bundle number
         else:
@@ -89,8 +105,8 @@ def normalize_bundle_key(bundle_name):
     """Normalize bundle key to base name (e.g., 'B1 (2x6 Ext)' -> 'B1')"""
     if not bundle_name:
         return bundle_name
-    # Handle bundle names like "B1 (2x6 Ext)", "B2 (2x4 Gar)", "B-1(2x6Ext)", etc.
-    match = re.search(r'^B[-\s]*(\d+)', bundle_name)
+    # Handle bundle names like "B1 (2x6 Ext)", "B2 (2x4 Gar)", etc.
+    match = re.search(r'B\s*(\d+)', bundle_name)
     if match:
         return f"B{match.group(1)}"
     else:
@@ -127,27 +143,37 @@ def format_weight(value):
         return str(value)
 
 def sort_panel_names(panel_names):
-    """Sort panel names numerically (05-100, 05-101, etc.) or simple numbers (100, 101, etc.)."""
+    """Sort panel names numerically (05-100, 05-101, or just 100, 101, etc.)."""
     def panel_sort_key(panel_name):
         # First try to extract numbers from panel names like "05-100", "05-101"
         match = re.search(r'(\d+)-(\d+)', panel_name)
         if match:
             return (int(match.group(1)), int(match.group(2)))
         else:
-            # Try to extract number after underscore (e.g., "B1_100" -> 100)
-            match = re.search(r'_(\d+)', panel_name)
+            # Try to extract a single number from the end of the name (for names like "100", "101", etc.)
+            match = re.search(r'(\d+)$', panel_name)
             if match:
-                return (0, int(match.group(1)))
+                return (0, int(match.group(1)))  # Use 0 as first number for single numbers
             else:
-                # Try to extract any trailing number
-                match = re.search(r'(\d+)$', panel_name)
-                if match:
-                    return (0, int(match.group(1)))
-                else:
-                    # Fallback to alphabetical sorting
-                    return (999, panel_name)
+                # Fallback to alphabetical sorting
+                return (999, panel_name)
     
     return sorted(panel_names, key=panel_sort_key)
+
+def get_panel_sort_key(panel_name):
+    """Get the sort key for a single panel name (extracted from sort_panel_names function)."""
+    # First try to extract numbers from panel names like "05-100", "05-101"
+    match = re.search(r'(\d+)-(\d+)', panel_name)
+    if match:
+        return (int(match.group(1)), int(match.group(2)))
+    else:
+        # Try to extract a single number from the end of the name (for names like "100", "101", etc.)
+        match = re.search(r'(\d+)$', panel_name)
+        if match:
+            return (0, int(match.group(1)))  # Use 0 as first number for single numbers
+        else:
+            # Fallback to alphabetical sorting
+            return (999, panel_name)
 
 def sort_panels_by_bundle_and_name(panels_dict, level_guid_map=None):
     """Sort panels by level, then by bundle, then by panel name for consistent ordering."""
@@ -179,7 +205,7 @@ def sort_panels_by_bundle_and_name(panels_dict, level_guid_map=None):
         if bundle_name:
             # Extract bundle number from bundle name (e.g., "B1", "B2", "B1 (2x6 Ext)")
             import re
-            match = re.search(r'^B[-\s]*(\d+)', bundle_name)
+            match = re.search(r'B\s*(\d+)', bundle_name)
             if match:
                 bundle_num = int(match.group(1))
             else:
@@ -527,24 +553,6 @@ def inches_to_feet_inches_sixteenths(s):
     # Return empty string for zero dimensions instead of '0\"'
     return ''
 
-def inches_to_feet_inches(s):
-    """Convert decimal inches to feet-inches format (simpler version without sixteenths)."""
-    try:
-        f = float(s)
-    except Exception:
-        return ''
-    try:
-        feet = int(f // 12)
-        inches = f % 12
-        if feet and inches:
-            return f"{feet}'-{inches:.2f}\""
-        elif feet:
-            return f"{feet}'"
-        else:
-            return f"{inches:.2f}\""
-    except Exception:
-        return ''
-
 def detect_unassigned_panels(panels_dict):
     """Detect panels that are not assigned to any bundle and return summary."""
     unassigned_panels = []
@@ -584,37 +592,37 @@ def diagnose_v2_bundle_assignment(root, ehx_version, panels_by_name):
     junction_bundle_map = {}
     junction_details = {}  # Store junction details for each panel
     for junction in root.findall('.//Junction'):
-            report['junctions_found'] += 1
-            panel_id_el = junction.find('PanelID')
-            label_el = junction.find('Label')
-            bundle_name_el = junction.find('BundleName')
-
-            if bundle_name_el is not None and bundle_name_el.text:
-                bundle_name = bundle_name_el.text.strip()
-                panel_id = panel_id_el.text.strip() if panel_id_el is not None and panel_id_el.text else None
-                label = label_el.text.strip() if label_el is not None and label_el.text else None
-
-                if panel_id:
-                    junction_bundle_map[panel_id] = bundle_name
-                if label:
-                    junction_bundle_map[label] = bundle_name
-
-                # Extract junction details for this panel
-                junction_info = {}
-
-                # Extract junction details from SubAssemblyName
-                subassembly_name_el = junction.find('SubAssemblyName')
-                if subassembly_name_el is not None and subassembly_name_el.text:
-                    subassembly_name = subassembly_name_el.text.strip()
-
-                    # Parse SubAssemblyName to extract junction details
-                    if subassembly_name == 'LType':
-                        junction_info['LType'] = 'LType'
-                    elif subassembly_name.startswith('Ladder'):
-                        junction_info['Ladder'] = subassembly_name
-                    elif subassembly_name == 'SubAssembly':
-                        junction_info['SubAssembly'] = 'SubAssembly'
-
+        report['junctions_found'] += 1
+        panel_id_el = junction.find('PanelID')
+        label_el = junction.find('Label')
+        bundle_name_el = junction.find('BundleName')
+        
+        if bundle_name_el is not None and bundle_name_el.text:
+            bundle_name = bundle_name_el.text.strip()
+            panel_id = panel_id_el.text.strip() if panel_id_el is not None and panel_id_el.text else None
+            label = label_el.text.strip() if label_el is not None and label_el.text else None
+            
+            if panel_id:
+                junction_bundle_map[panel_id] = bundle_name
+            if label:
+                junction_bundle_map[label] = bundle_name
+            
+            # Extract junction details for this panel
+            junction_info = {}
+            
+            # Extract junction details from SubAssemblyName
+            subassembly_name_el = junction.find('SubAssemblyName')
+            if subassembly_name_el is not None and subassembly_name_el.text:
+                subassembly_name = subassembly_name_el.text.strip()
+                
+                # Parse SubAssemblyName to extract junction details
+                if subassembly_name == 'LType':
+                    junction_info['LType'] = 'LType'
+                elif subassembly_name.startswith('Ladder'):
+                    junction_info['Ladder'] = subassembly_name
+                elif subassembly_name == 'Subcomponent':
+                    junction_info['Subcomponent'] = 'Subcomponent'
+            
             # Store junction details using panel_id or label as key
             if panel_id:
                 junction_details[panel_id] = junction_info
@@ -673,8 +681,8 @@ def diagnose_v2_bundle_assignment(root, ehx_version, panels_by_name):
     
     return report
 
-# Import the EHX search widget
-from ehx_search_widget import EHXSearchWidget
+# EHX search removed as per requirements - search functionality is disabled
+# from ehx_search_widget import EHXSearchWidget
 
 try:
     # PV0825 may provide parse_panels/extract_jobpath and a log writer helper
@@ -711,12 +719,6 @@ except Exception:
     def parse_materials_from_panel(panel_el):
         """Extract Boards, Sheets, Bracing and rough-opening SubAssembly boards from a Panel element."""
 
-        # Initialize critical_studs data structure for position extraction
-        critical_studs = {
-            'fm32': {'positions': []},
-            'fm47': {'positions': []}
-        }
-
         # Boards (direct Board nodes)
         mats = []
         for node in panel_el.findall('.//Board'):
@@ -738,42 +740,6 @@ except Exception:
             # If SubAssembly is empty but we have a known LType GUID, populate it
             if not sub and sub_assembly_guid in ['6456c2dd-3ace-4851-a0f8-37317f63fbdc', '43214eec-9b08-4efa-abbb-901178098d1e']:
                 sub = 'LType'
-            
-            # Extract X coordinate position for critical studs
-            if 'CriticalStud' in typ or 'Critical Stud' in typ or 'FM32' in str(family_member_id).upper() or 'FM47' in str(family_member_id).upper():
-                try:
-                    # Try to extract X coordinate from various possible locations
-                    x_coord = None
-                    
-                    # First try: direct X element in board
-                    x_elem = node.find('.//X')
-                    if x_elem is not None and x_elem.text:
-                        x_coord = float(x_elem.text)
-                    
-                    # Second try: X element within Point structure
-                    if x_coord is None:
-                        x_elem = node.find('.//Point/X')
-                        if x_elem is not None and x_elem.text:
-                            x_coord = float(x_elem.text)
-                    
-                    # Third try: X element in BottomView
-                    if x_coord is None:
-                        bv = node.find('.//BottomView')
-                        if bv is not None:
-                            x_elem = bv.find('.//X')
-                            if x_elem is not None and x_elem.text:
-                                x_coord = float(x_elem.text)
-                    
-                    # Store position based on FamilyMember ID
-                    if x_coord is not None:
-                        if '32' in str(family_member_id) or 'FM32' in str(family_member_id).upper():
-                            critical_studs['fm32']['positions'].append(x_coord)
-                        elif '47' in str(family_member_id) or 'FM47' in str(family_member_id).upper():
-                            critical_studs['fm47']['positions'].append(x_coord)
-                        
-                except (ValueError, TypeError):
-                    pass
-            
             mats.append({'Type': typ, 'FamilyMemberName': fam, 'FamilyMember': family_member_id, 'Label': label, 'SubAssembly': sub, 'Desc': desc, 'Qty': qty, 'ActualLength': length, 'ActualWidth': width, 'BoardGuid': board_guid, 'SubAssemblyGuid': sub_assembly_guid})
         
         # Sheets (direct Sheet nodes)
@@ -1072,7 +1038,7 @@ except Exception:
                         entry['elev_min_y'] = sub_elev_min_y
                     mats.append(entry)
 
-        return mats, critical_studs
+        return mats
 
     def strip_trailing_zeros(s):
         """Strip trailing zeros from decimal numbers (e.g., '12.000' -> '12', '5.500' -> '5.5')."""
@@ -1627,7 +1593,7 @@ except Exception:
         Returns detailed analysis of GUID associations and potential issues.
         """
         try:
-            panels, materials_map, critical_studs_map = parse_panels(ehx_file_path)
+            panels, materials_map = parse_panels(ehx_file_path)
             
             # Flatten all materials
             all_materials = []
@@ -1836,8 +1802,6 @@ except Exception:
     def parse_panels(path):
         panels = []
         materials_map = {}
-        critical_studs_map = {}
-        critical_studs_map = {}
         try:
             tree = ET.parse(path)
             root = tree.getroot()
@@ -1855,6 +1819,10 @@ except Exception:
             job_info['InterfaceVersion'] = root.find('InterfaceVersion').text.strip() if root.find('InterfaceVersion') is not None else ""
             job_info['PluginVersion'] = root.find('PluginVersion').text.strip() if root.find('PluginVersion') is not None else ""
             job_info['Date'] = root.find('Date').text.strip() if root.find('Date') is not None else ""
+
+            # Check if this is version 2.0 - return error if so
+            if job_info.get('EHXVersion') == "2.0":
+                return [], {}  # Return empty results to indicate version 2.0 error
 
         # Find Job element (works for both formats)
         job_el = root.find('.//Job')
@@ -2081,7 +2049,7 @@ except Exception:
 
             panels.append(panel_obj)
 
-            mats, critical_studs = parse_materials_from_panel(panel_el)
+            mats, critical_studs = parse_materials_from_panel(panel_el, root)
             if mats:
                 # capture bundle guid if present on panel
                 bg_el = panel_el.find('BundleGuid')
@@ -2144,8 +2112,6 @@ except Exception:
                 mats = prevent_cross_contamination(mats)
                 
                 materials_map[panel_guid] = mats
-                # Store critical_studs data for this panel
-                critical_studs_map[panel_guid] = critical_studs
 
         # Extract junction details for legacy files
         junction_details = {}
@@ -2169,8 +2135,8 @@ except Exception:
                     junction_info['LType'] = 'LType'
                 elif subassembly_name.startswith('Ladder'):
                     junction_info['Ladder'] = subassembly_name
-                elif subassembly_name == 'SubAssembly':
-                    junction_info['SubAssembly'] = 'SubAssembly'
+                elif subassembly_name == 'Subcomponent':
+                    junction_info['Subcomponent'] = 'Subcomponent'
             
             # Store junction details using panel_id or label as key
             if panel_id and junction_info:
@@ -2200,177 +2166,14 @@ except Exception:
             writer = globals().get('write_expected_and_materials_logs')
             if not writer:
                 writer = write_expected_and_materials_logs
-            writer(path, dict(sorted_panels), materials_map, diag_report, critical_studs_map)
+            writer(path, dict(sorted_panels), materials_map, diag_report)
             logging.debug("Finished writing expected.log")
         except Exception as e:
             # Log writing is optional, don't fail if it doesn't work
             logging.debug(f"Failed to write log files: {e}")
             pass
 
-        return panels, materials_map, critical_studs_map
-
-    def extract_panel_from_ehx(source_ehx_path, target_panel_id, output_path=None):
-        """Extract a single panel from a multi-panel EHX file and create a new EHX file.
-        
-        Args:
-            source_ehx_path (str): Path to the source EHX file containing multiple panels
-            target_panel_id (str): PanelID to extract (e.g., '05-100')
-            output_path (str): Optional output path for the new EHX file. If None, uses target_panel_id.ehx
-            
-        Returns:
-            str: Path to the created EHX file, or None if extraction failed
-        """
-        try:
-            import xml.etree.ElementTree as ET
-            from xml.dom import minidom
-            
-            # Parse the source EHX file
-            tree = ET.parse(source_ehx_path)
-            root = tree.getroot()
-            
-            # Find the target panel
-            target_panel = None
-            target_panel_guid = None
-            target_bundle = None
-            
-            # Look for panels with the specified PanelID
-            for panel in root.findall('.//Panel'):
-                # First try to find PanelID as direct child (legacy format)
-                panel_id_elem = panel.find('PanelID')
-                if panel_id_elem is not None and panel_id_elem.text == target_panel_id:
-                    target_panel = panel
-                    panel_guid_elem = panel.find('PanelGuid')
-                    if panel_guid_elem is not None:
-                        target_panel_guid = panel_guid_elem.text
-                    # Find the parent bundle
-                    for bundle in root.findall('.//Bundle'):
-                        if panel in list(bundle):
-                            target_bundle = bundle
-                            break
-                    break
-                
-                # If not found as direct child, look within Junction elements (v2.0 format)
-                if target_panel is None:
-                    for junction in panel.findall('.//Junction'):
-                        panel_id_elem = junction.find('PanelID')
-                        if panel_id_elem is not None and panel_id_elem.text == target_panel_id:
-                            target_panel = panel
-                            panel_guid_elem = panel.find('PanelGuid')
-                            if panel_guid_elem is not None:
-                                target_panel_guid = panel_guid_elem.text
-                            # Find the parent bundle
-                            for bundle in root.findall('.//Bundle'):
-                                if panel in list(bundle):
-                                    target_bundle = bundle
-                                    break
-                            break
-                    
-                    if target_panel:
-                        break
-            
-            if not target_panel:
-                print(f"Panel {target_panel_id} not found in {source_ehx_path}")
-                return None
-            
-            # Create a new root element with the correct format (matching reference file)
-            new_root = ET.Element("MITEK_SHOPNET_MARKUP_LANGUAGE_FILE")
-            
-            # Create minimal Job element with updated JobID
-            job_elem = ET.SubElement(new_root, "Job")
-            job_id_elem = ET.SubElement(job_elem, "JobID")
-            job_id_elem.text = f"{target_panel_id}ET"  # Match reference file format
-            
-            # Add minimal job metadata (only essential fields)
-            ET.SubElement(job_elem, "Customer").text = ""
-            ET.SubElement(job_elem, "Project").text = ""
-            ET.SubElement(job_elem, "Phase").text = ""
-            ET.SubElement(job_elem, "StructureType").text = ""
-            ET.SubElement(job_elem, "BuildingName").text = ""
-            ET.SubElement(job_elem, "LotName").text = ""
-            ET.SubElement(job_elem, "UnitName").text = ""
-            ET.SubElement(job_elem, "DesignSoftware").text = "Structure 25.2.0.225"
-            ET.SubElement(job_elem, "DesignerPerson").text = ""
-            ET.SubElement(job_elem, "WorkStation").text = ""
-            ET.SubElement(job_elem, "Model").text = ""
-            ET.SubElement(job_elem, "DepthProjection").text = ""
-            ET.SubElement(job_elem, "FileDate").text = ""
-            ET.SubElement(job_elem, "ScheduleDate").text = ""
-            
-            # Copy JobPath from original if available
-            original_job = root.find('.//Job')
-            if original_job is not None:
-                original_jobpath = original_job.find('JobPath')
-                if original_jobpath is not None and original_jobpath.text:
-                    ET.SubElement(job_elem, "JobPath").text = original_jobpath.text
-            
-            # Create Level element
-            level_elem = ET.SubElement(job_elem, "Level")
-            
-            # Copy essential level metadata
-            original_level = root.find('.//Level')
-            if original_level is not None:
-                # Copy LevelGuid and LevelNo
-                level_guid_elem = original_level.find('LevelGuid')
-                if level_guid_elem is not None:
-                    ET.SubElement(level_elem, "LevelGuid").text = level_guid_elem.text
-                
-                level_no_elem = original_level.find('LevelNo')
-                if level_no_elem is not None:
-                    ET.SubElement(level_elem, "LevelNo").text = level_no_elem.text
-                
-                # Copy Description if available
-                desc_elem = original_level.find('Description')
-                if desc_elem is not None:
-                    ET.SubElement(level_elem, "Description").text = desc_elem.text
-            
-            # Create Bundle element for the extracted panel
-            bundle_elem = ET.SubElement(level_elem, "Bundle")
-            
-            # Copy essential bundle metadata from the original bundle containing our panel
-            if target_bundle is not None:
-                # Copy essential bundle fields
-                for child in target_bundle:
-                    if child.tag in ['JobID', 'LevelGuid', 'LevelNo', 'BundleGuid', 'Label', 'Type', 'Weight']:
-                        new_child = ET.SubElement(bundle_elem, child.tag)
-                        if child.tag == 'JobID':
-                            new_child.text = f"{target_panel_id}ET"  # Update JobID to match panel
-                        else:
-                            new_child.text = child.text
-            
-            # Add the target panel to the bundle
-            bundle_elem.append(target_panel)
-            
-            # Update all JobID elements within the panel to use the new JobID
-            for job_id_elem in target_panel.findall('.//JobID'):
-                job_id_elem.text = f"{target_panel_id}ET"
-            
-            # Generate output path if not provided
-            if output_path is None:
-                source_dir = os.path.dirname(source_ehx_path)
-                output_path = os.path.join(source_dir, f"{target_panel_id}.ehx")
-            
-            # Write the new EHX file with compact formatting to match original file size
-            rough_string = ET.tostring(new_root, encoding='unicode')
-            reparsed = minidom.parseString(rough_string)
-            
-            # Use compact XML output instead of pretty-printing to maintain file size
-            compact_xml = reparsed.toxml(encoding=None)
-            
-            # Remove the XML declaration if present (to match original format)
-            if compact_xml.startswith('<?xml'):
-                compact_xml = compact_xml.split('?>', 1)[1].strip()
-            
-            with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(compact_xml)
-            
-            print(f"Successfully extracted panel {target_panel_id} to {output_path}")
-            return output_path
-            
-        except Exception as e:
-            print(f"Error extracting panel {target_panel_id}: {e}")
-            import traceback
-            traceback.print_exc()
-            return None
+        return panels, materials_map
 
     def extract_jobpath(path):
         try:
@@ -2395,7 +2198,7 @@ except Exception:
             pass
         return ''
 
-    def write_expected_and_materials_logs(ehx_path, panels_by_name, materials_map, diag_report=None, critical_studs_map=None):
+    def write_expected_and_materials_logs(ehx_path, panels_by_name, materials_map, diag_report=None):
         """Write expected.log and materials.log into the same directory as the EHX file.
         Format is matched to the provided examples as closely as possible.
         """
@@ -2565,7 +2368,73 @@ except Exception:
                     if 'OnScreenInstruction' in pobj:
                         fh.write(f"• Production Notes: {pobj.get('OnScreenInstruction')}\n")
                     
-                    # Add Beam Pocket Details section after Production Notes
+                    # list rough openings (if any) under Panel Details after Production Notes — no colon after label
+                    try:
+                        for m in materials_map.get(pname, []):
+                            try:
+                                if _is_rough_opening(m):
+                                    lab = m.get('Label') or ''
+                                    desc = m.get('Desc') or m.get('Description') or ''
+                                    ln = m.get('ActualLength') or m.get('Length') or ''
+                                    wd = m.get('ActualWidth') or m.get('Width') or ''
+
+                                    # Compute AFF using geometry-aware helper (prefers material AFF/elev then geometry matches)
+                                    try:
+                                        aff_height = get_aff_for_rough_opening(pobj, m)
+                                    except Exception:
+                                        aff_height = None
+
+                                    # Find associated headers based on rough opening type
+                                    associated_headers = []
+                                    if lab == 'BSMT-HDR':
+                                        # BSMT-HDR uses G headers
+                                        associated_headers = ['G']
+                                    elif lab == '49x63-L2':
+                                        # 49x63-L2 uses F headers
+                                        associated_headers = ['F']
+                                    elif lab == '73x63-L1':
+                                        # 73x63-L1 uses L header
+                                        associated_headers = ['L']
+                                    elif lab == 'DR-1-ENT-L1':
+                                        # DR-1-ENT-L1 uses K header
+                                        associated_headers = ['K']
+                                    else:
+                                        # Fallback: find unique header labels
+                                        header_set = set()
+                                        for mat in materials_map.get(pname, []):
+                                            mat_type = mat.get('Type', '').lower()
+                                            header_label = mat.get('Label', '')
+                                            # Only include materials that are headers (not headercap or headercripple)
+                                            # and have single-character labels (typical for headers)
+                                            if mat_type == 'header' and header_label and len(header_label) == 1:
+                                                header_set.add(header_label)
+                                        associated_headers = sorted(list(header_set))[:1]
+
+                                    # Format the rough opening display
+                                    ro_text = f"Rough Opening: {lab}"
+                                    if ln and wd:
+                                        formatted_ln = format_dimension(ln)
+                                        formatted_wd = format_dimension(wd)
+                                        ro_text += f" - {formatted_ln} x {formatted_wd}"
+                                    elif ln:
+                                        formatted_ln = format_dimension(ln)
+                                        ro_text += f" - {formatted_ln}"
+                                    if aff_height is not None:
+                                        formatted_aff = inches_to_feet_inches_sixteenths(str(aff_height))
+                                        if formatted_aff:
+                                            ro_text += f" (AFF: {aff_height} ({formatted_aff}))"
+                                        else:
+                                            ro_text += f" (AFF: {aff_height})"
+                                    if associated_headers:
+                                        ro_text += f" [Headers: {', '.join(associated_headers)}]"
+
+                                    fh.write(f"• {ro_text}\n")
+                            except Exception:
+                                pass
+                    except Exception:
+                        pass
+                    
+                    # Add Beam Pocket Details section after Rough Openings
                     try:
                         beam_pockets = extract_beam_pocket_info(pobj, materials_map.get(pname, []))
                         
@@ -2609,19 +2478,19 @@ except Exception:
                     
                     # Add SubAssemblies section after Beam Pockets
                     try:
-                        # Create mapping from material properties to alphabetical labels
-                        all_panel_materials = materials_map.get(pname, [])
-                        material_to_breakdown_mapping = create_material_to_breakdown_mapping(all_panel_materials)
-                        
                         # Use the new analyze_subassemblies_for_panel function
                         print(f"DEBUG: Calling analyze_subassemblies_for_panel for panel {pname}")
-                        subassembly_details = analyze_subassemblies_for_panel(ehx_path, pname, materials_map.get(pname, []), material_to_breakdown_mapping)
+                        subassembly_details = analyze_subassemblies_for_panel(ehx_path, pname, materials_map.get(pname, []))
                         print(f"DEBUG: subassembly_details = {subassembly_details}")
                         print(f"DEBUG: subassembly_details type = {type(subassembly_details)}")
                         print(f"DEBUG: bool(subassembly_details) = {bool(subassembly_details)}")
                         
                         if subassembly_details:
-                            fh.write("SubAssembly Details:\n")
+                            fh.write("Subcomponent Details:\n")
+                            
+                            # Create mapping from material properties to alphabetical labels
+                            all_panel_materials = materials_map.get(pname, [])
+                            material_to_breakdown_mapping = create_material_to_breakdown_mapping(all_panel_materials)
                             
                             # Display each SubAssembly
                             for sub_guid, sub_info in subassembly_details.items():
@@ -2631,67 +2500,48 @@ except Exception:
                                 # Display SubAssembly name directly without type labels
                                 fh.write(f"• {sub_name}\n")
                                 
-                                # Display materials if any (excluding FM32 critical studs)
+                                # Display materials if any
                                 if materials_dict:
                                     fh.write("   Materials:\n")
                                     for mat_label, count in sorted(materials_dict.items()):
-                                        fh.write(f"    ├── {mat_label} ({count})\n")
-                                
-                                # Add rough opening information for this subassembly based on FM25 type
-                                try:
-                                    # Find rough openings that belong to this subassembly
-                                    subassembly_rough_openings = []
-                                    
-                                    # Map subassembly names to their FM25 types for rough opening matching
-                                    fm25_mapping = {
-                                        'BSMT-HDR': 'G',  # BSMT-HDR uses G headers
-                                        '49x63-L2': 'F',  # 49x63-L2 uses F headers  
-                                        '73x63-L1': 'L',  # 73x63-L1 uses L header
-                                        'DR-1-ENT-L1': 'K',  # DR-1-ENT-L1 uses K header
-                                        # Note: LType is FM32, not FM25, so it should not have rough openings
-                                    }
-                                    
-                                    # Get the FM25 type for this subassembly
-                                    fm25_type = fm25_mapping.get(sub_name, '')
-                                    
-                                    if fm25_type:
-                                        # Look through all materials for rough openings that match this FM25 type
-                                        for m in materials_map.get(pname, []):
-                                            is_ro = _is_rough_opening(m)
-                                            if is_ro:
-                                                lab = m.get('Label') or ''
+                                        # Find the corresponding alphabetical label from the breakdown mapping
+                                        breakdown_label = mat_label  # Default to original label
+                                        
+                                        # Search through all panel materials to find matching properties
+                                        for material in all_panel_materials:
+                                            if isinstance(material, dict):
+                                                m_lbl = (material.get('Label') or '').strip()
+                                                m_typ = (material.get('Type') or '').strip()
+                                                m_desc = (material.get('Desc') or material.get('Description') or '').strip()
+                                                m_length = material.get('ActualLength') or material.get('Length') or ''
+                                                m_width = material.get('ActualWidth') or material.get('Width') or ''
                                                 
-                                                # Check if this rough opening belongs to this subassembly
-                                                # based on the FM25 type mapping
-                                                if lab == sub_name or (fm25_type and any(fm25_type in header for header in [lab])):
-                                                    # Get AFF information
-                                                    aff_height = get_aff_for_rough_opening(pobj, m)
+                                                # Round length and width to match the mapping function
+                                                try:
+                                                    length_val = float(m_length) if m_length else 0.0
+                                                    length_rounded = round(length_val, 2)
+                                                    length_str = str(length_rounded) if length_rounded != 0.0 else ''
+                                                except (ValueError, TypeError):
+                                                    length_str = str(m_length).strip()
                                                     
-                                                    # Format the rough opening display
-                                                    ro_title = f"Rough Opening: {lab}"
-                                                    ro_info = [ro_title]
-                                                    
-                                                    if aff_height is not None:
-                                                        # Strip trailing zeros from AFF decimal value
-                                                        aff_decimal = format_dimension(str(aff_height))
-                                                        formatted_aff = inches_to_feet_inches_sixteenths(str(aff_height))
-                                                        if formatted_aff:
-                                                            ro_info.append(f"AFF: {aff_decimal} ({formatted_aff})")
-                                                        else:
-                                                            ro_info.append(f"AFF: {aff_decimal}")
-                                                    
-                                                    subassembly_rough_openings.append(ro_info)
-                                    
-                                    # Write rough openings for this subassembly
-                                    if subassembly_rough_openings:
-                                        fh.write("   Rough Openings:\n")
-                                        for ro in subassembly_rough_openings:
-                                            for line in ro:
-                                                fh.write(f"    ├── {line}\n")
-                                
-                                except Exception as e:
-                                    # Silently handle exceptions in rough opening processing
-                                    pass
+                                                try:
+                                                    width_val = float(m_width) if m_width else 0.0
+                                                    width_rounded = round(width_val, 2)
+                                                    width_str = str(width_rounded) if width_rounded != 0.0 else ''
+                                                except (ValueError, TypeError):
+                                                    width_str = str(m_width).strip()
+                                                
+                                                # Create the same key as used in the mapping function
+                                                material_key = (m_lbl, m_typ, m_desc, length_str, width_str)
+                                                
+                                                # If this material matches the current subcomponent material
+                                                if m_lbl == mat_label:
+                                                    # Look up the alphabetical label in the mapping
+                                                    if material_key in material_to_breakdown_mapping:
+                                                        breakdown_label = material_to_breakdown_mapping[material_key]
+                                                        break
+                                        
+                                        fh.write(f"    ├── {breakdown_label} ({count})\n")
                             
                             fh.write('\n')
                         else:
@@ -2700,197 +2550,6 @@ except Exception:
                         print(f"DEBUG: Exception in SubAssemblies section: {e}")
                         import traceback
                         traceback.print_exc()
-                    
-                    fh.write('\n')
-                    
-                    # Add Critical Stud Details section to log files
-                    fh.write("🔧 CRITICAL STUD DETAILS:\n")
-                    fh.write("------------------------------\n\n")
-                    
-                    # Count FM32 and FM47 materials for this panel
-                    fm32_count = 0
-                    fm47_count = 0
-                    
-                    # Get SubAssembly GUIDs for this panel to identify SubAssembly materials
-                    panel_subassembly_guids = set()
-                    subassembly_fm_map = {}  # Map SubAssembly GUID to FamilyMember
-                    
-                    for sub_el in root.findall('.//SubAssembly'):
-                        # Check if this SubAssembly belongs to the target panel
-                        panel_guid_el = sub_el.find('PanelGuid')
-                        panel_id_el = sub_el.find('PanelID')
-                        
-                        belongs_to_panel = False
-                        if panel_guid_el is not None and panel_guid_el.text == pobj.get('Name', ''):
-                            belongs_to_panel = True
-                        elif panel_id_el is not None and panel_id_el.text == pname:
-                            belongs_to_panel = True
-                        
-                        if belongs_to_panel:
-                            guid_el = sub_el.find('SubAssemblyGuid')
-                            fm_el = sub_el.find('FamilyMember')
-                            if guid_el is not None and guid_el.text:
-                                panel_subassembly_guids.add(guid_el.text.strip())
-                                # Store the SubAssembly's FamilyMember
-                                if fm_el is not None and fm_el.text:
-                                    subassembly_fm_map[guid_el.text.strip()] = fm_el.text.strip()
-                    
-                    # Check materials for FM32 and FM47
-                    for m in materials_map.get(pname, []):
-                        if isinstance(m, dict):
-                            fm = m.get('FamilyMember') or m.get('FamilyMemberName') or ''
-                            subassembly_guid = m.get('SubAssemblyGuid', '').strip()
-                            
-                            # FM32: SubAssembly critical studs (part of SubAssembly with FamilyMember 32)
-                            is_fm32 = False
-                            if subassembly_guid and subassembly_guid in panel_subassembly_guids:
-                                # Check if the SubAssembly has FamilyMember 32
-                                subassembly_fm = subassembly_fm_map.get(subassembly_guid, '')
-                                is_fm32 = (str(subassembly_fm) == '32' or 
-                                          str(subassembly_fm).upper() == 'FM32' or
-                                          'Critical Stud' in str(subassembly_fm) or
-                                          m.get('Label', '').upper() == 'FM32')
-                            
-                            if is_fm32:
-                                fm32_count += 1
-                                print(f"DEBUG: Found FM32 critical stud in panel {pname}")
-                            
-                            # FM47: Loose critical studs (not part of SubAssembly)
-                            # Check multiple ways FM47 might be represented
-                            is_fm47 = (str(fm) == '47' or 
-                                      str(fm).upper() == 'FM47' or
-                                      m.get('Label', '').upper() == 'FM47' or
-                                      (m.get('Type', '').upper() == 'CRITICALSTUD' and not subassembly_guid))
-                            
-                            if is_fm47 and (not subassembly_guid or subassembly_guid not in panel_subassembly_guids):
-                                fm47_count += 1
-                                print(f"DEBUG: Found FM47 critical stud in panel {pname}")
-                    
-                    print(f"DEBUG: Panel {pname} - FM32 count: {fm32_count}, FM47 count: {fm47_count}")
-                    
-                    if fm32_count > 0:
-                        # Use extracted position data from critical_studs if available
-                        fm32_position_inches = None
-                        panel_critical_studs = critical_studs_map.get(pname, {}) if isinstance(critical_studs_map, dict) else {}
-                        if isinstance(panel_critical_studs, dict) and 'fm32' in panel_critical_studs and isinstance(panel_critical_studs.get('fm32'), dict) and panel_critical_studs.get('fm32', {}).get('positions'):
-                            # Use the first extracted position for FM32
-                            positions = panel_critical_studs['fm32']['positions']
-                            if isinstance(positions, list) and positions:
-                                fm32_position_inches = positions[0]
-                            print(f"DEBUG: Using extracted FM32 position: {fm32_position_inches}")
-                        else:
-                            # Fallback to panel-specific mappings
-                            panel_positions = {
-                                '05-100': {'FM32': 76.0, 'FM47': 90.88, 'EndStud': 100.25},
-                                '05-101': {'FM32': 4.375},
-                                '05-117': {'FM32': 34.25}
-                            }
-                            
-                            # Extract panel number from display_name (e.g., "05-100" from "Lot_05-100")
-                            panel_number = pname
-                            if '_' in pname:
-                                panel_number = pname.split('_')[-1]
-                            
-                            # Get FM32 position for this panel
-                            panel_length = float(pobj.get('WallLength', pobj.get('Length', 120)))  # Default to 120 if not found
-                            fm32_position_inches = panel_positions.get(panel_number, {}).get('FM32', panel_length * 0.95)
-                        
-                        fm32_position_feet_inches = inches_to_feet_inches_sixteenths(fm32_position_inches)
-                        position_str = f"{fm32_position_inches:.2f} inches ({fm32_position_feet_inches})"
-                        
-                        fh.write("FM32 SUBASSEMBLY CRITICAL STUD:\n")
-                        fh.write(f"  • Position: {position_str}\n")
-                        fh.write("  • Type: SubAssembly critical stud\n")
-                        fh.write(f"  • Count: {fm32_count} stud(s)\n\n")
-                    
-                    if fm47_count > 0:
-                        # Panel-specific critical stud position mapping
-                        panel_positions = {
-                            '05-100': {'FM32': 76.0, 'FM47': 90.88, 'EndStud': 100.25},
-                            '05-101': {'FM32': 4.375},
-                            '05-117': {'FM32': 34.25}
-                        }
-                        
-                        # Extract panel number from display_name (e.g., "05-100" from "Lot_05-100")
-                        panel_number = pname
-                        if '_' in pname:
-                            panel_number = pname.split('_')[-1]
-                        
-                        # Get FM47 position for this panel
-                        panel_length = float(pobj.get('WallLength', pobj.get('Length', 120)))  # Default to 120 if not found
-                        fm47_position_inches = None
-                        panel_critical_studs = critical_studs_map.get(pname, {}) if isinstance(critical_studs_map, dict) else {}
-                        if isinstance(panel_critical_studs, dict) and 'fm47' in panel_critical_studs and isinstance(panel_critical_studs.get('fm47'), dict) and panel_critical_studs.get('fm47', {}).get('positions'):
-                            # Use the first extracted position for FM47
-                            positions = panel_critical_studs['fm47']['positions']
-                            if isinstance(positions, list) and positions:
-                                fm47_position_inches = positions[0]
-                            print(f"DEBUG: Using extracted FM47 position: {fm47_position_inches}")
-                        else:
-                            # Fallback to panel-specific mappings
-                            fm47_position_inches = panel_positions.get(panel_number, {}).get('FM47', panel_length * 0.85)
-                        fm47_position_feet_inches = inches_to_feet_inches_sixteenths(fm47_position_inches)
-                        position_str = f"{fm47_position_inches:.2f} inches ({fm47_position_feet_inches})"
-                        
-                        fh.write("FM47 LOOSE CRITICAL STUD:\n")
-                        fh.write(f"  • Position: {position_str}\n")
-                        fh.write("  • Type: Loose critical stud\n")
-                        fh.write(f"  • Count: {fm47_count} stud(s)\n\n")
-                    
-                    if fm32_count == 0 and fm47_count == 0:
-                        fh.write("No critical studs found for this panel.\n\n")
-                    
-                    fh.write('---\n')
-                    
-                    # Add Critical Stud Details section
-                    fm32_count = 0
-                    fm47_count = 0
-                    
-                    for m in materials_map.get(pname, []):
-                        if isinstance(m, dict):
-                            fm_id = m.get('FamilyMemberName', '').upper()
-                            if fm_id == 'FM32':
-                                fm32_count += 1
-                            elif fm_id == 'FM47':
-                                fm47_count += 1
-                    
-                    if fm32_count > 0 or fm47_count > 0:
-                        fh.write("Critical Stud Details:\n")
-                        if fm47_count > 0:
-                            # Panel-specific critical stud position mapping
-                            panel_positions = {
-                                '05-100': {'FM32': 76.0, 'FM47': 90.88, 'EndStud': 100.25},
-                                '05-101': {'FM32': 4.375},
-                                '05-117': {'FM32': 34.25}
-                            }
-                            
-                            # Extract panel number from display_name (e.g., "05-100" from "Lot_05-100")
-                            panel_number = pname
-                            if '_' in pname:
-                                panel_number = pname.split('_')[-1]
-                            
-                            # Get FM47 position for this panel
-                            panel_length = float(pobj.get('WallLength', pobj.get('Length', 120)))  # Default to 120 if not found
-                            fm47_position_inches = panel_positions.get(panel_number, {}).get('FM47', panel_length * 0.85)
-                            fh.write(f"  • FM47 (Loose Critical Stud): {fm47_count} stud(s) at {fm47_position_inches:.1f} inches\n")
-                        if fm32_count > 0:
-                            # Panel-specific critical stud position mapping
-                            panel_positions = {
-                                '05-100': {'FM32': 76.0, 'FM47': 90.88, 'EndStud': 100.25},
-                                '05-101': {'FM32': 4.375},
-                                '05-117': {'FM32': 34.25}
-                            }
-                            
-                            # Extract panel number from display_name (e.g., "05-100" from "Lot_05-100")
-                            panel_number = pname
-                            if '_' in pname:
-                                panel_number = pname.split('_')[-1]
-                            
-                            # Get FM32 position for this panel
-                            panel_length = float(pobj.get('WallLength', pobj.get('Length', 120)))  # Default to 120 if not found
-                            fm32_position_inches = panel_positions.get(panel_number, {}).get('FM32', panel_length * 0.95)
-                            fh.write(f"  • FM32 (SubAssembly Critical Stud): {fm32_count} stud(s) at {fm32_position_inches:.1f} inches\n")
-                        fh.write('\n')
                     
                     fh.write("Panel Material Breakdown:\n")
                     lines = []
@@ -2945,136 +2604,6 @@ except Exception:
                     b = pobj.get('Bundle') or pobj.get('BundleName') or ''
                     if b:
                         fh.write(f"Bundle: {b}\n")
-                    
-                    # Add Critical Stud Details section after panel info
-                    try:
-                        # Count FM32 and FM47 materials for this panel
-                        fm47_count = 0
-                        fm32_count = 0
-                        
-                        # Get SubAssembly GUIDs for this panel to identify SubAssembly materials
-                        panel_subassembly_guids = set()
-                        subassembly_fm_map = {}  # Map SubAssembly GUID to FamilyMember
-                        
-                        for sub_el in root.findall('.//SubAssembly'):
-                            # Check if this SubAssembly belongs to the target panel
-                            panel_guid_el = sub_el.find('PanelGuid')
-                            panel_id_el = sub_el.find('PanelID')
-                            
-                            belongs_to_panel = False
-                            if panel_guid_el is not None and panel_guid_el.text == pobj.get('Name', ''):
-                                belongs_to_panel = True
-                            elif panel_id_el is not None and panel_id_el.text == pname:
-                                belongs_to_panel = True
-                            
-                            if belongs_to_panel:
-                                guid_el = sub_el.find('SubAssemblyGuid')
-                                fm_el = sub_el.find('FamilyMember')
-                                if guid_el is not None and guid_el.text:
-                                    panel_subassembly_guids.add(guid_el.text.strip())
-                                    # Store the SubAssembly's FamilyMember
-                                    if fm_el is not None and fm_el.text:
-                                        subassembly_fm_map[guid_el.text.strip()] = fm_el.text.strip()
-                        
-                        print(f"DEBUG: Checking materials for panel {pname}, materials count: {len(materials_map.get(pname, []))}")
-                        for m in materials_map.get(pname, []):
-                            if isinstance(m, dict):
-                                fm = m.get('FamilyMember') or m.get('FamilyMemberName') or ''
-                                subassembly_guid = m.get('SubAssemblyGuid', '').strip()
-                                
-                                print(f"DEBUG: Material FM: '{fm}', SubAssemblyGuid: '{subassembly_guid}', Type: '{m.get('Type', '')}', Label: '{m.get('Label', '')}'")
-                                
-                                # FM47: Loose critical studs (not part of SubAssembly)
-                                is_fm47 = (str(fm) == '47' or 
-                                          str(fm).upper() == 'FM47' or
-                                          m.get('Label', '').upper() == 'FM47' or
-                                          (m.get('Type', '').upper() == 'CRITICALSTUD' and not subassembly_guid))
-                                
-                                if is_fm47 and (not subassembly_guid or subassembly_guid not in panel_subassembly_guids):
-                                    fm47_count += 1
-                                    print(f"DEBUG: Found FM47 material")
-                                
-                                # FM32: SubAssembly critical studs (part of SubAssembly with FamilyMember 32)
-                                is_fm32 = False
-                                if subassembly_guid and subassembly_guid in panel_subassembly_guids:
-                                    # Check if the SubAssembly has FamilyMember 32
-                                    subassembly_fm = subassembly_fm_map.get(subassembly_guid, '')
-                                    is_fm32 = (str(subassembly_fm) == '32' or 
-                                              str(subassembly_fm).upper() == 'FM32' or 
-                                              'Critical Stud' in str(subassembly_fm) or
-                                              m.get('Label', '').upper() == 'FM32')
-                                
-                                if is_fm32:
-                                    fm32_count += 1
-                                    print(f"DEBUG: Found FM32 material")
-                        
-                        print(f"DEBUG: Panel {pname} - FM47 count: {fm47_count}, FM32 count: {fm32_count}")
-                        if fm47_count > 0 or fm32_count > 0:
-                            fh.write("Critical Stud Details:\n")
-                            
-                        if fm47_count > 0:
-                            # Panel-specific critical stud position mapping
-                            panel_positions = {
-                                '05-100': {'FM32': 76.0, 'FM47': 90.88, 'EndStud': 100.25},
-                                '05-101': {'FM32': 4.375},
-                                '05-117': {'FM32': 34.25}
-                            }
-                            
-                            # Extract panel number from display_name (e.g., "05-100" from "Lot_05-100")
-                            panel_number = display_name
-                            if '_' in display_name:
-                                panel_number = display_name.split('_')[-1]
-                            
-                            # Get FM47 position for this panel
-                            panel_length = float(pobj.get('WallLength', pobj.get('Length', 120)))  # Default to 120 if not found
-                            fm47_position_inches = None
-                            panel_critical_studs = critical_studs_map.get(pname, {}) if isinstance(critical_studs_map, dict) else {}
-                            if isinstance(panel_critical_studs, dict) and 'fm47' in panel_critical_studs and isinstance(panel_critical_studs.get('fm47'), dict) and panel_critical_studs.get('fm47', {}).get('positions'):
-                                # Use the first extracted position for FM47
-                                positions = panel_critical_studs['fm47']['positions']
-                                if isinstance(positions, list) and positions:
-                                    fm47_position_inches = positions[0]
-                                print(f"DEBUG: Using extracted FM47 position: {fm47_position_inches}")
-                            else:
-                                # Fallback to panel-specific mappings
-                                fm47_position_inches = panel_positions.get(panel_number, {}).get('FM47', panel_length * 0.85)
-                            fh.write(f"• FM47 Critical Studs: {fm47_count} (Loose studs at {fm47_position_inches:.1f} inches)\n")
-                        
-                        if fm32_count > 0:
-                            # Panel-specific critical stud position mapping
-                            panel_positions = {
-                                '05-100': {'FM32': 76.0, 'FM47': 90.88, 'EndStud': 100.25},
-                                '05-101': {'FM32': 4.375},
-                                '05-117': {'FM32': 34.25}
-                            }
-                            
-                            # Extract panel number from display_name (e.g., "05-100" from "Lot_05-100")
-                            panel_number = display_name
-                            if '_' in display_name:
-                                panel_number = display_name.split('_')[-1]
-                            
-                            # Get FM32 position for this panel
-                            panel_length = float(pobj.get('WallLength', pobj.get('Length', 120)))  # Default to 120 if not found
-                            fm32_position_inches = None
-                            panel_critical_studs = critical_studs_map.get(pname, {}) if isinstance(critical_studs_map, dict) else {}
-                            if isinstance(panel_critical_studs, dict) and 'fm32' in panel_critical_studs and isinstance(panel_critical_studs.get('fm32'), dict) and panel_critical_studs.get('fm32', {}).get('positions'):
-                                # Use the first extracted position for FM32
-                                positions = panel_critical_studs['fm32']['positions']
-                                if isinstance(positions, list) and positions:
-                                    fm32_position_inches = positions[0]
-                                print(f"DEBUG: Using extracted FM32 position: {fm32_position_inches}")
-                            else:
-                                # Fallback to panel-specific mappings
-                                fm32_position_inches = panel_positions.get(panel_number, {}).get('FM32', panel_length * 0.95)
-                            fh.write(f"• FM32 Critical Studs: {fm32_count} (SubAssembly studs at {fm32_position_inches:.1f} inches)\n")
-                            
-                            fh.write('\n')
-                            print(f"DEBUG: Wrote Critical Stud Details to materials.log for panel {pname}")
-                        else:
-                            print(f"DEBUG: No critical studs found for panel {pname}")
-                    except Exception as e:
-                        print(f"DEBUG: Exception in Critical Stud Details: {e}")
-                        pass
                     
                     # Add Beam Pocket Details section after panel info
                     try:
@@ -3150,8 +2679,8 @@ except Exception:
         except Exception:
             pass
 
-    def parse_subassembly_details_from_expected_log(expected_log_path, panel_name):
-        """Parse SubAssembly Details from expected.log file for a specific panel.
+    def parse_subcomponent_details_from_expected_log(expected_log_path, panel_name):
+        """Parse Subcomponent Details from expected.log file for a specific panel.
         
         Returns a dictionary with subassembly details in the same format as analyze_subassemblies_for_panel.
         """
@@ -3175,20 +2704,20 @@ except Exception:
             else:
                 panel_content = content[panel_start:]
             
-            # Find SubAssembly Details section
-            subassembly_match = re.search(r"SubAssembly Details:\s*\n(.*?)(\n\n|\nPanel: |\Z)", panel_content, re.DOTALL)
+            # Find Subcomponent Details section
+            subcomponent_match = re.search(r"Subcomponent Details:\s*\n(.*?)(\n\n|\nPanel: |\Z)", panel_content, re.DOTALL)
             
-            if not subassembly_match:
+            if not subcomponent_match:
                 return {}
             
-            subassembly_content = subassembly_match.group(1)
+            subcomponent_content = subcomponent_match.group(1)
             
-            # Parse the subassembly details
+            # Parse the subcomponent details
             subassemblies = {}
             current_subassembly = None
             materials_section = False
             
-            for line in subassembly_content.split('\n'):
+            for line in subcomponent_content.split('\n'):
                 line = line.strip()
                 if not line:
                     continue
@@ -3196,11 +2725,6 @@ except Exception:
                 if line.startswith('• ') and not materials_section:
                     # This is a subassembly name
                     subassembly_name = line[2:].strip()
-                    
-                    # Skip "Critical Stud" entries as they should not appear in SubAssembly Details
-                    if 'Critical Stud' in subassembly_name:
-                        continue
-                    
                     current_subassembly = subassembly_name
                     subassemblies[current_subassembly] = {
                         'name': subassembly_name,
@@ -3240,156 +2764,8 @@ except Exception:
             return filtered_subassemblies
             
         except Exception as e:
-            print(f"Error parsing SubAssembly Details from expected.log: {e}")
+            print(f"Error parsing Subcomponent Details from expected.log: {e}")
             return {}
-
-def parse_critical_stud_details_from_expected_log(expected_log_path, panel_name):
-    """Parse Critical Stud Details from expected.log file for a specific panel.
-    
-    Returns a dictionary with critical stud details including associated materials.
-    """
-    try:
-        with open(expected_log_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-        
-        print(f"DEBUG: parse_critical_stud_details_from_expected_log called")
-        print(f"DEBUG: expected_log_path = {expected_log_path}")
-        print(f"DEBUG: panel_name = {panel_name}")
-        print(f"DEBUG: File exists = {os.path.exists(expected_log_path)}")
-        
-        # Find the panel section
-        panel_pattern = rf"Panel: {panel_name}\s*\n"
-        panel_match = re.search(panel_pattern, content)
-        
-        if not panel_match:
-            print(f"DEBUG: Panel {panel_name} not found in expected.log")
-            return {}
-        
-        print(f"DEBUG: Found panel section for {panel_name}")
-        
-        # Extract the panel section (from panel header to next panel or end)
-        panel_start = panel_match.start()
-        next_panel_match = re.search(r"\nPanel: ", content[panel_start + 1:])
-        
-        if next_panel_match:
-            panel_content = content[panel_start:panel_start + next_panel_match.start() + 1]
-        else:
-            panel_content = content[panel_start:]
-        
-        print(f"DEBUG: Panel content length = {len(panel_content)}")
-        print(f"DEBUG: Panel content preview:\n{panel_content[:500]}...")
-        
-        # Find Critical Stud Details section
-        critical_stud_match = re.search(r"🔧 CRITICAL STUD DETAILS:\s*\n-+\s*\n(.*?)\n---", panel_content, re.DOTALL)
-        
-        if not critical_stud_match:
-            print(f"DEBUG: Critical Stud Details section not found in panel content")
-            return {}
-        
-        print(f"DEBUG: Found Critical Stud Details section")
-        
-        critical_stud_content = critical_stud_match.group(1)
-        print(f"DEBUG: Critical Stud Details content:\n{critical_stud_content}")
-        
-        # Find Panel Material Breakdown section
-        material_breakdown_match = re.search(r"Panel Material Breakdown:\s*\n(.*?)(?=\n\n|\Z)", panel_content, re.DOTALL)
-        material_breakdown = {}
-        if material_breakdown_match:
-            breakdown_content = material_breakdown_match.group(1)
-            print(f"DEBUG: Found Panel Material Breakdown section")
-            
-            # Parse material breakdown into a dictionary
-            for line in breakdown_content.strip().split('\n'):
-                line = line.strip()
-                if line and ' - ' in line:
-                    parts = line.split(' - ', 1)
-                    if len(parts) == 2:
-                        label = parts[0].strip()
-                        description = parts[1].strip()
-                        material_breakdown[label] = description
-                        print(f"DEBUG: Added material {label}: {description}")
-        
-        # Parse the critical stud details
-        critical_studs = {}
-        
-        # Look for FM32 section
-        fm32_match = re.search(r"FM32 SUBASSEMBLY CRITICAL STUD:(.*?)(?=FM47|\n\n|\Z)", critical_stud_content, re.DOTALL)
-        if fm32_match:
-            fm32_content = fm32_match.group(1)
-            print(f"DEBUG: Found FM32 section: {fm32_content}")
-            position_match = re.search(r"Position: ([^\n]+)", fm32_content)
-            if position_match:
-                position = position_match.group(1).strip()
-                
-                # Find associated materials for FM32 (typically labeled with 'H')
-                materials = {}
-                for label, description in material_breakdown.items():
-                    if 'CriticalStud' in description:
-                        materials[label] = description
-                        print(f"DEBUG: Associated material {label} with FM32")
-                
-                critical_studs['FM32'] = {
-                    'name': 'FM32 SubAssembly Critical Stud',
-                    'position': position,
-                    'materials': materials
-                }
-                print(f"DEBUG: Added FM32: {position} with materials {materials}")
-        
-        # Look for FM47 section
-        fm47_match = re.search(r"FM47 LOOSE CRITICAL STUD:(.*?)(?=\n\n|\Z)", critical_stud_content, re.DOTALL)
-        if fm47_match:
-            fm47_content = fm47_match.group(1)
-            print(f"DEBUG: Found FM47 section: {fm47_content}")
-            position_match = re.search(r"Position: ([^\n]+)", fm47_content)
-            if position_match:
-                position = position_match.group(1).strip()
-                
-                # Find associated materials for FM47 (typically labeled with 'H')
-                materials = {}
-                for label, description in material_breakdown.items():
-                    if 'CriticalStud' in description:
-                        materials[label] = description
-                        print(f"DEBUG: Associated material {label} with FM47")
-                
-                critical_studs['FM47'] = {
-                    'name': 'FM47 Loose Critical Stud',
-                    'position': position,
-                    'materials': materials
-                }
-                print(f"DEBUG: Added FM47: {position} with materials {materials}")
-        
-        print(f"DEBUG: Returning critical_studs: {critical_studs}")
-        return critical_studs
-        
-    except Exception as e:
-        print(f"Error parsing Critical Stud Details from expected.log: {e}")
-        import traceback
-        traceback.print_exc()
-        return {}
-
-def toggle_critical_stud_details(button, content_frame):
-    """Toggle the visibility of Critical Stud Details section"""
-    try:
-        if content_frame.winfo_ismapped():
-            # Currently visible, hide it
-            content_frame.pack_forget()
-            button.config(text='▶')
-            # Update header text
-            for child in button.master.winfo_children():
-                if isinstance(child, tk.Label) and 'Critical Stud Details' in child.cget('text'):
-                    child.config(text='Critical Stud Details (Click to expand)')
-                    break
-        else:
-            # Currently hidden, show it
-            content_frame.pack(fill='x', padx=8, pady=2)
-            button.config(text='▼')
-            # Update header text
-            for child in button.master.winfo_children():
-                if isinstance(child, tk.Label) and 'Critical Stud Details' in child.cget('text'):
-                    child.config(text='Critical Stud Details (Click to collapse)')
-                    break
-    except Exception:
-        pass
 
 # Professional color scheme - easier on eyes
 TOP_BG = '#2c3e50'        # Dark blue-gray for top bar
@@ -3405,15 +2781,16 @@ BREAKDOWN_BG = '#fafafa'  # Light gray for breakdown
 
 # Professional accent colors
 PRIMARY_BLUE = '#3498db'
+SECONDARY_TEAL = '#16a085'
 SUCCESS_GREEN = '#27ae60'
 WARNING_ORANGE = '#f39c12'
 DANGER_RED = '#e74c3c'
+PURPLE_ACCENT = '#9b59b6'
 TEXT_DARK = '#2c3e50'
 TEXT_MEDIUM = '#3d4f5c'  # Darker for better visibility
 TEXT_LIGHT = '#95a5a6'
 BORDER_LIGHT = '#ecf0f1'
 
-HERE = os.path.dirname(os.path.abspath(__file__))
 STATE_FILE = os.path.join(HERE, 'gui_zones_state.json')
 LOG_FILE = os.path.join(HERE, 'gui_zones_log.json')
 LAST_FOLDER_FILE = os.path.join(HERE, 'gui_zones_last_folder.json')
@@ -3431,47 +2808,578 @@ LAST_FOLDER_FILE = os.path.join(HERE, 'gui_zones_last_folder.json')
 #
 DEFAULT_STATE = {
     'left_w': 184,       # white zone (left file list) width in pixels
-    'details_w': 300,    # yellow zone (details) width in pixels
-    'breakdown_w': 1140, # pink zone (breakdown) width in pixels
+    'details_w': 500,    # yellow zone (details) width in pixels
+    'breakdown_w': 940,  # pink zone (breakdown) width in pixels
     'green_h': 264,      # green zone (buttons) height in pixels
 }
 
 DEFAULT_GUI = {'w': 1650, 'h': 950}
+
+def toggle_beam_pocket_details(button, content_frame):
+    """Toggle the visibility of Beam Pocket Details section"""
+    try:
+        if content_frame.winfo_ismapped():
+            # Currently visible, hide it
+            content_frame.pack_forget()
+            button.config(text='▶')
+        else:
+            # Currently hidden, show it
+            content_frame.pack(fill='x', padx=8, pady=2)
+            button.config(text='▼')
+    except Exception:
+        pass
+
+def toggle_critical_stud_details(button, content_frame):
+    """Toggle the visibility of Critical Stud Details section"""
+    try:
+        if content_frame.winfo_ismapped():
+            # Currently visible, hide it
+            content_frame.pack_forget()
+            button.config(text='▶')
+        else:
+            # Currently hidden, show it
+            content_frame.pack(fill='x', padx=8, pady=2)
+            button.config(text='▼')
+    except Exception:
+        pass
+
+def toggle_subassembly_details(button, content_frame):
+    """Toggle the visibility of SubAssembly Details section"""
+    try:
+        if content_frame.winfo_ismapped():
+            # Currently visible, hide it
+            content_frame.pack_forget()
+            button.config(text='▶')
+        else:
+            # Currently hidden, show it
+            content_frame.pack(fill='x', padx=8, pady=2)
+            button.config(text='▼')
+    except Exception:
+        pass
+
+def toggle_panel_details(button, content_frame):
+    """Toggle the visibility of Panel Details section"""
+    try:
+        if content_frame.winfo_ismapped():
+            # Currently visible, hide it
+            content_frame.pack_forget()
+            button.config(text='▶')
+        else:
+            # Currently hidden, show it
+            content_frame.pack(fill='x', padx=8, pady=2)
+            button.config(text='▼')
+    except Exception:
+        pass
+
+def toggle_panel_specs(button, content_frame):
+    """Toggle the visibility of Panel Specifications section"""
+    try:
+        if content_frame.winfo_ismapped():
+            # Currently visible, hide it
+            content_frame.pack_forget()
+            button.config(text='▶')
+        else:
+            # Currently hidden, show it
+            content_frame.pack(fill='x', padx=8, pady=2)
+            button.config(text='▼')
+    except Exception:
+        pass
 
 def toggle_debug_mode(enabled):
     """Toggle debug logging on/off to improve GUI performance"""
     global debug_enabled
     debug_enabled = enabled
     
-    # Update logging level based on debug state
     if enabled:
+        # Clear the debug.log file and write header when debug is enabled
+        try:
+            with open(os.path.join(HERE, 'debug.log'), 'w') as f:
+                f.write(f"=== Debug Log Started: {_dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ===\n")
+        except Exception:
+            pass
+        # Set logging level to DEBUG
         logging.getLogger().setLevel(logging.DEBUG)
-        print("Debug logging enabled")
     else:
+        # Set logging level to WARNING (suppress DEBUG messages)
         logging.getLogger().setLevel(logging.WARNING)
-        print("Debug logging disabled for better performance")
+    
+def create_takeoff_standalone_output(panel_name, panel_info, panel_element, root_element, materials, specs, beam_pockets, critical_studs, subassemblies, material_breakdown, takeoff_output, family_members):
+    """Create comprehensive takeoff output matching takeoff_standalone.py format exactly"""
+    try:
+        print(f"DEBUG: create_takeoff_standalone_output called with panel_name={panel_name}, material_breakdown={repr(material_breakdown[:100] if material_breakdown else None)}...")
+        logging.debug(f"DEBUG: create_takeoff_standalone_output called with panel_name={panel_name}, material_breakdown={repr(material_breakdown[:100] if material_breakdown else None)}...")
+        # Bundle name mapping for display
+        bundle_names = {
+            '557a6d63': 'B1 (2x6 Ext)',
+            '442ef74d': 'B2 (2x4 Gar)', 
+            '3e341f28': 'B3 (2x4 PW)',
+            'bbec7789': 'B4 (2x4 Int)',
+            'a5b7895b': 'B5 (2x4 Furr)'
+        }
+        output_lines = []
+        
+        # 🏠 PANEL DETAILS
+        output_lines.append("🏠 PANEL DETAILS:")
+        panel_display_name = panel_info.get('name') or panel_info.get('label') or panel_name
+        output_lines.append(f"  Panel Name: {panel_display_name}")
+        if panel_info.get('level'):
+            output_lines.append(f"  Level: {panel_info['level']}")
+        if panel_info.get('bundlename'):
+            bundle_short = panel_info['bundlename'].split('...')[0] if '...' in panel_info['bundlename'] else panel_info['bundlename']
+            bundle_display = bundle_names.get(bundle_short, panel_info['bundlename'])
+            output_lines.append(f"  Bundle: {bundle_display}")
+        else:
+            output_lines.append("  Bundle: **No Bundle Found**")
+        output_lines.append("")
+        
+        # 📋 PANEL SPECIFICATIONS
+        output_lines.append("📋 PANEL SPECIFICATIONS:")
+        if specs.get('category'):
+            output_lines.append(f"  • Category: {specs['category']}")
+        if specs.get('load_bearing'):
+            load_bearing_text = 'YES' if specs['load_bearing'].lower() in ['yes', 'true', '1'] else 'NO'
+            output_lines.append(f"  • Load Bearing: {load_bearing_text}")
+        if specs.get('wall_length'):
+            try:
+                wall_length = float(specs['wall_length'])
+                wall_length_fmt = format_feet_to_dimension(wall_length/12)
+                length_info = f"  • Length: {wall_length:.0f} in ({wall_length_fmt})"
+                
+                # Add growth allowance information if available
+                if specs.get('growth_allowance'):
+                    try:
+                        growth = float(specs['growth_allowance'])
+                        if abs(growth) > 0.01:  # Only show if significant
+                            growth_fmt = format_feet_to_dimension(abs(growth)/12)
+                            growth_direction = "added" if growth > 0 else "subtracted"
+                            length_info += f" [Growth allowance: {abs(growth):.1f} in ({growth_fmt}) {growth_direction}]"
+                    except (ValueError, TypeError):
+                        pass
+                
+                # Highlight length error if actual length exceeds WallLength
+                if specs.get('length_error'):
+                    length_info += f"\n  • ⚠️ LENGTH ERROR: {specs['length_error']}"
+                
+                output_lines.append(length_info)
+            except:
+                output_lines.append(f"  • Length: {specs['wall_length']}")
+        if specs.get('height'):
+            try:
+                height = float(specs['height'])
+                height_fmt = format_feet_to_dimension(height/12)
+                output_lines.append(f"  • Height: {height:.0f} in ({height_fmt})")
+            except:
+                output_lines.append(f"  • Height: {specs['height']}")
+        if specs.get('squaring'):
+            try:
+                # Calculate squaring using Pythagorean theorem
+                height_val = float(specs.get('height', 0))
+                wall_len = float(specs.get('wall_length', 0))
+                
+                # For squaring, subtract VeryTopPlate thickness (1.5") since it's shipped loose
+                squaring_height = height_val - 1.5
+                squaring_inches = math.sqrt(squaring_height ** 2 + wall_len ** 2)
+                squaring_fmt = format_feet_to_dimension(squaring_inches/12)
+                output_lines.append(f"  • Squaring: {squaring_inches:.4f} in ({squaring_fmt})")
+            except:
+                output_lines.append(f"  • Squaring: {specs['squaring']}")
+        if specs.get('thickness'):
+            try:
+                thickness = float(specs['thickness'])
+                output_lines.append(f"  • Thickness: {thickness:.1f} in")
+            except:
+                output_lines.append(f"  • Thickness: {specs['thickness']} in")
+        if specs.get('stud_spacing'):
+            try:
+                stud_spacing = float(specs['stud_spacing'])
+                output_lines.append(f"  • Stud Spacing: {stud_spacing:.0f} in")
+            except:
+                output_lines.append(f"  • Stud Spacing: {specs['stud_spacing']} in")
+        
+        # Sheathing layers - match GUI display exactly (no dimensions)
+        sheathing_list = []
+        for m in materials:
+            if isinstance(m, dict):
+                t = (m.get('Type') or '').lower()
+                if 'sheet' in t or 'sheath' in t or (m.get('FamilyMemberName') and 'sheath' in str(m.get('FamilyMemberName')).lower()):
+                    desc = (m.get('Description') or m.get('Desc') or '').strip()
+                    # Only add unique descriptions (no duplicates)
+                    if desc and desc not in sheathing_list:
+                        sheathing_list.append(desc)
+
+        if sheathing_list:
+            for idx, desc in enumerate(sheathing_list, 1):
+                if len(sheathing_list) == 1:
+                    output_lines.append(f"  • Sheathing: {desc}")
+                else:
+                    output_lines.append(f"  • Sheathing Layer {idx}: {desc}")
+        
+        if specs.get('weight'):
+            try:
+                weight = float(specs['weight'])
+                rounded_weight = round(weight)
+                if rounded_weight % 2 != 0:  # If odd, round up to even
+                    rounded_weight += 1
+                output_lines.append(f"  • Weight: {rounded_weight} lbs")
+            except:
+                output_lines.append(f"  • Weight: {specs['weight']}")
+        if specs.get('production_notes'):
+            output_lines.append(f"  • Production Notes: {specs['production_notes']}")
+        output_lines.append("")
+        
+        # 🔧 Beam Pocket Details (FM33)
+        output_lines.append("🔧 Beam Pocket Details:")
+        beam_pocket_count = 0
+        if beam_pockets:
+            for i, pocket in enumerate(beam_pockets, 1):
+                beam_pocket_count += 1
+                guid_display = f" (Guid: {pocket['guid'][:8]}...)" if pocket['guid'] else ""
+                output_lines.append(f"• Beam Pocket {i}{guid_display} (FM33)")
+                if pocket['aff'] is not None:
+                    aff_formatted = format_feet_to_dimension(pocket['aff']/12)
+                    output_lines.append(f"  AFF: {pocket['aff']:.2f} in ({aff_formatted})")
+                if pocket['opening_width'] is not None:
+                    output_lines.append(f"  Opening Width: {pocket['opening_width']:.1f} in")
+                if pocket['materials']:
+                    output_lines.append("  • Associated Material Parts:")
+                    for label, count in sorted(pocket['materials'].items()):
+                        # Find material description
+                        desc = ""
+                        for mat in materials:
+                            if isinstance(mat, dict) and mat.get('Label') == label:
+                                desc = mat.get('Desc') or mat.get('Description') or ""
+                                break
+                        desc_text = f" - {desc}" if desc else ""
+                        output_lines.append(f"    ├── {label} ({count}){desc_text}")
+                output_lines.append("")
+            output_lines.append(f"Total Beam Pockets: {beam_pocket_count}")
+        else:
+            output_lines.append("No beam pockets found for this panel.")
+        
+        output_lines.append("")
+        # 🔧 Critical Stud Details
+        output_lines.append("🔧 Critical Stud Details:")
+        critical_stud_count = 0
+        if critical_studs:
+            # Sort critical studs by distance (smallest to largest)
+            def get_distance_value(stud):
+                if stud.get('distance'):
+                    # Extract numeric value from string like "3.1 in (0'-3 1/16)"
+                    import re
+                    match = re.search(r'(\d+\.?\d*)', stud['distance'])
+                    if match:
+                        return float(match.group(1))
+                return float('inf')  # Put studs without distance at the end
+            
+            critical_studs.sort(key=get_distance_value)
+            
+            for stud in critical_studs:
+                critical_stud_count += 1
+                guid_display = f" (Guid: {stud['guid'][:8]}...)" if stud['guid'] else ""
+                output_lines.append(f"• Critical Stud{guid_display} ({stud['fm_type']})")
+                output_lines.append(f"• Type: {stud['type']}")
+                if stud.get('distance'):
+                    output_lines.append(f"• Distance: {stud['distance']}")
+                output_lines.append(f"• Associated Material Parts:")
+                for label, count in sorted(stud['materials'].items()):
+                    # Find material description
+                    desc = ""
+                    for mat in materials:
+                        if isinstance(mat, dict) and mat.get('Label') == label:
+                            desc = mat.get('Desc') or mat.get('Description') or ""
+                            break
+                    desc_text = f" - {desc}" if desc else ""
+                    output_lines.append(f" ├── {label} ({count}){desc_text}")
+                output_lines.append("")
+            output_lines.append(f"Total Critical Studs: {critical_stud_count}")
+        else:
+            output_lines.append("No critical studs found for this panel.")
+        
+        output_lines.append("")
+        # 🔧 SubAssembly Details
+        material_mapping = create_material_to_breakdown_mapping(materials)
+        subassemblies = extract_subassembly_details(panel_element, materials, material_mapping)
+        output_lines.append("🔧 SubAssembly Details:")
+        subassembly_count = 0
+        if subassemblies:
+            for sub in subassemblies:
+                subassembly_count += 1
+                guid_display = f" (Guid: {sub['guid'][:8]}...)" if sub['guid'] else ""
+                output_lines.append(f"• {sub['name']}{guid_display} (FM{sub['family_member']})")
+                if sub['materials']:
+                    output_lines.append("   • Associated Material Parts:")
+                    for label, count in sorted(sub['materials'].items()):
+                        # Find material description using the original label
+                        desc = ""
+                        for mat in materials:
+                            if isinstance(mat, dict) and mat.get('Label') == label:
+                                desc = mat.get('Desc') or mat.get('Description') or ""
+                                break
+                        desc_text = f" - {desc}" if desc else ""
+                        output_lines.append(f"    ├── {label} ({count}){desc_text}")
+                if sub['rough_openings']:
+                    output_lines.append("   Rough Openings:")
+                    for ro in sub['rough_openings']:
+                        output_lines.append(f"    ├── Rough Opening: {ro['dimensions']} (FM-1)")
+                        if ro['aff'] is not None:
+                            aff_formatted = format_feet_to_dimension(ro['aff']/12)
+                            output_lines.append(f"    ├── AFF: {ro['aff']:.1f} ({aff_formatted})")
+                output_lines.append("")
+            output_lines.append(f"Total SubAssemblies: {subassembly_count}")
+        else:
+            output_lines.append("No SubAssemblies found for this panel.")
+        
+        output_lines.append("")
+        
+        # Display ALL FAMILY MEMBERS before material breakdown
+        if family_members:
+            output_lines.append("ALL FAMILY MEMBERS")
+            output_lines.append("---------------------------")
+            # Sort family members by FM ID, then by count
+            sorted_fm = sorted(family_members.items(), 
+                             key=lambda x: (int(x[0].split(':')[0][2:]) if x[0].startswith('FM') and x[0].split(':')[0][2:].isdigit() else 999, -x[1]))
+            for fm_key, count in sorted_fm:
+                output_lines.append(f"- {fm_key} ({count})")
+            output_lines.append("")
+            
+            # Add validation summary
+            output_lines.append("STRUCTURAL VALIDATION SUMMARY")
+            output_lines.append("-----------------------------")
+            
+            # Check for expected structural elements based on panel type
+            validation_warnings = []
+            
+            # Check for critical studs in load-bearing panels
+            load_bearing = specs.get('load_bearing', '').lower() in ['yes', 'true', '1']
+            if load_bearing and critical_stud_count == 0:
+                validation_warnings.append("⚠️  Load-bearing panel missing critical studs")
+            
+            # Check for beam pockets in panels with openings
+            has_openings = any(sub['family_member'] in ['25'] for sub in subassemblies)
+            if has_openings and beam_pocket_count == 0:
+                validation_warnings.append("ℹ️  Panel has openings but no beam pockets found")
+            
+            # Check for subassemblies in complex panels
+            if subassembly_count == 0 and len(family_members) > 10:
+                validation_warnings.append("ℹ️  Complex panel with no subassemblies detected")
+            
+            # Check for FM32/FM42/FM25 presence
+            special_fms = [fm for fm in family_members.keys() if any(fm.startswith(f'FM{fm_id}:') for fm_id in ['25', '32', '42'])]
+            if special_fms:
+                output_lines.append(f"✅ Special SubAssembly FMs detected: {', '.join(special_fms)}")
+            
+            # Report validation results
+            if validation_warnings:
+                for warning in validation_warnings:
+                    output_lines.append(f"{warning}")
+            else:
+                output_lines.append("✅ All expected structural elements present")
+            
+            output_lines.append(f"📊 Totals: {beam_pocket_count} Beam Pockets, {critical_stud_count} Critical Studs, {subassembly_count} SubAssemblies, {len(family_members)} Total FM Types")
+            output_lines.append("")
+        else:
+            output_lines.append("ALL FAMILY MEMBERS")
+            output_lines.append("---------------------------")
+            output_lines.append("No family members found")
+            output_lines.append("")
+        
+        output_lines.append(f"MATERIAL BREAKDOWN:")
+        if material_breakdown and material_breakdown.strip():
+            output_lines.append(material_breakdown)
+            output_lines.append("")
+            
+            output_lines.append(f"TAKEOFF RESULTS:")
+            
+            if takeoff_output:
+                output_lines.append(takeoff_output)
+                output_lines.append("")
+        else:
+            output_lines.append(f"Panel {panel_name}: No breakdown data available")
+        
+        return "\n".join(output_lines) or "No takeoff data available"
+        
+    except Exception as e:
+        print(f"Error creating takeoff standalone output: {e}")
+        import traceback
+        traceback.print_exc()
+        return f"Error creating takeoff output: {e}"
+
+def process_panel_for_takeoff(panel_name, root):
+    """Process a panel for takeoff and return formatted data for yellow/pink zones and export"""
+    try:
+        # Get the currently loaded EHX file path
+        if not hasattr(root, 'ehx_file_path'):
+            return None, None, None
+        
+        ehx_file_path = root.ehx_file_path
+        
+        # Parse the EHX file
+        tree = ET.parse(ehx_file_path)
+        root_element = tree.getroot()
+        
+        # Build search indexes
+        indexes = build_search_indexes(root_element)
+        panels_data = indexes['panels']
+        
+        # Find the panel info
+        panel_info = None
+        if panel_name in panels_data:
+            panel_info = panels_data[panel_name]
+        else:
+            # Try to find by display name or label
+            for guid, info in panels_data.items():
+                if (info.get('display_name', '').lower() == panel_name.lower() or
+                    info.get('label', '').lower() == panel_name.lower() or
+                    info.get('name', '').lower() == panel_name.lower()):
+                    panel_info = info
+                    break
+        
+        if not panel_info:
+            return None, None, None
+        
+        # Find the panel element
+        panel_element = None
+        panel_guid = panel_info['guid']
+        
+        for p_el in root_element.findall('.//Panel'):
+            panel_guid_el = p_el.find('PanelGuid')
+            panel_id_el = p_el.find('PanelID')
+            if ((panel_guid_el is not None and panel_guid_el.text == panel_guid) or
+                (panel_id_el is not None and panel_id_el.text == panel_guid)):
+                panel_element = p_el
+                break
+        
+        if panel_element is None:
+            return None, None, None
+        
+        # Parse materials
+        materials, critical_studs = parse_materials_from_panel(panel_element, root_element)
+        
+        # Get panel height for material formatting
+        panel_height = None
+        height_el = panel_element.find('Height')
+        if height_el is not None and height_el.text:
+            try:
+                panel_height = float(height_el.text.strip())
+            except ValueError:
+                pass
+        
+        # Extract panel specifications
+        specs = extract_panel_specifications(panel_info, panel_element, root_element, materials)
+        
+        # Extract beam pocket details
+        beam_pockets = extract_beam_pocket_details(panel_element, materials)
+        
+        # Extract critical stud details
+        critical_studs = extract_critical_stud_details(panel_element, materials)
+        
+        # Extract subassembly details
+        subassemblies = extract_subassembly_details(panel_element, materials, {})
+        
+        # Get material breakdown
+        material_breakdown = get_panel_material_breakdown_standalone(panel_name, root_element, panels_data, panel_height)
+        
+        # Create takeoff output
+        takeoff_output, total_board_feet = create_takeoff_from_breakdown(material_breakdown)
+        
+        # Extract family members from materials AND subassemblies
+        family_members = {}
+        # First, collect from individual materials
+        for material in materials:
+            fm_id = material.get('FamilyMember', '').strip()
+            fm_name = material.get('FamilyMemberName', '').strip()
+            if fm_id and fm_name:
+                key = f"FM{fm_id}: {fm_name}"
+                family_members[key] = family_members.get(key, 0) + 1
+        
+        # Also collect from SubAssembly elements (FM25, FM32, FM42)
+        for sub_el in panel_element.findall('.//SubAssembly'):
+            fm_el = sub_el.find('FamilyMember')
+            fm_name_el = sub_el.find('FamilyMemberName')
+            sub_name_el = sub_el.find('SubAssemblyName')
+            
+            fm_id = ''
+            fm_name = ''
+            
+            if fm_el is not None and fm_el.text:
+                fm_id = fm_el.text.strip()
+            
+            # Use FamilyMemberName if available, otherwise SubAssemblyName
+            if fm_name_el is not None and fm_name_el.text:
+                fm_name = fm_name_el.text.strip()
+            elif sub_name_el is not None and sub_name_el.text:
+                fm_name = sub_name_el.text.strip()
+            
+            if fm_id and fm_name:
+                key = f"FM{fm_id}: {fm_name}"
+                family_members[key] = family_members.get(key, 0) + 1
+        
+        # Bundle name mapping for display
+        bundle_names = {
+            '557a6d63': 'B1 (2x6 Ext)',
+            '442ef74d': 'B2 (2x4 Gar)', 
+            '3e341f28': 'B3 (2x4 PW)',
+            'bbec7789': 'B4 (2x4 Int)',
+            'a5b7895b': 'B5 (2x4 Furr)'
+        }
+        
+        # Format data for UI display
+        
+        # Yellow zone: Panel Specifications with formatted sections
+        yellow_data = {
+            'specs': specs,  # Include detailed specifications
+            'beam_pockets': beam_pockets,
+            'critical_studs': critical_studs,
+            'subassemblies': subassemblies
+        }
+        
+        # Pink zone: Material Breakdown
+        pink_data = material_breakdown
+        
+        # Export data: Full takeoff output (matching takeoff_standalone.py format)
+        export_data = create_takeoff_standalone_output(panel_name, panel_info, panel_element, root_element, materials, specs, beam_pockets, critical_studs, subassemblies, material_breakdown, takeoff_output, family_members)
+        
+        print(f"DEBUG: process_panel_for_takeoff returning export_data = {repr(export_data[:100] if export_data else None)}...")
+        logging.debug(f"DEBUG: process_panel_for_takeoff returning export_data = {repr(export_data[:100] if export_data else None)}...")
+        
+        return yellow_data, pink_data, export_data
+        
+    except Exception as e:
+        print(f"Error processing panel {panel_name} for takeoff: {e}")
+        import traceback
+        traceback.print_exc()
+        return None, None, None
 
 def make_gui():
     root = tk.Tk()
-    root.title('Zones Test GUI')
+    root.title('EHX Reader')
     root.geometry(f"{DEFAULT_GUI['w']}x{DEFAULT_GUI['h']}")
+
+    # Configure ttk styles for button selection feedback
+    style = ttk.Style()
+    style.configure('TButton', foreground='black')  # Ensure default button text is visible
+    style.configure('Selected.TButton', background='#C8E6C9', foreground='black', relief='sunken')  # Light green background with black text for better legibility
+
+
 
     # Top bar
     top = tk.Frame(root, bg=TOP_BG)
     top.pack(side='top', fill='x')
     job_val = tk.Label(top, text='(none)', bg=TOP_BG, fg=TEXT_LIGHT, font=('Segoe UI', 10, 'bold'))
     job_val.pack(side='left', padx=6)
-    path_val = tk.Label(top, text='(none)', bg=TOP_BG, fg=TEXT_LIGHT, font=('Segoe UI', 10, 'bold'), cursor='hand2', anchor='w')
-    path_val.pack(side='left', padx=6, fill='x', expand=False)
+    path_val = tk.Label(top, text='(none)', bg=TOP_BG, fg=TEXT_LIGHT, font=('Segoe UI', 10, 'bold'), cursor='hand2', anchor='w', width=40)
+    path_val.pack(side='left', padx=6, fill='x', expand=True)
+
+    # Status label for loading messages
+    status_val = tk.Label(top, text='', bg=TOP_BG, fg='yellow', font=('Segoe UI', 10, 'bold'))
+    status_val.pack(side='left', padx=6, fill='x', expand=True)
 
     # Make path label clickable to open file location
     def open_file_location(event=None):
         try:
             current_path = path_val.cget('text')
-            if debug_enabled:
-                print(f"DEBUG: open_file_location called with path: {current_path}")
             if current_path and current_path != '(none)':
-                # Always open the folder containing the file (regardless of type)
+                # If it's a file path, open the directory containing it
                 if os.path.isfile(current_path):
                     folder_path = os.path.dirname(current_path)
                 else:
@@ -3503,7 +3411,7 @@ def make_gui():
     # Create folder_entry but hide it (width=1) to maintain functionality
     folder_entry = ttk.Entry(top, width=1)
     # folder_entry.pack(side='left', padx=8)  # Commented out to hide display
-    folder_lbl = tk.Label(top, text='Folder:', bg=TOP_BG, fg=TEXT_LIGHT, font=('Segoe UI', 9))
+    folder_lbl = tk.Label(top, text='Folder:', bg=TOP_BG, fg=TEXT_LIGHT, font=('Segoe UI', 10))
     # folder_lbl.pack(side='left')  # Commented out to hide display
 
     # Centering flags (kept at top-level so zones can reference them)
@@ -3544,410 +3452,62 @@ def make_gui():
     selected_level = {'value': None}  # None means single level or no level filtering
     original_panels = {}  # Store original unfiltered panel data
     original_materials_map = {}  # Store original unfiltered materials data
+    # track current export data for export button
+    current_export_data = None
+    
+    # Panel button highlighting variables
+    panel_button_map = {}  # Map panel names to their button widgets
+    selected_button = {'widget': None}  # Track currently highlighted button
 
     def export_current_panel():
+        global current_export_data
         try:
             print(f"DEBUG: export_current_panel called")
+            logging.debug(f"DEBUG: export_current_panel called")
             sel_name = selected_panel.get('name')
             print(f"DEBUG: selected_panel name = {sel_name}")
+            logging.debug(f"DEBUG: selected_panel name = {sel_name}")
             if not sel_name:
                 messagebox.showinfo('Export', 'No panel selected to export')
+                return
+
+            # Check if we have export data available
+            print(f"DEBUG: current_export_data = {current_export_data}")
+            logging.debug(f"DEBUG: current_export_data = {current_export_data}")
+            if not current_export_data:
+                messagebox.showinfo('Export', 'No takeoff data available. Please select a panel first.')
                 return
 
             # Ensure we have the panel object available for display name
             panel_obj = current_panels.get(sel_name, {})
             print(f"DEBUG: panel_obj = {panel_obj}")
 
-            # Sanitize panel name to use as default filename
-            def _sanitize_filename(name: str) -> str:
-                if not name:
-                    return 'panel'
-                invalid = '<>:"/\\|?*'
-                out = ''.join((c if c not in invalid else '_') for c in name).strip()
-                out = out.replace(' ', '_')
-                if not out:
-                    return 'panel'
-                return out
-
-            # Use the user-facing DisplayLabel for the default filename, not the internal GUID
-            display_name = panel_obj.get('DisplayLabel', sel_name)
-            initial_name = _sanitize_filename(display_name) + '.txt'
+            # Use panel name for filename (like 05-100.txt)
+            # Extract the panel name from the panel object DisplayLabel
+            panel_display_name = panel_obj.get('DisplayLabel') or panel_obj.get('name') or panel_obj.get('label') or sel_name or ''
+            
+            # Clean up the panel name (remove any prefixes or suffixes if needed)
+            # For example, if it ends with 'et', remove it like "05-100et" -> "05-100"
+            if panel_display_name.lower().endswith('et'):
+                panel_display_name = panel_display_name[:-2]
+            
+            panel_filename = panel_display_name
+            
+            # Ensure it has .txt extension
+            if not panel_filename.lower().endswith('.txt'):
+                panel_filename += '.txt'
 
             # Automatically save to LOG folder in script directory
             log_folder = os.path.join(HERE, 'LOG')
             os.makedirs(log_folder, exist_ok=True)
-            dest = os.path.join(log_folder, initial_name)
+            dest = os.path.join(log_folder, panel_filename)
             print(f"DEBUG: export destination = {dest}")
 
-            panel_obj = current_panels.get(sel_name, {})
-            materials_list = panel_materials_map.get(sel_name, [])
-            print(f"DEBUG: materials_list length = {len(materials_list)}")
-
-            # Use DisplayLabel for export display, fallback to internal name
-            display_name = panel_obj.get('DisplayLabel', sel_name)
-
-            # Parse panel name for Lot and Panel numbers
-            lot_num = ''
-            panel_num = display_name
-            if '_' in display_name:
-                parts = display_name.split('_', 1)
-                if len(parts) == 2:
-                    lot_num = parts[0]
-                    panel_num = parts[1]
-
-            def inches_fmt(v):
-                try:
-                    return inches_to_feet_inches_sixteenths(float(v))
-                except Exception:
-                    return v or ''
-
-            # Write the panel data in text format
+            # Write the takeoff data to file
             with open(dest, 'w', encoding='utf-8') as out:
-                out.write(f"File: {display_name}\n\n")
-                out.write("Panel Details:\n")
-                out.write(f"Panel: {display_name}\n")
+                out.write(current_export_data)
 
-                # Add Lot and Panel numbers if available
-                if lot_num:
-                    out.write(f"• Lot: {lot_num}\n")
-                out.write(f"• Panel: {panel_num}\n")
-
-                # Add level and description if available
-                if panel_obj.get('Level'):
-                    out.write(f"• Level: {panel_obj.get('Level')}\n")
-                if panel_obj.get('Description'):
-                    out.write(f"• Description: {panel_obj.get('Description')}\n")
-                if panel_obj.get('Bundle'):
-                    out.write(f"• Bundle: {panel_obj.get('Bundle')}\n")
-
-                # Panel specifications
-                candidates = [
-                    ('Category', 'Category'),
-                    ('Load Bearing', 'LoadBearing'),
-                    ('Wall Length', 'WallLength'),
-                    ('Height', 'Height'),
-                    ('Squaring', 'Squaring'),
-                    ('Thickness', 'Thickness'),
-                    ('Stud Spacing', 'StudSpacing'),
-                ]
-                for label, key in candidates:
-                    val = panel_obj.get(key, '')
-                    if val:
-                        # Strip trailing zeros from decimal values
-                        try:
-                            val = format_dimension(str(val))
-                        except:
-                            pass
-                        
-                        if key in ['WallLength', 'Height', 'Squaring']:
-                            formatted = inches_fmt(val)
-                            out.write(f"• {label}: {val} in   ({formatted})\n")
-                        elif key in ['Thickness', 'StudSpacing']:
-                            # For Thickness and Stud Spacing, just show the cleaned decimal
-                            out.write(f"• {label}: {val}\n")
-                        else:
-                            out.write(f"• {label}: {val}\n")
-
-                # Sheathing layers - match GUI display exactly (no dimensions)
-                sheathing_list = []
-                for m in materials_list:
-                    if isinstance(m, dict):
-                        t = (m.get('Type') or '').lower()
-                        if 'sheet' in t or 'sheath' in t or (m.get('FamilyMemberName') and 'sheath' in str(m.get('FamilyMemberName')).lower()):
-                            desc = (m.get('Description') or m.get('Desc') or '').strip()
-                            # Only add unique descriptions (no duplicates)
-                            if desc and desc not in sheathing_list:
-                                sheathing_list.append(desc)
-
-                if sheathing_list:
-                    for idx, desc in enumerate(sheathing_list, 1):
-                        if len(sheathing_list) == 1:
-                            out.write(f"• Sheathing: {desc}\n")
-                        else:
-                            out.write(f"• Sheathing Layer {idx}: {desc}\n")
-
-                # Additional fields
-                if panel_obj.get('Weight'):
-                    weight_formatted = format_weight(panel_obj.get('Weight'))
-                    out.write(f"• Weight: {weight_formatted}\n")
-                if panel_obj.get('OnScreenInstruction'):
-                    out.write(f"• Production Notes: {panel_obj.get('OnScreenInstruction')}\n")
-
-                # Add Beam Pocket Details section after Rough Openings
-                try:
-                    beam_pockets = extract_beam_pocket_info(panel_obj, materials_list)
-                    if debug_enabled:
-                        print(f"DEBUG: Beam pockets found for panel {panel_obj.get('PanelID', 'unknown')}: {len(beam_pockets) if beam_pockets else 0}")
-
-                    if beam_pockets:
-                        out.write("Beam Pocket Details:\n")
-
-                        for i, pocket in enumerate(beam_pockets, 1):
-                            aff = pocket.get('aff')
-                            opening_width = pocket.get('opening_width')
-                            materials = pocket.get('materials', {})
-                            count = pocket.get('count', 1)
-
-                            if debug_enabled:
-                                print(f"DEBUG: Exporting beam pocket {i}: aff={aff}, opening_width={opening_width}, materials={materials}")
-
-                            pocket_label = f"Beam Pocket {i}"
-                            if count > 1:
-                                pocket_label += f" ({count})"
-
-                            out.write(f"• {pocket_label}\n")
-
-                            if aff is not None:
-                                # Add bottom plate thickness (1.5 inches) to AFF calculation
-                                adjusted_aff = aff + 1.5
-                                aff_decimal = format_dimension(str(adjusted_aff))
-                                aff_formatted = inches_to_feet_inches_sixteenths(str(adjusted_aff))
-                                if aff_formatted:
-                                    out.write(f"  AFF: {aff_decimal} in ({aff_formatted})\n")
-                                else:
-                                    out.write(f"  AFF: {aff_decimal} in\n")
-                            else:
-                                out.write("  AFF: Unknown\n")
-
-                            if opening_width is not None:
-                                width_decimal = format_dimension(str(opening_width))
-                                out.write(f"  Opening Width: {width_decimal} in\n")
-
-                            if materials:
-                                out.write("  Materials:\n")
-                                for label, qty in sorted(materials.items()):
-                                    out.write(f"    ├── {label} ({qty})\n")
-
-                        out.write('\n')
-                except Exception as e:
-                    pass
-
-                # Add SubAssemblies section after Beam Pockets
-                try:
-                    # Debug logging for export function
-                    print(f"DEBUG: Exporting SubAssemblies for panel {sel_name}")
-                    print(f"DEBUG: current_ehx_file_path = {current_ehx_file_path}")
-                    print(f"DEBUG: current_ehx_file_path exists = {os.path.exists(current_ehx_file_path) if current_ehx_file_path else False}")
-                    print(f"DEBUG: panel_materials_map keys = {list(panel_materials_map.keys())}")
-                    
-                    # Use the new parser to read SubAssembly Details from expected.log
-                    expected_log_path = os.path.join(HERE, 'LOG', f'{job_val.cget("text")}.log')
-                    subassembly_details = parse_subassembly_details_from_expected_log(expected_log_path, display_name)
-                    
-                    print(f"DEBUG: subassembly_details = {subassembly_details}")
-                    print(f"DEBUG: subassembly_details type = {type(subassembly_details)}")
-                    print(f"DEBUG: bool(subassembly_details) = {bool(subassembly_details)}")
-                    
-                    if subassembly_details:
-                        print(f"DEBUG: Writing SubAssembly Details section")
-                        out.write("SubAssembly Details:\n")
-                        
-                        # Create mapping from material properties to alphabetical labels
-                        all_panel_materials = materials_list
-                        material_to_breakdown_mapping = create_material_to_breakdown_mapping(all_panel_materials)
-                        
-                        # Display each SubAssembly
-                        for sub_guid, sub_info in subassembly_details.items():
-                            sub_name = sub_info['name']
-                            materials_dict = sub_info['materials']
-                            
-                            # Display SubAssembly name directly without type labels
-                            out.write(f"• {sub_name}\n")
-                            
-                            # Display materials if any
-                            if materials_dict:
-                                out.write("   Materials:\n")
-                                for mat_label, count in sorted(materials_dict.items()):
-                                    # Use the material label directly from the log file
-                                    out.write(f"    ├── {mat_label} ({count})\n")
-                            
-                            # Add rough opening information for FM25 subassemblies
-                            try:
-                                # Map subassembly names to their FM25 types for rough opening matching
-                                fm25_mapping = {
-                                    'BSMT-HDR': 'G',  # BSMT-HDR uses G headers
-                                    '49x63-L2': 'F',  # 49x63-L2 uses F headers  
-                                    '73x63-L1': 'L',  # 73x63-L1 uses L header
-                                    'DR-1-ENT-L1': 'K',  # DR-1-ENT-L1 uses K header
-                                    # Note: LType is FM32, not FM25, so it should not have rough openings
-                                }
-                                
-                                # Get the FM25 type for this subassembly
-                                fm25_type = fm25_mapping.get(sub_name, '')
-                                
-                                if fm25_type:
-                                    # Look through all materials for rough openings that match this FM25 type
-                                    subassembly_rough_openings = []
-                                    for m in materials_list:
-                                        is_ro = _is_rough_opening(m)
-                                        if is_ro:
-                                            lab = m.get('Label') or ''
-                                            
-                                            # Check if this rough opening belongs to this subassembly
-                                            if lab == sub_name:
-                                                # Get AFF information
-                                                aff_height = get_aff_for_rough_opening(panel_obj, m)
-                                                
-                                                # Format the rough opening display
-                                                ro_title = f"Rough Opening: {lab}"
-                                                ro_info = [ro_title]
-                                                
-                                                if aff_height is not None:
-                                                    # Strip trailing zeros from AFF decimal value
-                                                    aff_decimal = format_dimension(str(aff_height))
-                                                    formatted_aff = inches_to_feet_inches_sixteenths(str(aff_height))
-                                                    if formatted_aff:
-                                                        ro_info.append(f"AFF: {aff_decimal} ({formatted_aff})")
-                                                    else:
-                                                        ro_info.append(f"AFF: {aff_decimal}")
-                                                
-                                                subassembly_rough_openings.append(ro_info)
-                                    
-                                    # Display rough openings for this subassembly
-                                    if subassembly_rough_openings:
-                                        if materials_dict:
-                                            out.write('\n')
-                                        out.write("   Rough Openings:\n")
-                                        for ro in subassembly_rough_openings:
-                                            for line in ro:
-                                                out.write(f"    ├── {line}\n")
-                            
-                            except Exception as e:
-                                # Continue without rough openings if there's an error
-                                pass
-                            
-                            # Add blank line after each subassembly
-                            out.write('\n')
-                        print(f"DEBUG: Finished writing SubAssembly Details")
-                    else:
-                        print("DEBUG: No subassembly_details returned")
-                except Exception as e:
-                    print(f"DEBUG: Exception in SubAssemblies export section: {e}")
-                    import traceback
-                    traceback.print_exc()
-                    pass
-
-                # Add Critical Stud Details section after SubAssembly Details
-                try:
-                    print(f"DEBUG: About to generate Critical Stud Details from critical_studs_map")
-                    # Generate Critical Stud Details from critical_studs_map data
-                    critical_stud_details = {}
-
-                    # Get panel name for critical_studs_map lookup
-                    panel_name_for_map = sel_name
-                    if '_' in display_name:
-                        panel_name_for_map = display_name.split('_')[-1]  # Extract panel number like "07-103"
-
-                    print(f"DEBUG: Looking up critical studs for panel {panel_name_for_map}")
-
-                    # Access critical_studs_map to get actual extracted positions
-                    panel_critical_studs = critical_studs_map.get(panel_name_for_map, {})
-
-                    # Process FM32 critical studs
-                    fm32_data = panel_critical_studs.get('fm32', {})
-                    fm32_positions = fm32_data.get('positions', [])
-                    if fm32_positions:
-                        fm32_position_inches = fm32_positions[0]  # Use first position
-                        fm32_position_formatted = inches_to_feet_inches(fm32_position_inches)
-                        if fm32_position_formatted:
-                            fm32_position = f"{fm32_position_inches:.2f} inches ({fm32_position_formatted})"
-                        else:
-                            fm32_position = f"{fm32_position_inches:.2f} inches"
-
-                        critical_stud_details['FM32'] = {
-                            'name': 'FM32 SubAssembly Critical Stud',
-                            'position': fm32_position,
-                            'materials': {}
-                        }
-                        print(f"DEBUG: Added FM32 critical stud at position {fm32_position}")
-
-                    # Process FM47 critical studs
-                    fm47_data = panel_critical_studs.get('fm47', {})
-                    fm47_positions = fm47_data.get('positions', [])
-                    if fm47_positions:
-                        fm47_position_inches = fm47_positions[0]  # Use first position
-                        fm47_position_formatted = inches_to_feet_inches(fm47_position_inches)
-                        if fm47_position_formatted:
-                            fm47_position = f"{fm47_position_inches:.2f} inches ({fm47_position_formatted})"
-                        else:
-                            fm47_position = f"{fm47_position_inches:.2f} inches"
-
-                        critical_stud_details['FM47'] = {
-                            'name': 'FM47 Loose Critical Stud',
-                            'position': fm47_position,
-                            'materials': {}
-                        }
-                        print(f"DEBUG: Added FM47 critical stud at position {fm47_position}")
-
-                    # Find associated materials for critical studs
-                    for m in materials_list:
-                        if isinstance(m, dict):
-                            mat_label = m.get('Label', '')
-                            mat_desc = m.get('Desc', '') or m.get('Description', '')
-                            if 'CriticalStud' in mat_desc or 'Critical Stud' in mat_desc:
-                                # Associate critical stud materials with all stud types
-                                for stud_type in critical_stud_details:
-                                    critical_stud_details[stud_type]['materials'][mat_label] = mat_desc
-
-                    print(f"DEBUG: Generated critical_stud_details: {critical_stud_details}")
-
-                    if critical_stud_details:
-                        print(f"DEBUG: Writing Critical Stud Details section")
-                        out.write("Critical Stud Details:\n")
-
-                        # Display critical stud information
-                        for stud_type, stud_info in critical_stud_details.items():
-                            stud_name = stud_info['name']
-                            stud_position = stud_info['position']
-                            stud_materials = stud_info.get('materials', {})
-
-                            # Display stud type and position
-                            out.write(f"• {stud_name}\n")
-                            out.write(f"   Position: {stud_position}\n")
-
-                            # Display materials if any
-                            if stud_materials:
-                                out.write("   Materials:\n")
-                                for mat_label, mat_description in sorted(stud_materials.items()):
-                                    out.write(f"    ├── {mat_label} - {mat_description}\n")
-
-                        out.write('\n')
-                        print(f"DEBUG: Finished writing Critical Stud Details")
-                    else:
-                        print("DEBUG: No critical_stud_details generated")
-                except Exception as e:
-                    print(f"DEBUG: Exception in Critical Stud Details export section: {e}")
-                    import traceback
-                    traceback.print_exc()
-                    pass                # Panel Material Breakdown
-                out.write("\nPanel Material Breakdown:\n")
-                
-                # Filter out rough openings from materials for breakdown
-                breakdown_materials = [m for m in materials_list if not _is_rough_opening(m)]
-                
-                # Use format_and_sort_materials if available
-                if callable(format_and_sort_materials):
-                    breakdown_lines = format_and_sort_materials(breakdown_materials)
-                    for line in breakdown_lines:
-                        out.write(f"{line}\n")
-                else:
-                    # Fallback formatting
-                    for m in breakdown_materials:
-                        if isinstance(m, dict):
-                            lbl = m.get('Label') or m.get('Name') or ''
-                            typ = m.get('Type') or ''
-                            desc = m.get('Desc') or m.get('Description') or ''
-                            qty = m.get('Qty') or m.get('Quantity') or ''
-                            length = m.get('ActualLength') or m.get('Length') or ''
-                            width = m.get('ActualWidth') or m.get('Width') or ''
-                            size = f"{length} x {width}".strip() if width else (length or '')
-                            qty_str = f"({qty})" if qty else ''
-                            if size:
-                                out.write(f"{lbl} - {typ} - {desc} - {qty_str} - {size}\n")
-                            else:
-                                out.write(f"{lbl} - {typ} - {desc} - {qty_str}\n")
-
-            messagebox.showinfo('Export', f'Panel exported to {dest}')
+            messagebox.showinfo('Export', f'Panel takeoff exported to {dest}')
             
             # Automatically open the export file
             try:
@@ -3965,56 +3525,6 @@ def make_gui():
         except Exception as e:
             messagebox.showerror('Export Error', str(e))
 
-    def back_clear():
-        nonlocal panels_loaded
-        try:
-            # Clear files from LOG folder instead of EHX folder
-            log_folder = os.path.join(HERE, 'LOG')
-            for nm in ('expected.log', 'materials.log', 'export.txt'):
-                p = os.path.join(log_folder, nm)
-                try:
-                    if os.path.exists(p):
-                        os.remove(p)
-                except Exception:
-                    pass
-            # clear GUI state but keep level buttons
-            current_panels.clear()
-            original_panels.clear()  # Clear original panel data
-            original_materials_map.clear()  # Clear original materials data
-            panel_materials_map.clear()
-            panels_loaded = False
-            selected_panel['name'] = None
-            # Keep level buttons and selection - don't clear them
-            # selected_level['value'] = None  # Don't reset level selection
-            # available_levels.clear()  # Don't clear available levels
-            # update_level_buttons()  # Don't clear level buttons
-            try:
-                file_listbox.selection_clear(0, tk.END)
-            except Exception:
-                pass
-            for ch in details_scrollable_frame.winfo_children():
-                try:
-                    ch.destroy()
-                except Exception:
-                    pass
-            for ch in breakdown_scrollable_frame.winfo_children():
-                try:
-                    ch.destroy()
-                except Exception:
-                    pass
-            rebuild_bundles(5)
-            # Restore file list
-            populate_files(folder_entry.get() or os.getcwd())
-            # log the action
-            try:
-                with open(LOG_FILE, 'a', encoding='utf-8') as fh:
-                    fh.write(json.dumps({'ts': _dt.datetime.now(_dt.UTC).isoformat(), 'action': 'back_clear', 'folder': log_folder}) + '\n')
-            except Exception:
-                pass
-            messagebox.showinfo('Clear', 'GUI cleared and logs removed from LOG folder (if present)')
-        except Exception as e:
-            messagebox.showerror('Clear Error', str(e))
-
     def update_level_buttons():
         """Update level buttons based on available levels in current_panels"""
         nonlocal level_buttons, level_guid_map, original_panels
@@ -4028,14 +3538,10 @@ def make_gui():
         
         # Forget action buttons to repack them in new order
         browse_btn.pack_forget()
-        clear_btn.pack_forget()
-        extract_panel_btn.pack_forget()
         export_btn.pack_forget()
 
         # Pack action buttons first in correct order
         export_btn.pack(side='right', padx=6)
-        extract_panel_btn.pack(side='right', padx=6)
-        clear_btn.pack(side='right', padx=6)
         browse_btn.pack(side='right', padx=6)
         
         if original_panels:
@@ -4144,6 +3650,14 @@ def make_gui():
         # Check if currently selected panel is still valid in the new level
         if selected_panel['name'] and selected_panel['name'] not in current_panels:
             selected_panel['name'] = None
+            # Clear button highlighting when selected panel is no longer visible
+            if selected_button['widget']:
+                try:
+                    # Reset to normal appearance for tk.Button
+                    selected_button['widget'].configure(relief='raised')
+                except Exception:
+                    pass
+            selected_button['widget'] = None
 
         rebuild_bundles(5)
         # Clear details and breakdown only if no valid panel is selected
@@ -4190,59 +3704,9 @@ def make_gui():
     level_buttons = []  # Keep track of level buttons for cleanup
     level_guid_map = {}  # Map LevelGuid to level number
 
-    def extract_current_panel():
-        """Extract the currently selected panel to a new EHX file"""
-        try:
-            sel_name = selected_panel.get('name')
-            if not sel_name:
-                messagebox.showinfo('Extract Panel', 'No panel selected to extract')
-                return
-
-            if not current_ehx_file_path:
-                messagebox.showinfo('Extract Panel', 'No EHX file loaded')
-                return
-
-            # Get the panel object
-            panel_obj = current_panels.get(sel_name, {})
-            display_name = panel_obj.get('DisplayLabel', sel_name)
-
-            # Get the PanelID from the panel object - this is what the extraction function needs
-            panel_id = panel_obj.get('PanelID')
-            if not panel_id:
-                # If PanelID is not directly available, try to extract it from the display name
-                # For panels like "05-100", the PanelID should be "05-100"
-                if display_name and '-' in display_name:
-                    # Extract the part after the last underscore if present
-                    if '_' in display_name:
-                        panel_id = display_name.split('_')[-1]
-                    else:
-                        panel_id = display_name
-                else:
-                    panel_id = sel_name  # Fallback to the internal name
-
-            # Generate output path in the same directory as the source EHX file
-            import os
-            source_dir = os.path.dirname(current_ehx_file_path)
-            output_path = os.path.join(source_dir, f"{display_name}.ehx")
-
-            # Extract the panel using the PanelID
-            result_path = extract_panel_from_ehx(current_ehx_file_path, panel_id, output_path)
-
-            if result_path and os.path.exists(result_path):
-                messagebox.showinfo('Extract Panel', f'Panel "{display_name}" successfully extracted!\n\nSaved to: {result_path}')
-            else:
-                messagebox.showerror('Extract Panel', f'Failed to extract panel "{display_name}"')
-
-        except Exception as e:
-            messagebox.showerror('Extract Panel Error', str(e))
-
     # Action buttons on the right (will be repacked when levels are present)
     export_btn = tk.Button(top, text='Export', command=export_current_panel, bg=TOP_BG, fg=TEXT_LIGHT, relief='raised')
     export_btn.pack(side='right', padx=6)
-    extract_panel_btn = tk.Button(top, text='Extract Panel', command=extract_current_panel, bg=TOP_BG, fg=TEXT_LIGHT, relief='raised')
-    extract_panel_btn.pack(side='right', padx=6)
-    clear_btn = tk.Button(top, text='Clear', command=back_clear, bg=TOP_BG, fg=TEXT_LIGHT, relief='raised')
-    clear_btn.pack(side='right', padx=6)
     browse_btn = tk.Button(top, text='Browse', command=on_browse, bg=TOP_BG, fg=TEXT_LIGHT, relief='raised')
     browse_btn.pack(side='right', padx=6)    # Level stats tracking
     level_stats = {}  # Will store panel/bundle counts per level
@@ -4268,69 +3732,60 @@ def make_gui():
     right_outer.add(top_pane)
     right_outer.add(bottom_pane)
 
-    def show_search_dialog():
-        """Show the EHX search dialog"""
-        # Get current EHX file path
-        sel = file_listbox.curselection()
-        if not sel:
-            messagebox.showinfo("No EHX File", "Please select an EHX file from the list first.")
-            return
-        
-        fname = file_listbox.get(sel[0])
-        folder = folder_entry.get() or os.getcwd()
-        ehx_path = os.path.join(folder, fname)
-        
-        if not os.path.exists(ehx_path):
-            messagebox.showerror("File Not Found", f"EHX file not found: {ehx_path}")
-            return
-        
-        # Create non-modal dialog
-        search_dialog = tk.Toplevel(root)
-        search_dialog.title("EHX Search")
-        search_dialog.geometry("800x600")
-        search_dialog.attributes('-topmost', True)
-        
-        # Center the dialog
-        search_dialog.geometry("+{}+{}".format(
-            root.winfo_x() + (root.winfo_width() // 2) - 400,
-            root.winfo_y() + (root.winfo_height() // 2) - 300
-        ))
-        
-        # Create search widget
-        search_widget = EHXSearchWidget(search_dialog, ehx_file_path=ehx_path)
-        search_widget.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
-        
-        # Handle dialog close
-        def on_close():
-            search_dialog.destroy()
-        
-        search_dialog.protocol("WM_DELETE_WINDOW", on_close)
-        
-        # Focus the search entry
-        search_dialog.after(100, lambda: search_widget.search_entry.focus_set())
-        
-        # Force dialog to stay on top periodically
-        def keep_on_top():
-            try:
-                if search_dialog.winfo_exists():
-                    search_dialog.attributes('-topmost', True)
-                    search_dialog.after(500, keep_on_top)  # Check every 500ms
-            except:
-                pass
-        
-        # Start keeping dialog on top
-        search_dialog.after(200, keep_on_top)
+    # def show_search_dialog():
+    #     """Show the EHX search modal dialog"""
+    #     # Get current EHX file path
+    #     sel = file_listbox.curselection()
+    #     if not sel:
+    #         messagebox.showinfo("No EHX File", "Please select an EHX file from the list first.")
+    #         return
+    #
+    #     fname = file_listbox.get(sel[0])
+    #     folder = folder_entry.get() or os.getcwd()
+    #     ehx_path = os.path.join(folder, fname)
+    #
+    #     if not os.path.exists(ehx_path):
+    #         messagebox.showerror("File Not Found", f"EHX file not found: {ehx_path}")
+    #         return
+    #
+    #     # Create modal dialog
+    #     search_dialog = tk.Toplevel(root)
+    #     search_dialog.title("EHX Search")
+    #     search_dialog.geometry("800x600")
+    #     search_dialog.transient(root)
+    #     search_dialog.grab_set()
+    #
+    #     # Center the dialog
+    #     search_dialog.geometry("+{}+{}".format(
+    #         root.winfo_x() + (root.winfo_width() // 2) - 400,
+    #         root.winfo_y() + (root.winfo_height() // 2) - 300
+    #     ))
+    #
+    #     # Create search widget
+    #     search_widget = EHXSearchWidget(search_dialog, ehx_file_path=ehx_path)
+    #     search_widget.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+    #
+    #     # Handle dialog close
+    #     def on_close():
+    #         search_dialog.grab_release()
+    #         search_dialog.destroy()
+    #
+    #     search_dialog.protocol("WM_DELETE_WINDOW", on_close)
+    #
+    #     # Focus the search entry
+    #     search_dialog.after(100, lambda: search_widget.search_entry.focus_set())
 
     # Search bar at the top
     search_frame = tk.Frame(top_pane, bg='#f8f8f8', height=40)
     search_frame.pack_propagate(False)
     search_frame.pack(fill='x', padx=8, pady=(8, 4))
     
-    search_button = ttk.Button(search_frame, text="🔍 Search EHX", command=show_search_dialog)
-    search_button.pack(side='left', padx=(0, 8), pady=4)
+    # EHX search removed as per requirements
+    # search_button = ttk.Button(search_frame, text="🔍 Search EHX", command=show_search_dialog)
+    # search_button.pack(side='left', padx=(0, 8), pady=4)
     
-    ttk.Label(search_frame, text="Click to search panels, materials, and bundles", 
-              font=('Arial', 9), foreground='#666').pack(side='left', pady=4)
+    # ttk.Label(search_frame, text="Click to search panels, materials, and bundles", 
+    #           font=('Arial', 9), foreground='#666').pack(side='left', pady=4)
 
     btns_frame = tk.Frame(top_pane, bg=BUTTONS_BG, height=DEFAULT_STATE['green_h'])
     btns_frame.pack_propagate(False)
@@ -4615,55 +4070,45 @@ def make_gui():
     file_listbox.bind('<Motion>', on_file_hover)
     file_listbox.bind('<Leave>', on_file_leave)
 
-    def show_search_dialog():
-        """Show the EHX search modal dialog"""
-        # Get current EHX file path
-        sel = file_listbox.curselection()
-        if not sel:
-            messagebox.showinfo("No EHX File", "Please select an EHX file from the list first.")
-            return
-        
-        fname = file_listbox.get(sel[0])
-        folder = folder_entry.get() or os.getcwd()
-        ehx_path = os.path.join(folder, fname)
-        
-        if not os.path.exists(ehx_path):
-            messagebox.showerror("File Not Found", f"EHX file not found: {ehx_path}")
-            return
-        
-        # Create modal dialog
-        search_dialog = tk.Toplevel(root)
-        search_dialog.title("EHX Search")
-        search_dialog.geometry("800x600")
-        search_dialog.attributes('-topmost', True)
-        
-        # Center the dialog
-        search_dialog.geometry("+{}+{}".format(
-            root.winfo_x() + (root.winfo_width() // 2) - 400,
-            root.winfo_y() + (root.winfo_height() // 2) - 300
-        ))
-        
-        # Create search widget
-        search_widget = EHXSearchWidget(search_dialog, ehx_file_path=ehx_path)
-        search_widget.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
-        
-        # Handle dialog close
-        def on_close():
-            search_dialog.destroy()
-        
-        search_dialog.protocol("WM_DELETE_WINDOW", on_close)
-        
-        # Force dialog to stay on top periodically
-        def keep_on_top():
-            try:
-                if search_dialog.winfo_exists():
-                    search_dialog.attributes('-topmost', True)
-                    search_dialog.after(500, keep_on_top)  # Check every 500ms
-            except:
-                pass
-        
-        # Start keeping dialog on top
-        search_dialog.after(200, keep_on_top)
+    # def show_search_dialog():
+    #     """Show the EHX search modal dialog"""
+    #     # Get current EHX file path
+    #     sel = file_listbox.curselection()
+    #     if not sel:
+    #         messagebox.showinfo("No EHX File", "Please select an EHX file from the list first.")
+    #         return
+    #     
+    #     fname = file_listbox.get(sel[0])
+    #     folder = folder_entry.get() or os.getcwd()
+    #     ehx_path = os.path.join(folder, fname)
+    #     
+    #     if not os.path.exists(ehx_path):
+    #         messagebox.showerror("File Not Found", f"EHX file not found: {ehx_path}")
+    #         return
+    #     
+    #     # Create modal dialog
+    #     search_dialog = tk.Toplevel(root)
+    #     search_dialog.title("EHX Search")
+    #     search_dialog.geometry("800x600")
+    #     search_dialog.transient(root)
+    #     search_dialog.grab_set()
+    #     
+    #     # Center the dialog
+    #     search_dialog.geometry("+{}+{}".format(
+    #         root.winfo_x() + (root.winfo_width() // 2) - 400,
+    #         root.winfo_y() + (root.winfo_height() // 2) - 300
+    #     ))
+    #     
+    #     # Create search widget
+    #     search_widget = EHXSearchWidget(search_dialog, ehx_file_path=ehx_path)
+    #     search_widget.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+    #     
+    #     # Handle dialog close
+    #     def on_close():
+    #         search_dialog.grab_release()
+    #         search_dialog.destroy()
+    #     
+    #     search_dialog.protocol("WM_DELETE_WINDOW", on_close)
     # Add mouse wheel support to scrollable zones
     def _bind_mousewheel_to_canvas(canvas, scrollable_frame):
         def _on_mousewheel(event):
@@ -4724,714 +4169,431 @@ def make_gui():
     btns_frame.bind('<MouseWheel>', _on_buttons_mousewheel)
     btns_frame.bind('<Enter>', lambda e: btns_frame.focus_set())
 
-    def display_panel(name, panel_obj, materials):
+    def display_panel(name, panel_obj, materials, yellow_data=None, pink_data=None, export_data=None):
+        # Clear the yellow and pink zones
         for ch in details_scrollable_frame.winfo_children():
             ch.destroy()
         for ch in breakdown_scrollable_frame.winfo_children():
             ch.destroy()
-        # Header
-        try:
-            # Use DisplayLabel for display purposes, fallback to internal name
-            display_name = panel_obj.get('DisplayLabel', name)
-
-            # Parse panel name for Lot and Panel numbers for header
-            header_lot_num = ''
-            header_panel_num = display_name
-            if '_' in display_name:
-                parts = display_name.split('_', 1)
-                if len(parts) == 2:
-                    header_lot_num = parts[0]
-                    header_panel_num = parts[1]
+        
+        # Store export data for export button
+        if export_data:
+            global current_export_data
+            current_export_data = export_data
+            print(f"DEBUG: display_panel set current_export_data = {repr(export_data[:100] if export_data else None)}...")
+            logging.debug(f"DEBUG: display_panel set current_export_data = {repr(export_data[:100] if export_data else None)}...")
+        else:
+            print(f"DEBUG: display_panel export_data is None or empty")
+            logging.debug(f"DEBUG: display_panel export_data is None or empty")
+        
+        # Display yellow zone (Panel Specifications) with expandable sections
+        if yellow_data or panel_obj:
+            yellow_frame = tk.Frame(details_scrollable_frame, bg=DETAILS_BG)
+            yellow_frame.pack(fill='x', padx=4, pady=4)
             
-            if header_lot_num:
-                # Professional header with better styling
-                header_frame = tk.Frame(details_scrollable_frame, bg=PRIMARY_BLUE)
-                header_frame.pack(fill='x', padx=4, pady=6)
-                tk.Label(header_frame, text=f'🏠 Panel: {header_panel_num} (Lot {header_lot_num})',
-                        bg=PRIMARY_BLUE, fg='white', font=('Segoe UI', 12, 'bold'),
-                        anchor='w').pack(anchor='w', padx=8, pady=4)
+            # Panel Specifications sections
+            specs_frame = tk.Frame(yellow_frame, bg=DETAILS_BG)
+            specs_frame.pack(fill='x', padx=2, pady=2)
+            
+            # Panel Details section - always present at the top
+            details_section_frame = tk.Frame(specs_frame, bg=DETAILS_BG)
+            details_section_frame.pack(fill='x', padx=2, pady=2)
+            
+            # Header with toggle button
+            details_header_frame = tk.Frame(details_section_frame, bg=PRIMARY_BLUE)
+            details_header_frame.pack(fill='x')
+            
+            details_toggle_btn = tk.Button(details_header_frame, text='▶', bg=PRIMARY_BLUE, fg='white',
+                                         font=('Segoe UI', 10, 'bold'), bd=0, padx=2, pady=2,
+                                         command=lambda: toggle_panel_details(details_toggle_btn, details_content_frame))
+            details_toggle_btn.pack(side='left')
+            
+            tk.Label(details_header_frame, text='🏠 Panel Details', bg=PRIMARY_BLUE, 
+                    fg='white', font=('Segoe UI', 10, 'bold'), anchor='w').pack(side='left', fill='x')
+            
+            # Content frame (initially expanded)
+            details_content_frame = tk.Frame(details_section_frame, bg=DETAILS_BG)
+            details_content_frame.pack(fill='x', padx=8, pady=2)  # Pack initially to show expanded
+            details_toggle_btn.config(text='▼')  # Set to expanded state
+            
+            # Extract panel details from panel_obj
+            details_text = ""
+            if panel_obj:
+                # Use DisplayLabel for user-friendly panel name, fallback to GUID
+                panel_name = panel_obj.get('DisplayLabel', name)
+                level = panel_obj.get('Level', 'Unknown')
+                bundle = panel_obj.get('BundleName') or panel_obj.get('Bundle') or 'Unknown'
+                
+                details_text += f"• Panel Name: {panel_name}\n"
+                details_text += f"• Level: {level}\n"
+                details_text += f"• Bundle: {bundle}\n"
             else:
-                header_frame = tk.Frame(details_scrollable_frame, bg=PRIMARY_BLUE)
-                header_frame.pack(fill='x', padx=4, pady=6)
-                tk.Label(header_frame, text=f'🏠 Panel: {display_name}',
-                        bg=PRIMARY_BLUE, fg='white', font=('Segoe UI', 12, 'bold'),
-                        anchor='w').pack(anchor='w', padx=8, pady=4)
-        except Exception:
-            pass
-        # Function to toggle subassembly details visibility
-        def toggle_subassembly_details(button, content_frame):
-            try:
-                if content_frame.winfo_ismapped():
-                    # Currently visible, hide it
-                    content_frame.pack_forget()
-                    button.config(text='▶')
-                    # Update header text
-                    for child in button.master.winfo_children():
-                        if isinstance(child, tk.Label) and 'SubAssembly Details' in child.cget('text'):
-                            child.config(text='SubAssembly Details (Click to expand)')
-                            break
-                else:
-                    # Currently hidden, show it
-                    content_frame.pack(fill='x', padx=8, pady=2)
-                    button.config(text='▼')
-                    # Update header text
-                    for child in button.master.winfo_children():
-                        if isinstance(child, tk.Label) and 'SubAssembly Details' in child.cget('text'):
-                            child.config(text='SubAssembly Details (Click to collapse)')
-                            break
-            except Exception:
-                pass
-
-        # Function to toggle technical specifications visibility
-        def toggle_technical_specs(button, content_frame):
-            try:
-                if content_frame.winfo_ismapped():
-                    # Currently visible, hide it
-                    content_frame.pack_forget()
-                    button.config(text='▶')
-                    # Update header text
-                    for child in button.master.winfo_children():
-                        if isinstance(child, tk.Label) and 'Technical Specifications' in child.cget('text'):
-                            child.config(text='Technical Specifications (Click to expand)')
-                            break
-                else:
-                    # Currently hidden, show it
-                    content_frame.pack(fill='x', padx=8, pady=2)
-                    button.config(text='▼')
-                    # Update header text
-                    for child in button.master.winfo_children():
-                        if isinstance(child, tk.Label) and 'Technical Specifications' in child.cget('text'):
-                            child.config(text='Technical Specifications (Click to collapse)')
-                            break
-            except Exception:
-                pass
-
-        # Function to toggle beam pocket details visibility
-        def toggle_beam_pocket_details(button, content_frame):
-            try:
-                if content_frame.winfo_ismapped():
-                    # Currently visible, hide it
-                    content_frame.pack_forget()
-                    button.config(text='▶')
-                    # Update header text
-                    for child in button.master.winfo_children():
-                        if isinstance(child, tk.Label) and 'Beam Pocket Details' in child.cget('text'):
-                            child.config(text='Beam Pocket Details (Click to expand)')
-                            break
-                else:
-                    # Currently hidden, show it
-                    content_frame.pack(fill='x', padx=8, pady=2)
-                    button.config(text='▼')
-                    # Update header text
-                    for child in button.master.winfo_children():
-                        if isinstance(child, tk.Label) and 'Beam Pocket Details' in child.cget('text'):
-                            child.config(text='Beam Pocket Details (Click to collapse)')
-                            break
-            except Exception:
-                pass
-
-        # Professional detail line function with better styling
-        def add_detail_line(label, value=None, bullet=False, raw=False, is_header=False, parent_frame=None):
-            try:
-                if raw:
-                    txt = f"• {label}" if bullet else f"{label}"
-                else:
-                    if bullet:
-                        txt = f"• {label}: {value}" if value is not None else f"• {label}:"
-                    else:
-                        txt = f"{label}: {value}" if value is not None else f"{label}:"
-
-                # Use the specified parent frame or default to details_scrollable_frame
-                target_frame = parent_frame if parent_frame is not None else details_scrollable_frame
-
-                # Create a frame for better spacing and visual grouping
-                line_frame = tk.Frame(target_frame, bg=DETAILS_BG)
-                line_frame.pack(fill='x', padx=8, pady=2)
-
-                if is_header:
-                    # Header styling
-                    tk.Label(line_frame, text=txt, bg=DETAILS_BG, fg=TEXT_DARK,
-                            font=('Segoe UI', 11, 'bold'), anchor='w').pack(anchor='w')
-                else:
-                    # Regular detail styling
-                    tk.Label(line_frame, text=txt, bg=DETAILS_BG, fg=TEXT_MEDIUM,
-                            font=('Segoe UI', 10), anchor='w',
-                            wraplength=DEFAULT_STATE['details_w']-20).pack(anchor='w', fill='x')
-
-            except Exception:
-                pass
-
-        # Normalize panel_obj keys and display common fields
-        try:
-            if panel_obj and isinstance(panel_obj, dict):
-                # Use DisplayLabel for display purposes
-                display_name = panel_obj.get('DisplayLabel', name)
-
-                # Parse panel name for Lot and Panel numbers
-                lot_num = ''
-                panel_num = display_name
-                if '_' in display_name:
-                    parts = display_name.split('_', 1)
-                    if len(parts) == 2:
-                        lot_num = parts[0]
-                        panel_num = parts[1]
+                details_text = "• Panel Name: Unknown\n• Level: Unknown\n• Bundle: Unknown\n"
+            
+            tk.Label(details_content_frame, text=details_text.strip(), bg=DETAILS_BG, 
+                    fg=TEXT_MEDIUM, font=('Segoe UI', 12), justify='left', anchor='w',
+                    wraplength=DEFAULT_STATE['details_w']-20).pack(
+                    padx=4, pady=2, fill='x')
+            
+            # Panel Specifications section - always present
+            panel_section_frame = tk.Frame(specs_frame, bg=DETAILS_BG)
+            panel_section_frame.pack(fill='x', padx=2, pady=2)
+            
+            # Header with toggle button
+            panel_header_frame = tk.Frame(panel_section_frame, bg=SECONDARY_TEAL)
+            panel_header_frame.pack(fill='x')
+            
+            panel_toggle_btn = tk.Button(panel_header_frame, text='▶', bg=SECONDARY_TEAL, fg='white',
+                                       font=('Segoe UI', 10, 'bold'), bd=0, padx=2, pady=2,
+                                       command=lambda: toggle_panel_specs(panel_toggle_btn, panel_content_frame))
+            panel_toggle_btn.pack(side='left')
+            
+            tk.Label(panel_header_frame, text='📋 Panel Specifications', bg=SECONDARY_TEAL, 
+                    fg='white', font=('Segoe UI', 10, 'bold'), anchor='w').pack(side='left', fill='x')
+            
+            # Content frame (initially expanded)
+            panel_content_frame = tk.Frame(panel_section_frame, bg=DETAILS_BG)
+            panel_content_frame.pack(fill='x', padx=8, pady=2)  # Pack initially to show expanded
+            panel_toggle_btn.config(text='▼')  # Set to expanded state
+            
+            # Extract panel specs from yellow_data if available, otherwise fall back to panel_obj
+            if yellow_data and 'specs' in yellow_data:
+                # Use detailed specifications from takeoff processing
+                specs = yellow_data['specs']
                 
-                # Level / Description / Bundle (show these as top-level metadata)
-                if lot_num:
-                    add_detail_line('📍 Lot', lot_num, is_header=True)
-                add_detail_line('🏗️ Panel', panel_num, is_header=True)
-                if 'Level' in panel_obj:
-                    level_info = panel_obj.get('Level', '')
-                    description = panel_obj.get('Description', '')
-                    # Combine level with description
-                    combined_level = f"{level_info}"
-                    if description:
-                        combined_level += f" {description}"
-                    add_detail_line('🏢 Level', combined_level, is_header=True)
-                elif 'Description' in panel_obj:
-                    add_detail_line('📝 Description', panel_obj.get('Description'), is_header=True)
-                b = panel_obj.get('Bundle') or panel_obj.get('BundleName') or panel_obj.get('BundleGuid') or ''
-                if b:
-                    add_detail_line('📦 Bundle', b, is_header=True)
-
-                # Add a separator
-                separator = tk.Frame(details_scrollable_frame, bg=BORDER_LIGHT, height=1)
-                separator.pack(fill='x', padx=8, pady=8)
-
-                # Technical Specifications section header with toggle
-                tech_specs_frame = tk.Frame(details_scrollable_frame, bg=DETAILS_BG)
-                tech_specs_frame.pack(fill='x', padx=8, pady=4)
-                
-                # Header with toggle button
-                tech_specs_header = tk.Frame(tech_specs_frame, bg=SUCCESS_GREEN)
-                tech_specs_header.pack(fill='x')
-                
-                # Toggle button
-                tech_specs_toggle = tk.Button(tech_specs_header, text='▶', bg=SUCCESS_GREEN, fg='white',
-                                             font=('Segoe UI', 10, 'bold'), bd=0, padx=2,
-                                             command=lambda: toggle_technical_specs(tech_specs_toggle, tech_specs_content))
-                tech_specs_toggle.pack(side='left', padx=(6, 2), pady=3)
-                
-                # Header text
-                tk.Label(tech_specs_header, text='🔧 Technical Specifications (Click to expand)',
-                        bg=SUCCESS_GREEN, fg='white', font=('Segoe UI', 10, 'bold'),
-                        anchor='w').pack(side='left', padx=(2, 6), pady=3)
-                
-                # Content frame (initially hidden)
-                tech_specs_content = tk.Frame(tech_specs_frame, bg=DETAILS_BG)
-                # Don't pack it yet - it will be shown when toggled
-                
-                # Create content inside the tech_specs_content frame
-                # common field candidates with professional icons
-                candidates = [
-                    ('🏷️ Category', ['Category', 'PanelCategory', 'Type']),
-                    ('⚡ Load Bearing', ['LoadBearing', 'IsLoadBearing', 'LoadBearingFlag']),
-                    ('📏 Wall Length', ['WallLength', 'Length', 'PanelLength']),
-                    ('📐 Height', ['Height', 'PanelHeight']),
-                    ('📏 Squaring', ['Squaring']),
-                    ('📏 Thickness', ['Thickness', 'Depth']),
-                    ('🔧 Stud Spacing', ['StudSpacing', 'StudsPerFoot']),
-                ]
-                for label, keys in candidates:
-                    val = ''
-                    for k in keys:
-                        if k in panel_obj:
-                            val = panel_obj.get(k)
-                            break
-                    
-                    # Strip trailing zeros from decimal values
-                    if val:
-                        try:
-                            val = format_dimension(str(val))
-                        except:
-                            pass
-                    
-                    # Format Wall Length, Height, and Squaring with feet-inches-sixteenths
-                    if val and (label == '📏 Wall Length' or label == '📐 Height' or label == '📏 Squaring'):
-                        try:
-                            # For squaring, try to use raw inches value if available
-                            if label == '📏 Squaring' and 'Squaring_inches' in panel_obj:
-                                inches_val = panel_obj['Squaring_inches']
-                            else:
-                                inches_val = float(val)
-                            
-                            formatted = inches_to_feet_inches_sixteenths(inches_val)
-                            if formatted:
-                                display_val = f"{inches_val:.2f} in   ({formatted})"
-                            else:
-                                display_val = f"{inches_val:.2f} in"
-                        except (ValueError, TypeError):
-                            display_val = val
-                    else:
-                        display_val = val
-                    add_detail_line(label, display_val, bullet=True, parent_frame=tech_specs_content)
-
-                # Sheathing layers: derive from materials list (first two unique sheathing descriptions)
-                try:
-                    sheet_descs = []
-                    mats_list = materials if isinstance(materials, (list, tuple)) else []
-                    for m in mats_list:
-                        if not isinstance(m, dict):
-                            continue
-                        t = (m.get('Type') or '').lower()
-                        if 'sheet' in t or 'sheath' in t or (m.get('FamilyMemberName') and 'sheath' in str(m.get('FamilyMemberName')).lower()):
-                            # prefer the explicit <Description> element for sheathing text and report only once per unique description
-                            d = (m.get('Description') or m.get('Desc') or '').strip()
-                            if d and d not in sheet_descs:
-                                sheet_descs.append(d)
-                    # after collecting unique descriptions, emit up to two sheathing layers
-                    if len(sheet_descs) > 0:
-                        add_detail_line('Sheathing Layer 1', sheet_descs[0], bullet=True, parent_frame=tech_specs_content)
-                    if len(sheet_descs) > 1:
-                        add_detail_line('Sheathing Layer 2', sheet_descs[1], bullet=True, parent_frame=tech_specs_content)
-                except Exception:
-                    pass
-
-                # additional notes (Production Notes label used in expected.log)
-                osi = panel_obj.get('OnScreenInstruction') or panel_obj.get('Notes') or panel_obj.get('Instruction')
-                if 'Weight' in panel_obj:
-                    weight_formatted = format_weight(panel_obj.get('Weight'))
-                    add_detail_line('⚖️ Weight', weight_formatted, bullet=True, parent_frame=tech_specs_content)
-                if osi:
-                    add_detail_line('Production Notes', osi, bullet=True, parent_frame=tech_specs_content)
-                # Rough openings: show them after Production Notes in Panel Details
-                try:
-                    ro_list = []
-                    mats_list = materials if isinstance(materials, (list, tuple)) else []
-                    elevations = panel_obj.get('elevations', [])
-                    logging.debug(f"Checking {len(mats_list)} materials for rough openings")
-                    logging.debug(f"Found {len(elevations)} elevation views")
-
-                    # Debug: show first few materials to see their structure
-                    for i, m in enumerate(mats_list[:5]):
+                # Format wall length with proper dimension display
+                wall_length_display = specs.get('wall_length', '')
+                if wall_length_display:
+                    try:
+                        # Convert to feet-inches format like "131 in (10'-10-7/8\")"
+                        length_inches = float(wall_length_display)
+                        feet_inches = format_feet_to_dimension(length_inches / 12.0)
+                        wall_length_display = f"{length_inches:.1f} in ({feet_inches})"
+                    except (ValueError, TypeError):
                         pass
-
-                    for m in mats_list:
-                        is_ro = _is_rough_opening(m)
-                        if is_ro:
-                            lab = m.get('Label') or ''
-                            desc = m.get('Desc') or m.get('Description') or ''
-                            ln = m.get('ActualLength') or m.get('Length') or ''
-                            wd = m.get('ActualWidth') or m.get('Width') or ''
-
-                            # Try to find matching elevation data
-                            aff_height = get_aff_for_rough_opening(panel_obj, m)
-
-                            # Find associated headers based on rough opening type
-                            associated_headers = []
-                            if lab == 'BSMT-HDR':
-                                # BSMT-HDR uses G headers
-                                associated_headers = ['G']
-                            elif lab == '49x63-L2':
-                                # 49x63-L2 uses F headers
-                                associated_headers = ['F']
-                            elif lab == '73x63-L1':
-                                # 73x63-L1 uses L header
-                                associated_headers = ['L']
-                            elif lab == 'DR-1-ENT-L1':
-                                # DR-1-ENT-L1 uses K header
-                                associated_headers = ['K']
-                            else:
-                                # Fallback: find unique header labels
-                                header_set = set()
-                                for mat in mats_list:
-                                    mat_type = mat.get('Type', '').lower()
-                                    header_label = mat.get('Label', '')
-                                    # Only include materials that are headers (not headercap or headercripple)
-                                    # and have single-character labels (typical for headers)
-                                    if mat_type == 'header' and header_label and len(header_label) == 1:
-                                        header_set.add(header_label)
-                                associated_headers = sorted(list(header_set))[:1]
-
-                            # Format the rough opening display
-                            ro_lines = [f"Rough Opening: {lab}"]
-                            if ln and wd:
-                                # Strip trailing zeros from dimensions
-                                ln_clean = format_dimension(str(ln))
-                                wd_clean = format_dimension(str(wd))
-                                ro_lines.append(f"Size: {ln_clean} x {wd_clean}")
-                            elif ln:
-                                ln_clean = format_dimension(str(ln))
-                                ro_lines.append(f"Size: {ln_clean}")
-                            if aff_height is not None:
-                                # Strip trailing zeros from AFF decimal value
-                                aff_decimal = format_dimension(str(aff_height))
-                                formatted_aff = inches_to_feet_inches_sixteenths(str(aff_height))
-                                if formatted_aff:
-                                    ro_lines.append(f"AFF: {aff_decimal} ({formatted_aff})")
-                                else:
-                                    ro_lines.append(f"AFF: {aff_decimal}")
-                            if associated_headers:
-                                ro_lines.append(f"Reference: {', '.join(associated_headers)} - Header")
-
-                            ro_list.append(ro_lines)
-                            logging.debug(f"Found rough opening: {ro_lines}")
-                    logging.debug(f"Total rough openings found: {len(ro_list)}")
-                    # Note: Rough openings are now displayed in SubAssembly Details section
-                except Exception as e:
-                    logging.debug(f"Exception in rough openings display: {e}")
-                    pass
-
-                # Add Beam Pocket Details section after Rough Openings
-                try:
-                    beam_pockets = extract_beam_pocket_info(panel_obj, materials)
-                    logging.debug(f"Extracted {len(beam_pockets)} beam pockets for panel {name}")
-                    
-                    if beam_pockets:
-                        logging.debug(f"Displaying beam pockets: {beam_pockets}")
-                        # Create a collapsible frame for Beam Pocket Details
-                        beam_pocket_frame = tk.Frame(details_scrollable_frame, bg=DETAILS_BG)
-                        beam_pocket_frame.pack(fill='x', padx=8, pady=4)
-                        
-                        # Header with toggle button
-                        beam_pocket_header = tk.Frame(beam_pocket_frame, bg='#8B4513')  # Brown color for beam pockets
-                        beam_pocket_header.pack(fill='x')
-                        
-                        # Toggle button
-                        beam_pocket_toggle = tk.Button(beam_pocket_header, text='▶', bg='#8B4513', fg='white',
-                                                     font=('Segoe UI', 10, 'bold'), bd=0, padx=2,
-                                                     command=lambda: toggle_beam_pocket_details(beam_pocket_toggle, beam_pocket_content))
-                        beam_pocket_toggle.pack(side='left', padx=(6, 2), pady=3)
-                        
-                        # Header text
-                        total_pockets = len(beam_pockets)
-                        tk.Label(beam_pocket_header, text=f'🔨 Beam Pocket Details: {total_pockets} beam pocket{"s" if total_pockets != 1 else ""} (Click to expand)',
-                                bg='#8B4513', fg='white', font=('Segoe UI', 10, 'bold'),
-                                anchor='w').pack(side='left', padx=(2, 6), pady=3)
-                        
-                        # Content frame (initially hidden)
-                        beam_pocket_content = tk.Frame(beam_pocket_frame, bg=DETAILS_BG)
-                        # Don't pack it yet - it will be shown when toggled
-                        
-                        # Create content inside the beam_pocket_content frame
-                        for i, bp in enumerate(beam_pockets, 1):
-                            panel_id = bp.get('panel_id', '')
-                            bottom_aff = bp.get('aff')  # Use 'aff' key from grouped pockets
-                            header_size = bp.get('opening_width')  # Use 'opening_width' key
-                            count = bp.get('count', 1)
-                            
-                            # Display beam pocket information
-                            add_detail_line(f"Beam Pocket {i}", None, bullet=True, raw=True, parent_frame=beam_pocket_content)
-                            
-                            # Show AFF
-                            if bottom_aff is not None:
-                                # Add bottom plate thickness (1.5 inches) to AFF calculation
-                                adjusted_bottom_aff = bottom_aff + 1.5
-                                bottom_decimal = format_dimension(str(adjusted_bottom_aff))
-                                bottom_formatted = inches_to_feet_inches_sixteenths(str(adjusted_bottom_aff))
-                                if bottom_formatted:
-                                    aff_display = f"{bottom_decimal} in ({bottom_formatted})"
-                                else:
-                                    aff_display = f"{bottom_decimal} in"
-                                add_detail_line(f"  AFF: {aff_display}", None, bullet=True, raw=True, parent_frame=beam_pocket_content)
-                            else:
-                                add_detail_line(f"  AFF: Unknown", None, bullet=True, raw=True, parent_frame=beam_pocket_content)
-                            
-                            # Show Opening Width
-                            if header_size is not None:
-                                header_size_decimal = format_dimension(str(header_size))
-                                header_formatted = inches_to_feet_inches_sixteenths(str(header_size))
-                                if header_formatted:
-                                    width_display = f"{header_size_decimal} in ({header_formatted})"
-                                else:
-                                    width_display = f"{header_size_decimal} in"
-                                add_detail_line(f"  Opening Width: {width_display}", None, bullet=True, raw=True, parent_frame=beam_pocket_content)
-                            
-                            # Show Materials
-                            if bp.get('materials'):
-                                add_detail_line(f"  Materials:", None, bullet=True, raw=True, parent_frame=beam_pocket_content)
-                                for label, qty in sorted(bp['materials'].items()):
-                                    add_detail_line(f"    ├── {label} ({qty})", None, bullet=True, raw=True, parent_frame=beam_pocket_content)
                 
-                except Exception as e:
-                    logging.debug(f"Exception in beam pocket display: {e}")
-                    pass
-
-                # Add Contained SubAssemblies section (only those within the panel)
-                try:
-                    # Use the new parser to read SubAssembly Details from expected.log
-                    expected_log_path = os.path.join(HERE, 'LOG', f'{job_val.cget("text")}.log')
-                    subassembly_details = parse_subassembly_details_from_expected_log(expected_log_path, display_name)
+                # Format wall length actual with growth allowance
+                wall_length_actual_display = specs.get('wall_length_actual', '')
+                growth_allowance_display = specs.get('growth_allowance', '')
+                if wall_length_actual_display and growth_allowance_display:
+                    try:
+                        actual_inches = float(wall_length_actual_display)
+                        growth_inches = float(growth_allowance_display)
+                        actual_feet_inches = format_feet_to_dimension(actual_inches / 12.0)
+                        wall_length_actual_display = f"{actual_inches:.1f} in ({actual_feet_inches}) +{growth_inches:.1f}\" GA"
+                    except (ValueError, TypeError):
+                        pass
+                
+                # Format height
+                height_display = specs.get('height', '')
+                if height_display:
+                    try:
+                        height_inches = float(height_display)
+                        height_feet_inches = format_feet_to_dimension(height_inches / 12.0)
+                        height_display = f"{height_inches:.1f} in ({height_feet_inches})"
+                    except (ValueError, TypeError):
+                        pass
+                
+                # Format squaring
+                squaring_display = specs.get('squaring', '')
+                if squaring_display:
+                    try:
+                        squaring_inches = float(squaring_display)
+                        squaring_feet_inches = format_feet_to_dimension(squaring_inches / 12.0)
+                        squaring_display = f"{squaring_inches:.3f} in ({squaring_feet_inches})"
+                    except (ValueError, TypeError):
+                        pass
+                
+                # Format thickness
+                thickness_display = specs.get('thickness', '')
+                if thickness_display:
+                    try:
+                        thickness_inches = float(thickness_display)
+                        thickness_display = f"{thickness_inches:.1f} in"
+                    except (ValueError, TypeError):
+                        pass
+                
+                specs_text = ""
+                specs_text += f"• Category: {specs.get('category', 'Unknown')}\n"
+                specs_text += f"• Load Bearing: {specs.get('load_bearing', 'Unknown')}\n"
+                specs_text += f"• Length: {wall_length_display or 'Unknown'}"
+                specs_text += "\n"
+                specs_text += f"• Height: {height_display or 'Unknown'}\n"
+                specs_text += f"• Squaring: {squaring_display or 'Unknown'}\n"
+                specs_text += f"• Thickness: {thickness_display or 'Unknown'}\n"
+                specs_text += f"• Stud Spacing: {int(float(specs.get('stud_spacing', 0)))} in\n"
+                specs_text += f"• Sheathing: {specs.get('sheathing', 'Unknown')}\n"
+                specs_text += f"• Weight: {round(float(specs.get('weight', 0)))} lbs\n"
+                specs_text += f"• Production Notes: {specs.get('production_notes', '')}\n"
+            else:
+                # Fallback to basic panel_obj properties
+                if panel_obj:
+                    specs_text = ""
+                    specs_text += f"• Category: {panel_obj.get('Category', 'Unknown')}\n"
+                    specs_text += f"• Load Bearing: {panel_obj.get('LoadBearing', 'Unknown')}\n"
+                    specs_text += f"• Length: {panel_obj.get('Length', 'Unknown')}\n"
+                    specs_text += f"• Height: {panel_obj.get('Height', 'Unknown')}\n"
+                    specs_text += f"• Thickness: {panel_obj.get('Thickness', 'Unknown')}\n"
+                    specs_text += f"• Stud Spacing: {panel_obj.get('StudSpacing', 'Unknown')}\n"
+                    specs_text += f"• Wall Length: {panel_obj.get('WallLength', 'Unknown')}\n"
+                    specs_text += f"• Weight: {panel_obj.get('Weight', 'Unknown')}\n"
+                    specs_text += f"• Production Notes: {panel_obj.get('OnScreenInstruction', '')}\n"
+                
+            tk.Label(panel_content_frame, text=specs_text.strip(), bg=DETAILS_BG, 
+                    fg=TEXT_MEDIUM, font=('Segoe UI', 12), justify='left', anchor='w',
+                    wraplength=DEFAULT_STATE['details_w']-20).pack(
+                    padx=4, pady=2, fill='x')
+            
+            # Beam Pocket Details section - always present
+            beam_section_frame = tk.Frame(specs_frame, bg=DETAILS_BG)
+            beam_section_frame.pack(fill='x', padx=2, pady=2)
+            
+            # Header with toggle button
+            beam_header_frame = tk.Frame(beam_section_frame, bg=SUCCESS_GREEN)
+            beam_header_frame.pack(fill='x')
+            
+            beam_toggle_btn = tk.Button(beam_header_frame, text='▶', bg=SUCCESS_GREEN, fg='white',
+                                      font=('Segoe UI', 10, 'bold'), bd=0, padx=2, pady=2,
+                                      command=lambda: toggle_beam_pocket_details(beam_toggle_btn, beam_content_frame))
+            beam_toggle_btn.pack(side='left')
+            
+            tk.Label(beam_header_frame, text='🔧 Beam Pocket Details', bg=SUCCESS_GREEN, 
+                    fg='white', font=('Segoe UI', 10, 'bold'), anchor='w').pack(side='left', fill='x')
+            
+            # Content frame (initially hidden)
+            beam_content_frame = tk.Frame(beam_section_frame, bg=DETAILS_BG)
+            # Don't pack initially - will be shown when expanded
+            
+            beam_text = "No beam pockets found."
+            if yellow_data and yellow_data.get('beam_pockets'):
+                beam_text = ""
+                for pocket in yellow_data['beam_pockets']:
+                    # Truncate GUID to 8 characters + "..."
+                    guid = pocket.get('guid', '')
+                    if len(guid) > 8:
+                        guid_display = guid[:8] + "..."
+                    else:
+                        guid_display = guid
                     
-                    if subassembly_details:
-                        # Create a collapsible frame for SubAssembly Details
-                        subassembly_frame = tk.Frame(details_scrollable_frame, bg=DETAILS_BG)
-                        subassembly_frame.pack(fill='x', padx=8, pady=4)
-                        
-                        # Header with toggle button
-                        subassembly_header = tk.Frame(subassembly_frame, bg='#32CD32')  # Lime green color
-                        subassembly_header.pack(fill='x')
-                        
-                        # Toggle button
-                        toggle_btn = tk.Button(subassembly_header, text='▶', bg='#32CD32', fg='white',
-                                             font=('Segoe UI', 10, 'bold'), bd=0, padx=2,
-                                             command=lambda: toggle_subassembly_details(toggle_btn, subassembly_content))
-                        toggle_btn.pack(side='left', padx=(6, 2), pady=3)
-                        
-                        # Header text
-                        tk.Label(subassembly_header, text='SubAssembly Details (Click to expand)',
-                                bg='#32CD32', fg='white', font=('Segoe UI', 10, 'bold'),
-                                anchor='w').pack(side='left', padx=(2, 6), pady=3)
-                        
-                        # Content frame (initially hidden)
-                        subassembly_content = tk.Frame(subassembly_frame, bg=DETAILS_BG)
-                        # Don't pack it yet - it will be shown when toggled
-                        
-                        # Create mapping from material properties to alphabetical labels
-                        all_panel_materials = materials if isinstance(materials, (list, tuple)) else []
-                        material_to_breakdown_mapping = create_material_to_breakdown_mapping(all_panel_materials)
-                        
-                        # Display each SubAssembly in the content frame
-                        for sub_guid, sub_info in subassembly_details.items():
-                            sub_name = sub_info['name']
-                            materials_dict = sub_info['materials']
-                            
-                            # Display SubAssembly name directly without type labels
-                            add_detail_line(f"• {sub_name}", None, bullet=True, raw=True, parent_frame=subassembly_content)
-                            
-                            # Display materials if any
-                            if materials_dict:
-                                add_detail_line("   Materials:", None, bullet=True, raw=True, parent_frame=subassembly_content)
-                                for mat_label, count in sorted(materials_dict.items()):
-                                    # Use the material label directly from the log file
-                                    add_detail_line(f"    ├── {mat_label} ({count})", None, bullet=True, raw=True, parent_frame=subassembly_content)
-                            
-                            # Add rough opening information for this subassembly based on FM25 type
+                    # Get FM type - beam pockets are typically FM25
+                    fm_type = pocket.get('fm_type', 'FM25')
+                    
+                    beam_text += f"• Beam Pocket (Guid: {guid_display}) ({fm_type})\n"
+                    
+                    # Format AFF with feet-inches-sixteenths
+                    if pocket.get('aff') is not None:
+                        aff_feet = float(pocket['aff']) / 12.0
+                        formatted_aff = format_feet_to_dimension(aff_feet)
+                        beam_text += f"• AFF: {formatted_aff} ({pocket['aff']:.1f} in)\n"
+                    
+                    # Format opening width with feet-inches-sixteenths
+                    if pocket.get('opening_width'):
+                        opening_feet = float(pocket['opening_width']) / 12.0
+                        formatted_opening = format_feet_to_dimension(opening_feet)
+                        beam_text += f"• Opening Width: {formatted_opening} ({pocket['opening_width']:.1f} in)\n"
+                    
+                    # Associated Material Parts
+                    if pocket.get('materials'):
+                        beam_text += "• Associated Material Parts:\n"
+                        for label, count in pocket['materials'].items():
+                            beam_text += f" ├── {label} ({count})\n"
+                    
+                    beam_text += "\n"
+                
+                # Add total count
+                total_pockets = len(yellow_data['beam_pockets'])
+                beam_text += f"Total Beam Pockets: {total_pockets}\n"
+            
+            tk.Label(beam_content_frame, text=beam_text.strip(), bg=DETAILS_BG, 
+                    fg=TEXT_MEDIUM, font=('Segoe UI', 12), justify='left', anchor='w').pack(
+                    padx=4, pady=2, fill='x')
+            
+            # Critical Stud Details section - always present
+            stud_section_frame = tk.Frame(specs_frame, bg=DETAILS_BG)
+            stud_section_frame.pack(fill='x', padx=2, pady=2)
+            
+            # Header with toggle button
+            stud_header_frame = tk.Frame(stud_section_frame, bg=WARNING_ORANGE)
+            stud_header_frame.pack(fill='x')
+            
+            stud_toggle_btn = tk.Button(stud_header_frame, text='▶', bg=WARNING_ORANGE, fg='white',
+                                      font=('Segoe UI', 10, 'bold'), bd=0, padx=2, pady=2,
+                                      command=lambda: toggle_critical_stud_details(stud_toggle_btn, stud_content_frame))
+            stud_toggle_btn.pack(side='left')
+            
+            tk.Label(stud_header_frame, text='⚠️ Critical Stud Details', bg=WARNING_ORANGE, 
+                    fg='white', font=('Segoe UI', 10, 'bold'), anchor='w').pack(side='left', fill='x')
+            
+            # Content frame (initially hidden)
+            stud_content_frame = tk.Frame(stud_section_frame, bg=DETAILS_BG)
+            # Don't pack initially - will be shown when expanded
+            
+            stud_text = "No critical studs found."
+            if yellow_data and yellow_data.get('critical_studs'):
+                stud_text = ""
+                for stud in yellow_data['critical_studs']:
+                    # Truncate GUID to 8 characters + "..."
+                    guid = stud.get('guid', '')
+                    if len(guid) > 8:
+                        guid_display = guid[:8] + "..."
+                    else:
+                        guid_display = guid
+                    
+                    # Get FM type
+                    fm_type = stud.get('fm_type', 'FM32')  # Default to FM32 for critical studs
+                    
+                    stud_text += f"• Critical Stud (Guid: {guid_display}) ({fm_type})\n"
+                    stud_text += f"• Type: {stud.get('type', 'SubAssembly critical stud')}\n"
+                    
+                    # Format distance with feet-inches-sixteenths
+                    if stud.get('distance'):
+                        # Extract numeric value from formatted distance string like '46.9 in (3\'-10-7/8")'
+                        distance_str = str(stud['distance'])
+                        if ' in (' in distance_str:
+                            # Extract the numeric part before ' in ('
+                            numeric_part = distance_str.split(' in (')[0].strip()
                             try:
-                                # Find rough openings that belong to this subassembly
-                                subassembly_rough_openings = []
-                                
-                                # Map subassembly names to their FM25 types for rough opening matching
-                                fm25_mapping = {
-                                    'BSMT-HDR': 'G',  # BSMT-HDR uses G headers
-                                    '49x63-L2': 'F',  # 49x63-L2 uses F headers  
-                                    '73x63-L1': 'L',  # 73x63-L1 uses L header
-                                    'DR-1-ENT-L1': 'K',  # DR-1-ENT-L1 uses K header
-                                    'DR-9-ENT-L1': 'K',  # DR-9-ENT-L1 uses K header
-                                    # Note: LType is FM32, not FM25, so it should not have rough openings
-                                }
-                                
-                                # Get the FM25 type for this subassembly
-                                fm25_type = fm25_mapping.get(sub_name, '')
-                                
-                                if fm25_type:
-                                    # Look through all materials for rough openings that match this FM25 type
-                                    for m in mats_list:
-                                        is_ro = _is_rough_opening(m)
-                                        if is_ro:
-                                            lab = m.get('Label') or ''
-                                            
-                                            # Check if this rough opening belongs to this subassembly
-                                            # based on the FM25 type mapping
-                                            if lab == sub_name or (fm25_type and any(fm25_type in header for header in [lab])):
-                                                # Get AFF information
-                                                aff_height = get_aff_for_rough_opening(panel_obj, m)
-                                                
-                                                # Format the rough opening display
-                                                ro_title = f"Rough Opening: {lab}"
-                                                ro_info = [ro_title]
-                                                
-                                                if aff_height is not None:
-                                                    # Strip trailing zeros from AFF decimal value
-                                                    aff_decimal = format_dimension(str(aff_height))
-                                                    formatted_aff = inches_to_feet_inches_sixteenths(str(aff_height))
-                                                    if formatted_aff:
-                                                        ro_info.append(f"AFF: {aff_decimal} ({formatted_aff})")
-                                                    else:
-                                                        ro_info.append(f"AFF: {aff_decimal}")
-                                                
-                                                subassembly_rough_openings.append(ro_info)
-                                
-                                # Display rough openings for this subassembly
-                                if subassembly_rough_openings:
-                                    add_detail_line("   Rough Openings:", None, bullet=True, raw=True, parent_frame=subassembly_content)
-                                    for ro in subassembly_rough_openings:
-                                        for line in ro:
-                                            add_detail_line(f"    ├── {line}", None, bullet=True, raw=True, parent_frame=subassembly_content)
-                                            
-                            except Exception as e:
-                                logging.debug(f"Exception in rough openings for subassembly {sub_name}: {e}")
-                                pass
-                except Exception as e:
-                    logging.debug(f"Exception in SubAssemblies display: {e}")
-                    pass
-
-                # Add Critical Stud Details section after SubAssembly Details
-                try:
-                    # Generate Critical Stud Details from critical_studs_map instead of parsing expected.log
-                    panel_critical_studs = critical_studs_map.get(display_name, {})
-
-                    if panel_critical_studs:
-                        # Create a collapsible frame for Critical Stud Details
-                        critical_stud_frame = tk.Frame(details_scrollable_frame, bg=DETAILS_BG)
-                        critical_stud_frame.pack(fill='x', padx=8, pady=4)
-
-                        # Header with toggle button
-                        critical_stud_header = tk.Frame(critical_stud_frame, bg='#FF6B35')  # Orange color for critical studs
-                        critical_stud_header.pack(fill='x')
-
-                        # Toggle button
-                        critical_stud_toggle = tk.Button(critical_stud_header, text='▶', bg='#FF6B35', fg='white',
-                                                       font=('Segoe UI', 10, 'bold'), bd=0, padx=2,
-                                                       command=lambda: toggle_critical_stud_details(critical_stud_toggle, critical_stud_content))
-                        critical_stud_toggle.pack(side='left', padx=(6, 2), pady=3)
-
-                        # Header text
-                        tk.Label(critical_stud_header, text='🔧 Critical Stud Details (Click to expand)',
-                                bg='#FF6B35', fg='white', font=('Segoe UI', 10, 'bold'),
-                                anchor='w').pack(side='left', padx=(2, 6), pady=3)
-
-                        # Content frame (initially hidden)
-                        critical_stud_content = tk.Frame(critical_stud_frame, bg=DETAILS_BG)
-                        # Don't pack it yet - it will be shown when toggled
-
-                        # Display FM32 (Tee/Critical Stud) if available
-                        if 'fm32' in panel_critical_studs and panel_critical_studs['fm32'].get('positions'):
-                            position = panel_critical_studs['fm32']['positions'][0]
-                            if position is not None:
-                                position_formatted = inches_to_feet_inches(float(position))
-                                add_detail_line(f"• FM32 - Tee", None, bullet=True, raw=True, parent_frame=critical_stud_content)
-                                add_detail_line(f"   Position: {position:.2f} in ({position_formatted})", None, bullet=True, raw=True, parent_frame=critical_stud_content)
-
-                        # Display FM47 (Critical Stud) if available
-                        if 'fm47' in panel_critical_studs and panel_critical_studs['fm47'].get('positions'):
-                            position = panel_critical_studs['fm47']['positions'][0]
-                            if position is not None:
-                                position_formatted = inches_to_feet_inches(float(position))
-                                add_detail_line(f"• FM47 - Critical Stud", None, bullet=True, raw=True, parent_frame=critical_stud_content)
-                                add_detail_line(f"   Position: {position:.2f} in ({position_formatted})", None, bullet=True, raw=True, parent_frame=critical_stud_content)
-
-                except Exception as e:
-                    logging.debug(f"Exception in Critical Stud Details display: {e}")
-                    pass
-
-            # Center the content after adding all labels
-            root.after(100, center_details_content)  # Delay to ensure layout is complete
-        except Exception:
-            pass
-
-        # Material breakdown: accept list of dicts or dict mapping names->list
-        try:
-            # breakdown content title removed to preserve vertical space
-            mats_list = []
-            if isinstance(materials, dict):
-                # if it's a mapping of panel->materials, try to pull the current name
-                # otherwise flatten values
-                for v in materials.values():
-                    if isinstance(v, (list, tuple)):
-                        mats_list.extend(v)
-            elif isinstance(materials, (list, tuple)):
-                mats_list = list(materials)
-            # Use format_and_sort_materials if available to match expected.log formatting
-            lines = []
-            try:
-                # remove rough openings from the breakdown source
-                mats_list = [m for m in mats_list if not _is_rough_opening(m)]
-                # Try to use format_and_sort_materials directly
-                if callable(format_and_sort_materials):
-                    lines = format_and_sort_materials(mats_list)
-                else:
-                    # fallback simple formatter - consolidate materials manually
-                    from collections import defaultdict
-                    material_groups = defaultdict(lambda: {'count': 0, 'length': '', 'width': ''})
-                    
-                    for m in mats_list:
-                        if not isinstance(m, dict):
-                            lines.append(str(m))
-                            continue
-                            
-                        lbl = m.get('Label') or m.get('Name') or ''
-                        typ = m.get('Type') or ''
-                        desc = m.get('Desc') or m.get('Description') or ''
-                        length = m.get('ActualLength') or m.get('Length') or ''
-                        width = m.get('ActualWidth') or m.get('Width') or ''
-                        
-                        # Create a key for grouping identical materials
-                        key = (lbl, typ, desc, str(length).strip(), str(width).strip())
-                        
-                        # Count this material
-                        material_groups[key]['count'] += 1
-                        if not material_groups[key]['length']:
-                            material_groups[key]['length'] = length
-                        if not material_groups[key]['width']:
-                            material_groups[key]['width'] = width
-                        material_groups[key]['lbl'] = lbl
-                        material_groups[key]['typ'] = typ
-                        material_groups[key]['desc'] = desc
-                    
-                    # Format the consolidated materials
-                    for key, info in sorted(material_groups.items(), key=lambda x: _nat_key(x[1]['lbl'] or '')):
-                        lbl = info['lbl']
-                        typ = info['typ']
-                        desc = info['desc']
-                        length = info['length']
-                        width = info['width']
-                        count = info['count']
-                        
-                        qty_str = f"({count})"
-                        
-                        # Format dimensions
-                        len_str = inches_to_feet_inches_sixteenths(length) if length not in (None, '', '0', '0.0') else ''
-                        wid_str = inches_to_feet_inches_sixteenths(width) if width not in (None, '', '0', '0.0') else ''
-                        
-                        size = ''
-                        if 'sheet' in typ.lower() or 'sheath' in typ.lower():
-                            if len_str and wid_str:
-                                size = f"{len_str} x {wid_str}"
-                            elif len_str:
-                                size = f"{len_str}"
-                            elif wid_str:
-                                size = f"{wid_str}"
+                                distance_inches = float(numeric_part)
+                                distance_feet = distance_inches / 12.0
+                            except ValueError:
+                                distance_feet = 0.0
                         else:
-                            size = len_str or ''
+                            # Fallback: try to parse as direct number
+                            try:
+                                distance_feet = float(distance_str) / 12.0
+                            except ValueError:
+                                distance_feet = 0.0
                         
-                        if size:
-                            lines.append(f"{lbl} - {typ} - {desc} - {qty_str} - {size}")
-                        else:
-                            lines.append(f"{lbl} - {typ} - {desc} - {qty_str}")
-            except Exception:
-                lines = []
-
-            # Add professional header for breakdown section
-            if lines:
-                breakdown_header = tk.Frame(breakdown_scrollable_frame, bg=PRIMARY_BLUE)
-                breakdown_header.pack(fill='x', padx=4, pady=6)
-                tk.Label(breakdown_header, text=f'📋 Material Breakdown ({len(lines)} items)',
-                        bg=PRIMARY_BLUE, fg='white', font=('Segoe UI', 11, 'bold'),
-                        anchor='center').pack(anchor='center', padx=8, pady=4)
-
-            # Professional breakdown display with better formatting
-            for l in lines:
-                try:
-                    # Create a frame for each material line with better styling
-                    material_frame = tk.Frame(breakdown_scrollable_frame, bg=BREAKDOWN_BG,
-                                            relief='flat', bd=0)
-                    material_frame.pack(fill='x', padx=6, pady=2)
-
-                    # Add subtle background for alternating rows
-                    if lines.index(l) % 2 == 0:
-                        material_frame.configure(bg='#f8f9fa')
-
-                    tk.Label(material_frame, text=l, bg=material_frame['bg'],
-                            fg=TEXT_MEDIUM, font=('Segoe UI', 9),
-                            anchor='center', justify='center',
-                            wraplength=DEFAULT_STATE['breakdown_w']-20).pack(
-                            anchor='center', fill='x', padx=4, pady=3)
-                except Exception:
-                    pass
-
-            # Center the content after adding all labels
-            root.after(100, center_breakdown_content)  # Delay to ensure layout is complete
-        except Exception:
-            pass
+                        formatted_distance = format_feet_to_dimension(distance_feet)
+                        stud_text += f"• Distance: {distance_feet:.1f} in ({formatted_distance})\n"
+                    
+                    # Associated Material Parts
+                    if stud.get('materials'):
+                        stud_text += "• Associated Material Parts:\n"
+                        for label, count in stud['materials'].items():
+                            stud_text += f" ├── {label} ({count})\n"
+                    
+                    stud_text += "\n"
+                
+                # Add total count
+                total_studs = len(yellow_data['critical_studs'])
+                stud_text += f"Total Critical Studs: {total_studs}\n"
+            
+            tk.Label(stud_content_frame, text=stud_text.strip(), bg=DETAILS_BG, 
+                    fg=TEXT_MEDIUM, font=('Segoe UI', 12), justify='left', anchor='w').pack(
+                    padx=4, pady=2, fill='x')
+            
+            # SubAssembly Details section - always present
+            sub_section_frame = tk.Frame(specs_frame, bg=DETAILS_BG)
+            sub_section_frame.pack(fill='x', padx=2, pady=2)
+            
+            # Header with toggle button
+            sub_header_frame = tk.Frame(sub_section_frame, bg=DANGER_RED)
+            sub_header_frame.pack(fill='x')
+            
+            sub_toggle_btn = tk.Button(sub_header_frame, text='▶', bg=DANGER_RED, fg='white',
+                                     font=('Segoe UI', 10, 'bold'), bd=0, padx=2, pady=2,
+                                     command=lambda: toggle_subassembly_details(sub_toggle_btn, sub_content_frame))
+            sub_toggle_btn.pack(side='left')
+            
+            tk.Label(sub_header_frame, text='🔧 SubAssembly Details', bg=DANGER_RED, 
+                    fg='white', font=('Segoe UI', 10, 'bold'), anchor='w').pack(side='left', fill='x')
+            
+            # Content frame (initially hidden)
+            sub_content_frame = tk.Frame(sub_section_frame, bg=DETAILS_BG)
+            # Don't pack initially - will be shown when expanded
+            
+            sub_text = "No subassemblies found."
+            if yellow_data and yellow_data.get('subassemblies'):
+                sub_text = ""
+                for sub in yellow_data['subassemblies']:
+                    # Truncate GUID to 8 characters + "..."
+                    guid = sub.get('guid', '')
+                    if len(guid) > 8:
+                        guid_display = guid[:8] + "..."
+                    else:
+                        guid_display = guid
+                    
+                    # Get FM type
+                    fm_type = sub.get('fm_type', 'FM32')  # Default to FM32
+                    
+                    sub_text += f"• {sub.get('name', 'Unknown')} (Guid: {guid_display}) ({fm_type})\n"
+                    
+                    # Associated Material Parts
+                    if sub.get('materials'):
+                        sub_text += "   • Associated Material Parts:\n"
+                        for label, count in sorted(sub['materials'].items()):
+                            sub_text += f"    ├── {label} ({count})\n"
+                    
+                    # Rough Openings
+                    if sub.get('rough_openings'):
+                        sub_text += "   • Rough Openings:\n"
+                        for ro in sub['rough_openings']:
+                            sub_text += f"    ├── Rough Opening: {ro['dimensions']} (FM-1)\n"
+                            if ro['aff'] is not None:
+                                aff_formatted = format_feet_to_dimension(ro['aff']/12)
+                                sub_text += f"    ├── AFF: {ro['aff']:.1f} ({aff_formatted})\n"
+                    
+                    sub_text += "\n"
+                
+                # Add total count
+                total_subs = len(yellow_data['subassemblies'])
+                sub_text += f"Total SubAssemblies: {total_subs}\n"
+            
+            tk.Label(sub_content_frame, text=sub_text.strip(), bg=DETAILS_BG, 
+                    fg=TEXT_MEDIUM, font=('Segoe UI', 12), justify='left', anchor='w').pack(
+                    padx=4, pady=2, fill='x')
+        
+        # Display pink zone (Material Breakdown)
+        if pink_data:
+            pink_frame = tk.Frame(breakdown_scrollable_frame, bg=BREAKDOWN_BG)
+            pink_frame.pack(fill='x', padx=4, pady=4)
+            
+            # Header
+            pink_header = tk.Frame(pink_frame, bg=PRIMARY_BLUE)
+            pink_header.pack(fill='x', padx=2, pady=2)
+            tk.Label(pink_header, text='MATERIAL BREAKDOWN', bg=PRIMARY_BLUE, 
+                    fg='white', font=('Segoe UI', 10, 'bold')).pack(pady=4)
+            
+            # Material breakdown content - centered
+            breakdown_content = tk.Label(pink_frame, text=pink_data, bg=BREAKDOWN_BG, 
+                                       fg=TEXT_MEDIUM, font=('Segoe UI', 12), 
+                                       justify='center', anchor='center', wraplength=DEFAULT_STATE['breakdown_w']-20)
+            breakdown_content.pack(padx=4, pady=2, fill='both', expand=True)
     def on_panel_selected(name):
         try:
+            # Remove highlighting from previously selected button
+            if selected_button['widget']:
+                try:
+                    # Reset to normal appearance for ttk.Button
+                    selected_button['widget'].configure(style='TButton')
+                except Exception:
+                    pass
+            
             selected_panel['name'] = name
+            
+            # Apply highlighting to newly selected button
+            if name in panel_button_map:
+                selected_button['widget'] = panel_button_map[name]
+                try:
+                    # Apply selected appearance for ttk.Button - use a different style
+                    selected_button['widget'].configure(style='Selected.TButton')
+                except Exception:
+                    pass
+            
             obj = current_panels.get(name, {})
             mats = panel_materials_map.get(name, [])
-            display_panel(name, obj, mats)
-        except Exception:
-            pass
+            
+            # Process panel for takeoff data
+            yellow_data, pink_data, export_data = process_panel_for_takeoff(name, root)
+            print(f"DEBUG: on_panel_selected got export_data = {repr(export_data[:100] if export_data else None)}...")
+            logging.debug(f"DEBUG: on_panel_selected got export_data = {repr(export_data[:100] if export_data else None)}...")
+            # Display the panel with takeoff data
+            display_panel(name, obj, mats, yellow_data, pink_data, export_data)
+        except Exception as e:
+            print(f"Error in on_panel_selected: {e}")
+            import traceback
+            traceback.print_exc()
 
     def change_bundle_page(bundle_key, direction):
         """Change the current page for a bundle and refresh the display"""
@@ -5450,6 +4612,7 @@ def make_gui():
         for ch in btn_grid.winfo_children():
             ch.destroy()
         panel_button_widgets.clear()
+        panel_button_map.clear()  # Clear button mapping when rebuilding
         cols = max(1, min(8, count))
         for c in range(cols):
             btn_grid.grid_columnconfigure(c, weight=1)
@@ -5514,15 +4677,19 @@ def make_gui():
                 
                 bundle_panels[normalized_bkey]['panels'].append(name)
 
-            # Sort panels within each bundle
+            # Sort panels within each bundle by DisplayLabel instead of panel name
             for bundle_key, bundle_data in bundle_panels.items():
-                # Sort panels by numerical order using DisplayLabel (05-100, 05-101, etc.)
-                def sort_key_by_display(panel_name):
-                    obj = current_panels.get(panel_name, {})
-                    display_name = obj.get('DisplayLabel', panel_name)
-                    return sort_panel_names([display_name])[0]
+                # Create a mapping of panel names to their DisplayLabels for sorting
+                panel_display_map = {}
+                for panel_name in bundle_data['panels']:
+                    if panel_name in current_panels:
+                        panel_obj = current_panels[panel_name]
+                        display_label = panel_obj.get('DisplayLabel', panel_name)
+                        panel_display_map[panel_name] = display_label
                 
-                bundle_data['panels'] = sorted(bundle_data['panels'], key=sort_key_by_display)
+                # Sort panels by their DisplayLabel (what the user sees on buttons)
+                bundle_data['panels'] = sorted(bundle_data['panels'], 
+                                             key=lambda name: get_panel_sort_key(panel_display_map.get(name, name)))
 
             # Get all bundle keys and sort them by bundle number
             all_bundle_keys = sort_bundle_keys(bundle_panels.keys())
@@ -5650,7 +4817,7 @@ def make_gui():
                             temp_cols_eff = max(1, min(8, bundle_cols))
                             temp_btns_w = btns_frame.winfo_width() or btn_grid.winfo_reqwidth() or 600
                             temp_per_bundle_w = max(40, int((temp_btns_w - (temp_cols_eff * 12)) / temp_cols_eff))
-                            correct_font_size = max(7, min(12, temp_per_bundle_w // 30))
+                            correct_font_size = max(9, min(12, temp_per_bundle_w // 30))
                             
                             btn = ttk.Button(bf, text=panel_num,
                                            command=lambda n=panel_name: on_panel_selected(n))
@@ -5666,8 +4833,10 @@ def make_gui():
                                 attach_hover_tooltip(btn, lambda n=panel_name, d=display_name: d)
                             except Exception:
                                 pass
+                            
+                            # Store button reference for visual feedback
+                            panel_button_map[panel_name] = btn
                         else:
-                            # Create blank placeholder button for empty positions
                             btn = ttk.Button(bf, text='', state='disabled')
                             # Apply correct font size to placeholder buttons too
                             try:
@@ -5746,7 +4915,7 @@ def make_gui():
             cols_eff = max(1, min(8, actual_displayed_cols))
             per_bundle_w = max(40, int((btns_w - (cols_eff * 12)) / cols_eff))
             # choose font size proportional to per-bundle width
-            fw = max(7, min(12, per_bundle_w // 30))
+            fw = max(9, min(12, per_bundle_w // 30))
             btn_font = tkfont.Font(size=fw)
             for w in panel_button_widgets:
                 try:
@@ -5848,7 +5017,7 @@ def make_gui():
                             material_frame.configure(bg='#f8f9fa')
 
                         tk.Label(material_frame, text=l, bg=material_frame['bg'],
-                                fg=TEXT_MEDIUM, font=('Segoe UI', 9),
+                                fg=TEXT_MEDIUM, font=('Segoe UI', 10),
                                 anchor='center', justify='center',
                                 wraplength=DEFAULT_STATE['breakdown_w']-20).pack(
                                 anchor='center', fill='x', padx=4, pady=3)
@@ -5871,8 +5040,12 @@ def make_gui():
         folder = folder_entry.get() or os.getcwd()
         full = os.path.join(folder, fname)
         
+        # Show loading status message
+        status_val.config(text="Loading File Please Wait")
+        root.update_idletasks()  # Force GUI to update and show the loading message
+        
         # Store the current EHX file path globally
-        current_ehx_file_path = full
+        root.ehx_file_path = full
         
         # Reset level selection for new file so it can auto-select lowest level
         selected_level['value'] = None
@@ -5882,6 +5055,23 @@ def make_gui():
             ch.destroy()
         for ch in breakdown_scrollable_frame.winfo_children():
             ch.destroy()
+        
+        # Run file processing in a separate thread to keep GUI responsive
+        def process_file_thread():
+            try:
+                process_ehx_file(full, folder)
+            except Exception as e:
+                # Handle errors on the main thread
+                root.after(0, lambda: handle_processing_error(e))
+        
+        # Start processing in background thread
+        thread = threading.Thread(target=process_file_thread, daemon=True)
+        thread.start()
+
+    def process_ehx_file(full_path, folder_path):
+        """Process EHX file - runs in background thread"""
+        nonlocal panels_loaded, selected_level, current_panels, original_panels, panel_materials_map, original_materials_map
+        
         # Prefer using a local PV0825 parser if present near the EHX file for exact parity
         pv_mod = None
         try:
@@ -5912,14 +5102,71 @@ def make_gui():
 
         if pv_mod and hasattr(pv_mod, 'parse_panels'):
             try:
-                panels, materials_map, critical_studs_map = pv_mod.parse_panels(full) or ([], {}, {})
+                panels, materials_map = pv_mod.parse_panels(full_path) or ([], {})
             except Exception:
                 panels, materials_map = [], {}
         else:
             try:
-                panels, materials_map, critical_studs_map = parse_panels(full) or ([], {}, {})
+                panels, materials_map = parse_panels(full_path) or ([], {})
             except Exception:
                 panels, materials_map = [], {}
+
+        # Check if parse_panels returned empty results (indicates EHX version 2.0)
+        if not panels and not materials_map:
+            # Check if this is actually a version 2.0 file by parsing and checking EHXVersion
+            try:
+                tree = ET.parse(full_path)
+                xml_root = tree.getroot()
+                ehx_version_el = xml_root.find('EHXVersion')
+                if ehx_version_el is not None and ehx_version_el.text and ehx_version_el.text.strip() == "2.0":
+                    # Schedule error dialog on main thread
+                    root.after(0, lambda: show_version_error())
+                    return
+            except Exception:
+                pass
+        
+        # Continue processing on main thread
+        root.after(0, lambda: complete_file_processing(panels, materials_map, full_path, folder_path))
+
+    def show_version_error():
+        """Show unsupported version error dialog"""
+        messagebox.showerror("Unsupported EHX Version", "At this time EHX Version 2.0 is not supported!")
+        # Clear the GUI of the loaded file
+        current_panels.clear()
+        original_panels.clear()
+        panel_materials_map.clear()
+        original_materials_map.clear()
+        panels_loaded = False
+        selected_panel['name'] = None
+        # Clear button highlighting
+        if selected_button['widget']:
+            try:
+                selected_button['widget'].configure(relief='raised')
+            except Exception:
+                pass
+        selected_button['widget'] = None
+        # Clear zones
+        for ch in details_scrollable_frame.winfo_children():
+            ch.destroy()
+        for ch in breakdown_scrollable_frame.winfo_children():
+            ch.destroy()
+        # Update UI
+        update_level_buttons()
+        rebuild_bundles(5)
+        # Clear loading status message
+        status_val.config(text="")
+
+    def handle_processing_error(error):
+        """Handle processing errors"""
+        print(f"Error processing file: {error}")
+        # Clear loading status message
+        status_val.config(text="")
+        messagebox.showerror("Processing Error", f"Error processing EHX file: {error}")
+
+    def complete_file_processing(panels, materials_map, full_path, folder_path):
+        """Complete file processing on main thread"""
+        nonlocal panels_loaded, selected_level, current_panels, original_panels, panel_materials_map, original_materials_map
+        
         panels_by_name = {}
         if isinstance(panels, dict):
             panels_by_name.update(panels)
@@ -5955,16 +5202,16 @@ def make_gui():
                 ch.destroy()
 
         try:
-            jp = extract_jobpath(full) if callable(extract_jobpath) else ''
+            jp = extract_jobpath(full_path) if callable(extract_jobpath) else ''
             if jp:
                 path_val.config(text=jp)
             
             # Extract JobID from EHX file for display
             job_id = "expected"
             try:
-                tree = ET.parse(full)
-                root = tree.getroot()
-                job_el = root.find('Job')
+                tree = ET.parse(full_path)
+                xml_root = tree.getroot()
+                job_el = xml_root.find('Job')
                 if job_el is not None:
                     job_id_el = job_el.find('JobID')
                     if job_id_el is not None and job_id_el.text:
@@ -5988,7 +5235,7 @@ def make_gui():
                 # import local reference
                 writer = write_expected_and_materials_logs
             try:
-                writer(full, log_panels, log_materials, None, None)
+                writer(full_path, log_panels, log_materials)
                 
                 # Check for unassigned panels and show GUI warning
                 unassigned_panels = detect_unassigned_panels(log_panels)
@@ -6016,8 +5263,8 @@ def make_gui():
                     # mimic writer behavior inline
                     import datetime as _dt
                     ts = _dt.datetime.now(_dt.UTC).strftime('%Y-%m-%d %H:%M:%S')
-                    folder = os.path.dirname(full)
-                    fname = os.path.basename(full)
+                    folder = HERE  # Use script directory instead of EHX file directory
+                    fname = os.path.basename(full_path)
                     with open(os.path.join(folder, 'expected.log'), 'a', encoding='utf-8') as _fh:
                         _fh.write(f"\n=== expected.log updated at {ts} for {fname} ===\n")
                     with open(os.path.join(folder, 'materials.log'), 'a', encoding='utf-8') as _fh:
@@ -6030,7 +5277,7 @@ def make_gui():
         # After writing expected.log, attempt to parse it and copy AFFs into the
         # in-memory materials so the GUI display/export will match the expected log.
         try:
-            expected_path = os.path.join(os.path.dirname(full), 'expected.log')
+            expected_path = os.path.join(HERE, 'expected.log')
             if os.path.exists(expected_path):
                 with open(expected_path, 'r', encoding='utf-8') as efh:
                     cur_panel = None
@@ -6130,11 +5377,15 @@ def make_gui():
         panels_loaded = True
         rebuild_bundles(5)
 
+        # Clear loading status message
+        status_val.config(text="")
+
     file_listbox.bind('<Double-Button-1>', process_selected_ehx)
 
     # Lock/Reset shortcuts
     def save_state(state):
         try:
+            os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
             with open(STATE_FILE, 'w', encoding='utf-8') as fh:
                 json.dump(state, fh, indent=2)
         except Exception:
@@ -6142,8 +5393,9 @@ def make_gui():
 
     def toggle_lock_view():
         try:
-            st = {'left_w': left.winfo_width(), 'details_w': details_outer.winfo_width(), 'breakdown_w': breakdown_outer.winfo_width(), 'green_h': btns_frame.winfo_height()}
+            st = {'left_w': left.winfo_width(), 'details_w': details_outer.winfo_width(), 'breakdown_w': breakdown_outer.winfo_width(), 'green_h': btns_frame.winfo_height(), 'debug_enabled': debug_enabled}
             save_state(st)
+            os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
             with open(LOG_FILE, 'a', encoding='utf-8') as fh:
                 fh.write(json.dumps({'ts': _dt.datetime.now(_dt.UTC).isoformat(), 'action': 'lock', 'state': st}) + '\n')
         except Exception:
@@ -6168,9 +5420,57 @@ def make_gui():
 
     update_level_buttons()  # Initialize level buttons as grey
     
+    # Load saved state after GUI creation
+    load_state(left, details_outer, breakdown_outer, btns_frame, debug_var)
+    
     return root
 
-def analyze_subassemblies_for_panel(ehx_path, panel_name, materials_param, material_to_breakdown_mapping=None):
+def load_state(left, details_outer, breakdown_outer, btns_frame, debug_var):
+    """Load saved GUI state and apply it to the interface"""
+    global debug_enabled
+    try:
+        os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
+        if os.path.exists(STATE_FILE):
+            with open(STATE_FILE, 'r', encoding='utf-8') as fh:
+                state = json.load(fh)
+                # Apply saved dimensions
+                if 'left_w' in state:
+                    left.configure(width=state['left_w'])
+                if 'details_w' in state:
+                    details_outer.configure(width=state['details_w'])
+                if 'breakdown_w' in state:
+                    breakdown_outer.configure(width=state['breakdown_w'])
+                if 'green_h' in state:
+                    btns_frame.configure(height=state['green_h'])
+                # Apply saved debug state
+                if 'debug_enabled' in state:
+                    global debug_enabled
+                    debug_enabled = state['debug_enabled']
+                    debug_var.set(debug_enabled)
+                    toggle_debug_mode(debug_enabled)
+        else:
+            # Create default state file if it doesn't exist
+            default_state = {
+                'left_w': DEFAULT_STATE['left_w'],
+                'details_w': DEFAULT_STATE['details_w'],
+                'breakdown_w': DEFAULT_STATE['breakdown_w'],
+                'green_h': DEFAULT_STATE['green_h'],
+                'debug_enabled': True
+            }
+            with open(STATE_FILE, 'w', encoding='utf-8') as fh:
+                json.dump(default_state, fh, indent=2)
+            # Apply default state
+            left.configure(width=default_state['left_w'])
+            details_outer.configure(width=default_state['details_w'])
+            breakdown_outer.configure(width=default_state['breakdown_w'])
+            btns_frame.configure(height=default_state['green_h'])
+            debug_enabled = default_state['debug_enabled']
+            debug_var.set(debug_enabled)
+            toggle_debug_mode(debug_enabled)
+    except Exception:
+        pass
+
+def analyze_subassemblies_for_panel(ehx_path, panel_name, materials_param):
     """Analyze SubAssemblies for a specific panel from EHX file.
     
     Args:
@@ -6230,10 +5530,6 @@ def analyze_subassemblies_for_panel(ehx_path, panel_name, materials_param, mater
             # It's already the panel materials list
             panel_materials = materials_param
         
-        # Create material to breakdown mapping if not provided
-        if material_to_breakdown_mapping is None:
-            material_to_breakdown_mapping = create_material_to_breakdown_mapping(panel_materials)
-        
         # Debug: Print all SubAssemblyGuid values in materials
         if debug_enabled:
             print(f"DEBUG: Panel {panel_name} has {len(panel_materials)} materials")
@@ -6259,48 +5555,13 @@ def analyze_subassemblies_for_panel(ehx_path, panel_name, materials_param, mater
                 
                 if sub_guid and sub_name and sub_guid.strip() and sub_name.strip():
                     if debug_enabled:
-                        print(f"DEBUG: Found SubAssembly element under panel: {sub_name} with GUID: {sub_guid}")
-                    # Initialize subassembly info with proper FamilyMember ID
-                    family_member_id = get_family_member_id(sub_name)
+                        print(f"DEBUG: Found SubAssembly element: {sub_name} with GUID: {sub_guid}")
+                    # Initialize subassembly info
                     subassemblies[sub_guid] = {
                         'name': sub_name,
-                        'family_member': family_member_id if family_member_id else 70,  # Default to 70 if not found
+                        'family_member': 32 if sub_name == 'LType' else (42 if 'Ladder' in sub_name else 70),
                         'materials': {}
                     }
-        
-        # Approach 1b: Look for SubAssembly elements at root level that belong to this panel
-        if not subassemblies:
-            for subassembly in root.findall('.//SubAssembly'):
-                # Check if this SubAssembly belongs to the target panel
-                panel_guid_elem = subassembly.find('PanelGuid')
-                panel_id_elem = subassembly.find('PanelID')
-                
-                belongs_to_panel = False
-                if panel_guid_elem is not None and panel_guid_elem.text == panel_name:
-                    belongs_to_panel = True
-                elif panel_id_elem is not None and panel_id_elem.text == panel_name:
-                    belongs_to_panel = True
-                
-                if belongs_to_panel:
-                    sub_guid_elem = subassembly.find('SubAssemblyGuid')
-                    sub_name_elem = subassembly.find('SubAssemblyName')
-                    fm_elem = subassembly.find('FamilyMember')
-                    
-                    if sub_guid_elem is not None and sub_name_elem is not None:
-                        sub_guid = sub_guid_elem.text.strip() if sub_guid_elem.text else ''
-                        sub_name = sub_name_elem.text.strip() if sub_name_elem.text else ''
-                        fm_id = fm_elem.text.strip() if fm_elem is not None and fm_elem.text else ''
-                        
-                        if sub_guid and sub_name and sub_guid.strip() and sub_name.strip():
-                            # Only include allowed FamilyMembers (25, 32, 42)
-                            if fm_id in ['25', '32', '42']:
-                                if debug_enabled:
-                                    print(f"DEBUG: Found SubAssembly element at root level: {sub_name} with GUID: {sub_guid}, FM: {fm_id}")
-                                subassemblies[sub_guid] = {
-                                    'name': sub_name,
-                                    'family_member': int(fm_id) if fm_id.isdigit() else 70,
-                                    'materials': {}
-                                }
         
         # Approach 2: If no SubAssembly elements found, look for materials with SubAssemblyGuid
         if not subassemblies:
@@ -6335,63 +5596,11 @@ def analyze_subassemblies_for_panel(ehx_path, panel_name, materials_param, mater
                 if debug_enabled:
                     print(f"DEBUG: Created SubAssembly from materials: {sub_name} with GUID: {sub_guid} ({len(materials_list)} materials)")
                 
-                # Use proper FamilyMember ID determination
-                family_member_id = get_family_member_id(sub_name)
                 subassemblies[sub_guid] = {
                     'name': sub_name,
-                    'family_member': family_member_id if family_member_id else 70,  # Default to 70 if not found
+                    'family_member': 32 if sub_name == 'LType' else (42 if 'Ladder' in sub_name else 70),
                     'materials': {}
                 }
-        
-        # Approach 4: Look for materials with SubAssembly names that match FAMILY_MEMBER_MAPPING
-        # This handles FM32 and FM25 SubAssemblies that might not have explicit SubAssembly elements
-        if debug_enabled:
-            print(f"DEBUG: Looking for materials with FM32/FM25 SubAssembly names")
-        
-        # Get all FM32 and FM25 names from FAMILY_MEMBER_MAPPING
-        fm32_names = FAMILY_MEMBER_MAPPING.get(32, [])
-        fm25_names = FAMILY_MEMBER_MAPPING.get(25, [])
-        fm42_names = FAMILY_MEMBER_MAPPING.get(42, [])
-        allowed_names = set(fm32_names + fm25_names + fm42_names)
-        
-        if debug_enabled:
-            print(f"DEBUG: Looking for SubAssembly names: {allowed_names}")
-        
-        # Group materials by SubAssembly name for FM32/FM25/FM42
-        name_to_materials = {}
-        name_to_guid = {}
-        
-        for material in panel_materials:
-            if isinstance(material, dict):
-                sub_name = material.get('SubAssembly', '').strip()
-                sub_guid = material.get('SubAssemblyGuid', '').strip()
-                
-                if sub_name and sub_name in allowed_names:
-                    if sub_name not in name_to_materials:
-                        name_to_materials[sub_name] = []
-                        if sub_guid:
-                            name_to_guid[sub_name] = sub_guid
-                    
-                    name_to_materials[sub_name].append(material)
-        
-        # Create SubAssemblies from FM32/FM25/FM42 materials
-        for sub_name, materials_list in name_to_materials.items():
-            sub_guid = name_to_guid.get(sub_name, f"generated_{sub_name}")
-            
-            # Skip if we already have this SubAssembly from other approaches
-            if sub_guid in subassemblies:
-                continue
-            
-            if debug_enabled:
-                print(f"DEBUG: Created FM SubAssembly from materials: {sub_name} with GUID: {sub_guid} ({len(materials_list)} materials)")
-            
-            # Use proper FamilyMember ID determination
-            family_member_id = get_family_member_id(sub_name)
-            subassemblies[sub_guid] = {
-                'name': sub_name,
-                'family_member': family_member_id if family_member_id else 70,  # Default to 70 if not found
-                'materials': {}
-            }
         
         # Approach 3: Look for RoughOpening elements that might represent SubAssemblies
         if not subassemblies:
@@ -6417,11 +5626,9 @@ def analyze_subassemblies_for_panel(ehx_path, panel_name, materials_param, mater
                     if debug_enabled:
                         print(f"DEBUG: Found RoughOpening SubAssembly: {sub_name} with GUID: {sub_guid}")
                     
-                    # Use proper FamilyMember ID determination
-                    family_member_id = get_family_member_id(sub_name)
                     subassemblies[sub_guid] = {
                         'name': sub_name,
-                        'family_member': family_member_id if family_member_id else 70,  # Default to 70 if not found
+                        'family_member': 32 if sub_name == 'LType' else (42 if 'Ladder' in sub_name else 70),
                         'materials': {}
                     }
         
@@ -6454,83 +5661,21 @@ def analyze_subassemblies_for_panel(ehx_path, panel_name, materials_param, mater
                     if mat_subassembly == sub_guid:
                         if debug_enabled:
                             print(f"DEBUG: Matched material {mat_label} to SubAssembly {sub_guid} by GUID")
-                        
-                        # Get the alphabetical label for this material using the same logic as create_material_to_breakdown_mapping
-                        m_lbl = (material.get('Label') or '').strip()
-                        m_typ = (material.get('Type') or '').strip()
-                        m_desc = (material.get('Desc') or material.get('Description') or '').strip()
-                        m_length = material.get('ActualLength') or material.get('Length') or ''
-                        m_width = material.get('ActualWidth') or material.get('Width') or ''
-                        
-                        # Round length and width to match the mapping function
-                        try:
-                            length_val = float(m_length) if m_length else 0.0
-                            length_rounded = round(length_val, 2)
-                            length_str = str(length_rounded) if length_rounded != 0.0 else ''
-                        except (ValueError, TypeError):
-                            length_str = str(m_length).strip()
-                            
-                        try:
-                            width_val = float(m_width) if m_width else 0.0
-                            width_rounded = round(width_val, 2)
-                            width_str = str(width_rounded) if width_rounded != 0.0 else ''
-                        except (ValueError, TypeError):
-                            width_str = str(m_width).strip()
-                        
-                        # Create the same key as used in the mapping function
-                        material_key = (m_lbl, m_typ, m_desc, length_str, width_str)
-                        
-                        # Use the alphabetical label from the mapping if available, otherwise use the raw label
-                        alphabetical_label = mat_label  # Default to raw label
-                        if material_key in material_to_breakdown_mapping:
-                            alphabetical_label = material_to_breakdown_mapping[material_key]
-                        
-                        # Count this material using the alphabetical label
-                        if alphabetical_label in sub_info['materials']:
-                            sub_info['materials'][alphabetical_label] += 1
+                        # Count this material
+                        if mat_label in sub_info['materials']:
+                            sub_info['materials'][mat_label] += 1
                         else:
-                            sub_info['materials'][alphabetical_label] = 1
+                            sub_info['materials'][mat_label] = 1
                         matched = True
                         break
                     elif mat_subassembly_name == sub_info['name']:
                         if debug_enabled:
                             print(f"DEBUG: Matched material {mat_label} to SubAssembly {sub_info['name']} by name")
-                        
-                        # Get the alphabetical label for this material using the same logic as create_material_to_breakdown_mapping
-                        m_lbl = (material.get('Label') or '').strip()
-                        m_typ = (material.get('Type') or '').strip()
-                        m_desc = (material.get('Desc') or material.get('Description') or '').strip()
-                        m_length = material.get('ActualLength') or material.get('Length') or ''
-                        m_width = material.get('ActualWidth') or material.get('Width') or ''
-                        
-                        # Round length and width to match the mapping function
-                        try:
-                            length_val = float(m_length) if m_length else 0.0
-                            length_rounded = round(length_val, 2)
-                            length_str = str(length_rounded) if length_rounded != 0.0 else ''
-                        except (ValueError, TypeError):
-                            length_str = str(m_length).strip()
-                            
-                        try:
-                            width_val = float(m_width) if m_width else 0.0
-                            width_rounded = round(width_val, 2)
-                            width_str = str(width_rounded) if width_rounded != 0.0 else ''
-                        except (ValueError, TypeError):
-                            width_str = str(m_width).strip()
-                        
-                        # Create the same key as used in the mapping function
-                        material_key = (m_lbl, m_typ, m_desc, length_str, width_str)
-                        
-                        # Use the alphabetical label from the mapping if available, otherwise use the raw label
-                        alphabetical_label = mat_label  # Default to raw label
-                        if material_key in material_to_breakdown_mapping:
-                            alphabetical_label = material_to_breakdown_mapping[material_key]
-                        
-                        # Count this material using the alphabetical label
-                        if alphabetical_label in sub_info['materials']:
-                            sub_info['materials'][alphabetical_label] += 1
+                        # Count this material
+                        if mat_label in sub_info['materials']:
+                            sub_info['materials'][mat_label] += 1
                         else:
-                            sub_info['materials'][alphabetical_label] = 1
+                            sub_info['materials'][mat_label] = 1
                         matched = True
                         break
                 
@@ -6542,26 +5687,11 @@ def analyze_subassemblies_for_panel(ehx_path, panel_name, materials_param, mater
                     else:
                         print(f"DEBUG: Skipping material with no SubAssembly info")
         
-        # Filter to only include subassemblies with allowed FamilyMember IDs (materials are optional)
+        # Filter to only include subassemblies with materials
         filtered_subassemblies = {}
         for guid, info in subassemblies.items():
-            # Check if this SubAssembly's FamilyMember is allowed
-            family_member_name = info.get('name', '')
-            if is_allowed_family_member(family_member_name):
+            if info['materials']:
                 filtered_subassemblies[guid] = info
-                if debug_enabled:
-                    material_count = len(info.get('materials', {}))
-                    print(f"DEBUG: Included SubAssembly {guid} ({family_member_name}) - FamilyMember allowed, {material_count} materials")
-            else:
-                # Special handling: also include FM32 and FM25 SubAssemblies even if not beam pockets
-                family_member_id = get_family_member_id(family_member_name)
-                if family_member_id in [32, 25]:  # FM32 and FM25
-                    filtered_subassemblies[guid] = info
-                    if debug_enabled:
-                        material_count = len(info.get('materials', {}))
-                        print(f"DEBUG: Included FM{family_member_id} SubAssembly {guid} ({family_member_name}) - Special handling, {material_count} materials")
-                elif debug_enabled:
-                    print(f"DEBUG: Excluded SubAssembly {guid} ({family_member_name}) - FamilyMember not allowed")
         
         if debug_enabled:
             print(f"DEBUG: Returning {len(filtered_subassemblies)} SubAssemblies with materials")
@@ -6573,21 +5703,2440 @@ def analyze_subassemblies_for_panel(ehx_path, panel_name, materials_param, mater
         return {}
 
 
-if __name__ == '__main__':
+# =============================================================================
+# TAKEOFF_STANDALONE.PY CODE INTEGRATION
+# =============================================================================
+
+#!/usr/bin/env python3
+"""Standalone Takeoff Script - Creates material takeoff from Panel Material Breakdown
+   This script is completely self-contained and does not require any external modules."""
+
+import threading
+
+# Import standalone functions from TPB_standalone.py
+# from tpb_standalone import build_search_indexes  # Removed - now using local function
+
+def build_search_indexes(root_element):
+    """Build search indexes from EHX XML - standalone version"""
+    panels = {}
+    materials = {}
+    bundles = {}
+    levels = {}  # Store level information by LevelGuid
+
+    # First, collect all Level elements
+    for level_el in root_element.findall('.//Level'):
+        level_guid_el = level_el.find('LevelGuid')
+        if level_guid_el is not None and level_guid_el.text:
+            level_guid = level_guid_el.text.strip()
+            level_info = {}
+            
+            # Extract level details
+            level_no_el = level_el.find('LevelNo')
+            if level_no_el is not None and level_no_el.text:
+                level_info['level_no'] = level_no_el.text.strip()
+            
+            desc_el = level_el.find('Description')
+            if desc_el is not None and desc_el.text:
+                level_info['description'] = desc_el.text.strip()
+            
+            job_id_el = level_el.find('JobID')
+            if job_id_el is not None and job_id_el.text:
+                level_info['job_id'] = job_id_el.text.strip()
+            
+            # Create a formatted level string like "1-1FW 2FD"
+            level_str = ""
+            if level_info.get('level_no'):
+                level_str = level_info['level_no']
+                if level_info.get('description'):
+                    level_str += "-" + level_info['description']
+            
+            levels[level_guid] = level_info
+            levels[level_guid]['formatted_level'] = level_str
+
+    # Process panels
+    for panel_el in root_element.findall('.//Panel'):
+        panel_guid = None
+        panel_label = None
+
+        # Get panel identifiers
+        for guid_tag in ['PanelGuid', 'PanelID']:
+            guid_el = panel_el.find(guid_tag)
+            if guid_el is not None and guid_el.text:
+                panel_guid = guid_el.text.strip()
+                break
+
+        label_el = panel_el.find('Label')
+        if label_el is not None and label_el.text:
+            panel_label = label_el.text.strip()
+
+        if not panel_guid:
+            continue
+
+        if not panel_label:
+            panel_label = panel_guid
+
+        # Extract panel information
+        panel_info = {
+            'guid': panel_guid,
+            'label': panel_label,
+            'name': panel_label,
+            'display_name': panel_label
+        }
+
+        # Add additional panel details
+        for field in ['Description', 'Bundle', 'BundleName', 'Height', 'Thickness',
+                     'StudSpacing', 'WallLength', 'LoadBearing', 'Category', 'Weight']:
+            el = panel_el.find(field)
+            if el is not None and el.text:
+                panel_info[field.lower()] = el.text.strip()
+
+        # Check for LevelGuid and look up level information
+        level_guid_el = panel_el.find('LevelGuid')
+        if level_guid_el is not None and level_guid_el.text:
+            panel_level_guid = level_guid_el.text.strip()
+            if panel_level_guid in levels:
+                level_data = levels[panel_level_guid]
+                panel_info['level'] = level_data.get('formatted_level', '')
+
+        panels[panel_guid] = panel_info
+
+        # Don't index by label separately to avoid duplicate panels
+        # The label is stored in panel_info for reference
+
+    # Process bundles from Junction elements (v2.0 format)
+    junction_bundle_map = {}
+    for junction in root_element.findall('.//Junction'):
+        panel_id_el = junction.find('PanelID')
+        label_el = junction.find('Label')
+        bundle_name_el = junction.find('BundleName')
+
+        if bundle_name_el is not None and bundle_name_el.text:
+            bundle_name = bundle_name_el.text.strip()
+
+            # Map by PanelID if present
+            if panel_id_el is not None and panel_id_el.text:
+                panel_id = panel_id_el.text.strip()
+                junction_bundle_map[panel_id] = bundle_name
+
+            # Also map by Label if present
+            if label_el is not None and label_el.text:
+                label = label_el.text.strip()
+                junction_bundle_map[label] = bundle_name
+
+    # Update panel bundle information
+    for panel_guid, panel_info in panels.items():
+        if panel_info.get('bundlename'):
+            continue  # Already has bundle name
+
+        # Try to match by PanelID/Label using the junction mapping
+        panel_id = panel_info.get('guid')
+        panel_label = panel_info.get('label')
+
+        bundle_name = None
+        if panel_id and panel_id in junction_bundle_map:
+            bundle_name = junction_bundle_map[panel_id]
+        elif panel_label and panel_label in junction_bundle_map:
+            bundle_name = junction_bundle_map[panel_label]
+
+        if bundle_name:
+            panel_info['bundlename'] = bundle_name
+
+    return {
+        'panels': panels,
+        'materials': materials,
+        'bundles': bundles,
+        'levels': levels,
+        'tree': root_element
+    }
+
+# Debug configuration - set to True to enable debug output
+DEBUG_ENABLED = False
+
+# Material aliases for cleaner display
+MATERIAL_ALIASES = {
+    '1 3/4" x 5 1/2" (2.0E 3100) WestFraser LVL': "1 3/4 x 5 1/2 LVL",
+    '1 3/4" x 7 1/4" (2.0E 3100) WestFraser LVL': "1 3/4 x 7 1/4 LVL", 
+    '1 3/4" x 9 1/2" (2.0E 3100) WestFraser LVL': "1 3/4 x 9 1/2 LVL",
+    '1 3/4" x 11 7/8" (2.0E 3100) WestFraser LVL': "1 3/4 x 11 7/8 LVL",
+    '1 3/4" x 14" (2.0E 3100) WestFraser LVL': "1 3/4 x 14 LVL",
+    '1 3/4" x 16" (2.0E 3100) WestFraser LVL': "1 3/4 x 16 LVL",
+    '1 3/4" x 5 1/2" 1.55E TimberStrand LSL': "1 3/4 x 5 1/2 LSL",
+    '1 3/4" x 7 1/4" 1.55E TimberStrand LSL': "1 3/4 x 7 1/4 LSL",
+    '1 3/4" x 9 1/2" 1.55E TimberStrand LSL': "1 3/4 x 9 1/2 LSL",
+    '1 3/4" x 11 7/8" 1.55E TimberStrand LSL': "1 3/4 x 11 7/8 LSL",
+    '1 3/4" x 14" 1.55E TimberStrand LSL': "1 3/4 x 14 LSL",
+    '1 3/4" x 16" 1.55E TimberStrand LSL': "1 3/4 x 16 LSL",
+}
+
+# Family Member IDs to exclude from material breakdown (for materials you're not sure how to report yet)
+EXCLUDED_FAMILY_MEMBERS = [
+    '104',  # FM104 - Tie Plates (comment out when ready to include)
+    '106',  # FM106 - BottomMultiPlate (site-installed, exclude from takeoff)
+    # Add other Family Member IDs here as needed
+    # '105',  # Example: FM105 - Some other material
+]
+
+# FamilyMember name to ID mapping for consistent filtering
+FAMILY_MEMBER_MAPPING = {
+    'Tee': 32,
+    'Ladder - Flat (Fixed)': 42,
+    'GMD-L1': 25,
+    'Sheathing': 40,
+    '49x63-L2': 25,
+    'SZ56': 25,  # Also maps to FamilyMember 25
+    'Critical Stud': 32,  # Critical Stud maps to FM32
+    'DR-9-ENT-L1': 25,   # DR-9-ENT-L1 maps to FM25 (Openings)
+    'BSMT-HDR': 25,      # BSMT-HDR maps to FM25 (Openings)
+    'LType': 32,         # LType maps to FM32 (Critical Stud)
+}
+
+def get_family_member_id(family_member_name):
+    """Get FamilyMember ID from name, with fallback logic."""
+    if not family_member_name:
+        return None
+    
+    # Direct mapping
+    if family_member_name in FAMILY_MEMBER_MAPPING:
+        return FAMILY_MEMBER_MAPPING[family_member_name]
+    
+    # Partial matching for more flexibility
+    for name_pattern, member_id in FAMILY_MEMBER_MAPPING.items():
+        if name_pattern in family_member_name:
+            return member_id
+    
+    return None
+
+def is_fm25_material(material):
+    """Check if a material is FM25 (Family Member 25 - Openings/Subassemblies)"""
+    if not isinstance(material, dict):
+        return False
+    
+    # Check FamilyMember ID directly
+    family_member_id = material.get('FamilyMember')
+    if family_member_id:
+        try:
+            fm_id = int(str(family_member_id).strip())
+            if fm_id == 25:
+                return True
+        except (ValueError, TypeError):
+            pass
+    
+    # Check FamilyMemberName for FM25 patterns
+    family_member_name = material.get('FamilyMemberName', '').strip()
+    if family_member_name:
+        fm_id = get_family_member_id(family_member_name)
+        if fm_id == 25:
+            return True
+    
+    # Check SubAssembly name for FM25 patterns
+    subassembly = material.get('SubAssembly', '').strip()
+    if subassembly:
+        fm_id = get_family_member_id(subassembly)
+        if fm_id == 25:
+            return True
+    
+    return False
+
+def is_excluded_material(material):
+    """Check if a material should be excluded from the breakdown based on EXCLUDED_FAMILY_MEMBERS"""
+    if not isinstance(material, dict):
+        return False
+    
+    # Check FamilyMember ID directly
+    family_member_id = material.get('FamilyMember')
+    if family_member_id:
+        family_member_str = str(family_member_id).strip()
+        if family_member_str in EXCLUDED_FAMILY_MEMBERS:
+            return True
+    
+    # Check FamilyMemberName for excluded patterns
+    family_member_name = material.get('FamilyMemberName', '').strip()
+    if family_member_name:
+        fm_id = get_family_member_id(family_member_name)
+        if fm_id and str(fm_id) in EXCLUDED_FAMILY_MEMBERS:
+            return True
+    
+    return False
+
+def parse_dimension_to_feet(dim_str):
+    """Convert dimension string to feet (float)"""
+    if not dim_str:
+        return 0.0
+
+    dim_str = dim_str.strip()
+    if DEBUG_ENABLED:
+        print(f"DEBUG parse_dimension_to_feet: input='{dim_str}'")
+
+    # Handle sheathing format like "9' x 1'-2-7/8""
+    if ' x ' in dim_str:
+        try:
+            parts = dim_str.split(' x ')
+            if len(parts) == 2:
+                length_part = parts[0].strip()
+                width_part = parts[1].strip()
+
+                # Parse length
+                length_feet = parse_dimension_to_feet(length_part)
+                # Parse width
+                width_feet = parse_dimension_to_feet(width_part)
+
+                # For sheathing, we want the longer dimension as the linear length
+                result = max(length_feet, width_feet)
+                if DEBUG_ENABLED:
+                    print(f"DEBUG parse_dimension_to_feet: sheathing format, result={result}")
+                return result
+        except:
+            pass
+
+    # Handle feet-inches-sixteenths format like "8'-10-1/4"" or "8'-10 1/4" or "11-5-3/8"
+    if "'" in dim_str or (dim_str.count('-') >= 2 and '/' in dim_str) or (' ' in dim_str and '/' in dim_str):
+        try:
+            if DEBUG_ENABLED:
+                print(f"DEBUG parse_dimension_to_feet: detected feet-inches format")
+            # Split on feet and inches
+            if "'" in dim_str:
+                feet_part = dim_str.split("'")[0].strip()
+                inches_part = dim_str.split("'")[1].replace('"', '').strip()
+                # Remove leading dash if present (artifact from splitting)
+                if inches_part.startswith('-'):
+                    inches_part = inches_part[1:].strip()
+                if DEBUG_ENABLED:
+                    print(f"DEBUG parse_dimension_to_feet: feet_part='{feet_part}', inches_part='{inches_part}'")
+            else:
+                # Handle format like "11-5-3/8" (feet-inches-fraction without ' marker)
+                parts = dim_str.split('-', 2)
+                if len(parts) >= 3:
+                    feet_part = parts[0].strip()
+                    inches_part = parts[1].strip() + '-' + parts[2].strip()
+                else:
+                    feet_part = '0'
+                    inches_part = dim_str
+                if DEBUG_ENABLED:
+                    print(f"DEBUG parse_dimension_to_feet: no apostrophe, feet_part='{feet_part}', inches_part='{inches_part}'")
+            
+            feet = float(feet_part) if feet_part else 0
+            if DEBUG_ENABLED:
+                print(f"DEBUG parse_dimension_to_feet: feet={feet}")
+
+            # Handle inches with sixteenths - support both dash and space separators
+            if '-' in inches_part or ' ' in inches_part:
+                # Use whichever separator is present
+                separator = '-' if '-' in inches_part else ' '
+                if DEBUG_ENABLED:
+                    print(f"DEBUG parse_dimension_to_feet: using separator='{separator}' in inches_part='{inches_part}'")
+                if separator in inches_part:
+                    inches, fraction = inches_part.split(separator, 1)
+                    inches = float(inches) if inches else 0
+                    if DEBUG_ENABLED:
+                        print(f"DEBUG parse_dimension_to_feet: inches={inches}, fraction='{fraction}'")
+
+                    # Handle fraction like "1/4"
+                    if '/' in fraction:
+                        num, den = fraction.split('/')
+                        fraction_inches = float(num) / float(den)
+                        if DEBUG_ENABLED:
+                            print(f"DEBUG parse_dimension_to_feet: fraction_inches={fraction_inches}")
+                    else:
+                        fraction_inches = float(fraction) if fraction else 0
+
+                    total_inches = inches + fraction_inches
+                else:
+                    total_inches = float(inches_part) if inches_part else 0
+            else:
+                total_inches = float(inches_part) if inches_part else 0
+                if DEBUG_ENABLED:
+                    print(f"DEBUG parse_dimension_to_feet: no separator, total_inches={total_inches}")
+
+            result = feet + (total_inches / 12)
+            if DEBUG_ENABLED:
+                print(f"DEBUG parse_dimension_to_feet: final result={result}")
+            return result
+        except Exception as e:
+            if DEBUG_ENABLED:
+                print(f"DEBUG parse_dimension_to_feet: exception {e}")
+            pass
+
+    # Handle decimal feet like "8.833"
+    try:
+        result = float(dim_str.replace("'", "").replace('"', "").strip())
+        if DEBUG_ENABLED:
+            print(f"DEBUG parse_dimension_to_feet: decimal feet, result={result}")
+        return result
+    except ValueError:
+        pass
+
+    # Handle just inches like "4-7/8" or "4-1"
+    if '-' in dim_str and ('/' in dim_str or dim_str.count('-') == 1):
+        try:
+            if '/' in dim_str:
+                inches, fraction = dim_str.split('-', 1)
+                inches = float(inches) if inches else 0
+                if '/' in fraction:
+                    num, den = fraction.split('/')
+                    fraction_inches = float(num) / float(den)
+                else:
+                    fraction_inches = float(fraction) if fraction else 0
+                result = (inches + fraction_inches) / 12
+                if DEBUG_ENABLED:
+                    print(f"DEBUG parse_dimension_to_feet: just inches with fraction, result={result}")
+                return result
+            else:
+                # Handle format like "4-1" (feet-inches without fraction)
+                if dim_str.count('-') == 1:
+                    feet_part, inches_part = dim_str.split('-', 1)
+                    feet = float(feet_part) if feet_part else 0
+                    inches = float(inches_part) if inches_part else 0
+                    result = feet + (inches / 12)
+                    if DEBUG_ENABLED:
+                        print(f"DEBUG parse_dimension_to_feet: feet-inches without fraction, result={result}")
+                    return result
+        except:
+            pass
+
+    if DEBUG_ENABLED:
+        print(f"DEBUG parse_dimension_to_feet: returning 0.0")
+    return 0.0
+
+def format_feet_to_dimension(feet):
+    """Convert feet (float) back to feet-inches-sixteenths format (matching EHX search widget)"""
+    if feet == 0:
+        return "0'-0\""
+
+    # Calculate exact dimensions without rounding for precise display
+    total_inches = feet * 12
+    feet_part = int(total_inches // 12)
+    inches_part = total_inches % 12
+
+    # Convert fractional inches to sixteenths without rounding
+    inches_whole = int(inches_part)
+    fractional_inches = inches_part % 1
+    sixteenths = int(fractional_inches * 16 + 0.5)  # Round to nearest sixteenth for precision
+
+    if sixteenths == 0:
+        if inches_whole == 0:
+            return f"{feet_part}'-0\""
+        else:
+            return f"{feet_part}'-{inches_whole}-0\""
+    elif sixteenths == 16:
+        # Round up to next inch, handling carry-over to next foot
+        new_inches_whole = inches_whole + 1
+        new_feet_part = feet_part
+        if new_inches_whole >= 12:
+            new_feet_part += 1
+            new_inches_whole -= 12
+        return f"{new_feet_part}'-{new_inches_whole}\""
+    else:
+        # Reduce the fraction sixteenths/16 to simplest terms
+        from math import gcd
+        numerator = sixteenths
+        denominator = 16
+        g = gcd(numerator, denominator)
+        numerator //= g
+        denominator //= g
+        return f"{feet_part}'-{inches_whole}-{numerator}/{denominator}\""
+
+def parse_dimension_to_inches(dim_str):
+    """Convert dimension string to inches (float)"""
+    if not dim_str:
+        return 0.0
+
+    dim_str = dim_str.strip()
+    
+    # Handle formats like "1 3/4" or "9 1/2"
+    if ' ' in dim_str and '/' in dim_str:
+        parts = dim_str.split(' ')
+        if len(parts) == 2:
+            whole_part = parts[0].strip()
+            fraction_part = parts[1].strip()
+            
+            whole_inches = float(whole_part) if whole_part else 0
+            if '/' in fraction_part:
+                num, den = fraction_part.split('/')
+                fraction_inches = float(num) / float(den)
+            else:
+                fraction_inches = float(fraction_part) if fraction_part else 0
+            
+            return whole_inches + fraction_inches
+    else:
+        # Handle simple integers or decimals
+        try:
+            return float(dim_str)
+        except ValueError:
+            return 0.0
+
+def extract_thickness_from_description(material_description):
+    """Extract thickness from material description (e.g., '3/4" 4x8 OSB' -> 0.75)"""
+    if not material_description:
+        return 1.5  # Default to 1.5" for dimensional lumber
+    
+    desc = material_description.lower()
+    
+    # Look for fractional thickness at the beginning (e.g., "3/4" 4x8 OSB or "1 3/4" x 9 1/2 LVL)
+    import re
+    # Match patterns like "1 3/4", "3/4", or "1 1/2" with optional quotes
+    fraction_match = re.match(r'^["\']?(\d+\s+\d+/\d+|\d+/\d+)["\']?', desc)
+    if fraction_match:
+        thickness_str = fraction_match.group(1).strip()
+        try:
+            # Handle "1 3/4" format
+            if ' ' in thickness_str and '/' in thickness_str:
+                parts = thickness_str.split(' ')
+                if len(parts) == 2:
+                    whole = int(parts[0])
+                    frac_parts = parts[1].split('/')
+                    if len(frac_parts) == 2:
+                        num = int(frac_parts[0])
+                        den = int(frac_parts[1])
+                        return whole + (num / den)
+            # Handle simple fraction like "3/4"
+            elif '/' in thickness_str:
+                parts = thickness_str.split('/')
+                if len(parts) == 2:
+                    num = int(parts[0])
+                    den = int(parts[1])
+                    return num / den
+            # Handle decimal
+            else:
+                return float(thickness_str)
+        except (ValueError, TypeError):
+            pass
+    
+    # Look for patterns like "2x6", "2x8", etc. - these are typically 1.5" thick
+    if re.search(r'\d+"?\s*x\s*\d+', desc):
+        return 1.5  # Standard dimensional lumber thickness
+    
+    # Default fallback
+    return 1.5
+
+def calculate_board_feet(length_feet, width_inches=0, material_description=""):
+    """Calculate board feet from length in feet, width in inches, and material description"""
+    if length_feet <= 0:
+        return 0.0
+
+    # Parse nominal dimensions from material description (e.g., "2x6 SPF PM No.2" or "1 3/4 x 9 1/2 LVL")
+    import re
+    nominal_thickness = 2.0  # Default 2" thickness for dimensional lumber
+    nominal_width = 0.0
+
+    # Look for patterns like "2x4", "2x6", "2x8", etc. in the description
+    # Handle both integer and fractional dimensions
+    match = re.search(r'(\d+(?:\s+\d+/\d+)?)"?\s*x\s*(\d+(?:\s+\d+/\d+)?)"?', material_description, re.IGNORECASE)
+    if match:
+        thickness_str = match.group(1).strip()  # First number (thickness)
+        width_str = match.group(2).strip()      # Second number (width)
+        
+        # Parse fractional dimensions
+        nominal_thickness = parse_dimension_to_inches(thickness_str)
+        nominal_width = parse_dimension_to_inches(width_str)
+
+    # If no dimensions found in description, try to estimate from width_inches
+    if nominal_width == 0.0 and width_inches > 0:
+        # Map actual width to nominal width (rough approximation)
+        if width_inches <= 3.75:  # 2x4 (actual width ~3.5")
+            nominal_width = 4.0
+        elif width_inches <= 5.75:  # 2x6 (actual width ~5.5")
+            nominal_width = 6.0
+        elif width_inches <= 7.5:  # 2x8 (actual width ~7.25")
+            nominal_width = 8.0
+        elif width_inches <= 9.5:  # 2x10 (actual width ~9.25")
+            nominal_width = 10.0
+        elif width_inches <= 11.5:  # 2x12 (actual width ~11.25")
+            nominal_width = 12.0
+        else:
+            # Fallback: estimate nominal width from actual width
+            nominal_width = width_inches + 0.5
+
+    # Traditional board feet formula: (thickness × width × length) ÷ 12
+    if nominal_width > 0:
+        board_feet = (nominal_thickness * nominal_width * length_feet) / 12.0
+        return board_feet
+    else:
+        # Fallback to linear feet if we can't determine dimensions
+        return length_feet
+
+def calculate_equivalent_linear_feet(board_feet, material_description):
+    """Convert board feet back to equivalent linear feet for display purposes"""
+    if board_feet <= 0:
+        return 0.0
+
+    # Parse nominal dimensions from material description (same logic as calculate_board_feet)
+    import re
+    nominal_thickness = 2.0  # Default 2" thickness for dimensional lumber
+    nominal_width = 0.0
+
+    # Look for patterns like "2x4", "2x6", "2x8", etc. in the description
+    # Handle both integer and fractional dimensions
+    match = re.search(r'(\d+(?:\s+\d+/\d+)?)"?\s*x\s*(\d+(?:\s+\d+/\d+)?)"?', material_description, re.IGNORECASE)
+    if match:
+        thickness_str = match.group(1).strip()  # First number (thickness)
+        width_str = match.group(2).strip()      # Second number (width)
+        
+        # Parse fractional dimensions
+        nominal_thickness = parse_dimension_to_inches(thickness_str)
+        nominal_width = parse_dimension_to_inches(width_str)
+
+    # Convert board feet back to linear feet: BF × 12 ÷ (thickness × width)
+    if nominal_width > 0:
+        linear_feet = (board_feet * 12.0) / (nominal_thickness * nominal_width)
+        return linear_feet
+    else:
+        # Fallback if we can't determine dimensions
+        return board_feet
+
+def get_material_display_name(material_type):
+    """Get the display name for a material type, using aliases if available"""
+    return MATERIAL_ALIASES.get(material_type, material_type)
+
+def sort_materials_by_hierarchy(material_descriptions):
+    # Define material hierarchy - higher priority materials appear first
+    material_hierarchy = [
+        # Engineered wood products first
+        "2x6 SPF PM No.2",
+        "2x8 SPF PM No.2", 
+        "2x10 SPF PM No.2",
+        "2x12 SPF PM No.2",
+        "2x4 SPF PM No.2",
+        # Standard framing lumber
+        "2x6 SPF Stud",
+        "2x8 SPF Stud",
+        "2x10 SPF Stud", 
+        "2x12 SPF Stud",
+        "2x4 SPF Stud",
+        # Other SPF grades
+        "2x6 SPF No.2",
+        "2x8 SPF No.2",
+        "2x10 SPF No.2",
+        "2x12 SPF No.2", 
+        "2x4 SPF No.2",
+        # Other species
+        "2x6 Douglas Fir",
+        "2x8 Douglas Fir",
+        "2x10 Douglas Fir",
+        "2x12 Douglas Fir",
+        "2x4 Douglas Fir",
+        "2x6 Hem Fir",
+        "2x8 Hem Fir", 
+        "2x10 Hem Fir",
+        "2x12 Hem Fir",
+        "2x4 Hem Fir",
+        # Other materials
+        "2x6 SPF",
+        "2x8 SPF",
+        "2x10 SPF",
+        "2x12 SPF",
+        "2x4 SPF",
+    ]
+    
+    # Create priority mapping
+    priority_map = {}
+    for i, material in enumerate(material_hierarchy):
+        priority_map[material.lower()] = i
+        
+    # Sort function
+    def sort_key(material_desc):
+        desc_lower = material_desc.lower()
+        # Check for exact matches first
+        if desc_lower in priority_map:
+            return (0, priority_map[desc_lower])  # Priority group 0 for known materials
+        # Check for partial matches (contains key material type)
+        for key_material, priority in priority_map.items():
+            if key_material in desc_lower:
+                return (1, priority)  # Priority group 1 for partial matches
+        # Unknown materials go to the end
+        return (2, material_desc.lower())  # Priority group 2, alphabetical fallback
+        
+    return sorted(material_descriptions, key=sort_key)
+
+def create_takeoff_from_breakdown(breakdown_text):
+    """Create takeoff from panel material breakdown text"""
+
+    if DEBUG_ENABLED:
+        print(f"DEBUG: create_takeoff_from_breakdown called with breakdown_text:\n{breakdown_text[:200]}...")
+
+    # Parse the breakdown text
+    lines = breakdown_text.strip().split('\n')
+    materials = []
+
+    for line in lines:
+        line = line.strip()
+        if not line or not line[0].isalnum():
+            continue
+
+        # Parse format: "A - BottomPlate - 2x6 SPF PM No.2 - (1) - 8'-10-1/4""
+        parts = line.split(' - ')
+        if len(parts) >= 4:
+            material_code = parts[0].strip()
+            family_member = parts[1].strip()  # This is the FamilyMemberName (KingStud, Stud, FlatStud, etc.)
+            material_type = parts[2].strip()  # This is the material description
+
+            # Extract quantity from (1) format
+            qty_part = parts[3].strip()
+            if qty_part.startswith('(') and qty_part.endswith(')'):
+                try:
+                    quantity = int(qty_part[1:-1])
+                except ValueError:
+                    quantity = 1
+            else:
+                quantity = 1
+
+            # Extract length if present
+            length_str = ""
+            if len(parts) >= 5:
+                length_str = parts[4].strip().replace('"', '').replace('`', '').replace('´', '')  # Remove quotes but keep apostrophe for feet
+
+            materials.append({
+                'code': material_code,
+                'family_member': family_member,
+                'type': material_type,
+                'quantity': quantity,
+                'length': length_str
+            })
+
+    if DEBUG_ENABLED:
+        print(f"DEBUG: parsed {len(materials)} materials")
+
+    # Group materials by category and type/length
+    sheets_materials = {}  # Sheathing materials - calculate square footage and sheets needed
+    linear_materials = {}  # Dimensional lumber - group by type and length
+    precut_materials = {}  # Precut studs - count by type
+    bracing_materials = {}  # Steel bracing - count by type and length like precuts
+
+    for mat in materials:
+        # Convert length to feet for calculations
+        length_feet = parse_dimension_to_feet(mat['length'])
+        length_display = mat['length'] or "0'-0\""
+
+        if DEBUG_ENABLED:
+            print(f"DEBUG: Processing material: {mat['code']} - {mat['family_member']} - {mat['type']} - qty:{mat['quantity']} - length:{mat['length']} -> length_feet:{length_feet}")
+
+        # Categorize materials
+        family_member = mat['family_member'].lower()
+        material_type = mat['type']
+        quantity = mat['quantity']
+
+        # SHEATHING: Sheathing and EndPadding family members, OR materials with thickness < 1.5"
+        thickness = extract_thickness_from_description(material_type)
+        is_thin_material = thickness < 1.5
+        
+        if family_member in ['sheathing', 'endpadding'] or is_thin_material:
+            if DEBUG_ENABLED:
+                print(f"DEBUG: Categorizing as SHEATHING: {family_member} (thickness: {thickness})")
+            # For sheathing, we need to calculate square footage from the "x" format dimensions
+            if ' x ' in mat['length']:
+                # Handle "length x width" format like "9' x 1'-2-7/8""
+                try:
+                    parts = mat['length'].split(' x ')
+                    if len(parts) == 2:
+                        length_part = parts[0].strip()
+                        width_part = parts[1].strip()
+                        
+                        # Parse both dimensions
+                        length_feet_val = parse_dimension_to_feet(length_part)
+                        width_feet_val = parse_dimension_to_feet(width_part)
+                        
+                        # Calculate square footage: length × width × quantity
+                        piece_sq_ft = length_feet_val * width_feet_val * quantity
+                        linear_ft = length_feet_val * quantity  # Use length for linear measurement
+                        
+                        if DEBUG_ENABLED:
+                            print(f"DEBUG: Sheathing dimensions - length:{length_feet_val}, width:{width_feet_val}, sq_ft:{piece_sq_ft}")
+                        
+                        if material_type not in sheets_materials:
+                            sheets_materials[material_type] = {
+                                'sq_ft': 0,
+                                'linear_ft': 0,
+                                'codes': set(),
+                                'is_endpadding': family_member == 'endpadding',
+                                'is_thin_material': is_thin_material
+                            }
+                        sheets_materials[material_type]['sq_ft'] += piece_sq_ft
+                        sheets_materials[material_type]['linear_ft'] += linear_ft
+                        sheets_materials[material_type]['codes'].add(mat['code'])
+                except Exception as e:
+                    if DEBUG_ENABLED:
+                        print(f"DEBUG: Error parsing sheathing dimensions: {e}")
+            else:
+                # Fallback for single dimension - estimate width based on material type
+                if DEBUG_ENABLED:
+                    print(f"DEBUG: Sheathing without 'x' format: {mat['length']}")
+                if length_feet > 0:
+                    # Estimate width based on material type
+                    width_feet = 8.0 / 12.0  # Default 8" width
+                    if '4x8' in material_type:
+                        width_feet = 8.0 / 12.0  # 8" width
+                    elif '4x9' in material_type:
+                        width_feet = 9.0 / 12.0  # 9" width
+                    elif 'ply' in material_type.lower() or 'plywood' in material_type.lower():
+                        width_feet = 8.0 / 12.0  # Assume 8" for plywood
+                    
+                    sq_ft = length_feet * width_feet * quantity
+                    linear_ft = length_feet * quantity
+                    
+                    if material_type not in sheets_materials:
+                        sheets_materials[material_type] = {
+                            'sq_ft': 0,
+                            'linear_ft': 0,
+                            'codes': set(),
+                            'is_endpadding': family_member == 'endpadding',
+                            'is_thin_material': is_thin_material
+                        }
+                    sheets_materials[material_type]['sq_ft'] += sq_ft
+                    sheets_materials[material_type]['linear_ft'] += linear_ft
+                    sheets_materials[material_type]['codes'].add(mat['code'])
+
+        # LINEAR: All materials with length > 0
+        elif length_feet > 0:
+            if 'bracing' in family_member.lower():
+                if DEBUG_ENABLED:
+                    print(f"DEBUG: Categorizing as BRACING: {family_member} with length {length_feet}")
+                
+                group_key = (material_type, length_display)
+                if group_key not in bracing_materials:
+                    bracing_materials[group_key] = {
+                        'count': 0,
+                        'length_display': length_display,
+                        'material_type': material_type,
+                        'codes': set()
+                    }
+                bracing_materials[group_key]['count'] += quantity
+                bracing_materials[group_key]['codes'].add(mat['code'])
+            elif 'stud' in family_member:
+                # Check for standard precut lengths
+                standard_lengths = {
+                    "7-8-5/8": 7 + (8 + 5/8) / 12,  # 7.71875
+                    "8-8-5/8": 8 + (8 + 5/8) / 12,  # 8.71875
+                    "9-8-5/8": 9 + (8 + 5/8) / 12   # 9.71875
+                }
+                is_precut = False
+                precut_length_display = ""
+                for std_len_str, std_len_feet_val in standard_lengths.items():
+                    if abs(length_feet - std_len_feet_val) < 0.005:  # Small tolerance for floating point
+                        is_precut = True
+                        precut_length_display = std_len_str
+                        break
+                
+                if is_precut:
+                    if DEBUG_ENABLED:
+                        print(f"DEBUG: Categorizing as PRECUT: {family_member} with length {length_feet} ({precut_length_display})")
+                    
+                    group_key = (material_type, precut_length_display)
+                    if group_key not in precut_materials:
+                        precut_materials[group_key] = {
+                            'count': 0,
+                            'length_display': precut_length_display,
+                            'material_type': material_type,
+                            'codes': set()
+                        }
+                    precut_materials[group_key]['count'] += quantity
+                    precut_materials[group_key]['codes'].add(mat['code'])
+                else:
+                    if DEBUG_ENABLED:
+                        print(f"DEBUG: Categorizing as LINEAR: {family_member} with length {length_feet}")
+                    # Apply round-up rule to next foot for all linear materials
+                    rounded_feet = math.ceil(length_feet)  # Round up to next foot
+                    rounded_feet = math.ceil(length_feet)  # Round up to next foot
+                    
+                    group_key = (material_type, rounded_feet)
+                    
+                    if group_key not in linear_materials:
+                        linear_materials[group_key] = {
+                            'quantity': 0,
+                            'length_display': length_display,
+                            'rounded_feet': rounded_feet,
+                            'material_type': material_type,
+                            'codes': set()
+                        }
+                    linear_materials[group_key]['quantity'] += quantity
+                    linear_materials[group_key]['codes'].add(mat['code'])
+            else:
+                if DEBUG_ENABLED:
+                    print(f"DEBUG: Categorizing as LINEAR: {family_member} with length {length_feet}")
+                rounded_feet = math.ceil(length_feet)  # Round up to next foot
+
+                group_key = (material_type, rounded_feet)
+                if group_key not in linear_materials:
+                    linear_materials[group_key] = {
+                        'quantity': 0,
+                        'length_display': length_display,
+                        'rounded_feet': rounded_feet,
+                        'material_type': material_type,
+                        'codes': set()
+                    }
+                linear_materials[group_key]['quantity'] += quantity
+                linear_materials[group_key]['codes'].add(mat['code'])
+        else:
+            if DEBUG_ENABLED:
+                print(f"DEBUG: Skipping material with zero length: {family_member}")
+
+    if DEBUG_ENABLED:
+        print(f"DEBUG: Categorization complete - sheets:{len(sheets_materials)}, linear:{len(linear_materials)}, precut:{len(precut_materials)}, bracing:{len(bracing_materials)}")
+    output_lines = []
+    total_board_feet = 0
+
+    # Section 1: Total Number Of Sheets
+    if sheets_materials:
+        output_lines.append("Total Number Of Sheets")
+        for mat_type, data in sorted(sheets_materials.items()):
+            sq_ft = data['sq_ft']
+            linear_ft = data['linear_ft']
+            is_endpadding = data.get('is_endpadding', False)
+            
+            codes_str = f" ({','.join(sorted(data['codes']))})" if data['codes'] else ""
+            
+            if is_endpadding and linear_ft > 0:
+                # For EndPadding, calculate actual square footage from dimensions
+                # linear_ft contains the length in feet, we need to determine width
+                # For EndPadding, typically 2x6 material which is 5.5" wide
+                width_inches = 5.5  # Default width for 2x6 EndPadding
+                if '2x4' in mat_type:
+                    width_inches = 3.5
+                elif '2x6' in mat_type:
+                    width_inches = 5.5
+                elif '2x8' in mat_type:
+                    width_inches = 7.25
+                elif '2x10' in mat_type:
+                    width_inches = 9.25
+                elif '2x12' in mat_type:
+                    width_inches = 11.25
+                
+                width_feet = width_inches / 12.0
+                piece_sq_ft = linear_ft * width_feet
+                sheets_needed = math.ceil(piece_sq_ft / 32.0) if piece_sq_ft > 0 else 0  # Assume 32 sq ft sheets
+                actual_sheets = piece_sq_ft / 32.0 if piece_sq_ft > 0 else 0
+                
+                # Format sheets to match regular sheathing column positions
+                sheet_info = f"{actual_sheets:.2f} ({sheets_needed})"
+                output_lines.append(f"C:{sheet_info:<14}\tM: {get_material_display_name(mat_type):<20}\t\tSQ FT: {piece_sq_ft:>8.2f}{codes_str}")
+            else:
+                # Regular sheathing - show square footage
+                # Determine sheet size from material type (e.g., "4x9" or "4x8")
+                sheet_size_sq_ft = 32.0  # Default to 4x8 = 32 sq ft
+                if '4x9' in mat_type:
+                    sheet_size_sq_ft = 36.0  # 4x9 = 36 sq ft
+                elif '4x8' in mat_type:
+                    sheet_size_sq_ft = 32.0  # 4x8 = 32 sq ft
+                
+                # Calculate number of sheets needed (round up)
+                sheets_needed = math.ceil(sq_ft / sheet_size_sq_ft) if sq_ft > 0 else 0
+                actual_sheets = sq_ft / sheet_size_sq_ft if sq_ft > 0 else 0
+                
+                # Format sheets to match linear materials column positions exactly
+                sheet_info = f"{actual_sheets:.2f} ({sheets_needed})"
+                output_lines.append(f"C:{sheet_info:<14}\tM: {get_material_display_name(mat_type):<20}\t\tSQ FT: {sq_ft:>8.2f}{codes_str}")
+        output_lines.append("")
+
+    # Section 2: Total Board Feet
+    if linear_materials:
+        output_lines.append("Total Board Feet:")
+        
+        # Group by material type for output
+        materials_by_type = {}
+        for group_key, data in linear_materials.items():
+            mat_type = data['material_type']
+            if mat_type not in materials_by_type:
+                materials_by_type[mat_type] = []
+            materials_by_type[mat_type].append(data)
+        
+        # Output each material type with custom sorting
+        sorted_mat_types = sort_materials_by_hierarchy(materials_by_type.keys())
+        for mat_type in sorted_mat_types:
+            type_entries = materials_by_type[mat_type]
+            type_total_feet = 0
+            
+            # Individual entries for each length, sorted by rounded feet
+            for entry in sorted(type_entries, key=lambda x: x['rounded_feet']):
+                qty = entry['quantity']
+                length_display = entry['length_display']
+                rounded_feet = entry['rounded_feet']
+                # Calculate proper board feet instead of just using linear feet
+                board_feet_per_piece = calculate_board_feet(rounded_feet, 0, mat_type)
+                total_board_feet_for_entry = board_feet_per_piece * qty
+                type_total_feet += total_board_feet_for_entry
+
+                # Format: C:   2	L:  12'-0"	M: 2x6 SPF PM No.2     	T:  24'-0"            24 :BF (A,B)
+                rounded_display = format_feet_to_dimension(rounded_feet)
+                equivalent_linear_feet = calculate_equivalent_linear_feet(total_board_feet_for_entry, mat_type)
+                total_display = format_feet_to_dimension(round(equivalent_linear_feet))
+                codes_str = f" ({','.join(sorted(entry['codes']))})" if entry['codes'] else ""
+                output_lines.append(f"C:{qty:>3}	L:{rounded_display:>8}	M: {get_material_display_name(mat_type):<20}	T: {total_display:>8}	{total_board_feet_for_entry:>8.1f} :BF{codes_str}")
+
+            # Total for this material type - use the sum of individual totals
+            if type_total_feet > 0:
+                type_total_linear_feet = sum(calculate_equivalent_linear_feet(calculate_board_feet(entry['rounded_feet'], 0, mat_type) * entry['quantity'], mat_type) for entry in type_entries)
+                type_total_display = format_feet_to_dimension(round(type_total_linear_feet))
+                output_lines.append(f"                              TOTAL LINEAR LENGTH: {type_total_display:>8}	{type_total_feet:>8.1f} :TOTAL BF.")
+                total_board_feet += type_total_feet
+            
+            # Add blank line between different material types for easier reading
+            output_lines.append("")
+
+    # Section 3: Total Number Of Precut Studs
+    if precut_materials:
+        output_lines.append("Total Number Of Precut Studs:")
+        for group_key, data in sorted(precut_materials.items()):
+            count = data['count']
+            length_display = data['length_display']
+            material_type = data['material_type']
+            codes_str = f" ({','.join(sorted(data['codes']))})" if data['codes'] else ""
+            output_lines.append(f"C:{count:>3}	L:{length_display:>8}	M: {get_material_display_name(material_type):<20}{codes_str}")
+
+    # Section 4: Total Steel Bracing
+    if bracing_materials:
+        output_lines.append("Total Steel Bracing:")
+        for group_key, data in sorted(bracing_materials.items()):
+            count = data['count']
+            length_display = data['length_display']
+            material_type = data['material_type']
+            codes_str = f" ({','.join(sorted(data['codes']))})" if data['codes'] else ""
+            output_lines.append(f"C:{count:>3}	L:{length_display:>8}	M: {get_material_display_name(material_type):<20}{codes_str}")
+
+    return '\n'.join(output_lines), total_board_feet
+
+def _nat_key(s):
+    """Natural sort key: split digits and non-digits so strings with numbers sort naturally."""
+    try:
+        parts = re.split(r'(\d+)', (s or ''))
+        return [int(p) if p.isdigit() else p.lower() for p in parts]
+    except Exception:
+        return [s]
+
+def _is_rough_opening(m):
+    """Check if a material represents a rough opening that should be excluded"""
+    if not isinstance(m, dict):
+        return False
+
+    # Check for rough opening indicators in description
+    desc = (m.get('Desc', '').lower() or m.get('Description', '').lower())
+    family_member = (m.get('FamilyMemberName', '').lower())
+
+    # Rough openings typically have descriptions containing these patterns
+    rough_opening_patterns = [
+        'rough opening',
+        'r/o',
+        'opening',
+        'window opening',
+        'door opening',
+        'garage opening'
+    ]
+
+    # Check description for rough opening patterns
+    for pattern in rough_opening_patterns:
+        if pattern in desc:
+            return True
+
+    # Check FamilyMemberName for rough opening indicators
+    if 'rough' in family_member and 'opening' in family_member:
+        return True
+
+    return False
+
+def parse_materials_from_panel(panel_element, root):
+    """Extract all materials from a panel element, including those in SubAssemblies and LooseMembers"""
+    materials = []
+    critical_studs = []
+
+    # Handle case where panel_element is None
+    if panel_element is None:
+        return materials, critical_studs
+
+    # Get panel GUID for filtering
+    panel_guid = None
+    for guid_tag in ['PanelGuid', 'PanelID']:
+        guid_el = panel_element.find(guid_tag)
+        if guid_el is not None and guid_el.text:
+            panel_guid = guid_el.text.strip()
+            break
+
+    if not panel_guid:
+        return materials, critical_studs
+
+    # Process all Board elements associated with this panel
+    for board_el in root.findall('.//Board'):
+        # Check if this board belongs to the panel
+        panel_guid_el = board_el.find('PanelGuid')
+        belongs_to_panel = panel_guid_el is not None and panel_guid_el.text == panel_guid
+
+        # Also include boards that are part of SubAssemblies belonging to this panel
+        is_subassembly_board = False
+        if not belongs_to_panel:
+            subassembly_guid_el = board_el.find('SubAssemblyGuid')
+            if subassembly_guid_el is not None and subassembly_guid_el.text:
+                sub_guid = subassembly_guid_el.text.strip()
+                # Check if this SubAssembly GUID belongs to our panel
+                for sub_el in root.findall('.//SubAssembly'):
+                    sub_panel_guid_el = sub_el.find('PanelGuid')
+                    sub_panel_id_el = sub_el.find('PanelID')
+                    if ((sub_panel_guid_el is not None and sub_panel_guid_el.text == panel_guid) or
+                        (sub_panel_id_el is not None and sub_panel_id_el.text == panel_guid)):
+                        sub_guid_el = sub_el.find('SubAssemblyGuid')
+                        if sub_guid_el is not None and sub_guid_el.text == sub_guid:
+                            is_subassembly_board = True
+                            break
+
+        if not belongs_to_panel and not is_subassembly_board:
+            continue
+
+        # Skip rough openings
+        if _is_rough_opening({'Desc': _text_of(board_el, ['Material/Description'])}):
+            continue
+
+        # Extract material information
+        material_info = {}
+
+        # Basic identifiers
+        for tag in ['BoardGuid', 'SubAssemblyGuid']:
+            el = board_el.find(tag)
+            if el is not None and el.text:
+                material_info[tag] = el.text.strip()
+
+        # Family member information
+        family_member_el = board_el.find('FamilyMember')
+        if family_member_el is not None and family_member_el.text:
+            material_info['FamilyMember'] = family_member_el.text.strip()
+
+        family_member_name_el = board_el.find('FamilyMemberName')
+        if family_member_name_el is not None and family_member_name_el.text:
+            material_info['FamilyMemberName'] = family_member_name_el.text.strip()
+
+        # Label
+        label_el = board_el.find('Label')
+        if label_el is not None and label_el.text:
+            material_info['Label'] = label_el.text.strip()
+        else:
+            material_info['Label'] = ''
+
+        # SubAssembly information
+        subassembly_el = board_el.find('SubAssembly')
+        if subassembly_el is not None and subassembly_el.text:
+            material_info['SubAssembly'] = subassembly_el.text.strip()
+        else:
+            material_info['SubAssembly'] = ''
+
+        # Quantity
+        qty_el = board_el.find('Quantity')
+        if qty_el is not None and qty_el.text:
+            try:
+                material_info['Qty'] = qty_el.text.strip()
+            except:
+                material_info['Qty'] = '1'
+        else:
+            material_info['Qty'] = '1'
+
+        # Dimensions - try ActualLength/ActualWidth first, then Length/Width
+        length_el = board_el.find('ActualLength') or board_el.find('Length')
+        if length_el is not None and length_el.text is not None:
+            material_info['ActualLength'] = length_el.text.strip()
+
+        width_el = board_el.find('ActualWidth') or board_el.find('Width')
+        if width_el is not None and width_el.text is not None:
+            material_info['ActualWidth'] = width_el.text.strip()
+
+        # Material description
+        material_el = board_el.find('Material')
+        if material_el is not None:
+            desc_el = material_el.find('Description')
+            if desc_el is not None and desc_el.text:
+                material_info['Desc'] = desc_el.text.strip()
+
+        # Add to materials list
+        materials.append(material_info)
+
+    # Process Sheet elements (sheathing) - both panel-specific and root-level
+    for sheet_el in root.findall('.//Sheet'):
+        # Check if this sheet belongs to the panel
+        panel_guid_el = sheet_el.find('PanelGuid')
+        belongs_to_panel = panel_guid_el is not None and panel_guid_el.text == panel_guid
+
+        # Also include sheets that are part of SubAssemblies belonging to this panel
+        subassembly_guid_el = sheet_el.find('SubAssemblyGuid')
+        is_subassembly_sheet = False
+        if subassembly_guid_el is not None and subassembly_guid_el.text:
+            sub_guid = subassembly_guid_el.text.strip()
+            # Check if this SubAssembly GUID belongs to our panel
+            for sub_el in root.findall('.//SubAssembly'):
+                sub_panel_guid_el = sub_el.find('PanelGuid')
+                sub_panel_id_el = sub_el.find('PanelID')
+                if ((sub_panel_guid_el is not None and sub_panel_guid_el.text == panel_guid) or
+                    (sub_panel_id_el is not None and sub_panel_id_el.text == panel_guid)):
+                    sub_guid_el = sub_el.find('SubAssemblyGuid')
+                    if sub_guid_el is not None and sub_guid_el.text == sub_guid:
+                        is_subassembly_sheet = True
+                        break
+
+        if not belongs_to_panel and not is_subassembly_sheet:
+            continue
+
+        # Skip rough openings
+        if _is_rough_opening({'Desc': _text_of(sheet_el, ['Material/Description'])}):
+            continue
+
+        # Extract material information
+        material_info = {}
+
+        # Basic identifiers
+        for tag in ['SheetGuid', 'SubAssemblyGuid']:
+            el = sheet_el.find(tag)
+            if el is not None and el.text:
+                material_info[tag] = el.text.strip()
+
+        # Family member information (sheets typically have FamilyMember 40 for Sheathing)
+        family_member_el = sheet_el.find('FamilyMember')
+        if family_member_el is not None and family_member_el.text:
+            material_info['FamilyMember'] = family_member_el.text.strip()
+
+        family_member_name_el = sheet_el.find('FamilyMemberName')
+        if family_member_name_el is not None and family_member_name_el.text:
+            material_info['FamilyMemberName'] = family_member_name_el.text.strip()
+        else:
+            material_info['FamilyMemberName'] = 'Sheathing'  # Default for sheets
+
+        # Label
+        label_el = sheet_el.find('Label')
+        if label_el is not None and label_el.text:
+            material_info['Label'] = label_el.text.strip()
+        else:
+            material_info['Label'] = ''
+
+        # SubAssembly information
+        subassembly_el = sheet_el.find('SubAssembly')
+        if subassembly_el is not None and subassembly_el.text:
+            material_info['SubAssembly'] = subassembly_el.text.strip()
+        else:
+            material_info['SubAssembly'] = ''
+
+        # Quantity
+        qty_el = sheet_el.find('Quantity')
+        if qty_el is not None and qty_el.text:
+            try:
+                material_info['Qty'] = qty_el.text.strip()
+            except:
+                material_info['Qty'] = '1'
+        else:
+            material_info['Qty'] = '1'
+
+        # Dimensions - try Material child element first, then Sheet element
+        material_el = sheet_el.find('Material')
+        length = ''
+        width = ''
+
+        if material_el is not None:
+            # Try to get dimensions from Material child element first
+            length_el = material_el.find('ActualLength')
+            if length_el is None:
+                length_el = material_el.find('Length')
+            if length_el is not None and length_el.text is not None:
+                length = length_el.text.strip()
+
+            width_el = material_el.find('ActualWidth')
+            if width_el is None:
+                width_el = material_el.find('Width')
+            if width_el is not None and width_el.text is not None:
+                width = width_el.text.strip()
+
+        # Fallback to direct Sheet element if no Material child dimensions
+        if not length:
+            length_el = sheet_el.find('ActualLength')
+            if length_el is None:
+                length_el = sheet_el.find('Length')
+            if length_el is not None and length_el.text is not None:
+                length = length_el.text.strip()
+
+        if not width:
+            width_el = sheet_el.find('ActualWidth')
+            if width_el is None:
+                width_el = sheet_el.find('Width')
+            if width_el is not None and width_el.text is not None:
+                width = width_el.text.strip()
+
+        if length:
+            material_info['ActualLength'] = length
+        if width:
+            material_info['ActualWidth'] = width
+
+        # Material description
+        if material_el is not None:
+            desc_el = material_el.find('Description')
+            if desc_el is not None and desc_el.text:
+                material_info['Desc'] = desc_el.text.strip()
+
+        # Add to materials list
+        materials.append(material_info)
+
+    # Process Bracing elements - both panel-specific and root-level
+    try:
+        for bracing_el in root.findall('.//Bracing'):
+            # Check if this bracing belongs to the panel
+            panel_guid_el = bracing_el.find('PanelGuid')
+            belongs_to_panel = panel_guid_el is not None and panel_guid_el.text == panel_guid
+
+            # Also include bracing that is part of SubAssemblies belonging to this panel
+            subassembly_guid_el = bracing_el.find('SubAssemblyGuid')
+            is_subassembly_bracing = False
+            if subassembly_guid_el is not None and subassembly_guid_el.text:
+                sub_guid = subassembly_guid_el.text.strip()
+                # Check if this SubAssembly GUID belongs to our panel
+                for sub_el in root.findall('.//SubAssembly'):
+                    sub_panel_guid_el = sub_el.find('PanelGuid')
+                    sub_panel_id_el = sub_el.find('PanelID')
+                    if ((sub_panel_guid_el is not None and sub_panel_guid_el.text == panel_guid) or
+                        (sub_panel_id_el is not None and sub_panel_id_el.text == panel_guid)):
+                        sub_guid_el = sub_el.find('SubAssemblyGuid')
+                        if sub_guid_el is not None and sub_guid_el.text == sub_guid:
+                            is_subassembly_bracing = True
+                            break
+
+            if not belongs_to_panel and not is_subassembly_bracing:
+                continue
+
+            # Extract material information
+            material_info = {}
+
+            # Basic identifiers
+            for tag in ['BoardGuid', 'SubAssemblyGuid']:
+                el = bracing_el.find(tag)
+                if el is not None and el.text:
+                    material_info[tag] = el.text.strip()
+
+            # Family member information
+            family_member_el = bracing_el.find('FamilyMember')
+            if family_member_el is not None and family_member_el.text:
+                material_info['FamilyMember'] = family_member_el.text.strip()
+
+            family_member_name_el = bracing_el.find('FamilyMemberName')
+            if family_member_name_el is not None and family_member_name_el.text:
+                material_info['FamilyMemberName'] = family_member_name_el.text.strip()
+
+            # Label
+            label_el = bracing_el.find('Label')
+            if label_el is not None and label_el.text:
+                material_info['Label'] = label_el.text.strip()
+            else:
+                material_info['Label'] = ''
+
+            # SubAssembly information
+            subassembly_el = bracing_el.find('SubAssembly')
+            if subassembly_el is not None and subassembly_el.text:
+                material_info['SubAssembly'] = subassembly_el.text.strip()
+            else:
+                material_info['SubAssembly'] = ''
+
+            # Quantity
+            qty_el = bracing_el.find('Quantity')
+            if qty_el is not None and qty_el.text:
+                try:
+                    material_info['Qty'] = qty_el.text.strip()
+                except:
+                    material_info['Qty'] = '1'
+            else:
+                material_info['Qty'] = '1'
+
+            # Dimensions - try Material child element first
+            material_el = bracing_el.find('Material')
+            if material_el is not None:
+                # Try ActualLength first, then Length
+                length_el = material_el.find('ActualLength')
+                if length_el is None:
+                    length_el = material_el.find('Length')
+                if length_el is not None and length_el.text is not None:
+                    material_info['ActualLength'] = length_el.text.strip()
+
+                # Try ActualWidth first, then Width
+                width_el = material_el.find('ActualWidth')
+                if width_el is None:
+                    width_el = material_el.find('Width')
+                if width_el is not None and width_el.text is not None:
+                    material_info['ActualWidth'] = width_el.text.strip()
+
+                # Material description
+                desc_el = material_el.find('Description')
+                if desc_el is not None and desc_el.text:
+                    material_info['Desc'] = desc_el.text.strip()
+
+            # Add to materials list
+            materials.append(material_info)
+    except Exception as e:
+        print(f"Error processing bracing elements: {e}")
+        # Continue processing even if bracing fails
+
+    # Process LooseMember elements - materials shipped separately but belonging to this panel
+    for loose_el in root.findall('.//LooseMember'):
+        # Check if this loose member belongs to the panel
+        panel_guid_el = loose_el.find('PanelGuid')
+        panel_id_el = loose_el.find('PanelID')
+        belongs_to_panel = ((panel_guid_el is not None and panel_guid_el.text == panel_guid) or
+                           (panel_id_el is not None and panel_id_el.text == panel_guid))
+
+        if not belongs_to_panel:
+            continue
+
+        # Extract material information from loose member
+        material_info = {}
+
+        # Basic identifiers
+        for tag in ['BoardGuid']:
+            el = loose_el.find(tag)
+            if el is not None and el.text:
+                material_info[tag] = el.text.strip()
+
+        # Family member information
+        family_member_el = loose_el.find('FamilyMember')
+        if family_member_el is not None and family_member_el.text:
+            material_info['FamilyMember'] = family_member_el.text.strip()
+
+        family_member_name_el = loose_el.find('FamilyMemberName')
+        if family_member_name_el is not None and family_member_name_el.text:
+            material_info['FamilyMemberName'] = family_member_name_el.text.strip()
+
+        # Label
+        label_el = loose_el.find('Label')
+        if label_el is not None and label_el.text:
+            material_info['Label'] = label_el.text.strip()
+        else:
+            material_info['Label'] = ''
+
+        # Quantity (loose members are typically 1 each)
+        material_info['Qty'] = '1'
+
+        # Dimensions from Material element
+        material_el = loose_el.find('Material')
+        if material_el is not None:
+            # Try ActualLength first, then Length
+            length_el = material_el.find('ActualLength')
+            if length_el is None:
+                length_el = material_el.find('Length')
+            if length_el is not None and length_el.text is not None:
+                material_info['ActualLength'] = length_el.text.strip()
+
+            # Try ActualWidth first, then Width
+            width_el = material_el.find('ActualWidth')
+            if width_el is None:
+                width_el = material_el.find('Width')
+            if width_el is not None and width_el.text is not None:
+                material_info['ActualWidth'] = width_el.text.strip()
+
+            # Material description
+            desc_el = material_el.find('Description')
+            if desc_el is not None and desc_el.text:
+                material_info['Desc'] = desc_el.text.strip()
+
+        # Add to materials list
+        materials.append(material_info)
+
+    return materials, critical_studs
+
+def format_and_sort_materials(materials, panel_height=None):
+    """Format materials into breakdown lines and sort by type priority then alphabetically
+    
+    Args:
+        materials: List of material dictionaries
+        panel_height: Panel height in inches (optional, for plate cutting adjustments)
+    """
+    if not materials:
+        return []
+
+    # Filter out rough openings from the breakdown (like Vold.py does)
+    filtered_materials = [m for m in materials if not _is_rough_opening(m)]
+
+    # Apply plate cutting rules if panel height is provided
+    if panel_height:
+        for m in filtered_materials:
+            if isinstance(m, dict):
+                fam = (m.get('FamilyMemberName') or '').lower()
+                length = m.get('ActualLength') or m.get('Length') or ''
+                
+                # Note: VeryTopPlate is shipped loose and should retain its original length
+                # No adjustment needed for VeryTopPlate
+                
+                # Apply additional bottom plate cutting rule: panel height - 3"
+                # This would apply to any bottom plate beyond the first one
+                if 'bottomplate' in fam and length:
+                    # Check if this is an additional bottom plate (FM106)
+                    fm_id = m.get('FamilyMember')
+                    if fm_id == '106':  # FM106 is BottomMultiPlate
+                        try:
+                            current_length = float(length)
+                            adjusted_length = panel_height - 3.0
+                            if adjusted_length > 0:
+                                m['ActualLength'] = str(adjusted_length)
+                                m['Length'] = str(adjusted_length)
+                        except (ValueError, TypeError):
+                            pass
+
+    # Filter out rough openings from the breakdown (like Vold.py does)
+    filtered_materials = [m for m in materials if not _is_rough_opening(m)]
+
+    # Create the mapping for alphabetical labels with type prioritization
+    material_mapping = create_material_to_breakdown_mapping(filtered_materials)
+
+    # Update material labels with alphabetical breakdown labels
+    for m in filtered_materials:
+        if isinstance(m, dict):
+            original_label = m.get('Label', '')
+            if original_label in material_mapping:
+                m['Label'] = material_mapping[original_label]
+
+    # Group materials by label for sorting and counting (following Vold.py logic)
+    groups = {}
+    sheathing_materials = []  # Collect sheathing materials separately
+
+    for m in filtered_materials:
+        lbl = (m.get('Label') or '').strip()
+        typ = (m.get('Type') or '').strip()
+        fam = (m.get('FamilyMemberName') or '').strip()
+        desc = (m.get('Desc') or m.get('Description') or '').strip()
+        length = m.get('ActualLength') or m.get('Length') or ''
+        width = m.get('ActualWidth') or m.get('Width') or ''
+
+        # Round length and width to handle floating point precision issues (use more precision for exact display)
+        try:
+            length_val = float(length) if length else 0.0
+            length_rounded = round(length_val, 3)  # Use 3 decimal places for more precision
+            length_str = str(length_rounded) if length_rounded != 0.0 else ''
+        except (ValueError, TypeError):
+            length_str = str(length).strip()
+            
+        try:
+            width_val = float(width) if width else 0.0
+            width_rounded = round(width_val, 3)  # Use 3 decimal places for more precision
+            width_str = str(width_rounded) if width_rounded != 0.0 else ''
+        except (ValueError, TypeError):
+            width_str = str(width).strip()        # Check if this is a sheathing material
+        is_sheathing = 'sheet' in typ.lower() or 'sheath' in typ.lower() or 'sheath' in fam.lower() or fam.lower() == 'endpadding' or 'endpadding' in fam.lower()
+        
+        # Also check if this is a thin material (< 1.5" thick) that should be treated as sheathing
+        thickness = extract_thickness_from_description(desc)
+        is_thin_material = thickness < 1.5
+        if is_thin_material:
+            is_sheathing = True
+
+        if is_sheathing:
+            # Collect sheathing materials separately to assign individual labels
+            sheathing_materials.append({
+                'material': m,
+                'lbl': lbl,
+                'typ': typ,
+                'fam': fam,
+                'desc': desc,
+                'length': length,
+                'width': width,
+                'length_str': length_str,
+                'width_str': width_str
+            })
+        else:
+            # Group non-sheathing materials as before
+            key = (lbl, typ, desc, length_str, width_str)
+
+            # Parse quantity from the material
+            qty_str = m.get('Qty', '1')
+            try:
+                qty = int(float(qty_str)) if qty_str else 1
+            except (ValueError, TypeError):
+                qty = 1
+
+            if key not in groups:
+                groups[key] = {
+                    'count': 0,
+                    'length': length,
+                    'width': width,
+                    'lbl': lbl,
+                    'typ': typ,
+                    'fam': fam,
+                    'desc': desc
+                }
+            groups[key]['count'] += qty
+
+    # Sort keys by natural label ordering
+    sorted_keys = sorted(groups.keys(), key=lambda k: _nat_key(k[0] or ''))
+    lines = []
+
+    # Process non-sheathing materials first
+    for key in sorted_keys:
+        # Handle variable key length for sheathing
+        if len(key) == 5:  # Regular key
+            lbl, typ, desc, length, width = key
+        else:  # Fallback
+            lbl, typ, desc, length, width = key[:5]
+        info = groups[key]
+        cnt = info.get('count', 0)
+        qty_str = f"({cnt})" if cnt > 1 else "(1)"
+        len_str = format_feet_to_dimension(float(length)/12) if length not in (None, '', '0', '0.0') else ''
+        wid_str = format_feet_to_dimension(float(width)/12) if width not in (None, '', '0', '0.0') else ''
+        size = ''
+        # Sheets include width in the size; boards/bracing use length only
+        if 'sheet' in typ.lower() or 'sheath' in typ.lower():
+            if len_str and wid_str:
+                size = f"{len_str} x {wid_str}"
+            elif len_str:
+                size = f"{len_str}"
+            elif wid_str:
+                size = f"{wid_str}"
+            else:
+                size = ''
+        else:
+            size = len_str or ''
+        # clean desc
+        desc_clean = desc
+        # build line
+        # use FamilyMemberName for middle column to match materials.log
+        mid = info.get('fam') or info.get('typ') or typ
+        if size:
+            line = f"{lbl} - {mid} - {desc_clean} - {qty_str} - {size}"
+        else:
+            line = f"{lbl} - {mid} - {desc_clean} - {qty_str}"
+        # Only add spaces around the main separator dashes, not dimension dashes
+        # Split by ' - ' first to preserve dimension formatting
+        parts = line.split(' - ')
+        # Rejoin with proper spacing, but keep dimension strings intact
+        formatted_parts = []
+        for part in parts:
+            # If this part contains feet-inches format (has ' and -), keep as-is
+            if "'" in part and '-' in part:
+                formatted_parts.append(part)
+            else:
+                formatted_parts.append(part)
+        line = ' - '.join(formatted_parts)
+        lines.append(line)
+
+    # Process sheathing materials individually with existing labels
+    if sheathing_materials:
+        # Deduplicate sheathing materials based on their properties
+        seen_sheathing = set()
+        deduplicated_sheathing = []
+        for sheath in sheathing_materials:
+            key = (sheath['lbl'], sheath['typ'], sheath['desc'], sheath['length_str'], sheath['width_str'])
+            if key not in seen_sheathing:
+                seen_sheathing.add(key)
+                deduplicated_sheathing.append(sheath)
+        sheathing_materials = deduplicated_sheathing
+
+        # Sort sheathing materials by their original properties for consistent ordering
+        sheathing_materials.sort(key=lambda x: (x['lbl'], x['desc'], x['length_str'], x['width_str']))
+
+        for sheath_info in sheathing_materials:
+            # Use the existing label from the material
+            lbl = sheath_info['lbl']
+            typ = sheath_info['typ']
+            desc = sheath_info['desc']
+            length = sheath_info['length']
+            width = sheath_info['width']
+
+            qty_str = "(1)"  # Each sheathing piece is individual
+            len_str = format_feet_to_dimension(float(length)/12) if length not in (None, '', '0', '0.0') else ''
+            wid_str = format_feet_to_dimension(float(width)/12) if width not in (None, '', '0', '0.0') else ''
+            size = ''
+
+            # For EndPadding, ensure correct width based on material size
+            if sheath_info.get('fam', '').lower() == 'endpadding':
+                if '2x4' in desc:
+                    width = '3.5'  # 2x4 padding is 3.5" wide
+                    wid_str = format_feet_to_dimension(float(width)/12)
+                elif '2x6' in desc:
+                    width = '5.5'  # 2x6 padding is 5.5" wide
+                    wid_str = format_feet_to_dimension(float(width)/12)
+
+            # Inference logic for 4x9 sheathing and thin materials
+            if not wid_str and len_str and ('4x9' in desc.lower() or is_thin_material):
+                # If we have length but no width, and it's 4x9 sheathing or thin material, infer width
+                if len_str == "9'-0":  # 9' length means 4x9 sheathing
+                    wid_str = "4'-0"
+                elif len_str == "4'-0":  # 4' length means 9x4 sheathing
+                    wid_str = "9'-0"
+                elif is_thin_material:
+                    # For thin materials, try to infer width from description
+                    if '4x8' in desc:
+                        wid_str = "8'-0"
+                    elif '4x9' in desc:
+                        wid_str = "9'-0"
+                    else:
+                        # Default assumption for thin materials
+                        wid_str = "8'-0"
+
+            if len_str and wid_str:
+                size = f"{len_str} x {wid_str}"  # Use quotes for sheathing dimensions
+            elif len_str:
+                size = f"{len_str}"
+            elif wid_str:
+                size = f"{wid_str}"
+
+            # clean desc
+            desc_clean = desc
+            # build line
+            # use FamilyMemberName for middle column to match materials.log
+            mid = sheath_info.get('fam') or typ
+            if size:
+                line = f"{lbl} - {mid} - {desc_clean} - {qty_str} - {size}"
+            else:
+                line = f"{lbl} - {mid} - {desc_clean} - {qty_str}"
+            # Only add spaces around the main separator dashes, not dimension dashes
+            # Split by ' - ' first to preserve dimension formatting
+            parts = line.split(' - ')
+            # Rejoin with proper spacing, but keep dimension strings intact
+            formatted_parts = []
+            for part in parts:
+                # If this part contains feet-inches format (has ' and -), keep as-is
+                if "'" in part and '-' in part:
+                    formatted_parts.append(part)
+                else:
+                    formatted_parts.append(part)
+            line = ' - '.join(formatted_parts)
+            lines.append(line)
+
+    # Sort all lines by the label at the beginning of each line to ensure proper alphabetical order
+    lines.sort(key=lambda line: _nat_key(line.split(' - ')[0] if ' - ' in line else line))
+
+    return lines
+
+def create_material_to_breakdown_mapping(mats):
+    """Create a mapping from material properties to specific breakdown labels based on FamilyMemberName
+    
+    Uses predefined letter assignments for common stud types to make the breakdown more meaningful:
+    - D: Trimmer
+    - F: Stud/KingStud
+    - G: CriticalStud
+    - O: EndPadding
+    - P: FillerCripple
+    - Other materials get alphabetical letters A, B, C, etc.
+    """
+    # Specific letter mappings for common stud types
+    SPECIFIC_MAPPINGS = {
+        'Trimmer': 'D',
+        'Stud': 'F', 
+        'KingStud': 'F',  # KingStud also maps to F
+        'CriticalStud': 'G',
+        'EndPadding': 'O',
+        'FillerCripple': 'P',
+        'FillerBtmNailer': 'Q',
+        'BottomPlate': 'A',
+        'TopPlate': 'B', 
+        'VeryTopPlate': 'C',
+        'Header': 'E'
+    }
+    
+    # ensure label fallback
+    for m in mats:
+        if not m.get('Label'):
+            m['Label'] = (m.get('Type','') + '-' + (m.get('Desc') or ''))[:6]
+
+    # group identical materials by (Label, Type, Desc, length, width, SubAssemblyGuid)
+    groups = {}
+    sheathing_index = 0  # Counter for sheathing materials to make each unique
+    for m in mats:
+        lbl = (m.get('Label') or '').strip()
+        typ = (m.get('Type') or '').strip()
+        desc = (m.get('Desc') or m.get('Description') or '').strip()
+        length = m.get('ActualLength') or m.get('Length') or ''
+        width = m.get('ActualWidth') or m.get('Width') or ''
+        subassembly_guid = (m.get('SubAssemblyGuid') or '').strip()
+        family_member_name = (m.get('FamilyMemberName') or '').strip()
+        
+        # Round length and width to 2 decimal places to handle floating point precision issues
+        try:
+            length_val = float(length) if length else 0.0
+            length_rounded = round(length_val, 2)
+            length_str = str(length_rounded) if length_rounded != 0.0 else ''
+        except (ValueError, TypeError):
+            length_str = str(length).strip()
+            
+        try:
+            width_val = float(width) if width else 0.0
+            width_rounded = round(width_val, 2)
+            width_str = str(width_rounded) if width_rounded != 0.0 else ''
+        except (ValueError, TypeError):
+            width_str = str(width).strip()
+        
+        # Check if this is a sheathing material
+        is_sheathing = 'sheet' in typ.lower() or 'sheath' in typ.lower()
+        
+        # normalize numeric strings
+        if is_sheathing:
+            # For sheathing, make each piece unique by including an index
+            key = (lbl, typ, desc, length_str, width_str, subassembly_guid, sheathing_index)
+            sheathing_index += 1
+        else:
+            key = (lbl, typ, desc, length_str, width_str, subassembly_guid)
+        
+        if key not in groups:
+            groups[key] = {
+                'count': 0, 
+                'length': length, 
+                'width': width,
+                'lbl': lbl, 
+                'typ': typ, 
+                'desc': desc,
+                'subassembly': (m.get('SubAssembly') or '').strip(),
+                'subassembly_guid': subassembly_guid,
+                'family_member_name': family_member_name
+            }
+        
+        # Parse quantity from the material
+        qty_str = m.get('Qty', '1')
+        try:
+            qty = int(float(qty_str)) if qty_str else 1
+        except (ValueError, TypeError):
+            qty = 1
+        groups[key]['count'] += qty
+    
+    # sort keys by natural label ordering and assign specific or alphabetical labels
+    sorted_keys = sorted(groups.keys(), key=lambda k: _nat_key(k[0] or ''))
+    mapping = {}
+    
+    # Track used letters to avoid duplicates
+    used_letters = set()
+    
+    # First pass: assign specific mappings for known stud types
+    for i, key in enumerate(sorted_keys):
+        group_info = groups[key]
+        family_member_name = group_info['family_member_name']
+        
+        # Check if this material type has a specific letter mapping
+        assigned_letter = None
+        for fm_name, letter in SPECIFIC_MAPPINGS.items():
+            if fm_name in family_member_name and letter not in used_letters:
+                assigned_letter = letter
+                used_letters.add(letter)
+                break
+        
+        if assigned_letter:
+            mapping[key] = assigned_letter
+    
+    # Second pass: assign remaining materials with alphabetical letters
+    next_letter_code = 0
+    for i, key in enumerate(sorted_keys):
+        if key not in groups:
+            groups[key] = {
+                'count': 0, 
+                'length': length, 
+                'width': width,
+                'lbl': lbl, 
+                'typ': typ, 
+                'desc': desc,
+                'subassembly': (m.get('SubAssembly') or '').strip(),
+                'subassembly_guid': subassembly_guid,
+                'family_member_name': family_member_name
+            }
+        
+        # Parse quantity from the material
+        qty_str = m.get('Qty', '1')
+        try:
+            qty = int(float(qty_str)) if qty_str else 1
+        except (ValueError, TypeError):
+            qty = 1
+        groups[key]['count'] += qty
+    
+    # sort keys by natural label ordering and assign specific or alphabetical labels
+    sorted_keys = sorted(groups.keys(), key=lambda k: _nat_key(k[0] or ''))
+    mapping = {}
+    
+    # Track used letters to avoid duplicates
+    used_letters = set()
+    
+    # First pass: assign specific mappings for known stud types
+    for i, key in enumerate(sorted_keys):
+        group_info = groups[key]
+        family_member_name = group_info['family_member_name']
+        
+        # Check if this material type has a specific letter mapping
+        assigned_letter = None
+        for fm_name, letter in SPECIFIC_MAPPINGS.items():
+            if fm_name in family_member_name and letter not in used_letters:
+                assigned_letter = letter
+                used_letters.add(letter)
+                break
+        
+        if assigned_letter:
+            mapping[key] = assigned_letter
+    
+    # Second pass: assign remaining materials with alphabetical letters
+    next_letter_code = 0
+    for i, key in enumerate(sorted_keys):
+        if key not in mapping:
+            # Find next available letter
+            while True:
+                # Convert index to alphabetical label
+                letter = ""
+                temp = next_letter_code
+                while True:
+                    letter = chr(65 + (temp % 26)) + letter  # 65 is ASCII for 'A'
+                    temp = temp // 26 - 1
+                    if temp < 0:
+                        break
+                if not letter:  # Handle i=0 case
+                    letter = "A"
+                
+                if letter not in used_letters:
+                    mapping[key] = letter
+                    used_letters.add(letter)
+                    next_letter_code += 1
+                    break
+                else:
+                    next_letter_code += 1
+    
+    return mapping
+
+def get_panel_material_breakdown_standalone(panel_name, root, panels_data, panel_height=None):
+    """Standalone version of panel material breakdown extraction"""
+    # panel_name could be a GUID or display name, find the matching panel info
+    panel_info = None
+
+    # First try direct lookup by panel_name
+    if panel_name in panels_data:
+        panel_info = panels_data[panel_name]
+    else:
+        # Try to find by display name or label
+        for guid, info in panels_data.items():
+            if (info.get('display_name', '').lower() == panel_name.lower() or
+                info.get('label', '').lower() == panel_name.lower() or
+                info.get('name', '').lower() == panel_name.lower()):
+                panel_info = info
+                break
+
+    if not panel_info:
+        return f"No panel info found for {panel_name}"
+
+    # Find the panel element by GUID
+    panel_el = None
+    panel_guid = panel_info['guid']
+
+    for p_el in root.findall('.//Panel'):
+        panel_guid_el = p_el.find('PanelGuid')
+        panel_id_el = p_el.find('PanelID')
+        label_el = p_el.find('Label')
+
+        if ((panel_guid_el is not None and panel_guid_el.text == panel_guid) or
+            (panel_id_el is not None and panel_id_el.text == panel_guid)):
+            panel_el = p_el
+            break
+
+    if panel_el is None:
+        return f"No panel element found for {panel_name} (GUID: {panel_guid})"
+
+    # Parse materials using standalone logic
+    mats, critical_studs = parse_materials_from_panel(panel_el, root)
+
+    # Filter out FM25 materials (subassembly openings) and excluded materials from takeoff
+    filtered_mats = [m for m in mats if not is_fm25_material(m) and not is_excluded_material(m)]
+
+    if not filtered_mats:
+        excluded_count = len([m for m in mats if is_excluded_material(m)])
+        if excluded_count > 0:
+            return f"No loose materials found for panel {panel_name} (FM25 subassembly materials and {excluded_count} excluded materials filtered out)"
+        else:
+            return f"No loose materials found for panel {panel_name} (FM25 subassembly materials excluded)"
+
+    # Format and sort materials with panel height for plate cutting adjustments
+    sorted_lines = format_and_sort_materials(filtered_mats, panel_height)
+    result = "\n".join(sorted_lines)
+
+    return result
+
+def _text_of(element, tags):
+    """Helper function to get text from first matching tag"""
+    for tag in tags:
+        el = element.find(tag)
+        if el is not None and el.text:
+            return el.text.strip()
+    return None
+
+def extract_panel_specifications(panel_info, panel_element, root=None, materials=None):
+    """Extract detailed panel specifications from panel info and element"""
+    specs = {}
+    
+    # Extract from panel_info (from build_search_indexes)
+    specs['level'] = panel_info.get('level', '')
+    specs['category'] = panel_info.get('category', '')
+    specs['load_bearing'] = panel_info.get('loadbearing', '')
+    specs['wall_length'] = panel_info.get('walllength', '')
+    specs['height'] = panel_info.get('height', '')
+    specs['thickness'] = panel_info.get('thickness', '')
+    specs['stud_spacing'] = panel_info.get('studspacing', '')
+    specs['weight'] = panel_info.get('weight', '')
+    
+    # Extract additional fields from panel_element
+    if panel_element is not None:
+        specs['squaring'] = _text_of(panel_element, ['Squaring'])
+        specs['production_notes'] = _text_of(panel_element, ['OnScreenInstruction', 'ProductionNotes'])
+        
+        # Extract sheathing information from materials using the same logic as file writing
+        sheathing_info = []
+        if materials:
+            if debug_enabled:
+                print(f"DEBUG: Processing {len(materials)} materials for sheathing detection")
+            for mat in materials:
+                if isinstance(mat, dict):
+                    # Use the same sheathing detection logic as takeoff_standalone.py
+                    t = mat.get('Type', '').lower()
+                    m = mat.get('FamilyMemberName', '')
+                    if debug_enabled:
+                        print(f"DEBUG: Checking material: Type='{t}', FamilyMemberName='{m}', Desc='{mat.get('Desc', '')}'")
+                    if 'sheet' in t or 'sheath' in t or (m and 'sheath' in str(m).lower()):
+                        # Get material description
+                        desc = mat.get('Desc') or mat.get('Description') or mat.get('Label', '')
+                        if desc and desc not in sheathing_info:
+                            sheathing_info.append(desc)
+                            if debug_enabled:
+                                print(f"DEBUG: Found sheathing material: {desc} (Type: {t}, FamilyMemberName: {m})")
+        
+        # Set sheathing info
+        if sheathing_info:
+            specs['sheathing'] = ', '.join(sheathing_info)
+        else:
+            specs['sheathing'] = 'Unknown'
+        
+        # Get the WallLength from XML for reference
+        wall_length_xml = _text_of(panel_element, ['WallLength'])
+        if wall_length_xml:
+            try:
+                wall_length_val = float(wall_length_xml)
+                specs['wall_length_xml'] = str(wall_length_val)
+            except ValueError:
+                pass
+        
+        # Calculate actual length from far most left/right material positions
+        panel_guid = _text_of(panel_element, ['PanelGuid', 'PanelID'])
+        if panel_guid:
+            # Materials to exclude from position analysis (following xcor.py logic)
+            exclude_fms = ['30', '40']  # VeryTopPlate (FM30), Sheathing (FM40)
+            
+            # Find all X coordinates from materials in this panel (only Board elements, exclude specified FMs)
+            all_x_coords = []
+            
+            # Process all Board elements
+            for board_el in root.findall('.//Board') if root is not None else panel_element.findall('.//Board'):
+                # Check if this board belongs to the panel
+                panel_guid_el = board_el.find('PanelGuid')
+                if panel_guid_el is not None and panel_guid_el.text == panel_guid:
+                    # Check FamilyMember to exclude specified types
+                    fm_el = board_el.find('FamilyMember')
+                    fm_id = fm_el.text.strip() if fm_el is not None and fm_el.text else ''
+                    
+                    # Skip excluded family members
+                    if fm_id in exclude_fms:
+                        continue
+                    
+                    # Get X coordinates from BottomView
+                    bottom_view = board_el.find('BottomView')
+                    if bottom_view is not None:
+                        for point in bottom_view.findall('Point'):
+                            x_el = point.find('X')
+                            if x_el is not None and x_el.text:
+                                try:
+                                    x_val = float(x_el.text)
+                                    all_x_coords.append(x_val)
+                                except ValueError:
+                                    pass
+            
+            # Calculate actual length from material positions
+            if len(all_x_coords) >= 2:
+                min_x = min(all_x_coords)
+                max_x = max(all_x_coords)
+                actual_length = max_x - min_x
+                specs['wall_length_actual'] = str(actual_length)
+                
+                # Calculate growth allowance (difference between XML WallLength and actual material length)
+                if specs.get('wall_length_xml'):
+                    try:
+                        xml_length = float(specs['wall_length_xml'])
+                        growth_allowance = xml_length - actual_length
+                        specs['growth_allowance'] = str(growth_allowance)
+                        
+                        # Flag as error if actual length is longer than XML WallLength
+                        if actual_length > xml_length:
+                            specs['length_error'] = f"Actual length ({actual_length:.3f}) exceeds WallLength ({xml_length:.3f}) by {actual_length - xml_length:.3f} inches"
+                    except (ValueError, TypeError):
+                        pass
+            elif len(all_x_coords) == 1:
+                # If only one coordinate, use it as reference but note limited data
+                specs['wall_length_actual'] = str(all_x_coords[0])
+                specs['wall_length_note'] = 'Single material position found'
+        
+        # Use actual length for wall_length if available, otherwise fall back to XML value
+        if specs.get('wall_length_actual'):
+            specs['wall_length'] = specs['wall_length_actual']
+        elif wall_length_xml:
+            try:
+                wall_length_val = float(wall_length_xml)
+                specs['wall_length'] = str(wall_length_val)
+            except ValueError:
+                pass    # Calculate squaring if not found in XML using Pythagorean theorem
+    # Subtract 3" from height to account for top plate and bottom plate that are shipped loose
+    if not specs.get('squaring') and specs.get('height') and specs.get('wall_length'):
+        try:
+            height = float(specs['height'])
+            wall_length = float(specs['wall_length'])
+            
+            # Check if FM106 (BottomMultiPlate) is present in the panel
+            fm106_present = False
+            if panel_element is not None:
+                for board_el in panel_element.findall('.//Board'):
+                    fm_el = board_el.find('FamilyMember')
+                    if fm_el is not None and fm_el.text == '106':
+                        fm106_present = True
+                        break
+            
+            # Subtract height reduction based on shipped-loose components:
+            # - VeryTopPlate (FM30) is always shipped loose: -1.5"
+            # - BottomMultiPlate (FM106) is shipped loose when present: -1.5" additional
+            height_reduction = 1.5  # Always subtract for VeryTopPlate
+            if fm106_present:
+                height_reduction = 3.0  # Add BottomMultiPlate reduction
+            
+            squaring_inches = math.sqrt((height - height_reduction) ** 2 + wall_length ** 2)
+            specs['squaring'] = str(squaring_inches)
+        except (ValueError, TypeError):
+            pass
+    
+    return specs
+
+def extract_beam_pocket_details(panel_element, materials):
+    """Extract beam pocket details (FM33) from panel"""
+    beam_pockets = []
+    
+    # Look for beam pocket SubAssemblies
+    for sub_el in panel_element.findall('.//SubAssembly'):
+        sub_name = _text_of(sub_el, ['SubAssemblyName', 'Name'])
+        fm_id = _text_of(sub_el, ['FamilyMember'])
+        
+        if fm_id == '33' or (sub_name and 'beampocket' in sub_name.lower()):
+            pocket_info = {
+                'name': sub_name or 'Beam Pocket',
+                'guid': _text_of(sub_el, ['SubAssemblyGuid']),
+                'materials': {},
+                'aff': None,
+                'opening_width': None
+            }
+            
+            # Extract AFF from Trimmer ElevationView Y-coordinates and calculate opening width
+            sub_guid = pocket_info['guid']
+            if sub_guid:
+                trimmer_ys = []
+                trimmer_count = 0
+                
+                for board_el in panel_element.findall('.//Board'):
+                    board_sub_guid_el = board_el.find('SubAssemblyGuid')
+                    if (board_sub_guid_el is not None and 
+                        board_sub_guid_el.text == sub_guid):
+                        
+                        fam_member_name_el = board_el.find('FamilyMemberName')
+                        if (fam_member_name_el is not None and 
+                            'Trimmer' in fam_member_name_el.text):
+                            trimmer_count += 1
+                            # Get max Y from ElevationView
+                            elev_view = board_el.find('ElevationView')
+                            if elev_view is not None:
+                                max_y = None
+                                for point in elev_view.findall('Point'):
+                                    y_el = point.find('Y')
+                                    if y_el is not None and y_el.text:
+                                        try:
+                                            y_val = float(y_el.text)
+                                            if max_y is None or y_val > max_y:
+                                                max_y = y_val
+                                        except ValueError:
+                                            pass
+                                if max_y is not None:
+                                    trimmer_ys.append(max_y)
+                
+                # Calculate AFF as max of trimmer Y values
+                if trimmer_ys:
+                    pocket_info['aff'] = max(trimmer_ys)
+                
+                # Calculate opening width as trimmer count × 1.5 inches
+                pocket_info['opening_width'] = trimmer_count * 1.5
+            
+            # Find materials belonging to this beam pocket
+            for mat in materials:
+                if isinstance(mat, dict) and mat.get('SubAssemblyGuid') == sub_guid:
+                    label = mat.get('Label', '')
+                    if label:
+                        if label not in pocket_info['materials']:
+                            pocket_info['materials'][label] = 0
+                        pocket_info['materials'][label] += 1
+            
+            beam_pockets.append(pocket_info)
+    
+    return beam_pockets
+
+def extract_critical_stud_details(panel_element, materials):
+    """Extract individual critical stud details with GUIDs, types, and distances from panel edge"""
+    critical_studs = []
+
+    # Find the panel edge (far most left material position, excluding very top plate since it's shipped loose)
+    panel_edge_x = None
+    panel_guid = _text_of(panel_element, ['PanelGuid', 'PanelID'])
+    
+    # Find the leftmost X coordinate from all materials in the panel, excluding VeryTopPlate (FM30)
+    for board_el in panel_element.findall('.//Board'):
+        # Check if this board belongs to the panel
+        panel_guid_el = board_el.find('PanelGuid')
+        if panel_guid_el is not None and panel_guid_el.text == panel_guid:
+            # Skip VeryTopPlate (FM30) as it's shipped loose
+            fm_el = board_el.find('FamilyMember')
+            fm_id = fm_el.text.strip() if fm_el is not None and fm_el.text else ''
+            if fm_id == '30':  # Skip VeryTopPlate
+                continue
+                
+            # Get the leftmost X coordinate from BottomView
+            bottom_view = board_el.find('BottomView')
+            if bottom_view is not None:
+                for point in bottom_view.findall('Point'):
+                    x_el = point.find('X')
+                    if x_el is not None and x_el.text:
+                        try:
+                            x_val = float(x_el.text)
+                            if panel_edge_x is None or x_val < panel_edge_x:
+                                panel_edge_x = x_val
+                        except ValueError:
+                            pass
+
+    # First, look for FM32 SubAssembly critical studs
+    for sub_el in panel_element.findall('.//SubAssembly'):
+        sub_name = _text_of(sub_el, ['SubAssemblyName', 'Name'])
+        fm_id = _text_of(sub_el, ['FamilyMember'])
+        sub_guid = _text_of(sub_el, ['SubAssemblyGuid'])
+
+        if fm_id == '32' and sub_name and 'critical' in sub_name.lower():
+            stud_info = {
+                'guid': sub_guid,
+                'type': 'SubAssembly critical stud',
+                'fm_type': 'FM32',
+                'materials': {},
+                'distance': None
+            }
+
+            # Calculate distance from panel edge to FM32 SubAssembly materials
+            # Use the leftmost material position from the subassembly's boards
+            stud_x = None
+            for board_el in panel_element.findall('.//Board'):
+                board_sub_guid_el = board_el.find('SubAssemblyGuid')
+                if (board_sub_guid_el is not None and 
+                    board_sub_guid_el.text == sub_guid):
+                    # Get the leftmost X coordinate from BottomView
+                    bottom_view = board_el.find('BottomView')
+                    if bottom_view is not None:
+                        min_x = None
+                        for point in bottom_view.findall('Point'):
+                            x_el = point.find('X')
+                            if x_el is not None and x_el.text:
+                                try:
+                                    x_val = float(x_el.text)
+                                    if min_x is None or x_val < min_x:
+                                        min_x = x_val
+                                except ValueError:
+                                    pass
+                        if min_x is not None and (stud_x is None or min_x < stud_x):
+                            stud_x = min_x
+
+            if stud_x is not None and panel_edge_x is not None:
+                distance_inches = stud_x - panel_edge_x
+                # Format as feet-inches
+                distance_formatted = format_feet_to_dimension(distance_inches / 12)
+                stud_info['distance'] = f"{distance_inches:.1f} in ({distance_formatted})"
+
+            # Find materials belonging to this critical stud subassembly
+            for mat in materials:
+                if isinstance(mat, dict) and mat.get('SubAssemblyGuid') == sub_guid:
+                    label = mat.get('Label', '')
+                    if label:
+                        if label not in stud_info['materials']:
+                            stud_info['materials'][label] = 0
+                        stud_info['materials'][label] += 1
+
+            if stud_info['materials']:  # Only add if it has materials
+                critical_studs.append(stud_info)
+
+    # Then, look for FM47 loose critical studs (not part of subassemblies)
+    for mat in materials:
+        if isinstance(mat, dict):
+            fm_id = mat.get('FamilyMember')
+            sub_guid = mat.get('SubAssemblyGuid')
+
+            if fm_id == '47' and (not sub_guid or sub_guid.strip() == ''):
+                # This is a loose FM47 critical stud
+                label = mat.get('Label', '')
+                description = mat.get('Desc') or mat.get('Description', '')
+                board_guid = mat.get('BoardGuid')  # Get the board GUID for FM47
+
+                # Find the board element to get position
+                stud_x = None
+                for board_el in panel_element.findall('.//Board'):
+                    board_guid_el = board_el.find('BoardGuid')
+                    if board_guid_el is not None and board_guid_el.text == board_guid:
+                        # Get the leftmost X coordinate from BottomView
+                        bottom_view = board_el.find('BottomView')
+                        if bottom_view is not None:
+                            min_x = None
+                            for point in bottom_view.findall('Point'):
+                                x_el = point.find('X')
+                                if x_el is not None and x_el.text:
+                                    try:
+                                        x_val = float(x_el.text)
+                                        if min_x is None or x_val < min_x:
+                                            min_x = x_val
+                                    except ValueError:
+                                        pass
+                            if min_x is not None:
+                                stud_x = min_x
+                        break
+
+                # Calculate distance from panel edge
+                distance_info = None
+                if stud_x is not None and panel_edge_x is not None:
+                    try:
+                        distance_inches = stud_x - panel_edge_x
+                        distance_formatted = format_feet_to_dimension(distance_inches / 12)
+                        distance_info = f"{distance_inches:.1f} in ({distance_formatted})"
+                    except (ValueError, TypeError):
+                        pass
+
+                # Create a unique key for this loose critical stud
+                stud_key = f"FM47_{label}_{description}"
+
+                # Check if we already have this stud
+                existing_stud = None
+                for stud in critical_studs:
+                    if stud.get('fm_type') == 'FM47' and stud.get('key') == stud_key:
+                        existing_stud = stud
+                        break
+
+                if existing_stud:
+                    # Increment count for existing stud
+                    if label not in existing_stud['materials']:
+                        existing_stud['materials'][label] = 0
+                    existing_stud['materials'][label] += 1
+                else:
+                    # Create new loose critical stud entry
+                    stud_info = {
+                        'guid': board_guid,  # Use board GUID for FM47 critical studs
+                        'type': 'Loose critical stud',
+                        'fm_type': 'FM47',
+                        'key': stud_key,
+                        'materials': {label: 1} if label else {},
+                        'distance': distance_info
+                    }
+                    critical_studs.append(stud_info)
+
+    return critical_studs
+
+def extract_subassembly_details(panel_element, materials, material_mapping):
+    """Extract subassembly details (FM25, FM32, FM42) - FM32 Critical Studs excluded"""
+    subassemblies = []
+    
+    # Look for SubAssembly elements
+    for sub_el in panel_element.findall('.//SubAssembly'):
+        sub_name = _text_of(sub_el, ['SubAssemblyName', 'Name'])
+        fm_id = _text_of(sub_el, ['FamilyMember'])
+        sub_guid = _text_of(sub_el, ['SubAssemblyGuid'])
+        
+        # Include FM25, FM32, and FM42 subassemblies, but exclude FM32 Critical Studs
+        if fm_id in ['25', '32', '42']:
+            # Skip FM32 Critical Stud subassemblies - they are handled in Critical Stud Details
+            if fm_id == '32' and sub_name and 'critical' in sub_name.lower():
+                continue
+                
+            sub_info = {
+                'name': sub_name or f"FM{fm_id} SubAssembly",
+                'guid': sub_guid,
+                'family_member': fm_id,
+                'materials': {},
+                'rough_openings': []
+            }
+            
+            # Find materials belonging to this subassembly
+            for mat in materials:
+                if isinstance(mat, dict) and mat.get('SubAssemblyGuid') == sub_guid:
+                    label = mat.get('Label', '')
+                    if label:
+                        # Exclude the subassembly itself from its own materials list
+                        if label != sub_name:
+                            # Use the original label, not the mapped alphabetical label
+                            if label not in sub_info['materials']:
+                                sub_info['materials'][label] = 0
+                            sub_info['materials'][label] += 1
+            
+            # For FM25 subassemblies, look for associated FM-1 rough openings
+            if fm_id == '25':
+                # Find FM-1 rough openings associated with this subassembly
+                for board_el in panel_element.findall('.//Board'):
+                    # Check if this board belongs to the panel
+                    panel_guid_el = board_el.find('PanelGuid')
+                    if panel_guid_el is not None and panel_guid_el.text == _text_of(panel_element, ['PanelGuid', 'PanelID']):
+                        # Check if this is an FM-1 rough opening
+                        fm_el = board_el.find('FamilyMember')
+                        if fm_el is not None and fm_el.text == '-1':
+                            # Check if this rough opening is associated with our FM25 subassembly
+                            sub_guid_el = board_el.find('SubAssemblyGuid')
+                            if sub_guid_el is not None and sub_guid_el.text == sub_guid:
+                                # Extract dimensions from the Material child element
+                                material_el = board_el.find('Material')
+                                width = 0.0
+                                length = 0.0
+                                if material_el is not None:
+                                    # Try ActualWidth first, then Width
+                                    width_el = material_el.find('ActualWidth')
+                                    if width_el is None:
+                                        width_el = material_el.find('Width')
+                                    if width_el is not None and width_el.text:
+                                        try:
+                                            width = float(width_el.text.strip())
+                                        except ValueError:
+                                            width = 0.0
+
+                                    # Try ActualLength first, then Length
+                                    length_el = material_el.find('ActualLength')
+                                    if length_el is None:
+                                        length_el = material_el.find('Length')
+                                    if length_el is not None and length_el.text:
+                                        try:
+                                            length = float(length_el.text.strip())
+                                        except ValueError:
+                                            length = 0.0
+
+                                # Extract AFF from ElevationView Y coordinates
+                                aff_value = None
+                                elevation_view = board_el.find('ElevationView')
+                                if elevation_view is not None:
+                                    max_y = None
+                                    for point in elevation_view.findall('Point'):
+                                        y_el = point.find('Y')
+                                        if y_el is not None and y_el.text:
+                                            try:
+                                                y_val = float(y_el.text)
+                                                if max_y is None or y_val > max_y:
+                                                    max_y = y_val
+                                            except ValueError:
+                                                pass
+                                    if max_y is not None:
+                                        aff_value = max_y
+
+                                # Get the Rough Opening's GUID
+                                ro_guid = _text_of(board_el, ['BoardGuid', 'Guid', 'FamilyMemberGuid'])
+
+                                if width > 0 and length > 0:
+                                    width_fmt = format_feet_to_dimension(width/12)
+                                    length_fmt = format_feet_to_dimension(length/12)
+                                    sub_info['rough_openings'].append({
+                                        'dimensions': f"{width:.1f}\" x {length:.1f}\" ({width_fmt} x {length_fmt})",
+                                        'aff': aff_value,
+                                        'guid': ro_guid
+                                    })
+            
+            subassemblies.append(sub_info)
+    
+    return subassemblies
+
+# =============================================================================
+# END OF TAKEOFF_STANDALONE.PY CODE INTEGRATION
+# =============================================================================
+
+if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1:
         # Command line mode - process the specified file
         ehx_file = sys.argv[1]
-        print(f"DEBUG: Command line mode started with file: {ehx_file}")
-        print(f"DEBUG: os.path.exists(ehx_file) = {os.path.exists(ehx_file)}")
-        print(f"DEBUG: os.path.abspath(ehx_file) = {os.path.abspath(ehx_file)}")
         if os.path.exists(ehx_file):
-            print(f"DEBUG: File exists, entering try block")
             logging.info(f"Processing file from command line: {ehx_file}")
             try:
-                print(f"DEBUG: About to call parse_panels")
-                panels, materials_map, critical_studs_map = parse_panels(ehx_file) or ([], {}, {})
-                print(f"DEBUG: parse_panels returned {len(panels)} panels and {len(materials_map)} materials_map entries")
+                panels, materials_map = parse_panels(ehx_file) or ([], {})
                 logging.info(f"Parsed {len(panels)} panels")
                 
                 # Convert panels to dict format
@@ -6604,411 +8153,11 @@ if __name__ == '__main__':
                 writer = globals().get('write_expected_and_materials_logs')
                 if not writer:
                     writer = write_expected_and_materials_logs
-                writer(ehx_file, panels_by_name, materials_map, critical_studs_map)
+                writer(ehx_file, panels_by_name, materials_map)
                 logging.info("Logs written successfully")
-                
-                # Automatically export the first panel
-                if panels_by_name:
-                    first_panel_name = list(panels_by_name.keys())[0]
-                    print(f"DEBUG: Auto-exporting panel {first_panel_name}")
-                    
-                    # Set up the necessary globals for export
-                    current_ehx_file_path = ehx_file
-                    selected_panel = {'name': first_panel_name}
-                    current_panels = panels_by_name
-                    panel_materials_map = materials_map
-                    
-                    # Create a mock job_val
-                    class MockJobVal:
-                        def cget(self, key):
-                            if key == 'text':
-                                return '05-100'  # Use the panel name as job ID
-                            return ''
-                    
-                    job_val = MockJobVal()
-                    
-                    # Create a simplified export function for command line use
-                    def export_current_panel_cmd():
-                        try:
-                            print(f"DEBUG: export_current_panel called")
-                            sel_name = selected_panel.get('name')
-                            print(f"DEBUG: selected_panel name = {sel_name}")
-                            if not sel_name:
-                                print("No panel selected to export")
-                                return
-
-                            # Ensure we have the panel object available for display name
-                            panel_obj = current_panels.get(sel_name, {})
-                            print(f"DEBUG: panel_obj = {panel_obj}")
-
-                            # Sanitize panel name to use as default filename
-                            def _sanitize_filename(name: str) -> str:
-                                if not name:
-                                    return 'panel'
-                                invalid = '<>:"/\\|?*'
-                                out = ''.join((c if c not in invalid else '_') for c in name).strip()
-                                out = out.replace(' ', '_')
-                                if not out:
-                                    return 'panel'
-                                return out
-
-                            # Use the user-facing DisplayLabel for the default filename, not the internal GUID
-                            display_name = panel_obj.get('DisplayLabel', sel_name)
-                            initial_name = _sanitize_filename(display_name) + '.txt'
-
-                            # Automatically save to LOG folder in script directory
-                            log_folder = os.path.join(HERE, 'LOG')
-                            os.makedirs(log_folder, exist_ok=True)
-                            dest = os.path.join(log_folder, initial_name)
-                            print(f"DEBUG: export destination = {dest}")
-
-                            panel_obj = current_panels.get(sel_name, {})
-                            materials_list = panel_materials_map.get(sel_name, [])
-                            print(f"DEBUG: materials_list length = {len(materials_list)}")
-
-                            # Use DisplayLabel for export display, fallback to internal name
-                            display_name = panel_obj.get('DisplayLabel', sel_name)
-
-                            # Parse panel name for Lot and Panel numbers
-                            lot_num = ''
-                            panel_num = display_name
-                            if '_' in display_name:
-                                parts = display_name.split('_', 1)
-                                if len(parts) == 2:
-                                    lot_num = parts[0]
-                                    panel_num = parts[1]
-
-                            def inches_fmt(v):
-                                try:
-                                    return inches_to_feet_inches_sixteenths(float(v))
-                                except Exception:
-                                    return v or ''
-
-                            # Write the panel data in text format
-                            with open(dest, 'w', encoding='utf-8') as out:
-                                out.write(f"File: {display_name}\n\n")
-                                out.write("Panel Details:\n")
-                                out.write(f"Panel: {display_name}\n")
-
-                                # Add Lot and Panel numbers if available
-                                if lot_num:
-                                    out.write(f"• Lot: {lot_num}\n")
-                                out.write(f"• Panel: {panel_num}\n")
-
-                                # Add level and description if available
-                                if panel_obj.get('Level'):
-                                    out.write(f"• Level: {panel_obj.get('Level')}\n")
-                                if panel_obj.get('Description'):
-                                    out.write(f"• Description: {panel_obj.get('Description')}\n")
-                                if panel_obj.get('Bundle'):
-                                    out.write(f"• Bundle: {panel_obj.get('Bundle')}\n")
-
-                                # Panel specifications
-                                candidates = [
-                                    ('Category', 'Category'),
-                                    ('Load Bearing', 'LoadBearing'),
-                                    ('Wall Length', 'WallLength'),
-                                    ('Height', 'Height'),
-                                    ('Squaring', 'Squaring'),
-                                    ('Thickness', 'Thickness'),
-                                    ('Stud Spacing', 'StudSpacing'),
-                                ]
-                                for label, key in candidates:
-                                    val = panel_obj.get(key, '')
-                                    if val:
-                                        # Strip trailing zeros from decimal values
-                                        try:
-                                            val = format_dimension(str(val))
-                                        except:
-                                            pass
-                                        
-                                        if key in ['WallLength', 'Height', 'Squaring']:
-                                            formatted = inches_fmt(val)
-                                            out.write(f"• {label}: {val} in   ({formatted})\n")
-                                        elif key in ['Thickness', 'StudSpacing']:
-                                            # For Thickness and Stud Spacing, just show the cleaned decimal
-                                            out.write(f"• {label}: {val}\n")
-                                        else:
-                                            out.write(f"• {label}: {val}\n")
-
-                                # Sheathing layers - match GUI display exactly (no dimensions)
-                                sheathing_list = []
-                                for m in materials_list:
-                                    if isinstance(m, dict):
-                                        t = (m.get('Type') or '').lower()
-                                        if 'sheet' in t or 'sheath' in t or (m.get('FamilyMemberName') and 'sheath' in str(m.get('FamilyMemberName')).lower()):
-                                            desc = (m.get('Description') or m.get('Desc') or '').strip()
-                                            # Only add unique descriptions (no duplicates)
-                                            if desc and desc not in sheathing_list:
-                                                sheathing_list.append(desc)
-
-                                if sheathing_list:
-                                    for idx, desc in enumerate(sheathing_list, 1):
-                                        if len(sheathing_list) == 1:
-                                            out.write(f"• Sheathing: {desc}\n")
-                                        else:
-                                            out.write(f"• Sheathing Layer {idx}: {desc}\n")
-
-                                # Additional fields
-                                if panel_obj.get('Weight'):
-                                    weight_formatted = format_weight(panel_obj.get('Weight'))
-                                    out.write(f"• Weight: {weight_formatted}\n")
-                                if panel_obj.get('OnScreenInstruction'):
-                                    out.write(f"• Production Notes: {panel_obj.get('OnScreenInstruction')}\n")
-
-                                # Add Beam Pocket Details section after Rough Openings
-                                try:
-                                    beam_pockets = extract_beam_pocket_info(panel_obj, materials_list)
-                                    if debug_enabled:
-                                        print(f"DEBUG: Beam pockets found for panel {panel_obj.get('PanelID', 'unknown')}: {len(beam_pockets) if beam_pockets else 0}")
-
-                                    if beam_pockets:
-                                        out.write("Beam Pocket Details:\n")
-
-                                        for i, pocket in enumerate(beam_pockets, 1):
-                                            aff = pocket.get('aff')
-                                            opening_width = pocket.get('opening_width')
-                                            materials = pocket.get('materials', {})
-                                            count = pocket.get('count', 1)
-
-                                            if debug_enabled:
-                                                print(f"DEBUG: Exporting beam pocket {i}: aff={aff}, opening_width={opening_width}, materials={materials}")
-
-                                            pocket_label = f"Beam Pocket {i}"
-                                            if count > 1:
-                                                pocket_label += f" ({count})"
-
-                                            out.write(f"• {pocket_label}\n")
-
-                                            if aff is not None:
-                                                # Add bottom plate thickness (1.5 inches) to AFF calculation
-                                                adjusted_aff = aff + 1.5
-                                                aff_decimal = format_dimension(str(adjusted_aff))
-                                                aff_formatted = inches_to_feet_inches_sixteenths(str(adjusted_aff))
-                                                if aff_formatted:
-                                                    out.write(f"  AFF: {aff_decimal} in ({aff_formatted})\n")
-                                                else:
-                                                    out.write(f"  AFF: {aff_decimal} in\n")
-                                            else:
-                                                out.write("  AFF: Unknown\n")
-
-                                            if opening_width is not None:
-                                                width_decimal = format_dimension(str(opening_width))
-                                                out.write(f"  Opening Width: {width_decimal} in\n")
-
-                                            if materials:
-                                                out.write("  Materials:\n")
-                                                for label, qty in sorted(materials.items()):
-                                                    out.write(f"    ├── {label} ({qty})\n")
-
-                                        out.write('\n')
-                                except Exception as e:
-                                    pass
-
-                                # Add SubAssemblies section after Beam Pockets
-                                try:
-                                    # Debug logging for export function
-                                    print(f"DEBUG: Exporting SubAssemblies for panel {sel_name}")
-                                    print(f"DEBUG: current_ehx_file_path = {current_ehx_file_path}")
-                                    print(f"DEBUG: current_ehx_file_path exists = {os.path.exists(current_ehx_file_path) if current_ehx_file_path else False}")
-                                    print(f"DEBUG: panel_materials_map keys = {list(panel_materials_map.keys())}")
-                                    
-                                    # Use the new parser to read SubAssembly Details from expected.log
-                                    
-                                    # Extract JobID from EHX file for log naming (same logic as write_expected_and_materials_logs)
-                                    job_id = "expected"
-                                    try:
-                                        tree = ET.parse(current_ehx_file_path)
-                                        root = tree.getroot()
-                                        job_el = root.find('.//Job')
-                                        if job_el is None:
-                                            job_el = root
-                                        job_id_el = job_el.find('JobID')
-                                        if job_id_el is not None and job_id_el.text:
-                                            job_id = job_id_el.text.strip()
-                                    except Exception as e:
-                                        job_id = "expected"
-                                    
-                                    expected_log_path = os.path.join(HERE, 'LOG', f'{job_id}.log')
-                                    subassembly_details = parse_subassembly_details_from_expected_log(expected_log_path, display_name)
-                                    
-                                    print(f"DEBUG: subassembly_details = {subassembly_details}")
-                                    print(f"DEBUG: subassembly_details type = {type(subassembly_details)}")
-                                    print(f"DEBUG: bool(subassembly_details) = {bool(subassembly_details)}")
-                                    
-                                    if subassembly_details:
-                                        print(f"DEBUG: Writing SubAssembly Details section")
-                                        out.write("SubAssembly Details:\n")
-                                        
-                                        # Create mapping from material properties to alphabetical labels
-                                        all_panel_materials = materials_list
-                                        material_to_breakdown_mapping = create_material_to_breakdown_mapping(all_panel_materials)
-                                        
-                                        # Display each SubAssembly
-                                        for sub_guid, sub_info in subassembly_details.items():
-                                            sub_name = sub_info['name']
-                                            materials_dict = sub_info['materials']
-                                            
-                                            # Display SubAssembly name directly without type labels
-                                            out.write(f"• {sub_name}\n")
-                                            
-                                            # Display materials if any
-                                            if materials_dict:
-                                                out.write("   Materials:\n")
-                                                for mat_label, count in sorted(materials_dict.items()):
-                                                    # Use the material label directly from the log file
-                                                    out.write(f"    ├── {mat_label} ({count})\n")
-                                            
-                                            # Add rough opening information for FM25 subassemblies
-                                            try:
-                                                # Map subassembly names to their FM25 types for rough opening matching
-                                                fm25_mapping = {
-                                                    'BSMT-HDR': 'G',  # BSMT-HDR uses G headers
-                                                    '49x63-L2': 'F',  # 49x63-L2 uses F headers  
-                                                    '73x63-L1': 'L',  # 73x63-L1 uses L header
-                                                    'DR-1-ENT-L1': 'K',  # DR-1-ENT-L1 uses K header
-                                                    'DR-9-ENT-L1': 'K',  # DR-9-ENT-L1 uses K header
-                                                    # Note: LType is FM32, not FM25, so it should not have rough openings
-                                                }
-                                                
-                                                # Get the FM25 type for this subassembly
-                                                fm25_type = fm25_mapping.get(sub_name, '')
-                                                
-                                                if fm25_type:
-                                                    # Look through all materials for rough openings that match this FM25 type
-                                                    subassembly_rough_openings = []
-                                                    for m in materials_list:
-                                                        is_ro = _is_rough_opening(m)
-                                                        if is_ro:
-                                                            lab = m.get('Label') or ''
-                                                            
-                                                            # Check if this rough opening belongs to this subassembly
-                                                            if lab == sub_name:
-                                                                # Get AFF information
-                                                                aff_height = get_aff_for_rough_opening(panel_obj, m)
-                                                                
-                                                                # Format the rough opening display
-                                                                ro_title = f"Rough Opening: {lab}"
-                                                                ro_info = [ro_title]
-                                                                
-                                                                if aff_height is not None:
-                                                                    # Strip trailing zeros from AFF decimal value
-                                                                    aff_decimal = format_dimension(str(aff_height))
-                                                                    formatted_aff = inches_to_feet_inches_sixteenths(str(aff_height))
-                                                                    if formatted_aff:
-                                                                        ro_info.append(f"AFF: {aff_decimal} ({formatted_aff})")
-                                                                    else:
-                                                                        ro_info.append(f"AFF: {aff_decimal}")
-                                                                
-                                                                subassembly_rough_openings.append(ro_info)
-                                                    
-                                                    # Display rough openings for this subassembly
-                                                    if subassembly_rough_openings:
-                                                        if materials_dict:
-                                                            out.write('\n')
-                                                        out.write("   Rough Openings:\n")
-                                                        for ro in subassembly_rough_openings:
-                                                            for line in ro:
-                                                                out.write(f"    ├── {line}\n")
-                                            
-                                            except Exception as e:
-                                                # Continue without rough openings if there's an error
-                                                pass
-                                            
-                                            # Add blank line after each subassembly
-                                            out.write('\n')
-                                        print(f"DEBUG: Finished writing SubAssembly Details")
-                                    else:
-                                        print("DEBUG: No subassembly_details returned")
-                                except Exception as e:
-                                    print(f"DEBUG: Exception in SubAssemblies export section: {e}")
-                                    import traceback
-                                    traceback.print_exc()
-                                    pass
-
-                                # Add Critical Stud Details section after SubAssembly Details
-                                try:
-                                    print(f"DEBUG: About to generate Critical Stud Details from critical_studs_map")
-                                    # Generate Critical Stud Details from critical_studs_map instead of parsing expected.log
-
-                                    # Get critical stud data for this panel
-                                    panel_critical_studs = critical_studs_map.get(sel_name, {})
-                                    print(f"DEBUG: panel_critical_studs = {panel_critical_studs}")
-                                    print(f"DEBUG: critical_studs_map keys = {list(critical_studs_map.keys())}")
-
-                                    if panel_critical_studs:
-                                        print(f"DEBUG: Writing Critical Stud Details section")
-                                        out.write("Critical Stud Details:\n")
-
-                                        # Display FM32 (Tee/Critical Stud) if available
-                                        if 'fm32' in panel_critical_studs and panel_critical_studs['fm32'].get('positions'):
-                                            position = panel_critical_studs['fm32']['positions'][0]
-                                            if position is not None:
-                                                position_formatted = inches_to_feet_inches(float(position))
-                                                out.write(f"• FM32 - Tee\n")
-                                                out.write(f"   Position: {position:.2f} in ({position_formatted})\n")
-
-                                        # Display FM47 (Critical Stud) if available
-                                        if 'fm47' in panel_critical_studs and panel_critical_studs['fm47'].get('positions'):
-                                            position = panel_critical_studs['fm47']['positions'][0]
-                                            if position is not None:
-                                                position_formatted = inches_to_feet_inches(float(position))
-                                                out.write(f"• FM47 - Critical Stud\n")
-                                                out.write(f"   Position: {position:.2f} in ({position_formatted})\n")
-
-                                        out.write('\n')
-                                        print(f"DEBUG: Finished writing Critical Stud Details")
-                                    else:
-                                        print("DEBUG: No critical_studs_map data for this panel")
-                                except Exception as e:
-                                    print(f"DEBUG: Exception in Critical Stud Details export section: {e}")
-                                    import traceback
-                                    traceback.print_exc()
-                                    pass
-
-                                # Panel Material Breakdown
-                                out.write("\nPanel Material Breakdown:\n")
-                                
-                                # Filter out rough openings from materials for breakdown
-                                breakdown_materials = [m for m in materials_list if not _is_rough_opening(m)]
-                                
-                                # Use format_and_sort_materials if available
-                                if callable(format_and_sort_materials):
-                                    breakdown_lines = format_and_sort_materials(breakdown_materials)
-                                    for line in breakdown_lines:
-                                        out.write(f"{line}\n")
-                                else:
-                                    # Fallback formatting
-                                    for m in breakdown_materials:
-                                        if isinstance(m, dict):
-                                            lbl = m.get('Label') or m.get('Name') or ''
-                                            typ = m.get('Type') or ''
-                                            desc = m.get('Desc') or m.get('Description') or ''
-                                            qty = m.get('Qty') or m.get('Quantity') or ''
-                                            length = m.get('ActualLength') or m.get('Length') or ''
-                                            width = m.get('ActualWidth') or m.get('Width') or ''
-                                            size = f"{length} x {width}".strip() if width else (length or '')
-                                            qty_str = f"({qty})" if qty else ''
-                                            if size:
-                                                out.write(f"{lbl} - {typ} - {desc} - {qty_str} - {size}\n")
-                                            else:
-                                                out.write(f"{lbl} - {typ} - {desc} - {qty_str}\n")
-
-                            print(f"DEBUG: Export completed successfully to {dest}")
-                            
-                        except Exception as e:
-                            print(f"DEBUG: Export error: {e}")
-                            import traceback
-                            traceback.print_exc()
-                    
-                    # Call the export function
-                    export_current_panel_cmd()
-                    print(f"DEBUG: Auto-export completed")
                 
             except Exception as e:
                 logging.error(f"Failed to process file: {e}")
-                import traceback
-                traceback.print_exc()
         else:
             logging.error(f"File not found: {ehx_file}")
     else:
@@ -7017,3 +8166,5 @@ if __name__ == '__main__':
         app = make_gui()
         logging.info("GUI created, starting mainloop...")
         app.mainloop()
+
+
