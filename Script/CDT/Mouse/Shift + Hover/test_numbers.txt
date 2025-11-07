@@ -1,0 +1,26 @@
+TEST DOCUMENT FOR OCR
+
+Here are some millimeter values to test:
+
+25.4 mm
+50 mm  
+100mm
+127 mm
+254 mm
+
+Numbers without mm:
+25.4
+50
+100  
+127
+254
+
+Mixed text with numbers:
+The pipe is 25.4mm in diameter
+Length: 127 mm
+Height = 50.8mm
+
+CDT style numbers:
+25.400
+50.800
+101.600

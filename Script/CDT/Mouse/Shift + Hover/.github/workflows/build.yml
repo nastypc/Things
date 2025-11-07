@@ -1,0 +1,53 @@
+name: Build Windows Executable
+
+on:
+  push:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pyinstaller
+        
+    - name: Build executable
+      run: |
+        pyinstaller --onefile --windowed --name "ShiftHoverConverter" auto_version.py
+        
+    - name: Rename for safety
+      run: |
+        Copy-Item "dist\ShiftHoverConverter.exe" "dist\ShiftHoverConverter.old"
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ShiftHoverConverter-Windows
+        path: |
+          dist/ShiftHoverConverter.exe
+          dist/ShiftHoverConverter.old
+          README.md
+          
+    - name: Create Release (on tag)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          dist/ShiftHoverConverter.exe
+          dist/ShiftHoverConverter.old
+          README.md
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
