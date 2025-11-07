@@ -8,10 +8,6 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    
-    defaults:
-      run:
-        working-directory: Script/CDT/Mouse/Shift + Hover
 
     steps:
     - name: Checkout code
@@ -23,20 +19,21 @@ jobs:
         python-version: '3.11'
 
     - name: Install Tesseract OCR
-      run: |
-        choco install tesseract -y
-        
+      run: choco install tesseract -y
+
     - name: Install Python dependencies
+      working-directory: "Script/CDT/Mouse/Shift + Hover"
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pyinstaller
 
     - name: Build executable
-      run: |
-        pyinstaller --onefile --windowed --name shift_hover_converter auto_version.py
+      working-directory: "Script/CDT/Mouse/Shift + Hover"
+      run: pyinstaller --onefile --windowed --name shift_hover_converter auto_version.py
 
-    - name: Copy Tesseract
+    - name: Copy Tesseract to dist
+      working-directory: "Script/CDT/Mouse/Shift + Hover"
       run: |
         New-Item -ItemType Directory -Path "dist/Tesseract-OCR" -Force
         Copy-Item "C:/Program Files/Tesseract-OCR/*" "dist/Tesseract-OCR/" -Recurse -Force
