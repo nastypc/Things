@@ -3,8 +3,6 @@ name: Build Shift+Hover Converter
 on:
   push:
     branches: [ master, main ]
-    paths:
-      - 'Script/CDT/Mouse/Shift + Hover/**'
   workflow_dispatch:
 
 jobs:
