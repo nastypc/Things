@@ -1,0 +1,53 @@
+name: Build Shift+Hover Converter
+
+on:
+  push:
+    branches: [ master, main ]
+    paths:
+      - 'Script/CDT/Mouse/Shift + Hover/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    defaults:
+      run:
+        working-directory: Script/CDT/Mouse/Shift + Hover
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Tesseract OCR
+      run: |
+        choco install tesseract -y
+        
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pyinstaller
+
+    - name: Build executable
+      run: |
+        pyinstaller --onefile --windowed --name shift_hover_converter auto_version.py
+
+    - name: Copy Tesseract
+      run: |
+        New-Item -ItemType Directory -Path "dist/Tesseract-OCR" -Force
+        Copy-Item "C:/Program Files/Tesseract-OCR/*" "dist/Tesseract-OCR/" -Recurse -Force
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: shift-hover-converter-windows
+        path: |
+          Script/CDT/Mouse/Shift + Hover/dist/shift_hover_converter.exe
+          Script/CDT/Mouse/Shift + Hover/dist/Tesseract-OCR/
+          Script/CDT/Mouse/Shift + Hover/README.md
