@@ -1,0 +1,86 @@
+🏠 PANEL DETAILS:
+  Panel Name: 01_2
+  Level: 0-0FW 1FD
+  Bundle: B1(2x6Ext)
+
+📋 PANEL SPECIFICATIONS:
+  • Category: Exterior
+  • Load Bearing: YES
+  • Length: 165 in (13'-9-1/2")
+  • Height: 131 in (10'-10-3/4")
+  • Squaring: 209.9892 in (17'-6")
+  • Thickness: 5.5 in
+  • Stud Spacing: 16 in
+  • Sheathing: 1" CB 4x8
+  • Weight: 552 lbs
+  • Production Notes: Typar
+
+🔧 Beam Pocket Details:
+No beam pockets found for this panel.
+
+🔧 Critical Stud Details:
+• Critical Stud (Guid: ede43f5f...) (FM32)
+• Type: SubAssembly critical stud
+• Distance: 19.1 in (1'-7-1/16")
+• Associated Material Parts:
+ ├── E (2) - 2x6 SPF No.2
+
+• Critical Stud (Guid: 3d4d8560...) (FM32)
+• Type: SubAssembly critical stud
+• Distance: 118.7 in (9'-10-3/4")
+• Associated Material Parts:
+ ├── E (5) - 2x6 SPF No.2
+
+• Critical Stud (Guid: d571a614...) (FM32)
+• Type: SubAssembly critical stud
+• Distance: 156.5 in (13'-0-1/2")
+• Associated Material Parts:
+ ├── E (6) - 2x6 SPF No.2
+
+Total Critical Studs: 3
+
+🔧 SubAssembly Details:
+No SubAssemblies found for this panel.
+
+ALL FAMILY MEMBERS
+---------------------------
+- FM6: Stud (10)
+- FM28: BottomPlate (1)
+- FM29: TopPlate (1)
+- FM30: VeryTopPlate (1)
+- FM32: Critical Stud (3)
+- FM40: Sheathing (6)
+- FM47: CriticalStud (13)
+- FM106: BottomMultiPlate (1)
+
+STRUCTURAL VALIDATION SUMMARY
+-----------------------------
+✅ Special SubAssembly FMs detected: FM32: Critical Stud
+✅ All expected structural elements present
+📊 Totals: 0 Beam Pockets, 3 Critical Studs, 0 SubAssemblies, 8 Total FM Types
+
+MATERIAL BREAKDOWN:
+A - BottomPlate - 2x6 SPF PM No.2 - (1) - 13'-9-1/2"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 13'-9-1/2"
+C - VeryTopPlate - 2x6 SPF PM No.2 - (1) - 11'-9-1/2"
+D - Stud - 2x6 SPF No.2 - (10) - 10'-4-3/4"
+E - CriticalStud - 2x6 SPF No.2 - (13) - 10'-4-3/4"
+F - Sheathing - 1" CB 4x8 - (1) - 8'-0" x 2'-0-1/2"
+G - Sheathing - 1" CB 4x8 - (1) - 2'-8-1/8" x 6'-0-1/2"
+H - Sheathing - 1" CB 4x8 - (1) - 8'-0" x 4'-0"
+I - Sheathing - 1" CB 4x8 - (1) - 8'-0" x 3'-11-0"
+J - Sheathing - 1" CB 4x8 - (1) - 2'-8-1/8" x 7'-1-1/2"
+K - Sheathing - 1" CB 4x8 - (1) - 8'-0" x 3'-2-1/2"
+
+TAKEOFF RESULTS:
+Total Number Of Sheets
+C:4.39 (5)      	M: 1" CB 4x8           		SQ FT:   140.58 (F,G,H,I,J,K)
+
+Total Board Feet:
+C:  1	L:  12'-0"	M: 2x6 SPF PM No.2     	T:   12'-0"	    12.0 :BF (C)
+C:  2	L:  14'-0"	M: 2x6 SPF PM No.2     	T:   28'-0"	    28.0 :BF (A,B)
+                              TOTAL LINEAR LENGTH:   40'-0"	    40.0 :TOTAL BF.
+
+C: 23	L:  11'-0"	M: 2x6 SPF No.2        	T:  253'-0"	   253.0 :BF (D,E)
+                              TOTAL LINEAR LENGTH:  253'-0"	   253.0 :TOTAL BF.
+

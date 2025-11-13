@@ -1,0 +1,85 @@
+🏠 PANEL DETAILS:
+  Panel Name: 01_1
+  Level: 0-0FW 1FD
+  Bundle: B1(2x6Ext)
+
+📋 PANEL SPECIFICATIONS:
+  • Category: Exterior
+  • Load Bearing: YES
+  • Length: 126 in (10'-6-1/2")
+  • Height: 131 in (10'-10-3/4")
+  • Squaring: 180.8530 in (15'-0-7/8")
+  • Thickness: 5.5 in
+  • Stud Spacing: 16 in
+  • Weight: 408 lbs
+  • Production Notes: Typar
+  • Warning: MultiBottom Plate Detected!
+
+🔧 Beam Pocket Details:
+No beam pockets found for this panel.
+
+🔧 Critical Stud Details:
+• Critical Stud (Guid: fd62ce97...) (FM32)
+• Type: SubAssembly critical stud
+• Distance: 36.2 in (3'-0-3/16")
+• Associated Material Parts:
+ ├── E (5) - 2x6 SPF No.2
+
+Total Critical Studs: 1
+
+🔧 SubAssembly Details:
+• Stud (Guid: e6615110...) (FM32)
+   • Associated Material Parts:
+    ├── D (4) - 2x6 SPF No.2
+
+Total SubAssemblies: 1
+
+ALL FAMILY MEMBERS
+---------------------------
+- FM6: Stud (13)
+- FM28: BottomPlate (1)
+- FM29: TopPlate (1)
+- FM30: VeryTopPlate (1)
+- FM32: Stud (1)
+- FM32: Critical Stud (1)
+- FM47: CriticalStud (5)
+- FM55: EndPadding (1)
+- FM104: Tie Plate (1)
+- FM106: BottomMultiPlate (1)
+
+STRUCTURAL VALIDATION SUMMARY
+-----------------------------
+✅ Special SubAssembly FMs detected: FM32: Stud, FM32: Critical Stud
+✅ All expected structural elements present
+📊 Totals: 0 Beam Pockets, 1 Critical Studs, 1 SubAssemblies, 10 Total FM Types
+
+MATERIAL BREAKDOWN:
+A - BottomMultiPlate - 2x6 SPF PM No.2 - (2) - 10'-5-1/2"
+B - TopPlate - 2x6 SPF PM No.2 - (1) - 10'-5-1/2"
+D - Stud - 2x6 SPF No.2 - (13) - 10'-4-3/4"
+E - CriticalStud - 2x6 SPF No.2 - (5) - 10'-4-3/4"
+F - EndPadding - 1" Rigid Padding - (1) - 10'-10-3/4"
+
+TAKEOFF RESULTS:
+Total Number Of Sheets
+C:0.16 (1)      	M: 1" Rigid Padding    		SQ FT:     4.99 (F)
+
+Total Board Feet:
+C:  3	L:  11'-0"	M: 2x6 SPF PM No.2     	T:   33'-0"	    33.0 :BF (A,B)
+                              TOTAL LINEAR LENGTH:   33'-0"	    33.0 :TOTAL BF.
+
+C: 18	L:  11'-0"	M: 2x6 SPF No.2        	T:  198'-0"	   198.0 :BF (D,E)
+                              TOTAL LINEAR LENGTH:  198'-0"	   198.0 :TOTAL BF.
+
+
+
+DIAGNOSTIC INFO:
+----------------
+junctions_found
+bundles_found
+panels_total
+panels_assigned
+panels_unassigned
+junction_mappings
+bundle_layer_mappings
+assignment_details

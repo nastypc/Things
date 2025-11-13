@@ -1,0 +1,56 @@
+=== Debug Log Started: 2025-10-30 10:21:56 ===
+2025-10-30 10:21:56 - INFO - Starting GUI creation...
+2025-10-30 10:21:57 - INFO - GUI created, starting mainloop...
+2025-10-30 10:21:58 - DEBUG - Detected EHX format: legacy
+2025-10-30 10:21:58 - DEBUG - Calculated squaring for panel fcf85cb8-ad17-402c-b4e6-93c552d34341: 151.777 inches -> 12'-7-3/4"
+2025-10-30 10:21:58 - DEBUG - Panel fcf85cb8-ad17-402c-b4e6-93c552d34341 has 38 elevation views
+2025-10-30 10:21:58 - DEBUG - Elevation 0: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 1: min_y=0.0, max_y=0.0, height=0.0, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 2: min_y=0.0, max_y=1.5, height=1.5, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 3: min_y=106.125, max_y=107.625, height=1.5, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 4: min_y=107.625, max_y=109.125, height=1.5, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 5: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 6: min_y=0.0, max_y=109.125, height=109.125, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 7: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 8: min_y=92.75, max_y=108.0, height=15.25, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 9: min_y=0.0, max_y=108.0, height=108.0, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 10: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 11: min_y=1.5, max_y=75.25, height=73.75, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 12: min_y=1.5, max_y=75.25, height=73.75, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 13: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 14: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 15: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 16: min_y=1.5, max_y=98.875, height=97.375, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 17: min_y=98.875, max_y=106.125, height=7.25, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 18: min_y=98.875, max_y=106.125, height=7.25, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 19: min_y=1.5, max_y=98.875, height=97.375, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 20: min_y=0.0, max_y=92.75, height=92.75, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 21: min_y=92.75, max_y=94.25, height=1.5, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 22: min_y=94.25, max_y=98.875, height=4.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 23: min_y=94.25, max_y=98.875, height=4.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 24: min_y=94.25, max_y=98.875, height=4.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 25: min_y=94.25, max_y=98.875, height=4.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 26: min_y=94.25, max_y=98.875, height=4.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 27: min_y=1.5, max_y=98.875, height=97.375, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 28: min_y=1.5, max_y=98.875, height=97.375, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 29: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 30: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 31: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 32: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 33: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 34: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 35: min_y=1.5, max_y=75.25, height=73.75, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 36: min_y=1.5, max_y=75.25, height=73.75, points=4
+2025-10-30 10:21:58 - DEBUG - Elevation 37: min_y=1.5, max_y=106.125, height=104.625, points=4
+2025-10-30 10:21:58 - DEBUG - Writing expected.log with 1 panels
+2025-10-30 10:21:58 - DEBUG - write_expected_and_materials_logs called with 1 panels
+2025-10-30 10:21:58 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-10-30 10:21:58 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-10-30 10:21:58 - DEBUG - Finished writing expected.log
+2025-10-30 10:21:58 - DEBUG - write_expected_and_materials_logs called with 1 panels
+2025-10-30 10:21:58 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-10-30 10:21:58 - DEBUG - Beam pocket extraction complete. Found 1 unique beam pockets
+2025-10-30 10:21:59 - DEBUG - DEBUG: create_takeoff_standalone_output called with panel_name=fcf85cb8-ad17-402c-b4e6-93c552d34341, material_breakdown='A - BottomPlate - 2x6 SPF PM No.2 - (1) - 8\'-10-1/4"\nB - TopPlate - 2x6 SPF PM No.2 - (1) - 8\'-10-1/'...
+2025-10-30 10:21:59 - DEBUG - DEBUG: process_panel_for_takeoff returning export_data = '\U0001f3e0 PANEL DETAILS:\n  Panel Name: 05-100\n  Level: 1-1FW 2FD\n  Bundle: B1 (2x6 Ext)\n\n\U0001f4cb PANEL SPECIFICATI'...
+2025-10-30 10:21:59 - DEBUG - DEBUG: on_panel_selected got export_data = '\U0001f3e0 PANEL DETAILS:\n  Panel Name: 05-100\n  Level: 1-1FW 2FD\n  Bundle: B1 (2x6 Ext)\n\n\U0001f4cb PANEL SPECIFICATI'...
+2025-10-30 10:21:59 - DEBUG - DEBUG: display_panel set current_export_data = '\U0001f3e0 PANEL DETAILS:\n  Panel Name: 05-100\n  Level: 1-1FW 2FD\n  Bundle: B1 (2x6 Ext)\n\n\U0001f4cb PANEL SPECIFICATI'...
