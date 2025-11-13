@@ -702,11 +702,48 @@ class AutoDismissConverter:
             # Replace all instances using regex for whole number matching
             new_content = re.sub(pattern, new_search, content)
             
-            # Write back to file
-            with open(cdt_file, 'w', encoding='utf-8') as f:
-                f.write(new_content)
+            # Verify the replacement actually happened in content
+            verify_count = len(re.findall(r'\b' + re.escape(new_search) + r'\b', new_content))
+            print(f"AUTO: New content will have {verify_count} instances of '{new_search}'")
+            
+            # Close any open file handles and write back to file with explicit flush
+            try:
+                # Use absolute path and force write with immediate flush
+                abs_path = os.path.abspath(cdt_file)
+                print(f"AUTO: Writing to absolute path: {abs_path}")
+                
+                with open(abs_path, 'w', encoding='utf-8', newline='') as f:
+                    f.write(new_content)
+                    f.flush()  # Force immediate write to disk
+                    os.fsync(f.fileno())  # Ensure OS writes to disk
+                
+                print(f"AUTO: File write complete and flushed to disk")
+                
+                # Verify the file was actually written by reading it back
+                with open(abs_path, 'r', encoding='utf-8-sig') as f:
+                    verify_content = f.read()
+                    verify_matches = len(re.findall(r'\b' + re.escape(new_search) + r'\b', verify_content))
+                    print(f"AUTO: VERIFICATION: File now contains {verify_matches} instances of '{new_search}'")
+                    
+            except Exception as write_err:
+                print(f"AUTO: Write error: {write_err}")
+                raise
             
             print(f"AUTO: Replaced {count} instances and saved file!")
+            
+            # Show success message to user
+            try:
+                import tkinter.messagebox as messagebox
+                messagebox.showinfo(
+                    "Replacement Complete",
+                    f"✅ Replaced {count} instance(s) of '{old_search}' with '{new_search}'\n\n"
+                    f"📄 File: {os.path.basename(cdt_file)}\n\n"
+                    f"⚠️ IMPORTANT:\n"
+                    f"Close and reopen the file in Randek Viewer to see changes.\n"
+                    f"(Randek does not auto-refresh files)"
+                )
+            except Exception as msg_err:
+                print(f"AUTO: Could not show message box: {msg_err}")
             
             # Update tracking: mark as modified
             try:
