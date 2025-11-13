@@ -729,29 +729,71 @@ class AutoDismissConverter:
     
     def find_cdt_file(self):
         """Find active CDT file - tries multiple methods"""
-        # Method 1: Check if P2.CDT exists in workspace (most commonly used)
-        workspace_cdt = r"C:\Users\edward\Downloads\EHX\Script\CDT\Mouse\Shift + Hover\P2.CDT"
-        print(f"AUTO: Checking for CDT at: {workspace_cdt}")
-        if os.path.exists(workspace_cdt):
-            print(f"AUTO: Found P2.CDT file!")
-            return workspace_cdt
+        import win32gui
+        import win32process
+        import psutil
         
-        # Method 1b: Fallback to P1.CDT
-        workspace_cdt = r"C:\Users\edward\Downloads\EHX\Script\CDT\Mouse\Shift + Hover\P1.CDT"
-        print(f"AUTO: Checking for CDT at: {workspace_cdt}")
-        if os.path.exists(workspace_cdt):
-            print(f"AUTO: Found P1.CDT file!")
-            return workspace_cdt
+        # Method 1: Detect from active Randek Viewer window title
+        print("AUTO: Searching for Randek Viewer window...")
+        try:
+            def enum_windows_callback(hwnd, result):
+                if win32gui.IsWindowVisible(hwnd):
+                    title = win32gui.GetWindowText(hwnd)
+                    if 'Randek' in title or '.CDT' in title.upper():
+                        result.append((hwnd, title))
+                return True
+            
+            windows = []
+            win32gui.EnumWindows(enum_windows_callback, windows)
+            
+            # Look for window with .CDT in title
+            for hwnd, title in windows:
+                if '.CDT' in title.upper():
+                    # Extract filename from title (e.g., "Randek Viewer - JobXYZ.CDT" or just "JobXYZ.CDT")
+                    match = re.search(r'([^\\/]+\.CDT)', title, re.IGNORECASE)
+                    if match:
+                        filename = match.group(1)
+                        print(f"AUTO: Found CDT in window title: {filename}")
+                        
+                        # Try to find this file in common locations
+                        search_dirs = [
+                            r"C:\Users\edward\Downloads\EHX\Script\CDT\Mouse\Shift + Hover",
+                            os.path.dirname(__file__) if not getattr(sys, 'frozen', False) else os.path.dirname(sys.executable),
+                            os.path.expanduser("~\\Downloads"),
+                            os.path.expanduser("~\\Documents"),
+                            "C:\\",  # Last resort - search from root
+                        ]
+                        
+                        for search_dir in search_dirs:
+                            if os.path.exists(search_dir):
+                                for root, dirs, files in os.walk(search_dir):
+                                    for file in files:
+                                        if file.upper() == filename.upper():
+                                            cdt_path = os.path.join(root, file)
+                                            print(f"AUTO: Found matching CDT file: {cdt_path}")
+                                            return cdt_path
+                        
+                        print(f"AUTO: Could not locate {filename} on disk")
+        except Exception as e:
+            print(f"AUTO: Error detecting Randek window: {e}")
         
-        # Method 2: Look for any .CDT file in workspace
+        # Method 2: Look for most recently modified .CDT file in workspace
         workspace_dir = os.path.dirname(__file__) if not getattr(sys, 'frozen', False) else os.path.dirname(sys.executable)
         print(f"AUTO: Searching workspace dir: {workspace_dir}")
         try:
+            cdt_files = []
             for file in os.listdir(workspace_dir):
                 if file.upper().endswith('.CDT'):
                     cdt_path = os.path.join(workspace_dir, file)
-                    print(f"AUTO: Found CDT file: {cdt_path}")
-                    return cdt_path
+                    mod_time = os.path.getmtime(cdt_path)
+                    cdt_files.append((mod_time, cdt_path))
+            
+            if cdt_files:
+                # Return most recently modified CDT file
+                cdt_files.sort(reverse=True)
+                most_recent = cdt_files[0][1]
+                print(f"AUTO: Using most recent CDT file: {most_recent}")
+                return most_recent
         except Exception as e:
             print(f"AUTO: Error searching workspace: {e}")
         
@@ -761,8 +803,8 @@ class AutoDismissConverter:
         from tkinter import filedialog
         cdt_path = filedialog.askopenfilename(
             title="Select CDT file to edit",
-            filetypes=[("CDT files", "*.CDT"), ("All files", "*.*")],
-            initialdir=r"C:\Users\edward\Downloads\EHX\Script\CDT\Mouse\Shift + Hover"
+            filetypes=[("CDT files", "*.CDT *.cdt"), ("All files", "*.*")],
+            initialdir=workspace_dir
         )
         
         if cdt_path:
