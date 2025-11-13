@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master, main ]
     paths:
-      - 'auto_version.py'
+      - 'Convert.py'
       - 'requirements.txt'
       - '.github/workflows/build-windows-exe.yml'
   workflow_dispatch:
@@ -35,7 +35,7 @@ jobs:
         
     - name: Build EXE with PyInstaller
       run: |
-        pyinstaller --onefile --windowed --name "ShiftHoverConverter" --icon=NONE auto_version.py
+        pyinstaller --onefile --windowed --name "ShiftHoverConverter" --icon=NONE Convert.py
         
     - name: Create Portable Package
       run: |
