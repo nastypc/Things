@@ -669,15 +669,24 @@ class AutoDismissConverter:
     def replace_in_active_window(self, old_value, new_value):
         """Replace all instances of old_value with new_value directly in CDT file"""
         try:
+            print(f"AUTO: === STARTING REPLACEMENT ===")
             print(f"AUTO: Starting direct file replacement: '{old_value}' → '{new_value}'")
             
             # Find CDT file to edit
-            cdt_file = self.find_cdt_file()
+            try:
+                cdt_file = self.find_cdt_file()
+            except Exception as find_err:
+                print(f"AUTO: ERROR finding CDT file: {find_err}")
+                import traceback
+                traceback.print_exc()
+                return
+                
             if not cdt_file:
                 print("AUTO: No CDT file found!")
                 return
             
             print(f"AUTO: Editing file: {cdt_file}")
+            print(f"AUTO: File exists: {os.path.exists(cdt_file)}")
             
             # Read entire file (handle BOM if present)
             with open(cdt_file, 'r', encoding='utf-8-sig') as f:
