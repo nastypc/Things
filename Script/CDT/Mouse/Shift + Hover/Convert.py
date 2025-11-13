@@ -594,8 +594,13 @@ class AutoDismissConverter:
                 new_value = entry_var.get().strip()
                 if new_value and new_value != old_value:
                     print(f"AUTO: Replacing '{old_value}' with '{new_value}'")
-                    self.replace_in_active_window(old_value, new_value)
-                    dialog.destroy()
+                    dialog.destroy()  # Close dialog first
+                    # Run replacement in background thread to prevent UI freeze
+                    thread = threading.Thread(
+                        target=lambda: self.replace_in_active_window(old_value, new_value),
+                        daemon=True
+                    )
+                    thread.start()
                 else:
                     print("AUTO: No replacement - same value or empty")
                     dialog.destroy()
