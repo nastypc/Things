@@ -498,9 +498,9 @@ class AutoDismissConverter:
             
             print(f"AUTO: Dialog window created")
             
-            # Set size
+            # Set size - make taller to ensure buttons are visible
             width = 400
-            height = 240 if is_modified else 180
+            height = 280 if is_modified else 220
             dialog.geometry(f"{width}x{height}")
             
             # Don't grab focus yet - build UI first
@@ -511,7 +511,7 @@ class AutoDismissConverter:
             # Center on screen
             dialog.update_idletasks()
             x = (dialog.winfo_screenwidth() // 2) - (400 // 2)
-            y = (dialog.winfo_screenheight() // 2) - ((240 if is_modified else 180) // 2)
+            y = (dialog.winfo_screenheight() // 2) - (height // 2)
             dialog.geometry(f"+{x}+{y}")
             
             # Show original value if this was modified
@@ -644,17 +644,17 @@ class AutoDismissConverter:
             dialog.bind('<Escape>', lambda e: on_cancel())
             
             # NOW show the dialog and make it active
+            dialog.update_idletasks()  # Update layout first
             dialog.deiconify()  # Make visible
+            dialog.update()  # Force full render
             dialog.lift()  # Bring to front
             dialog.attributes('-topmost', True)  # Stay on top
             dialog.focus_force()  # Force keyboard focus
             entry.focus_set()  # Focus on entry field
             entry.icursor('end')  # Place cursor at end
             
-            # Update to ensure it's fully rendered
-            dialog.update_idletasks()
-            
             print(f"AUTO: Replace dialog shown and focused for value: {old_value}")
+            print(f"AUTO: Dialog size: {width}x{height}, Buttons should be visible")
             
         except Exception as e:
             print(f"AUTO: Dialog error: {e}")
