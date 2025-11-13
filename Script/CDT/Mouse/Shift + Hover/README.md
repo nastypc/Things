@@ -192,4 +192,4 @@ This tool is provided as-is for personal and professional use in construction, e
 
 - **OCR**: Tesseract OCR by Google
 - **Python Libraries**: pyautogui, pytesseract, keyboard, pystray, Pillow
-- **Development**: Created for CDT measurement conversion workflows
+- **Development**: Created for CDT measurement conversion workflows# Trigger build
