@@ -491,19 +491,22 @@ class AutoDismissConverter:
             
             # Create dialog window
             dialog = tk.Toplevel(self.root)
+            dialog.withdraw()  # Hide initially to prevent flashing
             dialog.title("Replace Value")
-            dialog.geometry("400x240" if is_modified else "400x180")
-            dialog.attributes('-topmost', True)
             dialog.configure(bg='#2d2d2d')
             dialog.resizable(False, False)
             
             print(f"AUTO: Dialog window created")
             
-            # DON'T make it modal to parent - just make it topmost
-            # The parent is hidden anyway, so transient/grab_set causes issues
-            dialog.focus_force()  # Force focus to dialog
+            # Set size
+            width = 400
+            height = 240 if is_modified else 180
+            dialog.geometry(f"{width}x{height}")
             
-            print(f"AUTO: Dialog focus forced")
+            # Don't grab focus yet - build UI first
+            dialog.protocol("WM_DELETE_WINDOW", lambda: dialog.destroy())
+            
+            print(f"AUTO: Dialog configured")
             
             # Center on screen
             dialog.update_idletasks()
@@ -640,10 +643,23 @@ class AutoDismissConverter:
             entry.bind('<KP_Enter>', lambda e: on_ok())
             dialog.bind('<Escape>', lambda e: on_cancel())
             
-            print(f"AUTO: Replace dialog shown for value: {old_value}")
+            # NOW show the dialog and make it active
+            dialog.deiconify()  # Make visible
+            dialog.lift()  # Bring to front
+            dialog.attributes('-topmost', True)  # Stay on top
+            dialog.focus_force()  # Force keyboard focus
+            entry.focus_set()  # Focus on entry field
+            entry.icursor('end')  # Place cursor at end
+            
+            # Update to ensure it's fully rendered
+            dialog.update_idletasks()
+            
+            print(f"AUTO: Replace dialog shown and focused for value: {old_value}")
             
         except Exception as e:
             print(f"AUTO: Dialog error: {e}")
+            import traceback
+            traceback.print_exc()
 
     def replace_in_active_window(self, old_value, new_value):
         """Replace all instances of old_value with new_value directly in CDT file"""
