@@ -11,7 +11,7 @@ import time
 import re
 import queue
 from pystray import Icon, Menu, MenuItem
-from PIL import Image, ImageDraw, ImageGrab, ImageEnhance
+from PIL import Image, ImageDraw, ImageGrab, ImageEnhance, ImageFilter
 import os
 import sys
 import tkinter as tk
@@ -1017,20 +1017,36 @@ class AutoDismissConverter:
             screenshot = ImageGrab.grab(bbox=(left, top, right, bottom))
             screenshot.save("auto_capture.png")
             
-            # Enhance image
+            # Enhance image with multiple preprocessing steps
             enhanced = screenshot.convert('L')
+            
+            # Apply stronger contrast
             enhancer = ImageEnhance.Contrast(enhanced)
-            enhanced = enhancer.enhance(3.0)
+            enhanced = enhancer.enhance(4.0)
+            
+            # Apply sharpness enhancement
+            from PIL import ImageFilter
+            enhanced = enhanced.filter(ImageFilter.SHARPEN)
+            
+            # Apply brightness adjustment
+            enhancer = ImageEnhance.Brightness(enhanced)
+            enhanced = enhancer.enhance(1.5)
+            
             enhanced.save("auto_enhanced.png")
             
-            # Try OCR with cleaner number extraction
-            configs = ['--psm 6', '--psm 7', '--psm 8']
+            # Try OCR with cleaner number extraction and digit-only mode
+            # Use tesseract config to only recognize digits
+            configs = [
+                '--psm 6 -c tessedit_char_whitelist=0123456789.',
+                '--psm 7 -c tessedit_char_whitelist=0123456789.',
+                '--psm 8 -c tessedit_char_whitelist=0123456789.'
+            ]
             
             for config in configs:
                 try:
                     text = pytesseract.image_to_string(enhanced, config=config).strip()
                     if text:
-                        print(f"AUTO: OCR result: '{text}'")
+                        print(f"AUTO: OCR result (config: {config[:10]}...): '{text}'")
                         
                         # Split by lines and spaces to separate numbers properly
                         # This prevents "57\n0" from becoming "570"
@@ -1054,6 +1070,7 @@ class AutoDismissConverter:
                         # Use the LARGEST number found (main measurement is usually bigger)
                         if valid_numbers:
                             num = max(valid_numbers)
+                            print(f"AUTO: DEBUG - All numbers found: {valid_numbers}, Selected (max): {num}")
                             imperial = mm_to_imperial(num)
                             conversion = f"{num} mm = {imperial}"
                             
