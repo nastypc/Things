@@ -1,4 +1,4 @@
-﻿TXT:MiTek® Structure 25.2.0.225.Update11.15;
+TXT:MiTek® Structure 25.2.0.225.Update11.15;
 VERSION:=5.0.8;
 TXT:LOT 4 - UNIT 21 RL27-1A-REV;
 TXT:Created - 2025-11-13 8:28:30 AM;
@@ -9,7 +9,7 @@ FL:1;
 ELD:Floor;
 DNO:P2;
 ELF:UP;
-ELM:    6000:    2470:     302:       1:    6000:    2470:     302;
+ELM:    10:    2470:     302:       1:    10:    2470:     302;
 
 
 SPB:    5753:    2470:     302:     279:       0:       0:      P2;
