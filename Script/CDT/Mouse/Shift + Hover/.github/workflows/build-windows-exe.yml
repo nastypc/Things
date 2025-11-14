@@ -4,9 +4,9 @@ on:
   push:
     branches: [ master, main ]
     paths:
-      - 'Convert.py'
-      - 'requirements.txt'
-      - '.github/workflows/build-windows-exe.yml'
+      - 'Script/CDT/Mouse/Shift + Hover/Convert.py'
+      - 'Script/CDT/Mouse/Shift + Hover/requirements.txt'
+      - 'Script/CDT/Mouse/Shift + Hover/.github/workflows/build-windows-exe.yml'
   workflow_dispatch:
 
 jobs:
@@ -29,22 +29,26 @@ jobs:
         
     - name: Install Python dependencies
       run: |
+        cd "Script/CDT/Mouse/Shift + Hover"
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pyinstaller
         
     - name: Build EXE with PyInstaller
       run: |
+        cd "Script/CDT/Mouse/Shift + Hover"
         pyinstaller --onefile --windowed --name "ShiftHoverConverter" --icon=NONE Convert.py
         
     - name: Create Portable Package
       run: |
+        cd "Script/CDT/Mouse/Shift + Hover"
         New-Item -ItemType Directory -Force -Path "Portable\Tesseract-OCR"
         Copy-Item "C:\Program Files\Tesseract-OCR\*" -Destination "Portable\Tesseract-OCR\" -Recurse -Force
         Copy-Item "dist\ShiftHoverConverter.exe" -Destination "Portable\" -Force
         
     - name: Create README for portable package
       run: |
+        cd "Script/CDT/Mouse/Shift + Hover"
         @"
         ===================================================
            Shift+Hover MM-to-Imperial Converter - PORTABLE
@@ -91,11 +95,12 @@ jobs:
         
     - name: Create ZIP archive
       run: |
+        cd "Script/CDT/Mouse/Shift + Hover"
         Compress-Archive -Path "Portable\*" -DestinationPath "shift-hover-converter-windows.zip" -Force
         
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: shift-hover-converter-windows
-        path: shift-hover-converter-windows.zip
+        path: Script/CDT/Mouse/Shift + Hover/shift-hover-converter-windows.zip
         retention-days: 90
