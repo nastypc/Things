@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 AUTO-DISMISS Ctrl+Shift+Hover Converter with floating overlay
+Version: 2.0 - Latest build
 """
 
 import pyautogui
