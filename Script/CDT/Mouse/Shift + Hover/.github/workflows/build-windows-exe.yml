@@ -1,4 +1,4 @@
-name: Build Windows EXE with Tesseract
+name: Build Shift+Hover Converter
 
 on:
   push:
