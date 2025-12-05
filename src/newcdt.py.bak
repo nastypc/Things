@@ -1,0 +1,9 @@
+"""Backup of previous newcdt GUI implementation.
+
+This file is an automated backup created before replacing `newcdt.py` with a
+launcher that instantiates the canonical `CDTAdjusterGUI` from `src/main.py`.
+"""
+
+# Backup content removed for brevity. Original file saved as a backup by the
+# automated patch tool. If you need the original full contents, restore this
+# file from your version control or ask the assistant to print it.

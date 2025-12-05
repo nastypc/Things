@@ -11,7 +11,6 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 FLYOVER_THRESHOLD_MM = 27.0 * 25.4  # 27 inches expressed in millimetres
 GLUE_EDGE_OFFSET = 50.8  # Maintain glue lines 2 inches (50.8 mm) away from panel edges
 MAX_STA_NUDGE = 0.75  # Maximum automatic STA shift (mm) when clearing overlaps
-STA_SPAN_CLAMP_TOLERANCE = 1.0  # Allow small (<1 mm) STA overhangs before trimming
 SHEET_FLIP_THICKNESS = 18.0  # Default sheet thickness moved during sheet flip operations
 PERIMETER_NL_SPACING = 152.4  # 6"
 FIELD_NL_SPACING = 304.8  # 12"
@@ -23,13 +22,8 @@ HORIZONTAL_ROW_SNAP_TOLERANCE = 1.0  # mm tolerance to merge near-identical NL r
 SHORT_CASSETTE_MIN_Y = 5 * 12 * 25.4  # 5 ft in mm
 SHORT_CASSETTE_FULL_Y = 8 * 12 * 25.4  # 8 ft in mm
 GL_DEDUPE_TOLERANCE = 5.0  # mm tolerance when collapsing duplicate glue lines
-GL_MIN_SEGMENT_MM = 0.25  # discard degenerate glue lines that collapse below this span
-GLUE_MEMBER_END_OFFSET_DEFAULT = 0.0  # Glue beads should honor only the explicit offset unless overridden
-GL_MERGE_TOLERANCE = 0.5  # mm tolerance when merging adjacent horizontal glue segments
-GLUE_PLANE_RECESS = 0.5  # Push glue lines slightly beneath the sheathing interface for visualization
 NL_STA_ALIGNMENT_TOLERANCE = 38.1  # Vertical tolerance when snapping STA coverage to nearby NL rows
 GL_STA_ALIGNMENT_TOLERANCE = 38.1  # Vertical tolerance when snapping STA glue to nearby rows
-MIN_SUPPLEMENT_NL_SPAN = 25.4  # Ignore NL gaps shorter than 1"
 
 # Load user presets from src/config.json when available. Presets may override
 # defaults for sheet-flip behavior (nl edge offset, spacings, member edge distance).
@@ -44,7 +38,6 @@ except Exception:
 
 # Effective glue inset (configurable via src/config.json -> presets.glue_edge_offset)
 GLUE_EDGE = float(PRESETS.get('glue_edge_offset', GLUE_EDGE_OFFSET))
-GLUE_MEMBER_END_OFFSET = float(PRESETS.get('glue_member_end_offset', GLUE_MEMBER_END_OFFSET_DEFAULT))
 PERIMETER_NL_SPACING = float(PRESETS.get('perimeter_nl_spacing', PERIMETER_NL_SPACING))
 FIELD_NL_SPACING = float(PRESETS.get('field_nl_spacing', FIELD_NL_SPACING))
 TONGUE_GROOVE_EDGE_OFFSET = float(PRESETS.get('tongue_groove_edge_offset', TONGUE_GROOVE_EDGE_OFFSET))
@@ -342,15 +335,11 @@ class CDTFile:
         self.last_sheet_target: float = 0.0
         self.last_sheet_gap: float = 0.0
         self.original_x_span: Optional[float] = None
-        self.original_y_span: Optional[float] = None
-        self.glue_edge_offset: float = GLUE_EDGE
+        self.glue_edge_offset: float = 50.8
         self.sheet_flip: bool = False
         self.allow_negative_overhang: bool = False
         self.full_sheet_reference: float = 0.0
         self.emit_saw_lines: bool = False
-        self.fill_missing_nl: bool = True
-        self.coverage_y_span: Optional[float] = None
-        self.structural_y_span: Optional[float] = None
 
     def parse(self):
         with open(self.file_path, 'r') as f:
@@ -366,8 +355,6 @@ class CDTFile:
                 self.header = CDTHeader.from_elm_line(line)
                 if self.original_x_span is None:
                     self.original_x_span = self.header.x_size
-                if self.original_y_span is None:
-                    self.original_y_span = self.header.y_size
             elif line.startswith('STA:') or line.startswith('STB:'):
                 elem = SheathingElement.from_cdt_line(line)
                 self.sta_elements.append(elem)
@@ -537,53 +524,24 @@ class CDTFile:
         self.offset_horizontal_members()
         self.resolve_structural_overlaps()
         self._clamp_structural_to_span()
-    def _structural_y_extent(self) -> Optional[Tuple[float, float]]:
-        if not self.sta_elements:
-            return None
-        min_y = min(elem.y for elem in self.sta_elements)
-        max_y = max(elem.y + elem.y_size for elem in self.sta_elements)
-        return min_y, max_y
-
     def _clamp_structural_to_span(self):
         if self.header is None:
             return
-        span_x = max(0.0, self.header.x_size)
-        tolerance = STA_SPAN_CLAMP_TOLERANCE
+        span = max(0.0, self.header.x_size)
         for elem in self.sta_elements:
-            start = elem.x
-            end = elem.x + elem.x_size
-            if start < -tolerance:
-                start = 0.0
-            elif start < 0.0:
-                start = 0.0
-            if end > span_x + tolerance:
-                end = span_x
-            elif end > span_x:
-                end = span_x
-            if end < start:
-                end = start
-            elem.x = max(0.0, min(start, span_x))
-            elem.x_size = max(0.0, end - elem.x)
+            elem.x = max(0.0, min(elem.x, span))
+            elem_end = min(span, elem.x + elem.x_size)
+            elem.x_size = max(0.0, elem_end - elem.x)
 
-        # Track sheathing coverage (for reporting) but base ELM Y on structural span or original ELM when larger
+        # Update ELM Y span based on all components (round up to nearest mm)
         min_y, max_y = self.compute_y_span(self.get_sheathing_elements())
         span = max_y - min_y
         if span < 0:
             span = 0
-        self.coverage_y_span = round(span, 2) if span > 0 else 0.0
-
-        structural_extent = self._structural_y_extent()
-        structural_span = None
-        if structural_extent is not None:
-            sta_min, sta_max = structural_extent
-            structural_span = max(0.0, sta_max - sta_min)
-            self.structural_y_span = round(structural_span, 2)
-
-        target_y = self.original_y_span if self.original_y_span is not None else (self.header.y_size if self.header else 0.0)
-        if structural_span is not None and structural_span > target_y + 1e-3:
-            target_y = structural_span
-        self.header.y_size = round(target_y, 2)
-        self.header.measurement = self.header.y_size
+        if span > 0:
+            precise_span = round(span, 2)
+            self.header.y_size = precise_span
+            self.header.measurement = precise_span
         self.header.quality = self.header.z_size
 
     def _clamp_element(self, elem: SheathingElement):
@@ -593,25 +551,6 @@ class CDTFile:
         max_y = max(0.0, self.header.y_size - elem.y_size)
         elem.x = min(max(elem.x, 0.0), max_x)
         elem.y = min(max(elem.y, 0.0), max_y)
-
-    @staticmethod
-    def _round_mm(value: float, precision: float = 1.0) -> float:
-        """Round measurements to the nearest millimetre-equivalent value."""
-        if not math.isfinite(value) or precision <= 0:
-            return value
-        scaled = value / precision
-        if scaled >= 0:
-            rounded = math.floor(scaled + 0.5)
-        else:
-            rounded = -math.floor(-scaled + 0.5)
-        return rounded * precision
-
-    @staticmethod
-    def _spacing_for_length(length: float, max_spacing: float) -> float:
-        """Return spacing capped at the requested maximum value."""
-        if max_spacing <= 0:
-            return max(length, 0.0)
-        return max_spacing
 
     @staticmethod
     def _inset_segment(start: float, end: float, inset: float) -> Tuple[float, float]:
@@ -751,120 +690,6 @@ class CDTFile:
                 return True
         return False
 
-    @staticmethod
-    def _merge_nl_segments(
-        segments: List[Tuple[float, float, float, float, float, int, bool]],
-        tolerance: float = 0.5
-    ) -> List[Tuple[float, float, float, float, float, int, bool]]:
-        if not segments:
-            return []
-        horizontal_groups: Dict[Tuple[float, int], List[Tuple[float, float, float, float, float, int, bool]]] = {}
-        merged: List[Tuple[float, float, float, float, float, int, bool]] = []
-        for seg in segments:
-            if not seg[6]:
-                merged.append(seg)
-                continue
-            y_mid = round(0.5 * (seg[1] + seg[3]), 3)
-            key = (y_mid, seg[5])
-            horizontal_groups.setdefault(key, []).append(seg)
-        for key, group in horizontal_groups.items():
-            sorted_group = sorted(group, key=lambda item: min(item[0], item[2]))
-            current = None
-            current_low = current_high = 0.0
-            current_spacing = 0.0
-            for seg in sorted_group:
-                low = min(seg[0], seg[2])
-                high = max(seg[0], seg[2])
-                if current is None:
-                    current = seg
-                    current_low, current_high = low, high
-                    current_spacing = seg[4]
-                    continue
-                if low <= current_high + tolerance:
-                    current_high = max(current_high, high)
-                    current_spacing = min(current_spacing, seg[4])
-                else:
-                    merged.append((current_low, current[1], current_high, current[3], current_spacing, current[5], True))
-                    current = seg
-                    current_low, current_high = low, high
-                    current_spacing = seg[4]
-            if current is not None:
-                merged.append((current_low, current[1], current_high, current[3], current_spacing, current[5], True))
-        return merged
-
-    def _extend_edge_overhangs(
-        self,
-        info: Dict[str, Any],
-        segments_to_emit: List[Tuple[float, float, float, float, float, int, bool]],
-        row_y: float,
-        spacing_cap: float,
-        tool_value: int,
-        sta_face_start: Optional[float],
-        sta_face_end: Optional[float],
-        sta_trim_start: Optional[float],
-        sta_trim_end: Optional[float],
-        panel_min: Optional[float],
-        panel_max: Optional[float]
-    ) -> None:
-        tol = PANEL_EDGE_TOLERANCE + 0.1
-        min_stub = PERIMETER_NL_SPACING
-
-        def extend_range(stub_start: float, stub_end: float) -> None:
-            if stub_end - stub_start <= 1e-3:
-                return
-            segments = info.setdefault('segments', [])
-            extended = False
-            for idx, (seg_start, seg_end) in enumerate(segments):
-                low = min(seg_start, seg_end)
-                high = max(seg_start, seg_end)
-                if high + tol >= stub_start and low - tol <= stub_end:
-                    new_low = min(low, stub_start)
-                    new_high = max(high, stub_end)
-                    segments[idx] = (new_low, new_high)
-                    info['min_nl'] = min(info.get('min_nl', new_low), new_low)
-                    info['max_nl'] = max(info.get('max_nl', new_high), new_high)
-                    extended = True
-                    break
-            if not extended:
-                segments.append((stub_start, stub_end))
-                info['min_nl'] = min(info.get('min_nl', stub_start), stub_start)
-                info['max_nl'] = max(info.get('max_nl', stub_end), stub_end)
-
-            def extend_emit_list() -> None:
-                for idx, (sx, sy, ex, ey, cap, tool, is_horizontal) in enumerate(segments_to_emit):
-                    if not is_horizontal or abs(sy - row_y) > 1e-3:
-                        continue
-                    low = min(sx, ex)
-                    high = max(sx, ex)
-                    if high + tol >= stub_start and low - tol <= stub_end:
-                        new_low = min(low, stub_start)
-                        new_high = max(high, stub_end)
-                        if sx <= ex:
-                            seg_x_start, seg_x_end = new_low, new_high
-                        else:
-                            seg_x_start, seg_x_end = new_high, new_low
-                        segments_to_emit[idx] = (seg_x_start, sy, seg_x_end, ey, cap, tool, True)
-                        return
-                segments_to_emit.append((stub_start, row_y, stub_end, row_y, spacing_cap, tool_value, True))
-
-            extend_emit_list()
-
-        if panel_min is not None and sta_face_start is not None and panel_min < sta_face_start - tol:
-            stub_end = sta_trim_start if sta_trim_start is not None else sta_face_start + MEMBER_END_FASTENER_OFFSET
-            stub_start = max(sta_face_start + SQUARE_EDGE_OFFSET, stub_end - TONGUE_GROOVE_EDGE_OFFSET)
-            if stub_end - stub_start < min_stub:
-                max_end = sta_trim_end if sta_trim_end is not None else (stub_start + min_stub)
-                stub_end = min(max_end, stub_start + min_stub)
-            extend_range(stub_start, stub_end)
-
-        if panel_max is not None and sta_face_end is not None and panel_max > sta_face_end + tol:
-            stub_start = sta_trim_end if sta_trim_end is not None else sta_face_end - MEMBER_END_FASTENER_OFFSET
-            stub_end = min(sta_face_end - SQUARE_EDGE_OFFSET, stub_start + TONGUE_GROOVE_EDGE_OFFSET)
-            if stub_end - stub_start < min_stub:
-                min_start = sta_trim_start if sta_trim_start is not None else (stub_end - min_stub)
-                stub_start = max(min_start, stub_end - min_stub)
-            extend_range(stub_start, stub_end)
-
     def _snapped_panel_spans(self, y_value: float, target_start: float, target_end: float,
                               sheathing_panels_for_y, sheathing_spans_for_y,
                               tolerance: float = 0.5) -> Tuple[List[Tuple[float, float]], Optional[float], Optional[float]]:
@@ -951,9 +776,8 @@ class CDTFile:
             registry.append(best)
         return best
 
-    def _sta_span_for_y(self, y_value: float, inset: float = MEMBER_END_FASTENER_OFFSET) -> Tuple[Optional[float], Optional[float], Optional[float], Optional[float]]:
-        coverage_tol = 5.0
-        min_gap = max(coverage_tol, MIN_SUPPLEMENT_NL_SPAN)
+    def _sta_span_for_y(self, y_value: float) -> Tuple[Optional[float], Optional[float], Optional[float], Optional[float]]:
+        coverage_tol = 0.5
         sta_member: Optional[SheathingElement] = None
         for sta in self.sta_elements:
             if sta.y - coverage_tol <= y_value <= sta.y + sta.y_size + coverage_tol:
@@ -963,24 +787,22 @@ class CDTFile:
             return None, None, None, None
         raw_start = sta_member.x
         raw_end = sta_member.x + sta_member.x_size
-        inset = max(0.0, inset)
-        sta_start = raw_start + inset
-        sta_end = raw_end - inset
+        sta_start = raw_start + MEMBER_END_FASTENER_OFFSET
+        sta_end = raw_end - MEMBER_END_FASTENER_OFFSET
         if sta_end <= sta_start + 1e-3:
             return None, None, raw_start, raw_end
         return sta_start, sta_end, raw_start, raw_end
 
     def _clamp_horizontal_span(self, x_start: float, x_end: float, y_value: float, wall_start: float,
                                wall_end: float, offset: float, sta_start: Optional[float] = None,
-                               sta_end: Optional[float] = None, span_inset: Optional[float] = None) -> Tuple[float, float]:
+                               sta_end: Optional[float] = None) -> Tuple[float, float]:
         reversed_segment = x_start > x_end
         span_start = min(x_start, x_end)
         span_end = max(x_start, x_end)
         span_start = max(span_start, wall_start)
         span_end = min(span_end, wall_end)
-        inset_value = MEMBER_END_FASTENER_OFFSET if span_inset is None else max(0.0, span_inset)
         if sta_start is None or sta_end is None:
-            fallback_sta_start, fallback_sta_end, _, _ = self._sta_span_for_y(y_value, inset=inset_value)
+            fallback_sta_start, fallback_sta_end, _, _ = self._sta_span_for_y(y_value)
             if sta_start is None:
                 sta_start = fallback_sta_start
             if sta_end is None:
@@ -1018,11 +840,6 @@ class CDTFile:
     def _append_gl_line(self, dest: List[str], seen_keys: Set[Tuple], fmt_value, x_start: float, y_start: float, z_start: float,
                          x_end: float, y_end: float, z_end: float, amplitude: float, wavelength: float, tool_index: int,
                          widths: Optional[List[int]] = None):
-        dx = abs(x_end - x_start)
-        dy = abs(y_end - y_start)
-        dz = abs(z_end - z_start)
-        if max(dx, dy, dz) <= GL_MIN_SEGMENT_MM:
-            return
         key = self._gl_key(x_start, y_start, z_start, x_end, y_end, z_end, amplitude, wavelength, tool_index)
         if key in seen_keys:
             return
@@ -1032,114 +849,6 @@ class CDTFile:
         else:
             line = GlueLine._format(fmt_value, x_start, y_start, z_start, x_end, y_end, z_end, amplitude, wavelength, tool_index, widths)
         dest.append(line)
-
-    def _merge_horizontal_gl_strings(self, gl_strings: List[str], fmt_value) -> List[str]:
-        if not gl_strings:
-            return gl_strings
-        horizontal_groups: Dict[Tuple, List[GlueLine]] = {}
-        passthrough: List[str] = []
-        for line in gl_strings:
-            try:
-                gl = GlueLine.from_line(line)
-            except ValueError:
-                passthrough.append(line)
-                continue
-            if abs(gl.y_end - gl.y_start) <= 1e-3:
-                key = (
-                    round(gl.y_start, 3),
-                    round(gl.z_start, 3),
-                    round(gl.amplitude, 3),
-                    round(gl.wavelength, 3),
-                    int(round(gl.tool_index))
-                )
-                horizontal_groups.setdefault(key, []).append(gl)
-            else:
-                passthrough.append(line)
-        merged_lines: List[str] = []
-        for key, group in horizontal_groups.items():
-            group.sort(key=lambda g: min(g.x_start, g.x_end))
-            if not group:
-                continue
-            current_start = min(group[0].x_start, group[0].x_end)
-            current_end = max(group[0].x_start, group[0].x_end)
-            y_val = group[0].y_start
-            z_val = group[0].z_start
-            amplitude = group[0].amplitude
-            wavelength = group[0].wavelength
-            tool_index = group[0].tool_index
-            widths = group[0].widths
-            for gl in group[1:]:
-                start = min(gl.x_start, gl.x_end)
-                end = max(gl.x_start, gl.x_end)
-                if start - current_end <= GL_MERGE_TOLERANCE:
-                    current_end = max(current_end, end)
-                else:
-                    if widths is None:
-                        merged_lines.append(
-                            GlueLine.default_format(
-                                fmt_value,
-                                current_start,
-                                y_val,
-                                z_val,
-                                current_end,
-                                y_val,
-                                z_val,
-                                amplitude,
-                                wavelength,
-                                tool_index
-                            )
-                        )
-                    else:
-                        merged_lines.append(
-                            GlueLine._format(
-                                fmt_value,
-                                current_start,
-                                y_val,
-                                z_val,
-                                current_end,
-                                y_val,
-                                z_val,
-                                amplitude,
-                                wavelength,
-                                tool_index,
-                                widths
-                            )
-                        )
-                    current_start = start
-                    current_end = end
-            if widths is None:
-                merged_lines.append(
-                    GlueLine.default_format(
-                        fmt_value,
-                        current_start,
-                        y_val,
-                        z_val,
-                        current_end,
-                        y_val,
-                        z_val,
-                        amplitude,
-                        wavelength,
-                        tool_index
-                    )
-                )
-            else:
-                merged_lines.append(
-                    GlueLine._format(
-                        fmt_value,
-                        current_start,
-                        y_val,
-                        z_val,
-                        current_end,
-                        y_val,
-                        z_val,
-                        amplitude,
-                        wavelength,
-                        tool_index,
-                        widths
-                    )
-                )
-        merged_lines.extend(passthrough)
-        return merged_lines
 
     def _clamp_sheathing_to_span(self, span_x: float):
         """Trim mirrored sheathing so it stays within the available span."""
@@ -1179,51 +888,22 @@ class CDTFile:
                 self.length_warnings.append(notice)
 
     def _apply_short_cassette_rule(self, sheathing: List[SheathingElement]):
-        if not self.header or not sheathing:
+        if not self.header:
             return
-        min_y = min(elem.y for elem in sheathing)
-        max_y = max(elem.y + elem.y_size for elem in sheathing)
-        deck_span = max(0.0, max_y - min_y)
-        if deck_span >= SHORT_CASSETTE_FULL_Y - 1e-3:
+        if self.header.y_size >= SHORT_CASSETTE_FULL_Y - 1e-3:
             return
-
-        boo1_panels = [elem for elem in sheathing if elem.element_type == 'BOO1']
-        if not boo1_panels:
-            return
-
-        far_x_edge = max(elem.x + elem.x_size for elem in boo1_panels)
-        far_y_edge = max(elem.y + elem.y_size for elem in boo1_panels)
-        axis_tolerance = 0.5
-        width_target = self.full_sheet_reference
-        if width_target is None or width_target <= 0:
-            width_target = max((elem.original_x_size for elem in boo1_panels), default=0.0)
-        if width_target <= 0:
-            width_target = max((elem.x_size for elem in boo1_panels), default=0.0)
-
         adjusted_any = False
-        for elem in boo1_panels:
-            if elem.y_size + 1e-3 < SHORT_CASSETTE_MIN_Y:
+        for elem in sheathing:
+            if elem.y_size < SHORT_CASSETTE_MIN_Y:
                 continue
-            changed = False
-            far_x_member = far_x_edge - (elem.x + elem.x_size) <= axis_tolerance
-            far_y_member = far_y_edge - (elem.y + elem.y_size) <= axis_tolerance
-
-            if far_x_member and elem.x_size + 1e-3 >= FLYOVER_THRESHOLD_MM and width_target > 0 and width_target > elem.x_size + 1e-3:
-                elem.x_size = round(width_target, 3)
-                changed = True
-            if far_y_member and elem.y_size + 1e-3 < SHORT_CASSETTE_FULL_Y:
-                elem.y_size = SHORT_CASSETTE_FULL_Y
-                changed = True
-            if changed:
-                adjusted_any = True
-
+            extension = SHORT_CASSETTE_FULL_Y - elem.y_size
+            if extension <= 1e-3:
+                continue
+            elem.y_size = SHORT_CASSETTE_FULL_Y
+            adjusted_any = True
         if adjusted_any:
-            footprint = self.original_x_span if self.original_x_span is not None else (self.header.x_size if self.header else 0.0)
-            if footprint:
-                farthest_span = max(elem.x + elem.x_size for elem in boo1_panels)
-                self.flyover_extension = max(0.0, round(farthest_span - footprint, 3))
             msg = (
-                "Short cassette flyover applied: BOO1 panels opposite the origin (far X/Y edges) >= 5 ft tall and >= 27\" wide converted to full 4x8 coverage."
+                f"Short cassette rule applied: BOO1 rows >= {SHORT_CASSETTE_MIN_Y:.0f}mm converted to full {SHORT_CASSETTE_FULL_Y:.0f}mm with north flyover."
             )
             if msg not in self.length_warnings:
                 self.length_warnings.append(msg)
@@ -1520,20 +1200,8 @@ class CDTFile:
                     widths = template.widths if template else None
                     gl_start = span_start
                     gl_end = span_end
-                    sta_span_start = (
-                        info.get('sta_full_start')
-                        if info.get('sta_full_start') is not None
-                        else info.get('sta_raw_start')
-                        if info.get('sta_raw_start') is not None
-                        else info.get('sta_start')
-                    )
-                    sta_span_end = (
-                        info.get('sta_full_end')
-                        if info.get('sta_full_end') is not None
-                        else info.get('sta_raw_end')
-                        if info.get('sta_raw_end') is not None
-                        else info.get('sta_end')
-                    )
+                    sta_span_start = info.get('sta_full_start') if info.get('sta_full_start') is not None else info.get('sta_start')
+                    sta_span_end = info.get('sta_full_end') if info.get('sta_full_end') is not None else info.get('sta_end')
                     if sta_span_start is not None and sta_span_end is not None and sta_span_end > sta_span_start:
                         gl_start = sta_span_start
                         gl_end = sta_span_end
@@ -1543,17 +1211,7 @@ class CDTFile:
                         gl_end = min(wall_end, gl_end)
                     sta_start = sta_span_start
                     sta_end = sta_span_end
-                    gl_start, gl_end = self._clamp_horizontal_span(
-                        gl_start,
-                        gl_end,
-                        y_value,
-                        wall_start,
-                        wall_end,
-                        offset,
-                        sta_start,
-                        sta_end,
-                        span_inset=GLUE_MEMBER_END_OFFSET
-                    )
+                    gl_start, gl_end = self._clamp_horizontal_span(gl_start, gl_end, y_value, wall_start, wall_end, offset, sta_start, sta_end)
                     self._append_gl_line(new_lines, seen_gl_keys, fmt_value, gl_start, y_value, z_value, gl_end, y_value, z_value, amplitude, wavelength, tool_index, widths)
                     self._register_gl_span(horizontal_gl_coverage, y_value, gl_start, gl_end)
                     if matched_key is not None:
@@ -1561,15 +1219,7 @@ class CDTFile:
                     emitted.add(key)
                 else:
                     for gl in originals:
-                        gl_start, gl_end = self._clamp_horizontal_span(
-                            gl.x_start,
-                            gl.x_end,
-                            gl.y_start,
-                            wall_start,
-                            wall_end,
-                            offset,
-                            span_inset=GLUE_MEMBER_END_OFFSET
-                        )
+                        gl_start, gl_end = self._clamp_horizontal_span(gl.x_start, gl.x_end, gl.y_start, wall_start, wall_end, offset)
                         self._append_gl_line(new_lines, seen_gl_keys, fmt_value, gl_start, gl.y_start, gl.z_start, gl_end, gl.y_end, gl.z_end, gl.amplitude, gl.wavelength, gl.tool_index, gl.widths)
                         self._register_gl_span(horizontal_gl_coverage, gl.y_start, gl_start, gl_end)
                     emitted.add(key)
@@ -1608,52 +1258,25 @@ class CDTFile:
                 gl_start = max(wall_start, span_start)
             if span_end >= wall_end - epsilon:
                 gl_end = min(wall_end, span_end)
-            sta_start = (
-                info.get('sta_full_start')
-                if info.get('sta_full_start') is not None
-                else info.get('sta_raw_start')
-                if info.get('sta_raw_start') is not None
-                else info.get('sta_start')
-            )
-            sta_end = (
-                info.get('sta_full_end')
-                if info.get('sta_full_end') is not None
-                else info.get('sta_raw_end')
-                if info.get('sta_raw_end') is not None
-                else info.get('sta_end')
-            )
+            sta_start = info.get('sta_start')
+            sta_end = info.get('sta_end')
             y_value = info.get('y', 0.0)
             z_value = info.get('z', glue_plane)
-            gl_start, gl_end = self._clamp_horizontal_span(
-                gl_start,
-                gl_end,
-                y_value,
-                wall_start,
-                wall_end,
-                offset,
-                sta_start,
-                sta_end,
-                span_inset=GLUE_MEMBER_END_OFFSET
-            )
+            gl_start, gl_end = self._clamp_horizontal_span(gl_start, gl_end, y_value, wall_start, wall_end, offset, sta_start, sta_end)
             self._append_gl_line(new_lines, seen_gl_keys, fmt_value, gl_start, y_value, z_value, gl_end, y_value, z_value, 0.0, 0.0, default_tool)
             self._register_gl_span(horizontal_gl_coverage, y_value, gl_start, gl_end)
             matched_nl_keys.add(key)
 
         # Fallback: ensure each STA span has horizontal glue coverage
         processed_sta: Set[SheathingElement] = set()
-        coverage_tol = 5.0
-        min_gap = max(coverage_tol, MIN_SUPPLEMENT_NL_SPAN)
+        coverage_tol = 0.5
         for sta in self.sta_elements:
             if sta in processed_sta:
                 continue
-            # Skip members whose y-span dwarfs the x-span (vertical posts/rim ends) to avoid
-            # emitting short edge glue runs when glue offsets are zero.
-            if (sta.y_size - sta.x_size) > coverage_tol:
-                continue
             processed_sta.add(sta)
             y_start = sta.y + 0.5 * sta.y_size
-            sta_start = sta.x + GLUE_MEMBER_END_OFFSET
-            sta_end = sta.x + sta.x_size - GLUE_MEMBER_END_OFFSET
+            sta_start = sta.x + MEMBER_END_FASTENER_OFFSET
+            sta_end = sta.x + sta.x_size - MEMBER_END_FASTENER_OFFSET
             if sta_end <= sta_start + 1e-3:
                 continue
             target_y = self._preferred_y_for_span(y_start, horizontal_nl_groups, horizontal_gl_coverage, GL_STA_ALIGNMENT_TOLERANCE)
@@ -1662,17 +1285,7 @@ class CDTFile:
             if not gaps:
                 continue
             for gap_start, gap_end in gaps:
-                gl_start, gl_end = self._clamp_horizontal_span(
-                    gap_start,
-                    gap_end,
-                    y_start,
-                    wall_start,
-                    wall_end,
-                    offset,
-                    sta_start,
-                    sta_end,
-                    span_inset=GLUE_MEMBER_END_OFFSET
-                )
+                gl_start, gl_end = self._clamp_horizontal_span(gap_start, gap_end, y_start, wall_start, wall_end, offset, sta_start, sta_end)
                 if gl_end - gl_start <= 1e-3:
                     continue
                 glue_z = self.glue_plane_z if hasattr(self, 'glue_plane_z') else 0.0
@@ -1703,15 +1316,7 @@ class CDTFile:
                     x_end = min(wall_end, x_end)
                 x_start, x_end = self._inset_segment(x_start, x_end, self.glue_edge_offset)
             if abs(y_end - y_start) <= epsilon:
-                x_start, x_end = self._clamp_horizontal_span(
-                    x_start,
-                    x_end,
-                    y_start,
-                    wall_start,
-                    wall_end,
-                    self.glue_edge_offset,
-                    span_inset=GLUE_MEMBER_END_OFFSET
-                )
+                x_start, x_end = self._clamp_horizontal_span(x_start, x_end, y_start, wall_start, wall_end, self.glue_edge_offset)
             self._append_gl_line(
                 fallback,
                 seen,
@@ -1734,8 +1339,7 @@ class CDTFile:
                                    sheathing_panels_for_y, sheathing_spans_for_y) -> List[str]:
         if top_surface_z is None:
             return []
-        coverage_tol = 5.0
-        min_gap = max(coverage_tol, MIN_SUPPLEMENT_NL_SPAN)
+        coverage_tol = 0.5
         coverage_by_y: Dict[float, List[Tuple[float, float]]] = {}
         for key, info in horizontal_nl_groups.items():
             orient, y_val, _ = key
@@ -1763,29 +1367,26 @@ class CDTFile:
                 continue
             target_y = self._preferred_y_for_span(y_mid, horizontal_nl_groups, gl_row_coverage, NL_STA_ALIGNMENT_TOLERANCE)
             coverage_list = coverage_by_y.setdefault(target_y, [])
-            if coverage_list:
-                continue
             gaps = self._segment_gaps(sta_start, sta_end, coverage_list, tolerance=coverage_tol)
             if not gaps:
                 continue
             _, group_info = self._ensure_horizontal_group(horizontal_nl_groups, target_y)
             segments = group_info.setdefault('segments', [])
+            spacing = group_info.get('spacing', FIELD_NL_SPACING)
+            tool_index = int(group_info.get('tool_index', 11))
+            group_info.setdefault('spacing', spacing)
             panels_for_row = sheathing_panels_for_y(target_y)
             edge_row = self._is_panel_edge_row(target_y, panels_for_row)
-            max_spacing = PERIMETER_NL_SPACING if edge_row else group_info.get('max_spacing', FIELD_NL_SPACING)
-            tool_index = int(group_info.get('tool_index', 11))
-            group_info['max_spacing'] = max_spacing
             if edge_row:
                 group_info['edge'] = True
-                max_spacing = PERIMETER_NL_SPACING
+                group_info['spacing'] = PERIMETER_NL_SPACING
             else:
-                max_spacing = min(group_info.get('max_spacing', FIELD_NL_SPACING), FIELD_NL_SPACING)
-            group_info['max_spacing'] = max_spacing
+                group_info['spacing'] = min(group_info.get('spacing', FIELD_NL_SPACING), FIELD_NL_SPACING)
             group_info.setdefault('tool_index', tool_index)
             group_info.setdefault('y', target_y)
             group_info.setdefault('z', self.glue_plane_z if hasattr(self, 'glue_plane_z') else 0.0)
             for gap_start, gap_end in gaps:
-                if gap_end - gap_start <= min_gap:
+                if gap_end - gap_start <= 1e-3:
                     continue
                 snapped_spans, panel_min, panel_max = self._snapped_panel_spans(
                     target_y,
@@ -1814,8 +1415,7 @@ class CDTFile:
                     face_end = group_info.get('sta_full_end')
                     group_info['sta_full_start'] = min(face_start, sta_face_start) if face_start is not None else sta_face_start
                     group_info['sta_full_end'] = max(face_end, sta_face_end) if face_end is not None else sta_face_end
-                    span_length = abs(seg_end - seg_start)
-                    spacing_value = self._spacing_for_length(span_length, max_spacing)
+                    spacing_value = PERIMETER_NL_SPACING if edge_row else group_info.get('spacing', FIELD_NL_SPACING)
                     line = self._format_nl_line(
                         fmt_value,
                         seg_start,
@@ -1833,14 +1433,14 @@ class CDTFile:
 
     def _generate_flyover_stub_lines(self, fmt_value, horizontal_nl_groups: Dict[Tuple[str, float, float], Dict[str, Any]],
                                      top_surface_z: Optional[float]) -> List[str]:
-        if top_surface_z is None or self.fill_missing_nl:
+        if top_surface_z is None:
             return []
 
         additions: List[Tuple[float, float, str]] = []
         tol = PANEL_EDGE_TOLERANCE + 0.1
 
         def append_stub(info: Dict[str, Any], y_value: float, start: float, end: float,
-                         max_spacing: float, tool_index: int):
+                         spacing: float, tool_index: int):
             seg_start = min(start, end)
             seg_end = max(start, end)
             if seg_end - seg_start <= 1e-3:
@@ -1848,8 +1448,6 @@ class CDTFile:
             info.setdefault('segments', []).append((seg_start, seg_end))
             info['min_nl'] = min(info.get('min_nl', seg_start), seg_start)
             info['max_nl'] = max(info.get('max_nl', seg_end), seg_end)
-            span_length = seg_end - seg_start
-            spacing_value = self._spacing_for_length(span_length, max_spacing)
             line = self._format_nl_line(
                 fmt_value,
                 seg_start,
@@ -1858,7 +1456,7 @@ class CDTFile:
                 seg_end,
                 y_value,
                 top_surface_z,
-                spacing_value,
+                spacing,
                 tool_index
             )
             additions.append((y_value, seg_start, line))
@@ -1877,7 +1475,7 @@ class CDTFile:
             sta_face_end = info.get('sta_full_end')
             sta_trim_start = info.get('sta_start')
             sta_trim_end = info.get('sta_end')
-            max_spacing = PERIMETER_NL_SPACING
+            spacing_value = PERIMETER_NL_SPACING
             tool_index = int(round(info.get('tool_index', 11)))
             min_existing = info.get('min_nl')
             max_existing = info.get('max_nl')
@@ -1891,7 +1489,7 @@ class CDTFile:
                     max_end = sta_trim_end if sta_trim_end is not None else (stub_start + min_stub)
                     stub_end = min(max_end, stub_start + min_stub)
                 if stub_end - stub_start > 1e-3 and not self._segments_cover_interval(segments, stub_start, stub_end):
-                    append_stub(info, y_row, stub_start, stub_end, max_spacing, tool_index)
+                    append_stub(info, y_row, stub_start, stub_end, spacing_value, tool_index)
                     info['flyover_left_done'] = True
 
             if (panel_max is not None and sta_face_end is not None and
@@ -1902,29 +1500,20 @@ class CDTFile:
                     min_start = sta_trim_start if sta_trim_start is not None else (stub_end - min_stub)
                     stub_start = max(min_start, stub_end - min_stub)
                 if stub_end - stub_start > 1e-3 and not self._segments_cover_interval(segments, stub_start, stub_end):
-                    append_stub(info, y_row, stub_start, stub_end, max_spacing, tool_index)
+                    append_stub(info, y_row, stub_start, stub_end, spacing_value, tool_index)
                     info['flyover_right_done'] = True
 
         additions.sort(key=lambda entry: (entry[0], entry[1]))
         return [line for _, _, line in additions]
 
-    def _original_glue_lines(self, fmt_value, wall_start: float, wall_end: float, offset: float, preserve_spans: bool = False) -> Tuple[List[str], Set[Tuple]]:
+    def _original_glue_lines(self, fmt_value, wall_start: float, wall_end: float, offset: float) -> Tuple[List[str], Set[Tuple]]:
         lines: List[str] = []
         seen: Set[Tuple] = set()
         for gl in self.gl_lines:
             x_start = gl.x_start
             x_end = gl.x_end
-            if not preserve_spans:
-                if abs(gl.y_end - gl.y_start) <= 1e-3:
-                    x_start, x_end = self._clamp_horizontal_span(
-                        x_start,
-                        x_end,
-                        gl.y_start,
-                        wall_start,
-                        wall_end,
-                        offset,
-                        span_inset=GLUE_MEMBER_END_OFFSET
-                    )
+            if abs(gl.y_end - gl.y_start) <= 1e-3:
+                x_start, x_end = self._clamp_horizontal_span(x_start, x_end, gl.y_start, wall_start, wall_end, offset)
             self._append_gl_line(
                 lines,
                 seen,
@@ -1960,13 +1549,6 @@ class CDTFile:
 
     def _format_nl_line(self, fmt_value, x_start: float, y_start: float, z_start: float,
                          x_end: float, y_end: float, z_end: float, spacing: float, tool_index: int) -> str:
-        x_start = self._round_mm(x_start)
-        y_start = self._round_mm(y_start)
-        z_start = self._round_mm(z_start)
-        x_end = self._round_mm(x_end)
-        y_end = self._round_mm(y_end)
-        z_end = self._round_mm(z_end)
-        spacing = self._round_mm(max(spacing, 0.0))
         parts = [
             'NL',
             fmt_value(x_start, 0),
@@ -2185,12 +1767,13 @@ class CDTFile:
             mirrored_backups['sta'] = [(s.x, s.x_size, s.y, s.y_size) for s in self.sta_elements]
             mirrored_backups['gl'] = [(g.x_start, g.x_end, g.y_start, g.y_end) for g in self.gl_lines]
             span_x = self.header.x_size
-            for e in self.elements:
-                mirrored_start = span_x - (e.x + e.x_size)
-                e.x = round(mirrored_start, 6)
-                e.x_size = e.x_size
-                e.y = e.y
-                e.y_size = e.y_size
+            # For sheet flip, lock sheathing positions, mirror STA and GL
+            if not self.sheet_flip:
+                for e in self.elements:
+                    e.x = round(span_x - (e.x + e.x_size), 6)
+                    e.x_size = e.x_size
+                    e.y = e.y
+                    e.y_size = e.y_size
             for s in self.sta_elements:
                 s.x = round(span_x - (s.x + s.x_size), 6)
                 s.x_size = s.x_size
@@ -2202,43 +1785,26 @@ class CDTFile:
                 g.y_start = g.y_start
                 g.y_end = g.y_end
 
-        sheet_flip_delta = SHEET_FLIP_THICKNESS if self.sheet_flip else 0.0
-
-        def flipped_sheet_z(elem: SheathingElement) -> float:
-            if sheet_flip_delta <= 0.0:
-                return elem.z
-            if elem.element_type.startswith('BOO'):
-                return elem.z - sheet_flip_delta
-            if elem.element_type.startswith('BOI'):
-                return elem.z + sheet_flip_delta
-            return elem.z
-
-        def sheet_flip_repr(elem: SheathingElement) -> Tuple[str, float]:
-            if sheet_flip_delta <= 0.0:
-                return elem.element_type, elem.z
-            prefix = elem.element_type[:3]
-            suffix = elem.element_type[3:]
-            adjusted_z = flipped_sheet_z(elem)
-            if elem.element_type.startswith('BOO'):
-                return f"BOI{suffix}", adjusted_z
-            if elem.element_type.startswith('BOI'):
-                return f"BOO{suffix}", adjusted_z
-            return elem.element_type, elem.z
+        sheet_flip_backups = {}
+        if self.sheet_flip:
+            thickness = SHEET_FLIP_THICKNESS
+            sheet_flip_backups['elements'] = [(e.element_type, e.z) for e in self.elements]
+            for elem in self.elements:
+                if elem.element_type.startswith('BOO'):
+                    elem.element_type = 'BOI' + elem.element_type[3:]
+                    elem.z -= thickness
+                elif elem.element_type.startswith('BOI'):
+                    elem.element_type = 'BOO' + elem.element_type[3:]
+                    elem.z += thickness
 
         sheathing_index = 0
         sta_index = 0
         top_surface_z = None
         glue_plane_z = 0.0
-        sta_top_z = None
-        if self.sta_elements:
-            sta_top_z = max(sta.z + sta.z_size for sta in self.sta_elements)
         sheathing = self.get_sheathing_elements()
         if sheathing:
-            top_surface_z = max(flipped_sheet_z(elem) + elem.z_size for elem in sheathing)
-            boo_bottoms = [flipped_sheet_z(elem) for elem in sheathing if elem.element_type.startswith('BOO')]
-            sheet_bottom_candidates = boo_bottoms or [flipped_sheet_z(elem) for elem in sheathing]
-            sheet_bottom = min(sheet_bottom_candidates) if sheet_bottom_candidates else 0.0
-            glue_plane_z = sheet_bottom - GLUE_PLANE_RECESS
+            top_surface_z = max(elem.z + elem.z_size for elem in sheathing)
+            glue_plane_z = min(elem.z for elem in sheathing)
             first_sheet = min(sheathing, key=lambda e: e.x)
             last_sheet = max(sheathing, key=lambda e: e.x + e.x_size)
             wall_start = min(s.x for s in self.sta_elements) if self.sta_elements else first_sheet.x
@@ -2250,7 +1816,7 @@ class CDTFile:
             wall_end = max(s.x + s.x_size for s in self.sta_elements) if self.sta_elements else self.header.x_size if self.header else 0.0
             wall_bottom = min(s.y for s in self.sta_elements) if self.sta_elements else 0.0
             wall_top = max(s.y + s.y_size for s in self.sta_elements) if self.sta_elements else self.header.y_size if self.header else 0.0
-            glue_plane_z = sta_top_z if sta_top_z is not None else (self.header.z_size if self.header else 0.0)
+            glue_plane_z = self.header.z_size if self.header else 0.0
 
         self.glue_plane_z = glue_plane_z
         panel_edge_rows: List[float] = []
@@ -2328,7 +1894,7 @@ class CDTFile:
         new_gl_lines = None
         gl_seen_keys: Optional[Set[Tuple]] = None
         nl_supplement_lines: Optional[List[str]] = None
-        lock_gl_section = False
+        lock_gl_section = mirror and self.sheet_flip
         glue_offset_value = getattr(self, 'glue_edge_offset', GLUE_EDGE)
         routing_outputs = [] if self.emit_saw_lines else self._prepare_routing_blocks(fmt_value, mirror, self.sheet_flip)
         routing_block_idx = 0
@@ -2401,14 +1967,12 @@ class CDTFile:
                         parts = content.rstrip(';').split(':')
                         if len(parts) >= 8:
                             widths = [len(part) for part in parts[1:]]
-                            elem_type, elem_z = sheet_flip_repr(elem)
-                            parts[0] = elem_type
                             parts[1] = fmt_value(elem.x_size, widths[0])
                             parts[2] = fmt_value(elem.y_size, widths[1])
                             parts[3] = fmt_value(elem.z_size, widths[2])
                             parts[4] = fmt_value(elem.x, widths[3])
                             parts[5] = fmt_value(elem.y, widths[4])
-                            parts[6] = fmt_value(elem_z, widths[5])
+                            parts[6] = fmt_value(elem.z, widths[5])
                             parts[7] = f"{elem.tool_index:>{max(widths[6], len(str(elem.tool_index)))}}"
                             name = elem.name
                             if len(parts) > 8:
@@ -2436,14 +2000,14 @@ class CDTFile:
                             x_start = span_x - x_start
                             x_end = span_x - x_end
                         dy = abs(y_end - y_start)
-                        line_parts = list(parts)
-                        segments_to_emit: List[Tuple[float, float, float, float, float, int, bool]] = []
+                        segments_to_emit: List[Tuple[float, float, float, float]] = []
                         if dy <= 1e-3:
                             y_mid = round(0.5 * (y_start + y_end), 3)
                             snapped_y = self._snap_horizontal_y(y_mid, horizontal_row_registry, panel_edge_rows)
+                            y_mid = snapped_y
                             y_start = snapped_y
                             y_end = snapped_y
-                            gl_key = gl_key_by_y.get(snapped_y)
+                            gl_key = gl_key_by_y.get(y_mid)
                             if gl_key:
                                 nl_key = gl_key
                                 template = horizontal_gl_templates.get(gl_key)
@@ -2451,23 +2015,53 @@ class CDTFile:
                             else:
                                 z_candidate = glue_plane_z
                                 z_round = round(z_candidate if z_candidate is not None else 0.0, 3)
-                                nl_key = ('horizontal', snapped_y, z_round)
+                                nl_key = ('horizontal', y_mid, z_round)
                             x_low = min(x_start, x_end)
                             x_high = max(x_start, x_end)
-                            panels = sheathing_panels_for_y(snapped_y)
-                            edge_row = self._is_panel_edge_row(snapped_y, panels)
-                            base_cap = PERIMETER_NL_SPACING if edge_row else FIELD_NL_SPACING
-                            spacing_cap = base_cap if nail_distance <= 0 else min(nail_distance, base_cap)
-                            snapped_spans, panel_min, panel_max = self._snapped_panel_spans(
-                                snapped_y,
-                                x_low,
-                                x_high,
-                                sheathing_panels_for_y,
-                                sheathing_spans_for_y,
-                                tolerance=coverage_tol
-                            )
+                            panels = sheathing_panels_for_y(y_mid)
+                            edge_row = self._is_panel_edge_row(y_mid, panels)
+                            nail_distance_effective = PERIMETER_NL_SPACING if edge_row else min(nail_distance, FIELD_NL_SPACING)
+                            sta_start, sta_end, sta_face_start, sta_face_end = self._sta_span_for_y(y_mid)
+                            snapped_spans: List[Tuple[float, float]] = []
+                            panel_span_start = None
+                            panel_span_end = None
+                            if panels:
+                                panel_count = len(panels)
+                                for idx, panel in enumerate(panels):
+                                    panel_start = panel.x
+                                    panel_end = panel.x + panel.x_size
+                                    if sta_start is not None and panel_end <= sta_start + coverage_tol:
+                                        continue
+                                    if sta_end is not None and panel_start >= sta_end - coverage_tol:
+                                        continue
+                                    has_left_neighbor = idx > 0
+                                    has_right_neighbor = idx < panel_count - 1
+                                    left_offset = MEMBER_END_FASTENER_OFFSET if has_left_neighbor else SQUARE_EDGE_OFFSET
+                                    right_offset = MEMBER_END_FASTENER_OFFSET if has_right_neighbor else SQUARE_EDGE_OFFSET
+                                    usable_start = panel_start + left_offset
+                                    usable_end = panel_end - right_offset
+                                    if sta_start is not None:
+                                        usable_start = max(usable_start, sta_start)
+                                    if sta_end is not None:
+                                        usable_end = min(usable_end, sta_end)
+                                    if usable_end - usable_start <= 1e-3:
+                                        continue
+                                    snapped_spans.append((usable_start, usable_end))
+                                    panel_span_start = panel.x if panel_span_start is None else min(panel_span_start, panel.x)
+                                    panel_span_end = (panel.x + panel.x_size) if panel_span_end is None else max(panel_span_end, panel.x + panel.x_size)
+                            if not snapped_spans:
+                                spans = sheathing_spans_for_y(y_mid)
+                                if spans:
+                                    for span_start, span_end in spans:
+                                        if x_high < span_start - coverage_tol or x_low > span_end + coverage_tol:
+                                            continue
+                                        snapped_spans.append((span_start, span_end))
+                                    panel_span_start = span_start if panel_span_start is None else min(panel_span_start, span_start)
+                                    panel_span_end = span_end if panel_span_end is None else max(panel_span_end, span_end)
                             if not snapped_spans:
                                 snapped_spans = [(x_low, x_high)]
+                            panel_span_start = panel_span_start if panel_span_start is not None else x_low
+                            panel_span_end = panel_span_end if panel_span_end is not None else x_high
                             info = horizontal_nl_groups.setdefault(
                                 nl_key,
                                 {
@@ -2477,105 +2071,87 @@ class CDTFile:
                                 }
                             )
                             info['edge'] = info.get('edge', False) or edge_row
-                            if info['edge']:
-                                info['max_spacing'] = PERIMETER_NL_SPACING
+                            if info.get('edge'):
+                                info['spacing'] = min(info.get('spacing', PERIMETER_NL_SPACING), PERIMETER_NL_SPACING)
                             else:
-                                target_spacing = spacing_cap if spacing_cap > 0 else FIELD_NL_SPACING
-                                existing_cap = info.get('max_spacing', target_spacing)
-                                info['max_spacing'] = min(existing_cap, FIELD_NL_SPACING)
+                                info.setdefault('spacing', nail_distance_effective)
                             info.setdefault('tool_index', tool_value)
-                            info.setdefault('y', snapped_y)
-                            info.setdefault('z', z_candidate if z_candidate is not None else 0.0)
-                            if panel_min is not None:
-                                existing_min = info.get('panel_min')
-                                info['panel_min'] = panel_min if existing_min is None else min(existing_min, panel_min)
-                            if panel_max is not None:
-                                existing_max = info.get('panel_max')
-                                info['panel_max'] = panel_max if existing_max is None else max(existing_max, panel_max)
-                            sta_start, sta_end, sta_face_start, sta_face_end = self._sta_span_for_y(snapped_y)
-                            if sta_start is not None:
+                            if sta_start is not None and sta_end is not None:
                                 existing_start = info.get('sta_start')
-                                info['sta_start'] = max(existing_start, sta_start) if existing_start is not None else sta_start
-                                existing_raw_start = info.get('sta_raw_start')
-                                info['sta_raw_start'] = max(existing_raw_start, sta_face_start) if existing_raw_start is not None else sta_face_start
-                            if sta_end is not None:
                                 existing_end = info.get('sta_end')
+                                info['sta_start'] = max(existing_start, sta_start) if existing_start is not None else sta_start
                                 info['sta_end'] = min(existing_end, sta_end) if existing_end is not None else sta_end
-                                existing_raw_end = info.get('sta_raw_end')
-                                info['sta_raw_end'] = min(existing_raw_end, sta_face_end) if existing_raw_end is not None else sta_face_end
-                            if sta_face_start is not None and sta_face_end is not None:
-                                face_start = info.get('sta_full_start')
-                                face_end = info.get('sta_full_end')
-                                info['sta_full_start'] = min(face_start, sta_face_start) if face_start is not None else sta_face_start
-                                info['sta_full_end'] = max(face_end, sta_face_end) if face_end is not None else sta_face_end
-                            for seg_start, seg_end in snapped_spans:
-                                low = min(seg_start, seg_end)
-                                high = max(seg_start, seg_end)
-                                if high - low < 1e-3:
+                                if sta_face_start is not None and sta_face_end is not None:
+                                    face_start = info.get('sta_full_start')
+                                    face_end = info.get('sta_full_end')
+                                    info['sta_full_start'] = min(face_start, sta_face_start) if face_start is not None else sta_face_start
+                                    info['sta_full_end'] = max(face_end, sta_face_end) if face_end is not None else sta_face_end
+                            for span_start, span_end in snapped_spans:
+                                seg_start = min(span_start, span_end)
+                                seg_end = max(span_start, span_end)
+                                if seg_end - seg_start < 1e-3:
                                     continue
-                                info['segments'].append((low, high))
-                                info['min_nl'] = min(info.get('min_nl', low), low)
-                                info['max_nl'] = max(info.get('max_nl', high), high)
-                                emit_start = low if x_start <= x_end else high
-                                emit_end = high if x_start <= x_end else low
-                                segments_to_emit.append((emit_start, snapped_y, emit_end, snapped_y, spacing_cap, tool_value, True))
+                                info['segments'].append((seg_start, seg_end))
+                                info['min_nl'] = min(info.get('min_nl', seg_start), seg_start)
+                                info['max_nl'] = max(info.get('max_nl', seg_end), seg_end)
+                                if 'y' not in info:
+                                    info['y'] = 0.5 * (y_start + y_end)
+                                if 'z' not in info:
+                                    info['z'] = z_candidate if z_candidate is not None else 0.0
+                                if x_start <= x_end:
+                                    emit_start = seg_start
+                                    emit_end = seg_end
+                                else:
+                                    emit_start = seg_end
+                                    emit_end = seg_start
+                                segments_to_emit.append((emit_start, y_start, emit_end, y_end))
+                                if panel_span_start is not None and panel_span_end is not None and panel_span_end > panel_span_start:
+                                    info['panel_min'] = min(info.get('panel_min', panel_span_start), panel_span_start)
+                                    info['panel_max'] = max(info.get('panel_max', panel_span_end), panel_span_end)
                         else:
-                            diag_cap = FIELD_NL_SPACING if nail_distance <= 0 else min(nail_distance, FIELD_NL_SPACING)
-                            segments_to_emit.append((x_start, y_start, x_end, y_end, diag_cap, tool_value, False))
-
-                        merged_segments = self._merge_nl_segments(segments_to_emit)
-                        for seg_x_start, seg_y_start, seg_x_end, seg_y_end, seg_cap, seg_tool, is_horizontal in merged_segments:
-                            seg_dy = abs(seg_y_end - seg_y_start)
-                            span_length = abs(seg_x_end - seg_x_start) if seg_dy <= 1e-3 else math.hypot(seg_x_end - seg_x_start, seg_y_end - seg_y_start)
-                            if span_length <= 1e-3:
-                                continue
-                            spacing_value = self._spacing_for_length(span_length, seg_cap)
-                            rounded_start = self._round_mm(seg_x_start)
-                            rounded_y_start = self._round_mm(seg_y_start)
-                            rounded_end = self._round_mm(seg_x_end)
-                            rounded_y_end = self._round_mm(seg_y_end)
-                            rounded_spacing = self._round_mm(spacing_value)
+                            segments_to_emit.append((x_start, y_start, x_end, y_end))
+                        if not segments_to_emit:
+                            continue
+                        for seg_x_start, seg_y_start, seg_x_end, seg_y_end in segments_to_emit:
                             key = (
-                                round(min(rounded_start, rounded_end), 3),
-                                round(min(rounded_y_start, rounded_y_end), 3),
-                                round(max(rounded_start, rounded_end), 3),
-                                round(max(rounded_y_start, rounded_y_end), 3),
-                                round(rounded_spacing, 3)
+                                round(min(seg_x_start, seg_x_end), 3),
+                                round(min(seg_y_start, seg_y_end), 3),
+                                round(max(seg_x_start, seg_x_end), 3),
+                                round(max(seg_y_start, seg_y_end), 3),
+                                round(nail_distance_effective if dy <= 1e-3 else min(nail_distance, FIELD_NL_SPACING), 3)
                             )
                             if key in seen_nl_keys:
                                 continue
                             seen_nl_keys.add(key)
-                            seg_parts = list(line_parts)
-                            seg_parts[1] = fmt_value(rounded_start, widths[0])
-                            seg_parts[2] = fmt_value(rounded_y_start, widths[1])
-                            seg_parts[4] = fmt_value(rounded_end, widths[3])
-                            seg_parts[5] = fmt_value(rounded_y_end, widths[4])
-                            seg_parts[7] = fmt_value(rounded_spacing, widths[6])
-                            rebuilt = ':'.join(seg_parts)
+                            line_parts = list(parts)
+                            line_parts[1] = fmt_value(seg_x_start, widths[0])
+                            line_parts[2] = fmt_value(seg_y_start, widths[1])
+                            line_parts[4] = fmt_value(seg_x_end, widths[3])
+                            line_parts[5] = fmt_value(seg_y_end, widths[4])
+                            spacing_value = nail_distance_effective if dy <= 1e-3 else min(nail_distance, FIELD_NL_SPACING)
+                            line_parts[7] = fmt_value(spacing_value, widths[6])
+                            rebuilt = ':'.join(line_parts)
                             f.write(rebuilt + ';' + newline)
-                    continue
+                        continue
 
                 if stripped == 'GLUE_LINES;':
                     if nl_supplement_lines is None:
-                        if self.fill_missing_nl:
-                            nl_supplement_lines = self._generate_missing_nl_lines(
-                                fmt_value,
-                                horizontal_nl_groups,
-                                top_surface_z,
-                                wall_start,
-                                wall_end,
-                                sheathing_panels_for_y,
-                                sheathing_spans_for_y
-                            ) or []
-                            flyover_lines = self._generate_flyover_stub_lines(
-                                fmt_value,
-                                horizontal_nl_groups,
-                                top_surface_z
-                            )
-                            if flyover_lines:
-                                nl_supplement_lines.extend(flyover_lines)
-                        else:
-                            nl_supplement_lines = []
+                        nl_supplement_lines = self._generate_missing_nl_lines(
+                            fmt_value,
+                            horizontal_nl_groups,
+                            top_surface_z,
+                            wall_start,
+                            wall_end,
+                            sheathing_panels_for_y,
+                            sheathing_spans_for_y
+                        ) or []
+                        flyover_lines = self._generate_flyover_stub_lines(
+                            fmt_value,
+                            horizontal_nl_groups,
+                            top_surface_z
+                        )
+                        if flyover_lines:
+                            nl_supplement_lines.extend(flyover_lines)
                     if nl_supplement_lines:
                         nl_newline = newline or '\n'
                         for extra_line in nl_supplement_lines:
@@ -2594,13 +2170,7 @@ class CDTFile:
                     if not gl_written:
                         if lock_gl_section:
                             if new_gl_lines is None:
-                                new_gl_lines, gl_seen_keys = self._original_glue_lines(
-                                    fmt_value,
-                                    wall_start,
-                                    wall_end,
-                                    glue_offset_value,
-                                    preserve_spans=True
-                                )
+                                new_gl_lines, gl_seen_keys = self._original_glue_lines(fmt_value, wall_start, wall_end, glue_offset_value)
                         else:
                             if new_gl_lines is None:
                                 new_gl_lines, gl_seen_keys = self.generate_glue_lines(horizontal_nl_groups, fmt_value, wall_start, wall_end, wall_bottom, wall_top)
@@ -2608,8 +2178,6 @@ class CDTFile:
                                     new_gl_lines, gl_seen_keys = self._fallback_glue_lines(fmt_value, wall_start, wall_end, wall_bottom, wall_top, gl_seen_keys)
                             elif not new_gl_lines:
                                 new_gl_lines, gl_seen_keys = self._fallback_glue_lines(fmt_value, wall_start, wall_end, wall_bottom, wall_top, gl_seen_keys)
-                        if new_gl_lines:
-                            new_gl_lines = self._merge_horizontal_gl_strings(new_gl_lines, fmt_value)
                         for gl_line in new_gl_lines:
                             f.write(gl_line + gl_newline)
                         gl_written = True
@@ -2639,13 +2207,7 @@ class CDTFile:
         if in_gl_section and not gl_written:
             if lock_gl_section:
                 if new_gl_lines is None:
-                    new_gl_lines, gl_seen_keys = self._original_glue_lines(
-                        fmt_value,
-                        wall_start,
-                        wall_end,
-                        glue_offset_value,
-                        preserve_spans=True
-                    )
+                    new_gl_lines, gl_seen_keys = self._original_glue_lines(fmt_value, wall_start, wall_end, glue_offset_value)
             else:
                 if new_gl_lines is None:
                     new_gl_lines, gl_seen_keys = self.generate_glue_lines(horizontal_nl_groups, fmt_value, wall_start, wall_end, wall_bottom, wall_top)
@@ -2653,8 +2215,6 @@ class CDTFile:
                         new_gl_lines, gl_seen_keys = self._fallback_glue_lines(fmt_value, wall_start, wall_end, wall_bottom, wall_top, gl_seen_keys)
                 elif not new_gl_lines:
                     new_gl_lines, gl_seen_keys = self._fallback_glue_lines(fmt_value, wall_start, wall_end, wall_bottom, wall_top, gl_seen_keys)
-            if new_gl_lines:
-                new_gl_lines = self._merge_horizontal_gl_strings(new_gl_lines, fmt_value)
             for gl_line in new_gl_lines:
                 f.write(gl_line + gl_newline)
             for e, (ox, oxs, oy, oys) in zip(self.elements, mirrored_backups.get('elements', [])):
@@ -2670,6 +2230,10 @@ class CDTFile:
                 for sl_line in saw_line_outputs:
                     f.write(sl_line + newline)
             saw_lines_written = True
+
+        if self.sheet_flip and sheet_flip_backups:
+            for e, (otype, oz) in zip(self.elements, sheet_flip_backups.get('elements', [])):
+                e.element_type, e.z = otype, oz
 
 
 def format_float(value: float) -> str:
@@ -2690,7 +2254,7 @@ def check_overlaps(elements, tolerance: float = 0.5):
     return overlaps
 
 
-def process_cdt_file(file_path: str, actual_lengths=None, mirror=False, glue_offset=GLUE_EDGE, sheet_flip=False, emit_saw_lines: bool = False) -> str:
+def process_cdt_file(file_path: str, actual_lengths=None, mirror=False, glue_offset=50.8, sheet_flip=False, emit_saw_lines: bool = False) -> str:
     """Adjust a CDT file based on user-supplied lengths and write an adjusted copy."""
     cdt_file = CDTFile(file_path)
     cdt_file.glue_edge_offset = glue_offset
@@ -2846,11 +2410,11 @@ class CDTAdjusterGUI:
         tk.Checkbutton(ctrl, text="Sheet Flip", variable=self.sheet_flip_var).pack(side='left', padx=(6,0))
         self.saw_line_var = tk.BooleanVar(value=False)
         tk.Checkbutton(ctrl, text="Saw Lines (SL)", variable=self.saw_line_var).pack(side='left', padx=(6,0))
-        self.glue_offset_var = tk.DoubleVar(value=GLUE_EDGE)
+        self.glue_offset_var = tk.DoubleVar(value=50.8)
         tk.Label(ctrl, text="Glue Offset (mm):").pack(side='left', padx=(6,0))
         self.glue_offset_entry = tk.Entry(ctrl, textvariable=self.glue_offset_var, width=10)
         self.glue_offset_entry.pack(side='left')
-        self.glue_offset_imperial_label = tk.Label(ctrl, text=self.mm_to_imperial(GLUE_EDGE), fg="blue", font=('Arial', 9))
+        self.glue_offset_imperial_label = tk.Label(ctrl, text=self.mm_to_imperial(50.8), fg="blue", font=('Arial', 9))
         self.glue_offset_imperial_label.pack(side='left', padx=(5,0))
         self.glue_offset_var.trace_add("write", lambda *args: self.update_glue_imperial())
         tk.Button(

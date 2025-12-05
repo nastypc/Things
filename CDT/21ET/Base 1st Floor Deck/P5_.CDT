@@ -1,0 +1,39 @@
+TXT:MiTek® Structure 25.2.0.225.Update11.15;
+VERSION:=5.0.8;
+TXT:LOT 21 - UNIT 38 RL27-3B ARC;
+TXT:Created - 12/2/2025 8:31:10 AM;
+TXT:Interface Version - 3.1.36.0;
+TXT:Plugin Version - 3.2.15.0;
+PNO:LOT 21 - UNIT 38 RL27-3B ARC;
+FL:0;
+ELD:Floor;
+DNO:P5_;
+ELF:UP;
+ELM:     286:    4909:     302:       1:     286:    4909:     302;
+
+
+SPB:     286:    4909:     302:       0:       0:       0:     P5_;
+STA:       44:    4909:     302:       0:       0:       0:       0:       0:       0:                Beam:    4909:                12X2:1 3/4" 1.55E TimberStrand® LSL;
+STE;
+STA:       44:    4909:     302:      44:       0:       0:       0:       0:       0:                Beam:    4909:                12X2:1 3/4" 1.55E TimberStrand® LSL;
+STE;
+STA:       44:    4267:     302:     241:     311:       0:       0:       0:       0:                Beam:    4267:                12X2:1 3/4" 1.55E TimberStrand® LSL;
+STE;
+SPE;
+BOO1:     286:    4356:      19:       0:     267:     302:       0:   23/32"x48"x96"OSB;
+
+INKT:     305:     572:     321:     305:     876:     321:                 P5_;
+
+NAILING_BOARD_OUTSIDE;
+
+GLUE_LINES;
+
+ROB:       0:     267:     321:       1;
+RL:       0:     267:     302:       0;
+RL:     286:     267:     302:       0;
+RL:     286:    4623:     302:       0;
+RL:       0:    4623:     302:       0;
+RL:       0:     267:     302:       0;
+ROE;
+
+EOF;
